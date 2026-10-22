@@ -176,7 +176,7 @@ it("names the default header admission budget and its setting when source select
     `${String(DEFAULT_ASAR_MAX_HEADER_BYTES / (1024 * 1024))} MiB / ${String(DEFAULT_ASAR_MAX_HEADER_BYTES)} bytes`,
   );
   expect(recovery).toContain(
-    "Set REA_ASAR_MAX_HEADER_BYTES in the environment that starts REA to a byte count up to 256 MiB / 268435456 bytes (default 16 MiB / 16777216 bytes), then restart REA.",
+    "Set REA_ASAR_MAX_HEADER_BYTES in the environment that starts AS Inspect to a byte count up to 256 MiB / 268435456 bytes (default 16 MiB / 16777216 bytes), then restart AS Inspect.",
   );
   expect(recovery).not.toContain("no runtime override");
   expect(recovery).toContain("Selecting fewer sources");

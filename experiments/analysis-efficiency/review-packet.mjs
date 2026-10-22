@@ -74,7 +74,7 @@ try {
     )
   )
     workflowReasons.push(
-      "Completed public REA call sequence differs from the fixed plan",
+      "Completed public AS Inspect call sequence differs from the fixed plan",
     );
   const ids = new Set();
   const conflictingIds = new Set();

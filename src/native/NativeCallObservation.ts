@@ -107,7 +107,7 @@ export const observeNativeCalls = async (
   }
 };
 
-/** Join the request, the tracer's run and REA's own checks into the result contract. */
+/** Join the request, the tracer's run and AS Inspect's own checks into the result contract. */
 const nativeCallFacts = (
   target: Pick<BinaryTarget, "path" | "sha256"> & {
     readonly architecture: string;
@@ -239,7 +239,7 @@ const nativeCallFacts = (
       ...(run.terminated && trace.terminated
         ? []
         : [
-            `REA could not confirm that process ${run.pid} exited; check for it before relying on host state.`,
+            `AS Inspect could not confirm that process ${run.pid} exited; check for it before relying on host state.`,
           ]),
     ],
   };

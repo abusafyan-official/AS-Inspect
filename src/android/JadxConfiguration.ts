@@ -497,7 +497,7 @@ const requireSupportedHost = (): void => {
       if (loaded.authority.inspection.protocolStdin === true) return;
       throw configurationFailure(
         "runtime_missing",
-        "The bundled Windows native artifact lacks owned protocol stdin; use a matching current Windows x64 REA package.",
+        "The bundled Windows native artifact lacks owned protocol stdin; use a matching current Windows x64 AS Inspect package.",
         {
           platform: process.platform,
           architecture: process.arch,
@@ -554,7 +554,7 @@ const resolveJar = async (
       "jar",
     );
   // A supplied selection stays configured even when rejected, so callers can
-  // tell it from an omitted setting and see the exact value REA refused.
+  // tell it from an omitted setting and see the exact value AS Inspect refused.
   if (!isAbsolute(jar))
     throw configurationFailure(
       "open_options_invalid",
@@ -625,7 +625,7 @@ const resolveJava = async (
     }
     throw configurationFailure(
       "runtime_missing",
-      "Cannot find java.exe on the selected Windows PATH. Select a full JDK with JAVA_HOME or PATH, then verify it with java --list-modules. REA does not install Java.",
+      "Cannot find java.exe on the selected Windows PATH. Select a full JDK with JAVA_HOME or PATH, then verify it with java --list-modules. AS Inspect does not install Java.",
       { java_executable: executable },
       "java_runtime",
     );

@@ -282,7 +282,7 @@ export interface CutterBridgeDiscovery {
     | "not_checked";
 }
 
-/** Discovers and communicates with REA Python bridge plugins in live Cutter processes. */
+/** Discovers and communicates with AS Inspect Python bridge plugins in live Cutter processes. */
 export class CutterBridgeClient {
   readonly #directory: string;
   readonly #descriptorResources = new ArtifactResourceScope();
@@ -1014,7 +1014,7 @@ const resolveBridgeDirectory = (
     return configured;
   }
   return platform === "win32" && localAppData
-    ? join(localAppData, "REA", "CutterBridge")
+    ? join(localAppData, "AS Inspect", "CutterBridge")
     : join(homeDirectory, ".cache", "rea", "cutter-bridge");
 };
 

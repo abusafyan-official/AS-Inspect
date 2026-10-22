@@ -41,7 +41,7 @@ comments, labels, milestones, commits, pull requests and releases) was read by
 one `capture-browser-scenario` run of 1,217 API reads: 1,218 transactions in
 24 s, 10.7 MB of Evidence, nothing dropped. Scenario parents are not on main,
 so this run used this commit merged onto the scenario-capture change
-(morluto/rea#5182) and packed for the host.
+(abusafyan-official/AS-Inspect#5182) and packed for the host.
 
 |                       | Inline source, previous rules         | Evidence-file source with `sibling-pair-variance` |
 | --------------------- | ------------------------------------- | ------------------------------------------------- |

@@ -1913,8 +1913,8 @@
   "review_followup": {
     "source": "4ebd0f60e860daa57a7033c6e77ea7f5f4b8ac97",
     "findings": [
-      "https://github.com/morluto/rea/pull/4605#discussion_r4299895070",
-      "https://github.com/morluto/rea/pull/4605#discussion_r4299895076"
+      "https://github.com/abusafyan-official/AS-Inspect/pull/4605#discussion_r4299895070",
+      "https://github.com/abusafyan-official/AS-Inspect/pull/4605#discussion_r4299895076"
     ],
     "root_cause": "Success-only gap finalization and silent non-callable call/apply forwarding.",
     "fix": "The once owner finalizes its missing gap in finally, after restoring scope; the callable metadata owner records failed non-callable dispatch reads without changing the returned value.",

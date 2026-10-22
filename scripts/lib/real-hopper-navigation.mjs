@@ -177,7 +177,7 @@ async function verifyAnnotationText(
   invalid,
   { address, other, originalName },
 ) {
-  const comment = "REA representation boundary 测试";
+  const comment = "AS Inspect representation boundary 测试";
   await call("set_comment", { address, comment });
   await call("set_inline_comment", { address, comment });
   await call("set_bookmark", { address, name: comment });

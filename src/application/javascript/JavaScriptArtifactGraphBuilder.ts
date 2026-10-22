@@ -346,7 +346,7 @@ const graphLimitations = (
       "the importing module",
     ),
     "CommonJS and ESM binding relationships were recovered from inert syntax and resolved only within the inventoried artifact container.",
-    "Webpack/Rspack factories were recovered from AST literals; REA did not invoke push handlers or bundle bootstrap code.",
+    "Webpack/Rspack factories were recovered from AST literals; AS Inspect did not invoke push handlers or bundle bootstrap code.",
     "Static imports, entrypoints, workers, endpoints, and storage relationships do not prove runtime execution.",
     ...(context.analysis.files.some(({ javascript }) =>
       javascript?.limitations.includes(ELECTRON_IDENTITY_LIMITATION),
@@ -373,7 +373,7 @@ const graphLimitations = (
         (javascript?.electron.sender_validations.length ?? 0) > 0,
     )
       ? [
-          "Sender, frame, URL, and origin checks are observations only; REA does not claim that they enforce a complete authorization policy.",
+          "Sender, frame, URL, and origin checks are observations only; AS Inspect does not claim that they enforce a complete authorization policy.",
         ]
       : []),
     ...semanticResourceLimits(context).map(semanticResourceLimitReason),

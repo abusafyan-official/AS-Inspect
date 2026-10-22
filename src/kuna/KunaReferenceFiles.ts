@@ -244,7 +244,7 @@ export interface KunaIncomingReferences {
   readonly excludedAliasRows: number;
 }
 
-/** Native --to unifies forwarding aliases; REA xrefs asks for the exact address. */
+/** Native --to unifies forwarding aliases; AS Inspect xrefs asks for the exact address. */
 export const parseKunaIncomingReferences = (
   text: string,
   input: string,

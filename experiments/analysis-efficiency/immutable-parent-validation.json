@@ -1,5 +1,5 @@
 {
-  "issue": "https://github.com/morluto/rea/issues/4810",
+  "issue": "https://github.com/abusafyan-official/AS-Inspect/issues/4810",
   "baseline": "2c4338db1fdb7773e05376301c558cff2a0b4b80",
   "candidate": "3930a640fb8387cbd3079eee13fb90f82d1881dc",
   "units": {
@@ -576,7 +576,7 @@
     {
       "production_commit": "e30a94a4de6a3c4ec7c577c1551d2b448d82081e",
       "report_commit": "3f271efdef8d71020bdcfd7b2d3d9817bf0a6ad8",
-      "report_url": "https://github.com/morluto/rea/blob/3f271efdef8d71020bdcfd7b2d3d9817bf0a6ad8/experiments/analysis-efficiency/immutable-parent-validation.json",
+      "report_url": "https://github.com/abusafyan-official/AS-Inspect/blob/3f271efdef8d71020bdcfd7b2d3d9817bf0a6ad8/experiments/analysis-efficiency/immutable-parent-validation.json",
       "completed_paired_tasks": 18,
       "elapsed_seconds_total": 498.234,
       "family_cpu_seconds_total": 477.513448,
@@ -586,7 +586,7 @@
     {
       "production_commit": "646312dad75e2cb2becb0dd4139b99a1c04d6bcc",
       "report_commit": "fc55be1e05555c6b295209ef5f354617f663b8f8",
-      "report_url": "https://github.com/morluto/rea/blob/fc55be1e05555c6b295209ef5f354617f663b8f8/experiments/analysis-efficiency/immutable-parent-validation.json",
+      "report_url": "https://github.com/abusafyan-official/AS-Inspect/blob/fc55be1e05555c6b295209ef5f354617f663b8f8/experiments/analysis-efficiency/immutable-parent-validation.json",
       "completed_paired_tasks": 18,
       "elapsed_seconds_total": 483.511,
       "family_cpu_seconds_total": 458.990461,
@@ -595,7 +595,7 @@
     }
   ],
   "review_normalization_fix": {
-    "comment": "https://github.com/morluto/rea/pull/4962#discussion_r4305886491",
+    "comment": "https://github.com/abusafyan-official/AS-Inspect/pull/4962#discussion_r4305886491",
     "before_source": "646312dad75e2cb2becb0dd4139b99a1c04d6bcc",
     "before_pr_head": "fc55be1e05555c6b295209ef5f354617f663b8f8",
     "expected_failing_regressions": 4,

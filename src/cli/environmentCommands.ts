@@ -319,7 +319,7 @@ const registerExportCommand = (cli: CliInstance, logger: Logger): void => {
         .string()
         .optional()
         .describe(
-          "Packed rea-agents tarball (npm pack) copied into the env folder and installed by the Dockerfile instead of the registry package pinned to this version",
+          "Packed as-inspect-agents tarball (npm pack) copied into the env folder and installed by the Dockerfile instead of the registry package pinned to this version",
         ),
       name: z
         .string()

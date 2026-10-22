@@ -85,7 +85,7 @@ try {
         call.error ||
         call.result?.isError
       )
-        throw new Error("Call did not return successful REA observations");
+        throw new Error("Call did not return successful AS Inspect observations");
       const text =
         call.result?.content?.filter((item) => item.type === "text") ?? [];
       if (!call.result?.structuredContent && text.length !== 1)

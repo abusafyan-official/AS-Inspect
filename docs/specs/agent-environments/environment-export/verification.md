@@ -47,8 +47,8 @@ ran.
   export, which copies them; the refusals of inline JSON, a directory and a
   file that is not JSON are typed by role, and the spec, plan and both guides
   state the single read.
-- The tarball Dockerfile left the 6 MB `rea-agents.tgz` in `/tmp` of the
-  image; the install layer now removes it (`&& rm /tmp/rea-agents.tgz`),
+- The tarball Dockerfile left the 6 MB `as-inspect-agents.tgz` in `/tmp` of the
+  image; the install layer now removes it (`&& rm /tmp/as-inspect-agents.tgz`),
   confirmed by listing `/tmp` in the built image below.
 - The verifier passes `--sandbox local` as the design specifies; the spec
   records that the task's `sandbox_type: local` already pins the provider and
@@ -100,7 +100,7 @@ conformance` passed 122 files, 1524 tests in 11.08 s elapsed, 23.10 s user,
 `environmentBundle.test.ts` (7 tests: the planned file set and copy targets,
 the registry Dockerfile pinned to `PACKAGE_METADATA.version` with the
 readiness-probe layer, the tarball Dockerfile installing and removing
-`/tmp/rea-agents.tgz`, the verifier text naming `get_annotations` as the
+`/tmp/as-inspect-agents.tgz`, the verifier text naming `get_annotations` as the
 first parameterless `GET` tool with recorded status 200 of record 25, the
 smoke task, the README's provenance, `agent-env run .` block and rights note,
 the name override and six refused names), `environmentExport.test.ts` (6
@@ -111,7 +111,7 @@ tarball copy, the refusals of a non-empty directory, a file path and a missing
 tarball with nothing written, and an existing empty directory accepted),
 `environmentSource.test.ts` (4 tests; the loader takes the reporting
 operation) and the conformance test `environmentBundlePackagePin.test.ts` (1
-test: the registry install line ends with `rea-agents@<package.json version>`
+test: the registry install line ends with `as-inspect-agents@<package.json version>`
 and never uses `latest` or a range).
 
 Built group after `npm run test:prepare`: `/usr/bin/time -l npx vitest run
@@ -134,7 +134,7 @@ capture Evidence `ev_4ee4759b…` (28 records); `inspect-analysis-view` with the
 inline source and all three template rules wrote manifest Evidence
 `ev_6553a8e5…` naming that parent, `grafana-example`, 19 tools, view digest
 `8d1eb3ee…`. `npm pack --ignore-scripts` of the checkout produced
-`rea-agents-6.6.0.tgz` (6039238 bytes). `environment-export manifest.json
+`as-inspect-agents-6.6.0.tgz` (6039238 bytes). `environment-export manifest.json
 --evidence capture.json <tmp>/grafana-example --package-tarball <tgz> --json`
 exited 0 and printed `status: exported`, `tool_count: 19`, `package_source:
 {kind: tarball}` and eight files: `README.md` (2076 bytes),
@@ -142,10 +142,10 @@ exited 0 and printed `status: exported`, `tool_count: 19`, `package_source:
 `artifacts/check_grafana-example/verify.py` (1534), `tasks/smoke.json` (291),
 `envs/grafana-example/manifest.json` (15701),
 `envs/grafana-example/evidence.json` (58296) and
-`envs/grafana-example/rea-agents.tgz` (6039238); `cmp` confirmed the two
+`envs/grafana-example/as-inspect-agents.tgz` (6039238); `cmp` confirmed the two
 Evidence copies and the tarball byte-identical to the inputs. The Dockerfile's
 install line reads `RUN npm install -g --ignore-scripts --no-fund --no-audit
-/tmp/rea-agents.tgz && rm /tmp/rea-agents.tgz`, and the README's run section
+/tmp/as-inspect-agents.tgz && rm /tmp/as-inspect-agents.tgz`, and the README's run section
 is the `agent-env run .` block.
 
 `/usr/bin/time -l agent-env run <tmp>/grafana-example` exited 0 in 43.66 s
@@ -169,7 +169,7 @@ registry from earlier sessions, unrelated to this run); no container was
 added, and the image count rose from 19 to 20 for the built env image
 `5a5b3bf62aae`. `docker run --rm --entrypoint sh 5a5b3bf62aae -c 'ls -la
 /tmp; rea --version; id -un'` listed only `node-compile-cache` in `/tmp` (no
-`rea-agents.tgz`), printed `6.6.0` and ran as `node`.
+`as-inspect-agents.tgz`), printed `6.6.0` and ran as `node`.
 
 `REA_AGENT_ENV_COMMAND=<venv>/bin/agent-env REA_DOCKER_COMMAND=$(command -v
 docker) /usr/bin/time -l node scripts/verify-agentenv-environment.mjs` exited
@@ -214,9 +214,9 @@ a truncated `broken.json` as the evidence exited 1 with `invalid_request`,
 issue path `["evidence"]`, reason `invalid_format` and "broken.json is not
 valid JSON: Unexpected end of JSON input", creating no directory. An export
 without `--package-tarball` wrote a Dockerfile whose install line is
-`RUN npm install -g --ignore-scripts --no-fund --no-audit rea-agents@6.6.0`,
+`RUN npm install -g --ignore-scripts --no-fund --no-audit as-inspect-agents@6.6.0`,
 the `package.json` version, with no tarball beside it; the tarball variant
-copies `rea-agents.tgz` and installs and removes `/tmp/rea-agents.tgz`.
+copies `as-inspect-agents.tgz` and installs and removes `/tmp/as-inspect-agents.tgz`.
 
 ## Independent review
 

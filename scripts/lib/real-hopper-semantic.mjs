@@ -124,7 +124,7 @@ export async function verifyRealHopperFixture({
     oracle.leafProcedure,
     normalizedResult,
   );
-  const comment = "REA real-Hopper conformance verifier";
+  const comment = "AS Inspect real-Hopper conformance verifier";
   const commentSet = normalizedResult(
     await client.callTool(
       {

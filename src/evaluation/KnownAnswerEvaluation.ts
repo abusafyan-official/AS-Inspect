@@ -344,7 +344,7 @@ const artifactDelivery = (evidence: Evidence): readonly Evidence[] => {
   return records;
 };
 
-/** Parse one completed transcript call and authenticate any successful REA Evidence. */
+/** Parse one completed transcript call and authenticate any successful AS Inspect Evidence. */
 export const parseCodexToolCall = (
   event: unknown,
 ): ParsedCodexToolCall | undefined => {

@@ -21,7 +21,7 @@ export const BUNDLE_BASE_IMAGE = "node:24.18.0-bookworm-slim";
 export const BUNDLE_MCP_PORT = 18765;
 
 /** Name of the packed CLI inside the env folder when a tarball is exported. */
-export const BUNDLE_TARBALL_NAME = "rea-agents.tgz";
+export const BUNDLE_TARBALL_NAME = "as-inspect-agents.tgz";
 
 /** Folder and env id rule: a kebab-case label the agentenv framework accepts as a local id. */
 const BUNDLE_NAME = /^[a-z0-9]+(?:-[a-z0-9]+)*$/u;
@@ -255,7 +255,7 @@ export const bundleReadme = (
       : `calls \`${plan.check.tool}\` without arguments and checks the call succeeds with \`status\` ${String(plan.check.status)}, the status of record ${String(plan.check.recordOrdinal)} its answer carries`;
   return `# ${plan.name}
 
-An agent environment exported by REA from one retained ${source.captureKind === "browser-scenario" ? "browser scenario capture" : "web network capture"}.
+An agent environment exported by AS Inspect from one retained ${source.captureKind === "browser-scenario" ? "browser scenario capture" : "web network capture"}.
 Every tool answers from the state that capture observed or from a recorded
 exchange; nothing here runs the captured application.
 

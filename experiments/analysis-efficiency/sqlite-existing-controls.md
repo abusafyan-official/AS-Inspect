@@ -1,6 +1,6 @@
 # SQLite existing-control measurements
 
-Continues [#2016](https://github.com/morluto/rea/issues/2016) after the Flutter
+Continues [#2016](https://github.com/abusafyan-official/AS-Inspect/issues/2016) after the Flutter
 lane. The measured main runtime is pinned to
 `172407787f1842dedbcd27b5385177595f786ce4`. Its only post-Flutter
 commit repairs Windows transient runtime admission (#2467); this Linux round
@@ -28,7 +28,7 @@ commit `e1223b8e9e71fc50ee995ed556f711c54ccc101b`. `corpus.json` pins its URL,
 SHA-256 `01d293159d1b77bd9212b5252587853f61aa9e25b2387135f34afaba8d057190`.
 Streaming acquisition matches the upstream blob. The upstream resource install
 list includes `data/*`; [its README](https://github.com/qgis/QGIS/blob/e1223b8e9e71fc50ee995ed556f711c54ccc101b/resources/data/README_world_map.md)
-records data provenance. This is shipped application data, not a generated REA
+records data provenance. This is shipped application data, not a generated AS Inspect
 fixture. QGIS is neither installed nor executed.
 
 The source question asks for the complete returned `countries` table schema
@@ -96,7 +96,7 @@ driver lacked this exact tool's approval override. Every factual grade fails;
 these are failed client attempts, not completed-task performance comparisons.
 All profiles are removed. The existing experiment-only per-tool approval list
 now includes `inspect_sqlite_database`; each corrected trial exposes only that
-exact enabled tool. REA annotations, target authority and global Codex configuration
+exact enabled tool. AS Inspect annotations, target authority and global Codex configuration
 are unchanged. The [official configuration reference](https://learn.chatgpt.com/docs/config-file/config-reference)
 documents the per-tool override. Corrected cohorts use fresh output directories
 and retain the original failures separately.

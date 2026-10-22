@@ -353,7 +353,7 @@ const withEarlierHistoricalEvidence = (
           "binary_overview",
         ),
         confidence: "derived",
-        limitations: ["Derived by an REA composed workflow."],
+        limitations: ["Derived by an AS Inspect composed workflow."],
       },
     ),
   ).find((record) => record.evidence_id < current.evidence_id);
@@ -527,7 +527,7 @@ it.each([
     const prior = withAlternateWorkflowProfile(
       saved.value,
       fixture.path,
-      { ...first, limitations: ["Derived by an REA composed workflow."] },
+      { ...first, limitations: ["Derived by an AS Inspect composed workflow."] },
       priorProfile,
     );
     const written = await withArtifactResourceScope((resources) =>

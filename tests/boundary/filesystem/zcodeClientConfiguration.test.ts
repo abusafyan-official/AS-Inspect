@@ -295,7 +295,7 @@ describe("ZCode fallback uninstall", () => {
     },
   );
 
-  it("removes the REA-owned fallback entry with the native registration", async () => {
+  it("removes the AS Inspect-owned fallback entry with the native registration", async () => {
     const { home, client } = await zcodeClient();
     await writeFile(
       client.configPath,
@@ -324,7 +324,7 @@ describe("ZCode fallback uninstall", () => {
     );
   });
 
-  it("removes a fallback-only REA entry and keeps a foreign rea entry", async () => {
+  it("removes a fallback-only AS Inspect entry and keeps a foreign rea entry", async () => {
     for (const [servers, expected] of [
       [{ rea: owned }, {}],
       [
@@ -347,7 +347,7 @@ describe("ZCode fallback uninstall", () => {
 
 describe("ZCode fallback admission", () => {
   it.each([{ PORT: 123 }, { REA_MCP_INPUT_SCHEMA_PROFILE: "unknown" }])(
-    "refuses malformed fallback REA environment %j before native writes",
+    "refuses malformed fallback AS Inspect environment %j before native writes",
     async (env) => {
       const { home, client } = await zcodeClient();
       await mkdir(join(home, ".agents"), { recursive: true });

@@ -2565,7 +2565,7 @@ describe("Ghidra NativeAOT snapshot budget", () => {
 });
 
 const sessionInfo = () => ({
-  name: "REA Ghidra bridge" as const,
+  name: "AS Inspect Ghidra bridge" as const,
   run_id: "11111111-1111-4111-8111-111111111111",
   profile_digest: "a".repeat(64),
   provider: { id: "ghidra" as const, version: "12.1.4" },
@@ -2977,7 +2977,7 @@ describe("Ghidra deadline guidance", () => {
     expect(projected.remediation.action).toContain(
       "REA_GHIDRA_DISABLED_ANALYZERS",
     );
-    expect(projected.remediation.action).toContain("restart REA");
+    expect(projected.remediation.action).toContain("restart AS Inspect");
     expect(projected.remediation.action).toContain("reconnect the MCP client");
     expect(projected.remediation.action).toContain("export useful Evidence");
     expect(projected.remediation.action).toContain(

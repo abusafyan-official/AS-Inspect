@@ -46,7 +46,7 @@ continues to carry source-bound unknowns and partial semantic coverage.
 
 ## Real input and reproduction
 
-Use the [official Joplin v3.7.21 acquisition and extraction instructions](https://github.com/morluto/rea/blob/c7f6b8bad1a34d5efb30ff2a017672dea1fcdabb/docs/verification/javascript-native-handoff-identity-2026-10-15.md).
+Use the [official Joplin v3.7.21 acquisition and extraction instructions](https://github.com/abusafyan-official/AS-Inspect/blob/c7f6b8bad1a34d5efb30ff2a017672dea1fcdabb/docs/verification/javascript-native-handoff-identity-2026-10-15.md).
 The AppImage SHA-256 is
 `5d202dcaca31e14206826aa3f04125e7c218dbc3dc3d98479d811efbd6b856c1`;
 ASAR SHA-256 is
@@ -118,7 +118,7 @@ verifier resources. They are not presented as inline metadata answers.
 A control that also requested the complete outgoing `package.json` feature trace
 hit stdio admission twice: at least 10,587,373 bytes against a 10,484,736-byte
 result budget, with identical retained parent/trace identities. It is not a
-completed equivalent task or an efficiency baseline. [#4190](https://github.com/morluto/rea/issues/4190)
+completed equivalent task or an efficiency baseline. [#4190](https://github.com/abusafyan-official/AS-Inspect/issues/4190)
 records the separate need for exact retained metadata/native fact views. Complete
 export remains available. Do not compare costs across these different tasks.
 
@@ -145,7 +145,7 @@ controls in every recorded non-timing field.
 
 The whole verifier includes input hashing, analysis, three native trace rounds,
 applicable structured queries, export, CLI parity and tokenization. Every heavy
-run uses the preserved [resource observer](https://github.com/morluto/rea/blob/b3bdabab694af1f9801eff7caf75001b92314a58/experiments/analysis-efficiency/resource-run.py):
+run uses the preserved [resource observer](https://github.com/abusafyan-official/AS-Inspect/blob/b3bdabab694af1f9801eff7caf75001b92314a58/experiments/analysis-efficiency/resource-run.py):
 one CPU, 8 GiB hard cap, 6 GiB early stop and no swap. Cgroup peaks include charged
 file cache, not summed RSS. Counters are observed at payload exit while the
 observer remains alive, not final whole-scope counters. Completed runs verify
@@ -236,7 +236,7 @@ passed, including five consistency tests: 117.636 s wall / 117.194118 s CPU /
 4,263,153,664 B peak, clean owned exit and no OOM.
 
 At the initial PR revision, 36 CI checks passed; macOS `hdiutil create` failed
-while creating its DMG fixture before REA verification, also failing the aggregate
+while creating its DMG fixture before AS Inspect verification, also failing the aggregate
 check. No Apple fixture/workflow code changed. That attempt provides no passing
 Apple runtime evidence.
 

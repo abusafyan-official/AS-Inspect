@@ -315,7 +315,7 @@ describe("observe_native_calls projection: reports partial observation coverage"
         "Observation stopped at max_events (1); later calls were not recorded and the process was killed.",
         "Breakpoints 1 matched no code in any image loaded while observing; their calls could not be observed.",
         "Target output beyond 1048576 bytes (1 MiB) per stream is counted but not kept. This release has no runtime override.",
-        "REA could not confirm that process 4242 exited; check for it before relying on host state.",
+        "AS Inspect could not confirm that process 4242 exited; check for it before relying on host state.",
       ]),
     );
   });

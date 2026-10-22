@@ -804,7 +804,7 @@ cliTest.runIf(SQLITE_NATIVE_LIMITS_AVAILABLE)(
     const path = join(root, "hashes.db");
     const producer = new DatabaseSync(path);
     try {
-      // The producing application supplies a function REA's connection lacks.
+      // The producing application supplies a function AS Inspect's connection lacks.
       producer.function(
         "application_digest",
         { deterministic: true },
@@ -819,7 +819,7 @@ cliTest.runIf(SQLITE_NATIVE_LIMITS_AVAILABLE)(
     }
     const before = await readFile(path);
     const { call } = await connectLocalToolsMcp();
-    const message = `SQLite cannot evaluate selected column(s) of table "t" on REA's read-only connection: "b": unknown function: application_digest()`;
+    const message = `SQLite cannot evaluate selected column(s) of table "t" on AS Inspect's read-only connection: "b": unknown function: application_digest()`;
     const expectedError = {
       code: "capability_unavailable",
       retryable: false,

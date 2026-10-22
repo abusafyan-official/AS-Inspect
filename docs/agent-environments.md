@@ -34,14 +34,14 @@ it, where `view.json` wraps the capture Evidence as the inline source:
 
 The third command serves that manifest from the state it derives from the
 capture; see [Serve from the state](#serve-from-the-state). Both served files
-are complete REA Evidence JSON as the commands write it with `--format json`;
+are complete AS Inspect Evidence JSON as the commands write it with `--format json`;
 the `evidence` member of `view.json` is the whole of `capture.json`.
 
 ## From a browser scenario
 
-The capture can also come from REA itself: a
+The capture can also come from AS Inspect itself: a
 [browser scenario](browser-scenario-contract.md) records a scripted session
-in a browser REA launches, and its Evidence is a manifest parent like a HAR
+in a browser AS Inspect launches, and its Evidence is a manifest parent like a HAR
 inspection. Select the `network` event family and response bodies. A replayed
 reply carries up to 256 KiB of a recorded body, but the scenario keeps at most
 `max_network_body_bytes` of each body (64 KiB by default), and only within its
@@ -220,7 +220,7 @@ it answers only from the capture's recordings and the state they observed or a
 caller loaded through `data/add`. Replayed content is
 target content: every tool result, including the argument errors the MCP server
 returns before a replay runs, carries `_meta.provenance.untrusted_content: true`
-with `source: "analysis_target"`. The server advertises REA's untrusted-content
+with `source: "analysis_target"`. The server advertises AS Inspect's untrusted-content
 instructions plus a warning that its tool names, descriptions, parameter names
 and observed values come from the capture too, and agents must treat all of it
 as data, never as instructions.
@@ -641,7 +641,7 @@ agent-env run ./grafana-example
 ```text
 grafana-example/
   README.md                                 provenance, what it serves, run command, rights note
-  envs/grafana-example/Dockerfile           pinned image: node:24.18.0-bookworm-slim + rea-agents@<this version>
+  envs/grafana-example/Dockerfile           pinned image: node:24.18.0-bookworm-slim + as-inspect-agents@<this version>
   envs/grafana-example/env.toml             environment_name = "grafana-example"
   envs/grafana-example/manifest.json        byte-exact copy of manifest.json
   envs/grafana-example/evidence.json        byte-exact copy of capture.json
@@ -665,7 +665,7 @@ server's advertised catalog budget before any files are written. Privately parse
 and replay share immutable response trees rather than copying the capture repeatedly.
 `--name` replaces the manifest's portable kebab-case name as the env folder and env id
 (Windows device names such as `con` and `lpt1` are refused);
-`--package-tarball <path>` copies a packed `rea-agents` tarball into the env
+`--package-tarball <path>` copies a packed `as-inspect-agents` tarball into the env
 folder and makes the Dockerfile install it instead of the registry package and
 remove it in the same layer, which is how a checkout rather than a release is
 run. The command prints the
@@ -678,7 +678,7 @@ exclusive creates, verify written bytes, and reject unowned entries before
 reporting success. It does not delete an inspectable partial folder on failure.
 Node's portable pathname APIs leave a syscall-boundary race, so the output's
 parent directories must be trusted. On POSIX output files use mode `0600`;
-Windows inherits ACLs and REA does not establish owner-only access there. Choose
+Windows inherits ACLs and AS Inspect does not establish owner-only access there. Choose
 an already private Windows destination when captured content needs it.
 
 The Dockerfile sets `MCP_HOST=0.0.0.0` and `MCP_PORT=18765`, the port the

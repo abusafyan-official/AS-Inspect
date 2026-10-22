@@ -108,7 +108,7 @@ export const SWIFTC_INTERRUPT = "SIGINT";
  * values fall back to the default; `parseConfig` still rejects them at CLI/MCP
  * admission. The resolved value is captured when the reader is created.
  * Production creates that reader from the launch environment at process start,
- * so a change applies after REA restarts, on the next ownership-helper compile.
+ * so a change applies after AS Inspect restarts, on the next ownership-helper compile.
  */
 export const resolveSwiftcCompileTimeoutMs = (
   options: {
@@ -126,7 +126,7 @@ export const resolveSwiftcCompileTimeoutMs = (
 
 /** Name the existing swiftc deadline when a helper compile times out. */
 export const swiftcCompileTimeoutRecovery = (timeoutMs: number): string =>
-  `The effective REA_SWIFTC_COMPILE_TIMEOUT_MS value is ${String(timeoutMs)} ms (integer range 1..${String(MAX_PROVIDER_STARTUP_TIMEOUT_MS)}; omitted default ${String(DEFAULT_SWIFTC_COMPILE_TIMEOUT_MS)} ms). Set it in the environment that starts REA and restart REA; the next ownership-helper compile uses the new value.`;
+  `The effective REA_SWIFTC_COMPILE_TIMEOUT_MS value is ${String(timeoutMs)} ms (integer range 1..${String(MAX_PROVIDER_STARTUP_TIMEOUT_MS)}; omitted default ${String(DEFAULT_SWIFTC_COMPILE_TIMEOUT_MS)} ms). Set it in the environment that starts AS Inspect and restart AS Inspect; the next ownership-helper compile uses the new value.`;
 
 /** Bound on compiler diagnostics embedded in the inspection failure text. */
 const STDERR_EXCERPT_LIMIT = 512;
@@ -198,7 +198,7 @@ export class DarwinProcessOwnershipInspectionError extends Error {
   }
 }
 
-/** Explicit, bounded outcome from compiling REA's Darwin ownership helper. */
+/** Explicit, bounded outcome from compiling AS Inspect's Darwin ownership helper. */
 export interface DarwinCompilerOutcome {
   readonly outcome:
     | "exited"
@@ -404,7 +404,7 @@ export type DarwinProcessReaderCompiler =
       readonly sdkRoot: string;
     };
 
-/** Compile and retain the narrow Darwin sysctl reader for this REA process. */
+/** Compile and retain the narrow Darwin sysctl reader for this AS Inspect process. */
 export const createDarwinProcessRunTokenReader = (
   options: {
     readonly compiler?: DarwinProcessReaderCompiler;
@@ -507,7 +507,7 @@ export const createDarwinProcessRunTokenReader = (
       if (compiler.kind === "swiftc")
         compilerEnvironment.SDKROOT = compiler.sdkRoot;
       if (moduleCachePath === "") {
-        // Use Swift's reusable default cache for REA's internal helper compilation.
+        // Use Swift's reusable default cache for AS Inspect's internal helper compilation.
         delete compilerEnvironment.CLANG_MODULE_CACHE_PATH;
       } else {
         await mkdir(moduleCachePath, { recursive: true });

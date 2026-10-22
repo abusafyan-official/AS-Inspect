@@ -371,7 +371,7 @@ export const analysisViewSourceSchema = z.discriminatedUnion("kind", [
   z.strictObject({
     kind: z.literal("evidence-file"),
     path: absoluteLocalPathStringSchema.describe(
-      "Absolute local path of one completed Evidence JSON file. REA reads and authenticates it, then projects it like retained Evidence, so large captures are not charged as inline input.",
+      "Absolute local path of one completed Evidence JSON file. AS Inspect reads and authenticates it, then projects it like retained Evidence, so large captures are not charged as inline input.",
     ),
   }),
 ]);

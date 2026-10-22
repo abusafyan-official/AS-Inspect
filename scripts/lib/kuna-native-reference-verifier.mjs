@@ -6,7 +6,7 @@ import { kunaProjectDeadline } from "../../dist/kuna/KunaConfiguration.js";
 import { inspectKunaInstallation } from "../../dist/kuna/KunaInstallation.js";
 import { KUNA_XREF_OUTPUT_BYTES } from "../../dist/kuna/KunaReferenceFiles.js";
 
-/** Independent projection of native exact-target rows, bypassing REA's parser. */
+/** Independent projection of native exact-target rows, bypassing AS Inspect's parser. */
 export const nativeKunaIncomingSites = async ({
   executable,
   cacheRoot,

@@ -68,7 +68,7 @@ it("retains the admitted tarball descriptor and refuses a pathname replacement d
       error: { _tag: "AnalysisArtifactChangedError", path: tarball },
     });
     expect(
-      await readFile(join(directory, "envs/grafana-example/rea-agents.tgz")),
+      await readFile(join(directory, "envs/grafana-example/as-inspect-agents.tgz")),
     ).toEqual(originalBytes);
   } finally {
     writer.mockRestore();
@@ -95,7 +95,7 @@ it("keeps tarball ownership when the admitted inode grows during output", async 
       ...args: Parameters<SafeOutputTree["write"]>
     ) {
       const [relative] = args;
-      if (!grown && relative === "envs/grafana-example/rea-agents.tgz") {
+      if (!grown && relative === "envs/grafana-example/as-inspect-agents.tgz") {
         grown = true;
         await appendFile(tarball, Buffer.alloc(1024 * 1024, 0x42));
       }
@@ -115,7 +115,7 @@ it("keeps tarball ownership when the admitted inode grows during output", async 
         _tag: "AnalysisOutputError",
         operation: "environment-export",
         reason:
-          "Extracted content exceeds the inventoried size: envs/grafana-example/rea-agents.tgz",
+          "Extracted content exceeds the inventoried size: envs/grafana-example/as-inspect-agents.tgz",
       },
     });
     if (result.ok)

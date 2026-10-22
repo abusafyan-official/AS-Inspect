@@ -100,7 +100,7 @@ const activityExtraSchema = z.discriminatedUnion("type", [
 /**
  * Caller intent for ADB-backed device inspection and acquisition.
  *
- * REA never installs platform tools, starts an emulator, or manages devices;
+ * AS Inspect never installs platform tools, starts an emulator, or manages devices;
  * every operation addresses devices the caller already connected, through the
  * adb binary the caller selected.
  */
@@ -131,7 +131,7 @@ export const adbInputSchemas = {
       "Installed package name whose APK set is pulled",
     ),
     output_directory: localPathStringSchema.describe(
-      "Local directory for the pulled APK set; REA creates a package-named subdirectory inside it",
+      "Local directory for the pulled APK set; AS Inspect creates a package-named subdirectory inside it",
     ),
   }),
   read_adb_logcat: z.strictObject({
@@ -251,7 +251,7 @@ export const adbInputSchemas = {
       "Device serial exactly as `adb devices` reports it",
     ),
     output_directory: localPathStringSchema.describe(
-      "Local directory for the bugreport archive; REA writes exactly one new zip into it",
+      "Local directory for the bugreport archive; AS Inspect writes exactly one new zip into it",
     ),
   }),
   resolve_adb_packages: z.strictObject({
@@ -519,7 +519,7 @@ export const adbResultSchemas = {
     devices: z.array(device),
     /**
      * Starting the local adb server is an adb client behavior on first use;
-     * REA observes whichever server state the caller's environment has.
+     * AS Inspect observes whichever server state the caller's environment has.
      */
     may_have_started_adb_server: z.boolean(),
   }),

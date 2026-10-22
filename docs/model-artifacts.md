@@ -2,7 +2,7 @@
 
 Use `inspect_model_artifact` (CLI: `inspect-model-artifact`) to inspect a local
 GGUF v2/v3 or safetensors file. Detection uses content, including GGUF byte
-order, rather than its extension. REA does not load a model, interpret weights,
+order, rather than its extension. AS Inspect does not load a model, interpret weights,
 run inference, import Python, open external-data references or use the network.
 
 Unsupported GGUF versions remain refused. Their diagnostic preserves the four

@@ -1,16 +1,16 @@
 # CLI and Evidence
 
 Use the CLI for a direct inspection or a script. It uses the same application
-workflows and evidence contracts as REA's MCP server. Each CLI invocation is a
+workflows and evidence contracts as AS Inspect's MCP server. Each CLI invocation is a
 separate process; save results when you want to use them in a later command.
 
 ## Run a command
 
-After [installing REA](installation.md), use `rea`. You can also run a command
+After [installing AS Inspect](installation.md), use `rea`. You can also run a command
 without a global installation:
 
 ```bash
-npx -y rea-agents@latest analyze-javascript-application /absolute/path/to/app --json
+npx -y as-inspect-agents@latest analyze-javascript-application /absolute/path/to/app --json
 ```
 
 Use an extracted application directory or an ASAR as the target. Static
@@ -33,7 +33,7 @@ rea inspect-analysis-view app-view.json
 The request can also name the saved file instead of embedding it:
 `{"source": {"kind": "evidence-file", "path": "app-evidence.json"}, "view": {"kind": "summary"}}`.
 The CLI resolves a relative path against the working directory; MCP clients
-pass an absolute path. REA reads and authenticates the file, then projects it
+pass an absolute path. AS Inspect reads and authenticates the file, then projects it
 like retained Evidence, so a large file is bounded by the file reader rather
 than charged as inline input.
 
@@ -236,7 +236,7 @@ These commands describe binary-session providers and auxiliary capabilities.
 For the complete MCP surface, use the connected server's tool list and the
 session's advertised availability; individual guides describe prerequisites.
 
-With automatic selection, REA uses the single available provider that supports
+With automatic selection, AS Inspect uses the single available provider that supports
 the target. When several providers support it, select one explicitly:
 
 ```bash
@@ -279,7 +279,7 @@ output and partial observations remain in the original details.
 
 ## Save and reuse analysis snapshots
 
-A snapshot retains successful analysis results for later queries. REA reuses
+A snapshot retains successful analysis results for later queries. AS Inspect reuses
 an exact result when the target bytes, operation, parameters, provider and
 settings match. Mutations and cursor-dependent calls are excluded from the
 cache. Snapshot files are local and use owner-only permissions.
@@ -401,11 +401,11 @@ top-level limitation. That partial inventory does not establish absence among
 unexamined children.
 
 JavaScript and TypeScript import parsing requires valid UTF-8. Malformed source
-bytes retain their original hashes and sizes with a decoding diagnostic; REA
+bytes retain their original hashes and sizes with a decoding diagnostic; AS Inspect
 does not infer module targets from replacement characters.
 
 Historical-source import requires safe no-follow file opens on Linux or
-macOS. Native Windows returns `unsupported_host`; use Linux REA inside WSL
+macOS. Native Windows returns `unsupported_host`; use Linux AS Inspect inside WSL
 or another supported host. See
 [source-to-bundle comparison](javascript-application-workflows.md#historical-source-to-bundle-comparison)
 for mapping identities, inferences and unknowns.
@@ -498,12 +498,12 @@ rea environment-export manifest.json --evidence capture.json ./grafana-example -
 ```
 
 The folder holds a `README.md` with the bundle's provenance, an env folder
-`envs/<name>/` with a `Dockerfile` that installs this exact `rea-agents`
+`envs/<name>/` with a `Dockerfile` that installs this exact `as-inspect-agents`
 version and serves the copied `manifest.json` and `evidence.json` (written
 with mode `0600` on POSIX; Windows retains inherited ACLs) with
 `environment-serve` (from the state by default), a Python verifier under
 `artifacts/check_<name>/` that checks the served tool count and one served
-answer, and the smoke task `tasks/smoke.json`. `--package-tarball` copies a packed `rea-agents`
+answer, and the smoke task `tasks/smoke.json`. `--package-tarball` copies a packed `as-inspect-agents`
 tarball into the env folder and installs it instead of the registry package,
 which is how the hosted lane proves a checkout rather than a release. `--name`
 replaces the manifest's kebab-case name as the env folder and env id; a device
@@ -620,7 +620,7 @@ cancellation.
 unavailable optional providers remain informational for unrelated tasks.
 
 Enable `pipefail` in a supporting shell so a downstream formatter preserves
-REA's failure status:
+AS Inspect's failure status:
 
 ```bash
 set -o pipefail

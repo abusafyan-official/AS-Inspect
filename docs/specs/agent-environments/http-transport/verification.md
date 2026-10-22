@@ -158,7 +158,7 @@ not re-measured over HTTP. Windows was not run.
 
 ## Automated review findings on the PR (2026-10-18)
 
-Codex and Greptile left eight inline findings on morluto/rea#4955 at
+Codex and Greptile left eight inline findings on abusafyan-official/AS-Inspect#4955 at
 46dd8f0e; each was checked against the code and addressed in one follow-up
 commit, with a regression test where the behaviour is observable:
 

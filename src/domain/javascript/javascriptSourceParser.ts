@@ -9,7 +9,7 @@ import {
   semanticImportEqualsSpecifier,
 } from "./javascriptModuleDeclaration.js";
 
-/** Babel AST produced by REA's inert JavaScript parser boundary. */
+/** Babel AST produced by AS Inspect's inert JavaScript parser boundary. */
 export type ParsedJavaScriptSource = ReturnType<typeof parse>;
 
 // Babel's module classification includes erased TypeScript syntax. Keep the

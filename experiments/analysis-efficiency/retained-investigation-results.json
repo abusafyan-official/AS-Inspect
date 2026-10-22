@@ -560,7 +560,7 @@
   ],
   "failed_trials": {
     "model-javascript-focused-1": "Wrong connector discovery; approval-policy refusal; no source facts established.",
-    "model-javascript-guided-complete-2": "Premature agent refusal with no REA RPC; asserted tool unavailability not established by a connection/discovery observation."
+    "model-javascript-guided-complete-2": "Premature agent refusal with no AS Inspect RPC; asserted tool unavailability not established by a connection/discovery observation."
   },
   "pilot_failures": [
     "Private pilot oracle read view.item instead of view.items; corrected before the committed SDK cohorts. No product failure inferred."

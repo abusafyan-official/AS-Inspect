@@ -8,7 +8,7 @@ import {
 import { canonicalJson } from "../domain/comparisonSemantics.js";
 import { TOOL_CONTRACTS } from "../contracts/toolContracts.js";
 
-/** One REA MCP invocation observed in a Codex JSONL transcript. */
+/** One AS Inspect MCP invocation observed in a Codex JSONL transcript. */
 interface CodexMcpCall {
   readonly id: string | null;
   readonly server: string | null;

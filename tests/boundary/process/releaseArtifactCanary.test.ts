@@ -44,7 +44,7 @@ it.skipIf(process.platform === "win32")(
     await writeFile(
       join(candidate, "package.json"),
       JSON.stringify({
-        name: "rea-agents",
+        name: "as-inspect-agents",
         version,
         type: "module",
         files: ["scripts"],
@@ -66,7 +66,7 @@ if (process.argv[2] === "mcp") {
   process.argv[2] = fileURLToPath(new URL("./reply.json", import.meta.url));
   await import("./replay.mjs");
 } else if (["--help", "--llms"].includes(process.argv[2])) {
-  console.log("REA fixture CLI");
+  console.log("AS Inspect fixture CLI");
 } else { process.exitCode = 1; }
 `,
     );
@@ -93,7 +93,7 @@ if (process.argv[2] === "mcp") {
     }
     await writeFile(
       join(controller, "package.json"),
-      JSON.stringify({ name: "rea-agents", version, type: "module" }),
+      JSON.stringify({ name: "as-inspect-agents", version, type: "module" }),
     );
     await symlink(
       resolve("node_modules"),
@@ -120,7 +120,7 @@ if (process.argv[2] === "mcp") {
     );
     const result = JSON.parse((await invoke()).stdout);
     expect(result).toMatchObject({
-      package: "rea-agents",
+      package: "as-inspect-agents",
       version,
       source: tarball,
       mcpTools: snapshot.tools.tools.length,
@@ -146,7 +146,7 @@ if (process.argv[2] === "mcp") {
     await writeFile(
       join(candidate, "package.json"),
       JSON.stringify({
-        name: "rea-agents",
+        name: "as-inspect-agents",
         version: "0.0.0",
         type: "module",
         files: ["scripts"],

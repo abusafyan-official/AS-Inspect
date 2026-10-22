@@ -1,13 +1,13 @@
 # Linux Hopper embedding-runtime qualification
 
 This follow-up to the [string-record audit](hopper-string-records.md) resolves
-[#5015](https://github.com/morluto/rea/issues/5015): a successful package install
+[#5015](https://github.com/abusafyan-official/AS-Inspect/issues/5015): a successful package install
 could leave Hopper unable to start its Python bridge. This is a prerequisite
 correctness fix. It does not establish faster equivalent investigations.
 
 ## Reproduction and owning correction
 
-Baseline REA `093ce695f0a7c3407c7fde520ed8b20c0981b408` ran the actual public
+Baseline AS Inspect `093ce695f0a7c3407c7fde520ed8b20c0981b408` ran the actual public
 `rea setup --yes --install-hopper --format json` in a fresh Ubuntu Base root,
 with full Linux UID/GID support, successful strict APT metadata refresh,
 default APT recommendations and unchanged vendor post-install scripts. Setup
@@ -18,7 +18,7 @@ was absent. The signed Hopper package did not declare this dependency.
 An actual public MCP control-ELF workflow then timed out at its selected
 30-second startup budget. Installing only `libpython3.12` resolved to
 `libpython3.12t64` version `3.12.3-1ubuntu0.17`: one new package, no upgrades or
-removals. The unchanged REA runtime and target then completed all 13 calls.
+removals. The unchanged AS Inspect runtime and target then completed all 13 calls.
 The independent earlier bootstrap dialog and controlled package intervention
 support the embedding-dependency diagnosis; timing alone does not.
 
@@ -74,7 +74,7 @@ presented as executions of that same artifact.
 - Official [Hopper 6.6.0 Linux demo](https://www.hopperapp.com:443/downloader/public/Hopper-6.6.0-Linux-demo.deb),
   35,748,722 bytes, SHA-256
   `59705e50f7ebf9104abe1e72ac3949bed1a8e43ec67a8c9510a1c5056c200d27`.
-  REA's real publisher verifier authenticated signing fingerprint
+  AS Inspect's real publisher verifier authenticated signing fingerprint
   `7C2D73BAFAF5B9A710A69DA1A26DF815099B1BCD`; launcher SHA-256
   `b2271008fb82bf14cfae5c3644cdde2b11fc6804bd7c99d67032ec1b1942d53c`.
 - Private [Ubuntu Base 24.04.5 root](https://cdimage.ubuntu.com/ubuntu-base/releases/24.04/release/ubuntu-base-24.04.5-base-amd64.tar.gz),

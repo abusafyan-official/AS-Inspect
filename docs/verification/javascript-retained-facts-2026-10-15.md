@@ -83,7 +83,7 @@ not import the production projector. Later export samples reuse the same
 immutable export. View samples precede diagnostic export and CLI verification.
 
 All costly commands run serially with the preserved
-[resource observer](https://github.com/morluto/rea/blob/b3bdabab694af1f9801eff7caf75001b92314a58/experiments/analysis-efficiency/resource-run.py)
+[resource observer](https://github.com/abusafyan-official/AS-Inspect/blob/b3bdabab694af1f9801eff7caf75001b92314a58/experiments/analysis-efficiency/resource-run.py)
 using `--memory-gib 8 --observe-payload-exit`: one CPU, 8 GiB hard limit,
 6 GiB early stop, no swap, 192 tasks; Node heap 2 GiB, `UV_THREADPOOL_SIZE=1`,
 `GOMAXPROCS=1`, `GOMEMLIMIT=3GiB`. Observer hashes and cleanup receipts are in JSON.
@@ -130,7 +130,7 @@ serially under the same resource observer. The negative task tests the claim
 that a static byte digest establishes native execution. Existing normal auth is
 used with `--ignore-user-config`; no credential copying or HOME/CODEX_HOME
 mutation. The installed CLI requires `code_mode_host: true` for all dispatch;
-that frontend setting is identical in both arms and is not a new REA executor.
+that frontend setting is identical in both arms and is not a new AS Inspect executor.
 Experimental `code_mode` / `code_mode_only` remain disabled. MCP tool allowlists
 and per-tool settings use the [official Codex configuration](https://developers.openai.com/codex/mcp).
 Historical harness patches preserve the invalid disabled-host attempt and the
@@ -444,7 +444,7 @@ node --import ./.cache/contract-compile-probe.mjs \
   tests/fixtures/contractPresentation.mjs reversed > /tmp/rea-contract-result.json
 ```
 
-This private SDK hook is diagnostic-only and version-specific. It is not a REA
+This private SDK hook is diagnostic-only and version-specific. It is not a AS Inspect
 execution surface or a proposed SDK fork. A client can separately evaluate the
 public per-call `toolDefinition` option without reducing catalog completeness
 or changing backend authority; no such client change was made here.

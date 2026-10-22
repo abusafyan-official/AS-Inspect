@@ -5,7 +5,7 @@ blocker. Keep the user's target and question in view. Explain what prevented the
 operation and the next useful step; after repair, continue the investigation.
 
 Commands below use an installed `rea`. If none is available, use the package
-invocation in `SKILL.md` when acquiring REA is authorized. Follow the connected
+invocation in `SKILL.md` when acquiring AS Inspect is authorized. Follow the connected
 server's schemas and the installed CLI's help rather than assuming repository
 main and an older release expose the same arguments.
 
@@ -13,17 +13,17 @@ main and an older release expose the same arguments.
 
 | Observation                                                     | Meaning and next step                                                                                                                                                                                                                                                                                                 |
 | --------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| No REA tools in the active session                              | Inspect registration with `rea doctor --client codex --json`. A skill installation alone does not register MCP.                                                                                                                                                                                                       |
+| No AS Inspect tools in the active session                              | Inspect registration with `rea doctor --client codex --json`. A skill installation alone does not register MCP.                                                                                                                                                                                                       |
 | Missing, malformed or stale registration                        | Prepare a scoped setup plan; apply only authorized changes with backups.                                                                                                                                                                                                                                              |
 | Aligned registration, but no connected tools                    | Restart/reconnect the client. Doctor checks registration; it cannot establish the current agent's connection. Inspect the client's launch error if reconnection fails.                                                                                                                                                |
-| `MCP tool call requires approval, but approval policy is never` | Codex rejected the call before REA executed it. Do not install an engine or repeat setup to solve this client-policy decision. See the approval section below.                                                                                                                                                        |
-| REA returns `provider_unavailable` or an unavailable tool entry | Read that operation's provider diagnostics or `binary_session.result.tool_availability`. Expand each group's tool names and inherit the shared client requirements unless overridden. Use the operation's availability, reason, and remediation; a complete tool catalog does not imply every operation is available. |
+| `MCP tool call requires approval, but approval policy is never` | Codex rejected the call before AS Inspect executed it. Do not install an engine or repeat setup to solve this client-policy decision. See the approval section below.                                                                                                                                                        |
+| AS Inspect returns `provider_unavailable` or an unavailable tool entry | Read that operation's provider diagnostics or `binary_session.result.tool_availability`. Expand each group's tool names and inherit the shared client requirements unless overridden. Use the operation's availability, reason, and remediation; a complete tool catalog does not imply every operation is available. |
 | `rea` is missing in a child shell, or Node is incompatible      | Inspect the actual shell PATH and launcher/runtime. A prefix installation may be absent from a login shell's PATH; this does not establish a broken MCP registration.                                                                                                                                                 |
 
 If the client cannot launch its shell/sandbox helper or read the installed skill,
 inspect its launch diagnostic. For example, Codex can refuse helper aliases when
 CODEX_HOME is under `/tmp`; use an authorized profile outside the OS temporary
-directory. REA setup cannot repair the client's executor. Preserve the sandbox
+directory. AS Inspect setup cannot repair the client's executor. Preserve the sandbox
 instead of silently disabling it to make an analysis command work.
 
 Static JavaScript and ordinary ZIP inventory need neither Hopper nor Ghidra.
@@ -32,13 +32,13 @@ decompilation, Android analysis and firmware extraction have their own
 bring-your-own prerequisites. Use supported inventory/static evidence when it
 answers part of the question, and name the unavailable evidence separately.
 Do not substitute another target. Label observations from ordinary shell tools
-as such; only actual REA output supplies REA Evidence.
+as such; only actual AS Inspect output supplies AS Inspect Evidence.
 
 ## Distinguish client and server deadlines
 
-A host message such as `timed out awaiting tools/call` with no REA result means
+A host message such as `timed out awaiting tools/call` with no AS Inspect result means
 the client's deadline expired before a result arrived. It does not establish
-that REA finished, canceled successfully, or released all resources. Do not
+that AS Inspect finished, canceled successfully, or released all resources. Do not
 repeat the unchanged analysis. Inspect available session/provider state and
 retained Evidence only when useful; an idle `binary_session` is not proof that
 every target-free operation stopped. Never invent a missing Evidence reference.
@@ -54,7 +54,7 @@ unrelated entries and backups; reconnect/restart as required by the host.
 When configuration is not editable, report the setting needed or use an
 authorized CLI fallback. Do not silently broaden permissions or switch targets.
 
-A returned REA `provider_timeout` instead means the **server/provider** reached
+A returned AS Inspect `provider_timeout` instead means the **server/provider** reached
 its deadline. Follow its `remediation.action`, reuse accessible partial Evidence,
 and resolve reported incomplete cleanup before retrying. Raising only the
 client deadline does not change this server budget. For static JavaScript,
@@ -99,9 +99,9 @@ install or upgrade unrelated prerequisites. Restart/reconnect, verify tools
 actually appear, and resume the original task. If they remain absent, inspect
 the launch failure rather than looping through setup.
 
-## Codex tool approval is separate from REA readiness
+## Codex tool approval is separate from AS Inspect readiness
 
-REA tools have no permission-grant handshake. Codex can still require approval
+AS Inspect tools have no permission-grant handshake. Codex can still require approval
 because an operation creates owned resources, launches a helper or has cleanup
 effects. An advertised tool or successful doctor result does not override that
 client policy. `workspace-write` alone does not resolve an MCP approval
@@ -132,7 +132,7 @@ Show the proposed config edit and preserve unrelated entries and backups before
 writing. Managed policy can constrain client settings. Consult the
 [Codex configuration reference](https://learn.chatgpt.com/docs/config-file/config-reference)
 for the installed client's supported settings. This is an optional recovery
-choice, not a prerequisite for every REA task.
+choice, not a prerequisite for every AS Inspect task.
 
 ## Continue through an installed CLI
 

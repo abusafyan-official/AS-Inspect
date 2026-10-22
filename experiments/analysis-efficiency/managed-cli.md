@@ -23,7 +23,7 @@ from the NuGet flat-container archive. The 2,441,966-byte archive SHA-256 is
 Selected member `lib/net6.0/Newtonsoft.Json.dll`, 712,464 bytes, SHA-256
 `22c649f75fce5be7c7ccda8880473b634ef69ecf33f5d1ab8ad892caf47d5a07`.
 Package version 13.0.3 is distinct from metadata assembly version 13.0.0.0.
-No library code is executed; REA parses PE/CLI statically.
+No library code is executed; AS Inspect parses PE/CLI statically.
 
 An independent Python oracle uses `dnfile==0.18.0` and `pefile==2024.8.26`.
 It finds 494 TypeDefs, 4,208 MethodDefs and 2,149 MemberRefs. The selected

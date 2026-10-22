@@ -1,6 +1,6 @@
 # Offline ELF upstream profile
 
-REA uses caller-supplied, unchanged Python packages. It vendors no pwntools,
+AS Inspect uses caller-supplied, unchanged Python packages. It vendors no pwntools,
 pyelftools or Unicorn implementation and never installs these dependencies.
 
 | Upstream | Exact verified profile | License | Role |
@@ -35,6 +35,6 @@ SHN_XINDEX represents actual indices at least 0xff00; ordinary absence uses inde
 zero. Raw name offsets remain reported when the name table is absent.
 
 PLT convenience inference uses the unchanged upstream Unicorn instruction
-emulator. REA labels those maps as derived static evidence. The no-execution
+emulator. AS Inspect labels those maps as derived static evidence. The no-execution
 verification claim concerns launching the selected object as a host process,
 not the absence of static instruction emulation inside an analysis engine.

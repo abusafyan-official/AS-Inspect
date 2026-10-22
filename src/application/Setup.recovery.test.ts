@@ -106,7 +106,7 @@ describe("setup workflow", () => {
     );
     expect(result.status).toBe("needs_human");
     expect(result.code).toBe("skill_install_failed");
-    expect(result.remediation).toContain("REA skill write failed at");
+    expect(result.remediation).toContain("AS Inspect skill write failed at");
     expect(result.remediation).toContain("injected skill write failure");
     expect(result.remediation).toContain("Check permissions and rerun setup.");
     expect(progress.at(-1)).toMatchObject({

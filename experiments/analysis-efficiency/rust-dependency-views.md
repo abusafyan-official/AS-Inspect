@@ -1,6 +1,6 @@
 # Rust dependency fact views
 
-Issue [#5802](https://github.com/morluto/rea/issues/5802) asks for exact embedded
+Issue [#5802](https://github.com/abusafyan-official/AS-Inspect/issues/5802) asks for exact embedded
 crate versions, sources and selected direct relationships without receiving the
 entire dependency report. The existing path-only operation returned every
 package, dependency vector and edge. This work adds opt-in first-call selection,

@@ -1457,7 +1457,7 @@ describe("native signature entitlements", () => {
       entitlements: { "com.apple.security.app-sandbox": true },
     });
     expect(signature.value.limitations).toContain(
-      "Entitlements: 1 dictionary entry keyed __proto__ was omitted because REA results cannot represent that key.",
+      "Entitlements: 1 dictionary entry keyed __proto__ was omitted because AS Inspect results cannot represent that key.",
     );
   });
 });

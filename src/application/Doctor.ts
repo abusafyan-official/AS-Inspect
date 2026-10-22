@@ -445,7 +445,7 @@ const skillIdentityRemediation = (
   const issues = identity?.issues;
   if (issues !== undefined && issues.length > 0)
     return `${issues.map(({ path, detail }) => `${detail} (${path})`).join(" ")} Verify the reported paths and use regular skill directories, or run rea setup with --skill=false to configure the client without installing the skill.`;
-  return "Run rea setup to update the installed REA skill.";
+  return "Run rea setup to update the installed AS Inspect skill.";
 };
 
 const skillIdentityCheck = (
@@ -460,8 +460,8 @@ const skillIdentityCheck = (
       issues !== undefined && issues.length > 0
         ? `Selected skill identity is ${skillIdentityState(identity)}: ${issues.map(({ path }) => path).join(", ")}.`
         : identity === undefined
-          ? "Installed REA skill identity is missing."
-          : "Installed REA skill identity is stale.",
+          ? "Installed AS Inspect skill identity is missing."
+          : "Installed AS Inspect skill identity is stale.",
     remediation: skillIdentityRemediation(identity),
   };
 };

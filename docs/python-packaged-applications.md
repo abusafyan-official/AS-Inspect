@@ -1,6 +1,6 @@
 # Python packaged applications
 
-REA statically inventories PyInstaller executables with an appended CArchive.
+AS Inspect statically inventories PyInstaller executables with an appended CArchive.
 `inspect_artifact` and `extract_artifact` share the same reader through CLI and
 MCP. They read archive bytes without launching the application. Bytecode
 source decompilation, encrypted PYZ recovery, zipapp and PEX analysis are outside
@@ -37,7 +37,7 @@ Type `d` entries are multipackage dependencies. They are also metadata, under
 The reader preserves the raw reference and splits its first colon into
 `dependency_archive` and `dependency_member`. `dependency_status` remains
 `unresolved`, or `invalid-reference` with unknown parts for malformed references.
-`external_dependency_count` summarizes these declarations. REA does not open
+`external_dependency_count` summarizes these declarations. AS Inspect does not open
 another executable or claim its contents are available. A real file with the
 same logical path as metadata remains independently extractable.
 Both declaration types require empty payloads and no compression. Their query

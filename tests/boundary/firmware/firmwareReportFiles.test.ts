@@ -113,16 +113,16 @@ it.each([
         "Repeating the unchanged request fails the same way",
       );
       expect(projected.remediation.action).not.toContain(
-        "Rerun the same REA request",
+        "Rerun the same AS Inspect request",
       );
       expect(projected.message).toContain("no runtime override");
-      expect(projected.message).not.toContain("Rerun the same REA request");
+      expect(projected.message).not.toContain("Rerun the same AS Inspect request");
     } else {
       expect(projected.remediation.action).toContain(
         "replacing every private path",
       );
       expect(projected.remediation.action).toContain(
-        "Rerun the same REA request",
+        "Rerun the same AS Inspect request",
       );
       expect(projected.remediation.action).not.toContain(
         "Repeating the unchanged request fails the same way",

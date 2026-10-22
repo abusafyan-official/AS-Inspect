@@ -10,7 +10,7 @@ import { err, ok, type Result } from "./domain/result.js";
  */
 export const PROCESS_START_CONFIGURATION_SETTINGS = ["REA_LOG_LEVEL"] as const;
 
-/** True when `setting` prevents the REA process from starting. */
+/** True when `setting` prevents the AS Inspect process from starting. */
 export const blocksProcessStart = (setting: string): boolean =>
   PROCESS_START_CONFIGURATION_SETTINGS.some(
     (candidate) => candidate === setting,
@@ -30,7 +30,7 @@ export const parseLogLevel = (
   const parsed = logLevelSchema.safeParse(value);
   if (parsed.success) return ok(parsed.data);
   return err(
-    new ConfigurationError("Invalid REA environment configuration", {
+    new ConfigurationError("Invalid AS Inspect environment configuration", {
       cause: parsed.error,
       settings: parsed.error.issues.map(({ message }) => ({
         setting: "REA_LOG_LEVEL",

@@ -6,7 +6,7 @@ Issue #6236; PR #4360. Linux x64, 2026-10-22.
 
 Baseline `main@4a4bbab3c337701febeb6b532ace49041c4876e0`; candidate `461f342c71a72ef2be60912391df2393aa4e2ea3`. This is a pinned comparison.
 
-In separate inspector/forced-GC diagnostics, retained REA V8 heap decreases by about 9.6 MiB. The three-pair ranges do not overlap in either profile. Inspector perturbation is included. Normal task timing, CPU and peak memory are reported separately; these observations do not establish a general latency or peak-memory reduction.
+In separate inspector/forced-GC diagnostics, retained AS Inspect V8 heap decreases by about 9.6 MiB. The three-pair ranges do not overlap in either profile. Inspector perturbation is included. Normal task timing, CPU and peak memory are reported separately; these observations do not establish a general latency or peak-memory reduction.
 
 <!-- END:allocation-report:provenance -->
 
@@ -80,18 +80,18 @@ Full-profile warm Zellij is slower than its cold condition in both roles in this
 
 ## Separate retained-heap diagnostics
 
-The same completed SDK task launches only its owned REA process with `--inspect=127.0.0.1:0`. Four CDP calls verify the owned transport PID, read heap, force GC and read heap again. The endpoint comes from that child’s stderr; the PID is a cross-check of the owned endpoint, not sole ownership proof. The inspector socket closes before MCP shutdown. These V8 values include inspector perturbation and exclude the client; diagnostic wall/CPU/family peaks include inspector and forced-GC overhead and are not normal-task timing results.
+The same completed SDK task launches only its owned AS Inspect process with `--inspect=127.0.0.1:0`. Four CDP calls verify the owned transport PID, read heap, force GC and read heap again. The endpoint comes from that child’s stderr; the PID is a cross-check of the owned endpoint, not sole ownership proof. The inspector socket closes before MCP shutdown. These V8 values include inspector perturbation and exclude the client; diagnostic wall/CPU/family peaks include inspector and forced-GC overhead and are not normal-task timing results.
 
 <!-- BEGIN:allocation-report:heap -->
 
-| Inputs  | REA V8 retained MiB |  Baseline range | Candidate range | Diagnostic wall s |           CPU s | Family peak MiB |
+| Inputs  | AS Inspect V8 retained MiB |  Baseline range | Candidate range | Diagnostic wall s |           CPU s | Family peak MiB |
 | ------- | ------------------: | --------------: | --------------: | ----------------: | --------------: | --------------: |
 | default |   189.835 → 180.242 | 189.823–189.855 | 180.208–180.366 |   15.490 → 14.291 | 15.246 → 14.123 |   814.1 → 786.3 |
 | full    |   191.260 → 181.693 | 191.165–191.304 | 181.588–181.848 |     8.979 → 8.377 |   8.769 → 8.142 |   810.3 → 824.9 |
 
 <!-- END:allocation-report:heap -->
 
-A mismatched PID is rejected; removing only that guard makes the negative oracle fail. Both connections in that check use the same owned REA endpoint, with no foreign-process attachment. Aggregation rejects diagnostic GC in a normal trial. Historical #4424 receipt reaggregation preserves previous metrics and adds the separately reported SDK-span fields; its aggregator source hash changes.
+A mismatched PID is rejected; removing only that guard makes the negative oracle fail. Both connections in that check use the same owned AS Inspect endpoint, with no foreign-process attachment. Aggregation rejects diagnostic GC in a normal trial. Historical #4424 receipt reaggregation preserves previous metrics and adds the separately reported SDK-span fields; its aggregator source hash changes.
 
 ## Context accounting
 

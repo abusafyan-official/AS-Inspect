@@ -230,7 +230,7 @@ describe("Codex completed tool call parsing", () => {
       routed: false,
     },
     {
-      label: "verified REA alias",
+      label: "verified AS Inspect alias",
       identity: { server_name: "rea" },
       routed: true,
     },
@@ -513,7 +513,7 @@ describe("Codex agent routing and error evaluation", () => {
     },
   );
 
-  it("requires no REA call when target selection is missing", () => {
+  it("requires no AS Inspect call when target selection is missing", () => {
     const events = [
       {
         type: "item.completed",
@@ -544,7 +544,7 @@ describe("Codex agent routing and error evaluation", () => {
     ).toBe(false);
   });
 
-  it("counts actual text-only REA errors and SDK-rejected schema inputs once per call", () => {
+  it("counts actual text-only AS Inspect errors and SDK-rejected schema inputs once per call", () => {
     const source = {
       kind: "retained-evidence",
       evidence_id: `ev_${"a".repeat(64)}`,

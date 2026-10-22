@@ -1,6 +1,6 @@
 # Native PE and DOS entry-view checkpoint
 
-Continuation of [#2016](https://github.com/morluto/rea/issues/2016) after
+Continuation of [#2016](https://github.com/abusafyan-official/AS-Inspect/issues/2016) after
 #2122 and #2193 merged. Real Ghidra observations and real Codex CLI answers
 support the selected native facets on these shipped inputs. They do not justify
 an automatic native summary policy: the four selected replies are larger than
@@ -81,7 +81,7 @@ provider runs or timing measurements.
 ## Real Codex CLI observations
 
 Three serial runs used Codex CLI 0.161.0, requested alias `gpt-5.6-terra`, high
-reasoning, temporary isolated profiles and the frozen modified REA MCP runtime.
+reasoning, temporary isolated profiles and the frozen modified AS Inspect MCP runtime.
 Resolved server-side model identity is not inferred. The same explicit seven-tool
 subset was enabled: open, containing-procedure resolution, dossier, analysis view,
 load image, retained Evidence discovery and close. This is not full-catalog tool

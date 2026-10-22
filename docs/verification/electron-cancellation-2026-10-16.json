@@ -2016,7 +2016,7 @@
     }
   ],
   "limits": [
-    "The window/state stalls are injected at REA-side Playwright return boundaries on the real app; they do not establish a naturally occurring Joplin stall.",
+    "The window/state stalls are injected at AS Inspect-side Playwright return boundaries on the real app; they do not establish a naturally occurring Joplin stall.",
     "Cancellation liveness/category is verified; complete Linux Joplin cleanup and first-SIGTERM CLI exit are NOT verified (#4282). These real workflows remain partial or failed.",
     "The official packaged runtime passed fuse admission but failed initial Inspector evaluation before the cancellation test. No bundled-runtime, full Joplin UI, macOS or Windows success claim.",
     "Older helper hashes were not captured at execution; diagnostics remain observations, not reproducible performance pairs.",

@@ -1,6 +1,6 @@
 {
   "question": "Remove duplicate full-inventory projection from literal search without changing native string facts, metadata, Evidence or public CLI/MCP contracts.",
-  "issue": "https://github.com/morluto/rea/issues/5010",
+  "issue": "https://github.com/abusafyan-official/AS-Inspect/issues/5010",
   "date_utc": "2026-10-18",
   "baseline": "c12d9eda87aa5a022ee7e18ea96d8d03bfd12e96",
   "rea_version": "6.7.0",

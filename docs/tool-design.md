@@ -33,7 +33,7 @@ A format-specific decoder qualifies; one application's business interpretation
 belongs outside the general contract. Expose provider APIs when they add a
 useful capability that existing tools cannot express.
 
-Compose a workflow when repeated use demonstrates a multi-source outcome REA
+Compose a workflow when repeated use demonstrates a multi-source outcome AS Inspect
 can join without hiding caller choices or uncertainty. Batch homogeneous reads
 when that removes repeated work while preserving per-item outcomes. Keep prompts
 optional and avoid prescribing call sequences that a direct tool can replace.
@@ -132,7 +132,7 @@ providers need not expose identical state machines.
 - Await one-shot cleanup without discarding the completed result or primary
   diagnostic. Preserve partial observations, remaining resources, and the cleanup
   owner's recovery instructions. CLI adapters should reuse
-  [`finishAnalysisCommand`](https://github.com/morluto/rea/blob/main/src/cli/finishAnalysisCommand.ts) where its contract
+  [`finishAnalysisCommand`](https://github.com/abusafyan-official/AS-Inspect/blob/main/src/cli/finishAnalysisCommand.ts) where its contract
   applies rather than duplicate close/finally handling.
 - Give descriptor-backed reads an owner before opening the file. A rejected
   close must retain the exact handle and preserve any earlier failure. If an

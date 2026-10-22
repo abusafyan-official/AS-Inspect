@@ -1,6 +1,6 @@
 # Native inventory summaries and retained rows
 
-Continues [#4249](https://github.com/morluto/rea/issues/4249). The analyst
+Continues [#4249](https://github.com/abusafyan-official/AS-Inspect/issues/4249). The analyst
 question is to report observed row counts and the first four address/value
 pairs from procedures, names, strings, and literal `main` procedure/string
 searches. Complete delivery reads every row even when only those facts are

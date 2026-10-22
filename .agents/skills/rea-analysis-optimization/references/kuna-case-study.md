@@ -7,7 +7,7 @@ atomic tools, or any particular orchestration design.
 
 ## Exact-address lookup: a measured, narrow improvement
 
-[PR #4695](https://github.com/morluto/rea/pull/4695) reused the validated string
+[PR #4695](https://github.com/abusafyan-official/AS-Inspect/pull/4695) reused the validated string
 inventory's numeric address order. Previously, each `list_strings(address)`
 filtered all cached facts. The owner now performs a binary lower-bound lookup
 and returns every encoding at that address: O(log n + matches), without a
@@ -76,15 +76,15 @@ strings and relationships can remain unknown.
 
 ## Other transferable changes and their limits
 
-- [Cached string inventory and search, #4095](https://github.com/morluto/rea/pull/4095):
+- [Cached string inventory and search, #4095](https://github.com/abusafyan-official/AS-Inspect/pull/4095):
   share validated facts across queries in a defined session. Audit key inputs
   and lifetime before extending reuse across targets or engine revisions.
-- [Shared single-function work, #4045](https://github.com/morluto/rea/pull/4045)
-  and [repeat-request reuse, #4169](https://github.com/morluto/rea/pull/4169):
+- [Shared single-function work, #4045](https://github.com/abusafyan-official/AS-Inspect/pull/4045)
+  and [repeat-request reuse, #4169](https://github.com/abusafyan-official/AS-Inspect/pull/4169):
   avoid duplicate native work while retaining per-caller cancellation and
   cleanup ownership. A query count alone cannot reveal duplicate subprocesses.
-- [Streamed strings, #4318](https://github.com/morluto/rea/pull/4318)
-  and [streamed call graph, #4329](https://github.com/morluto/rea/pull/4329):
+- [Streamed strings, #4318](https://github.com/abusafyan-official/AS-Inspect/pull/4318)
+  and [streamed call graph, #4329](https://github.com/abusafyan-official/AS-Inspect/pull/4329):
   remove fixed aggregate transport-buffer failures through incremental parsing.
   Streaming transport does not bound every retained object or final reply.
   These links establish changes; no numerical speedup is asserted here.

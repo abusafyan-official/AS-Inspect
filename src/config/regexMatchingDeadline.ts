@@ -87,6 +87,6 @@ export const regexMatchingDeadlineRecovery = (
 ): string =>
   [
     `The effective ${REGEX_MATCHING_DEADLINE_SETTING} value is ${String(deadline.deadlineMs)} ms (source ${deadline.source}; default ${String(DEFAULT_REGEX_MATCHING_DEADLINE_MS)} ms, floor 1 ms, maximum ${String(MAXIMUM_REGEX_MATCHING_DEADLINE_MS)} ms).`,
-    `Set ${REGEX_MATCHING_DEADLINE_SETTING} in the environment that starts REA to a positive decimal integer from 1 to ${String(MAXIMUM_REGEX_MATCHING_DEADLINE_MS)}, then restart REA.`,
+    `Set ${REGEX_MATCHING_DEADLINE_SETTING} in the environment that starts AS Inspect to a positive decimal integer from 1 to ${String(MAXIMUM_REGEX_MATCHING_DEADLINE_MS)}, then restart AS Inspect.`,
     "The worker old-generation heap does not raise this deadline.",
   ].join(" ");

@@ -109,7 +109,7 @@ const refusalReason = (payload: unknown, fallback: string): string => {
   return fallback;
 };
 
-/** Serve REA's JEB operations from a running engine client over MCP. */
+/** Serve AS Inspect's JEB operations from a running engine client over MCP. */
 export class JebProvider implements JebAnalysisPort {
   readonly #connection: JebMcpConnection;
   readonly #endpoint: URL;
@@ -323,7 +323,7 @@ export class JebProvider implements JebAnalysisPort {
       createAnalysisExecution(result, this.#identity(engine.version), {
         rawResult: payload,
         limitations: [
-          "JEB resolves and analyzes the artifact on the engine host; REA did not open the target itself.",
+          "JEB resolves and analyzes the artifact on the engine host; AS Inspect did not open the target itself.",
         ],
       }),
     );

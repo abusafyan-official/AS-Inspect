@@ -1,7 +1,7 @@
 # Task-scoped preset lifecycle verification
 
-Continues [#2016](https://github.com/morluto/rea/issues/2016) after
-[#2308](https://github.com/morluto/rea/pull/2308) merged. This increment verifies
+Continues [#2016](https://github.com/abusafyan-official/AS-Inspect/issues/2016) after
+[#2308](https://github.com/abusafyan-official/AS-Inspect/pull/2308) merged. This increment verifies
 existing caller-selected Ghidra settings and immutable JSON snapshots through
 actual public CLI/MCP workflows. Production defaults, provider selection and
 public contracts remain unchanged; an engine database cache is still deferred.
@@ -17,7 +17,7 @@ The first input is the installed `/usr/bin/true`, 35,664 bytes, SHA-256
 `c79bf44242829108e323378531f4ac839513ca1fba45efd6583643526e1e9fd2`.
 The local package database reports Debian `coreutils` `9.1-1` `amd64`; these are
 installed-artifact observations, not independent archive authenticity proof.
-The target itself is never invoked, including for version discovery. REA's
+The target itself is never invoked, including for version discovery. AS Inspect's
 actual `list_procedures` chooses an internal, non-thunk procedure at `0x102000`.
 
 The default profile reports `analyzer_preset: "ghidra-default"`. The selected
@@ -58,7 +58,7 @@ Read-only token sweeps confirm cleanup, including processes outside the old
 parent chain; owned runtime/socket directories are removed. The selected target
 remains open and a fresh provider query succeeds.
 
-REA preserves the logical run ID when reimporting that selected target. A new
+AS Inspect preserves the logical run ID when reimporting that selected target. A new
 native process start identity proves the new generation; requiring a new logical
 ID would test a different contract. No PID/path pair alone establishes ownership.
 
@@ -89,7 +89,7 @@ Keep the initial probes and their corrections outside Git:
 - Reimport preserved the logical run ID. Native start identity, not that logical
   ID, establishes the new process generation.
 
-These were verification assumptions, not newly demonstrated REA defects. No
+These were verification assumptions, not newly demonstrated AS Inspect defects. No
 unrelated production repair is made. Existing defects remain in the requested
 private `/tmp` record.
 
@@ -104,7 +104,7 @@ unverified. Sampled values are not final OOM/limit-event proof.
 These are lifecycle verification costs. Discovery, profile inspection, rejection,
 cleanup and syscall tracing make their call sequences different. They are not
 paired completed-question performance trials, and contain no model token counts.
-Explicit snapshot reuse is existing REA behavior, not a new speedup introduced by
+Explicit snapshot reuse is existing AS Inspect behavior, not a new speedup introduced by
 these verifiers. Broader native inputs and failure scenarios remain follow-ups.
 
 ## Shipped jq continuation
@@ -112,7 +112,7 @@ these verifiers. Broader native inputs and failure scenarios remain follow-ups.
 The same source snapshot verifier additionally passes on the pinned public jq
 binary, SHA-256
 `b1c22172dd303f3be49e935aa56aa48a8b7a46e0bc838b4997d3bb451495870f`.
-Procedure `0x403a50` comes from the earlier actual REA entry observation, rather
+Procedure `0x403a50` comes from the earlier actual AS Inspect entry observation, rather
 than a newly guessed file offset. Default and disabled profiles each perform a
 fresh headless analysis. Both profile mismatch directions reject before a
 headless launch, both valid default reuses return exact task facts with zero
@@ -140,7 +140,7 @@ main baseline; the follow-up changes only experiment sources and documentation.
 ## Invalid analyzer failure and healthy peers
 
 Real MCP and CLI requests with `REA_GHIDRA_DISABLED_ANALYZERS` set to
-`REA Nonexistent Analyzer 2016` both report `execution_failure`. Their diagnostics
+`AS Inspect Nonexistent Analyzer 2016` both report `execution_failure`. Their diagnostics
 preserve the exact unavailable analyzer name, selected provider, operation,
 target identity and Ghidra pre-script failure. MCP still answers a bundled EVM
 peer request and closes the selected native target; original target bytes stay
@@ -160,12 +160,12 @@ provider rerun or production repair is needed for that correction.
 The invalid-name behavior is reproducible with the existing CLI:
 
 ```sh
-REA_GHIDRA_DISABLED_ANALYZERS='REA Nonexistent Analyzer 2016' \
+REA_GHIDRA_DISABLED_ANALYZERS='AS Inspect Nonexistent Analyzer 2016' \
   node ABS_RUNTIME/scripts/rea.mjs function ABS_TRUE_BINARY 0x102000 \
   --provider ghidra --json
 ```
 
-Use the address actually observed by REA for a different target. The deliberately
+Use the address actually observed by AS Inspect for a different target. The deliberately
 invalid name is expected to fail; fixing the setting is required before retrying.
 
 ## Reproduction
@@ -181,7 +181,7 @@ node experiments/analysis-efficiency/verify-preset-snapshot.mjs \
   --providers ABS_SETTINGS_JSON --strace ABS_STRACE --output NEW_ABS_DIR
 ```
 
-Select `--procedure` from actual REA evidence when the question already identifies
+Select `--procedure` from actual AS Inspect evidence when the question already identifies
 one; otherwise the verifier uses the actual procedure list. `--timeout-ms` is an
 explicit observation window; `--disabled-analyzers` uses the existing setting.
 

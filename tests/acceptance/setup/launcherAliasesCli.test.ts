@@ -6,8 +6,8 @@ import { createTestTempDirectory } from "../../fixtures/temporaryDirectory.js";
 import { cliTest } from "../../support/cli/cliFixture.js";
 
 cliTest.skipIf(process.platform === "win32").for([
-  ["rea", "rea-agents"],
-  ["rea-agents", "rea"],
+  ["rea", "as-inspect-agents"],
+  ["as-inspect-agents", "rea"],
 ] as const)(
   "recognizes setup through %s when doctor and uninstall use %s",
   async ([registered, alternate], { processes }) => {

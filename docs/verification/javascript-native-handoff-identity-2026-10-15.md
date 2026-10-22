@@ -110,7 +110,7 @@ For a pre-fix observation, run the saved verifier on the baseline build without
 analyst task. Paths affect serialized requests and some Evidence identities.
 
 The exact resource runs additionally used the preserved
-[8 GiB observer](https://github.com/morluto/rea/blob/b3bdabab694af1f9801eff7caf75001b92314a58/experiments/analysis-efficiency/resource-run.py)
+[8 GiB observer](https://github.com/abusafyan-official/AS-Inspect/blob/b3bdabab694af1f9801eff7caf75001b92314a58/experiments/analysis-efficiency/resource-run.py)
 and adjacent `resource_payload.py`; both hashes are pinned in the JSON.
 
 ## Completed workflow costs and limits

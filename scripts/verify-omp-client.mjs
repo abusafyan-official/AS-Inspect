@@ -120,7 +120,7 @@ const fixture = await createOpenAiModelFixture({
     const replies = body.messages.filter((message) => message.role === "tool");
     if (requestIndex === 1)
       return call(requestIndex, "read", {
-        i: "Load REA skill",
+        i: "Load AS Inspect skill",
         path: "skill://reverse-engineer-anything:raw",
       });
     assert(
@@ -131,7 +131,7 @@ const fixture = await createOpenAiModelFixture({
     skillLoaded = true;
     if (requestIndex === 2)
       return call(requestIndex, "read", {
-        i: "Inspect REA native tool contract",
+        i: "Inspect AS Inspect native tool contract",
         path: analysisDevice,
       });
     assert(containsText(replies, "# mcp__rea_analyze_javascript_application"));
@@ -219,7 +219,7 @@ await writeFile(
         models: [
           {
             id: "rea-client-fixture",
-            name: "REA local fixture",
+            name: "AS Inspect local fixture",
             reasoning: false,
             input: ["text"],
             cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 },
@@ -343,7 +343,7 @@ try {
       "rea-fixture/rea-client-fixture",
       mode === "chat"
         ? "Say hello briefly."
-        : `Use the REA skill to analyze ${target}.`,
+        : `Use the AS Inspect skill to analyze ${target}.`,
     ],
     {
       env: environment,
@@ -373,7 +373,7 @@ try {
   assert.deepEqual(
     mounted.sort(),
     expectedDevices,
-    "Native OMP must mount the complete REA catalog",
+    "Native OMP must mount the complete AS Inspect catalog",
   );
   catalogMounted = true;
   assert(

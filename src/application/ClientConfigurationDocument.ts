@@ -978,8 +978,8 @@ const withoutTrailingLineFeeds = (text: string): string => {
 };
 
 /**
- * Replace REA's TOML server tables and assignments. Every comment line stays
- * where it was, including comments before, inside, and after REA's own table;
+ * Replace AS Inspect's TOML server tables and assignments. Every comment line stays
+ * where it was, including comments before, inside, and after AS Inspect's own table;
  * only blank lines that separated a removed table go with it. Text inside
  * strings is not treated as a header. Only Grok Build reads the root
  * `disabled_mcp_servers` list that registration also edits.
@@ -1007,7 +1007,7 @@ const upsertTomlServerSection = (
   }
   const kept: string[] = [];
   // Blank lines held until the next statement shows whether they belong to a
-  // removed REA table. Comments are user text and are never held.
+  // removed AS Inspect table. Comments are user text and are never held.
   const pending: string[] = [];
   let skipping = false;
   let inlineServerTable = false;
@@ -1197,7 +1197,7 @@ export const grokServerListedDisabled = (
 
 /**
  * OMP's user `disabledServers` denylist hides a server by name regardless of
- * its entry, so a listed REA registration is not loaded.
+ * its entry, so a listed AS Inspect registration is not loaded.
  */
 export const OMP_DISABLED_SERVERS_KEY = "disabledServers";
 
@@ -1236,7 +1236,7 @@ export const clientServerListedDisabled = (
   (parsed.dialect === "omp" &&
     ompServerListedDisabled(parsed.document, serverKey));
 
-/** Keep an existing Grok document intact aside from the REA server tables. */
+/** Keep an existing Grok document intact aside from the AS Inspect server tables. */
 const serializeGrokConfiguration = (
   document: Record<string, unknown>,
   originalText: string | undefined,
@@ -1263,7 +1263,7 @@ const withoutEmptyServerTable = (
 };
 
 /**
- * Keep an existing Codex document intact aside from the REA server tables.
+ * Keep an existing Codex document intact aside from the AS Inspect server tables.
  * An edit that would change any other parsed value falls back to a full
  * rewrite, which keeps every value but not comments or spelling.
  */
@@ -1397,7 +1397,7 @@ export const shadowedClientServers = (
   name: string,
 ): ShadowedClientServers => {
   // TOML rejects repeated keys, Hermes parses YAML with unique keys, and the
-  // Harness owner edits REA's entry by id rather than through a server table.
+  // Harness owner edits AS Inspect's entry by id rather than through a server table.
   if (
     parsed.dialect === "toml" ||
     parsed.dialect === "grok" ||
@@ -1622,7 +1622,7 @@ export const legacyClientServerPath = (
     : undefined;
 
 /**
- * Keep an existing Hermes `config.yaml` intact aside from the REA server entry.
+ * Keep an existing Hermes `config.yaml` intact aside from the AS Inspect server entry.
  * Hermes config files carry user comments and unrelated settings, so the rea
  * entry is upserted into the parsed YAML document (which retains formatting and
  * comments) rather than re-serializing the whole object.

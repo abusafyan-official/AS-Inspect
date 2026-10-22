@@ -20,7 +20,7 @@ import {
 const WORKER_HEAP_MIB = 128;
 /**
  * Node's Worker `resourceLimits.maxOldGenerationSizeMb` request. A positive
- * `--max-old-space-size` on the process that starts REA, including
+ * `--max-old-space-size` on the process that starts AS Inspect, including
  * `NODE_OPTIONS`, overrides it. A zero or empty value leaves this request
  * in effect. `NODE_OPTIONS` is applied before `process.execArgv`, and the
  * last absolute flag wins. That environment value is not copied into `execArgv`.
@@ -459,7 +459,7 @@ export const regexWorkerHeapError = (
       : { requested_worker_heap_mib: WORKER_HEAP_MIB },
     {
       cause,
-      remediationAction: `${heapBound(heap)} Restart REA after changing --max-old-space-size. A launch --max-old-space-size-percentage takes precedence over that flag in either order. Simplify the pattern or use literal mode.`,
+      remediationAction: `${heapBound(heap)} Restart AS Inspect after changing --max-old-space-size. A launch --max-old-space-size-percentage takes precedence over that flag in either order. Simplify the pattern or use literal mode.`,
     },
   );
 const replySchema = z.discriminatedUnion("status", [

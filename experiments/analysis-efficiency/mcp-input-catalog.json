@@ -1517,25 +1517,25 @@
     {
       "case": "model-full-broad",
       "passed": true,
-      "answer": "REA statically recovered embedded `.dep-v0` metadata without executing the artifact:\n\n- Root package: **zellij 0.40.0**\n- Embedded graph totals: **422 packages, 1,063 dependency edges**\n- **serde present**; only observed version: **1.0.137**\n- Artifact SHA256: `9a86e9ca47902a869fdf1886f4cf17714f4fa5655427128beadff498cfb392db`\n- Supporting Evidence ID: `ev_e28b689b95fd966568747204d0b99dd4bfb552035993ec40c2cd512d3c057cb5`\n\nNames and versions are observed embedded records; counts are derived from those records. They do not authenticate build provenance or establish complete runtime dependencies.",
+      "answer": "AS Inspect statically recovered embedded `.dep-v0` metadata without executing the artifact:\n\n- Root package: **zellij 0.40.0**\n- Embedded graph totals: **422 packages, 1,063 dependency edges**\n- **serde present**; only observed version: **1.0.137**\n- Artifact SHA256: `9a86e9ca47902a869fdf1886f4cf17714f4fa5655427128beadff498cfb392db`\n- Supporting Evidence ID: `ev_e28b689b95fd966568747204d0b99dd4bfb552035993ec40c2cd512d3c057cb5`\n\nNames and versions are observed embedded records; counts are derived from those records. They do not authenticate build provenance or establish complete runtime dependencies.",
       "scope": "Independent ELF/zlib/JSON package facts and derived counts, real returned Evidence ID, digest, static-only and runtime-dependency limitations; negative cases preserve the server refusal."
     },
     {
       "case": "model-compact-broad",
       "passed": true,
-      "answer": "REA statically recovered cargo-auditable metadata from the embedded `.dep-v0` section:\n\n- **Observed root:** `zellij` **0.40.0**\n- **Derived totals:** **422 packages**, **1,063 dependency edges**\n- **Observed serde:** present; **1.0.137** is the only recorded version.\n- **Artifact SHA256:** `9a86e9ca47902a869fdf1886f4cf17714f4fa5655427128beadff498cfb392db`\n- **Supporting Evidence ID:** `ev_730ffd6a4896e493b094b138088f3b5787bedf5cfb3fb6a540953100805c10b3`\n\nThese are embedded records and counts derived from them; they do not authenticate build provenance or establish complete runtime dependencies. The target was not executed.",
+      "answer": "AS Inspect statically recovered cargo-auditable metadata from the embedded `.dep-v0` section:\n\n- **Observed root:** `zellij` **0.40.0**\n- **Derived totals:** **422 packages**, **1,063 dependency edges**\n- **Observed serde:** present; **1.0.137** is the only recorded version.\n- **Artifact SHA256:** `9a86e9ca47902a869fdf1886f4cf17714f4fa5655427128beadff498cfb392db`\n- **Supporting Evidence ID:** `ev_730ffd6a4896e493b094b138088f3b5787bedf5cfb3fb6a540953100805c10b3`\n\nThese are embedded records and counts derived from them; they do not authenticate build provenance or establish complete runtime dependencies. The target was not executed.",
       "scope": "Independent ELF/zlib/JSON package facts and derived counts, real returned Evidence ID, digest, static-only and runtime-dependency limitations; negative cases preserve the server refusal."
     },
     {
       "case": "model-full-negative",
       "passed": true,
-      "answer": "Yes. The canonical REA server rejected `view.offset: -1` with `invalid_request` / `invalid_input`:\n\n> `view.offset: Too small: expected number to be >=0`\n\nCalled `inspect_rust_binary` exactly once. No retry or binary execution occurred. The error returned no Evidence ID.",
+      "answer": "Yes. The canonical AS Inspect server rejected `view.offset: -1` with `invalid_request` / `invalid_input`:\n\n> `view.offset: Too small: expected number to be >=0`\n\nCalled `inspect_rust_binary` exactly once. No retry or binary execution occurred. The error returned no Evidence ID.",
       "scope": "Independent ELF/zlib/JSON package facts and derived counts, real returned Evidence ID, digest, static-only and runtime-dependency limitations; negative cases preserve the server refusal."
     },
     {
       "case": "model-compact-negative",
       "passed": true,
-      "answer": "Yes. The canonical REA server rejected offset `-1` with `invalid_request` / `invalid_input`:\n\n> `view.offset: Too small: expected number to be >=0`\n\nCalled `inspect_rust_binary` exactly once. No corrected retry or binary execution occurred. The error returned no Evidence ID.",
+      "answer": "Yes. The canonical AS Inspect server rejected offset `-1` with `invalid_request` / `invalid_input`:\n\n> `view.offset: Too small: expected number to be >=0`\n\nCalled `inspect_rust_binary` exactly once. No corrected retry or binary execution occurred. The error returned no Evidence ID.",
       "scope": "Independent ELF/zlib/JSON package facts and derived counts, real returned Evidence ID, digest, static-only and runtime-dependency limitations; negative cases preserve the server refusal."
     }
   ],
@@ -1548,9 +1548,9 @@
     }
   ],
   "model_question_templates": {
-    "direct": "Use REA to inspect the local Rust binary {{artifact_path}} without executing it. Return the exact name, version, dependency kind, and original index of every observed serde package. Keep the answer concise, cite the real parent Evidence ID and artifact digest, and state any limitation. Choose the smallest sufficient response.\n",
-    "broad": "Determine which embedded dependency metadata REA can recover from {{artifact_path}} without executing it. Report the root package name/version, total package and edge counts, whether serde is present, its observed version(s), the artifact SHA256 and supporting Evidence ID. Distinguish observed metadata from inferences; keep the answer concise.\n",
-    "negative": "Use REA inspect_rust_binary once on {{artifact_path}} with view {\"collection\":\"packages\",\"offset\":-1}. Report whether the canonical server rejects the invalid offset. Do not retry with a corrected offset and do not execute the binary.\n"
+    "direct": "Use AS Inspect to inspect the local Rust binary {{artifact_path}} without executing it. Return the exact name, version, dependency kind, and original index of every observed serde package. Keep the answer concise, cite the real parent Evidence ID and artifact digest, and state any limitation. Choose the smallest sufficient response.\n",
+    "broad": "Determine which embedded dependency metadata AS Inspect can recover from {{artifact_path}} without executing it. Report the root package name/version, total package and edge counts, whether serde is present, its observed version(s), the artifact SHA256 and supporting Evidence ID. Distinguish observed metadata from inferences; keep the answer concise.\n",
+    "negative": "Use AS Inspect inspect_rust_binary once on {{artifact_path}} with view {\"collection\":\"packages\",\"offset\":-1}. Report whether the canonical server rejects the invalid offset. Do not retry with a corrected offset and do not execute the binary.\n"
   },
   "latest_main_integration": {
     "base_revision": "25e1a24a3ed3671a0148757555f18d16c29d936a",

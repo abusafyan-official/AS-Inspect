@@ -25,7 +25,7 @@ and original zero-based producer ordinals; duplicate or out-of-range selections
 are input errors. Every record is validated before selection, so selecting one
 entry does not hide a malformed entry elsewhere.
 
-For agent discovery over MCP, request `detail: "summary"`. REA retains the
+For agent discovery over MCP, request `detail: "summary"`. AS Inspect retains the
 complete selected Evidence in the session and returns identity and counts.
 Use `normalized_result.parent_evidence_id` with `inspect_analysis_view`:
 
@@ -72,13 +72,13 @@ are rejected before materialization. Prototype-named members such as
 `__proto__` are preserved as ordinary own JSON members without prototype
 mutation. Original capture files remain unchanged.
 The observed mitmproxy 12.2.3 `SaveHar` profile can emit `postData.text: null`
-for a missing request body. REA preserves that reported null, omitting the
+for a missing request body. AS Inspect preserves that reported null, omitting the
 optional field only from its validation copy for this exact producer profile;
 it does not invent an empty string or body bytes.
 The observed Playwright 1.58.2 profile can report a bracketed IPv6
 `serverIPAddress`, forwarded from Chromium's `remoteIPAddress` through
 [Playwright's HAR tracer](https://github.com/microsoft/playwright/blob/v1.58.2/packages/playwright-core/src/server/har/harTracer.ts).
-REA preserves the original spelling in reported Evidence and removes brackets
+AS Inspect preserves the original spelling in reported Evidence and removes brackets
 only from its validation copy, only for this declared producer and a valid IPv6
 literal. Invalid addresses, bracketed IPv4, ports and zone identifiers remain
 validation failures. Producer declarations do not authenticate origin.
@@ -90,7 +90,7 @@ Linux**. Set its absolute executable path:
 REA_MITMDUMP_COMMAND=/absolute/mitmdump rea inspect-web-network-capture /absolute/session.mitm mitmproxy --json
 ```
 
-REA does not install mitmproxy. Its owned process uses a private configuration
+AS Inspect does not install mitmproxy. Its owned process uses a private configuration
 directory, `--no-server`, and the unchanged upstream `mitmproxy.io.tnetstring`
 decoder. It does not run `FlowReader` migrations or convert native states to
 HAR. Raw IDs, state versions, flow types, backup states and unknown extensions
@@ -111,7 +111,7 @@ rea inspect-web-network-capture /absolute/session.saz saz --record 0 --json
 ```
 
 MCP uses the same `capture_path`, `format: "saz"`, and optional
-`record_ordinals` fields as the examples above. REA pairs `raw/<id>_c.txt`
+`record_ordinals` fields as the examples above. AS Inspect pairs `raw/<id>_c.txt`
 requests, `_s.txt` responses, and `_m.xml` metadata by filename stem. Archive
 member names identify the source; zero-based ordinals follow each session's
 first member in ZIP directory order, not its numeric ID or capture time.
@@ -140,14 +140,14 @@ nested messages or groups. Repeated field numbers remain separate occurrences.
 
 Without a schema, varints and fixed-width values retain exact unsigned decimal
 representations. Length-delimited UTF-8, nested-message and packed readings
-are candidates; REA does not choose one or invent field names or signedness.
+are candidates; AS Inspect does not choose one or invent field names or signedness.
 Nested candidate ranges remain accessible without recursively expanding them.
 Malformed messages retain the parsed prefix and an exact error offset.
 Compressed frames and encoded HTTP bodies remain unknown; they are not
 silently treated as empty messages.
 
 For schema interpretation, supply a local compiled `FileDescriptorSet` and its
-fully qualified message type. All imports must be included. REA never fetches
+fully qualified message type. All imports must be included. AS Inspect never fetches
 schemas or executes the selected application. Descriptor identity and parser
 version remain in the body facts. Scalars, repeated numeric packing and nested
 messages are interpreted alongside the unchanged wire facts; disagreements
@@ -221,7 +221,7 @@ still depend on the selected capture and schema.
 ## Fiddler Everywhere MCP and public skills
 
 For agent-driven traffic debugging, connect Everywhere's MCP server separately
-from REA. Run a current Everywhere release with MCP access (Trial, Pro, or
+from AS Inspect. Run a current Everywhere release with MCP access (Trial, Pro, or
 higher), internet access, and a compatible MCP client. Use
 **Settings > MCP Server > Coding agent**, or **Manual setup** with the generated
 API key. The default endpoint is `http://localhost:8868/mcp`. See Telerik's
@@ -242,7 +242,7 @@ session IDs. Set `sessionsSource` to `LiveTraffic` for HTTP(S) traffic or
 `AgentCalls` for enriched LLM calls; active filters affect the session list.
 For an existing run, skip the skill's pre-capture steps that replace process
 filters and clear sessions. The documented MCP session sources do not provide
-a saved-snapshot selector; use the SAZ workflow above for saved files. REA does
+a saved-snapshot selector; use the SAZ workflow above for saved files. AS Inspect does
 not register or wrap the Fiddler MCP server.
 
 ## Reading the evidence
@@ -376,7 +376,7 @@ admits the entire portable envelope before authenticated parsing or hashing. An
 `evidence-file` source is read and authenticated first and then admitted like
 retained Evidence, so its strings are not charged as inline envelope text: a
 capture too large to project inline can be projected from its file. Before
-authentication REA checks that live heap headroom holds its copies of the parsed
+authentication AS Inspect checks that live heap headroom holds its copies of the parsed
 Evidence, and over MCP the read follows the request's cancellation.
 An invalid Evidence file returns `EvidenceFileError` with the selected `path`
 and `content_issues` relative to the file's JSON root; those locations do not
@@ -695,7 +695,7 @@ process cleanup. Owned decoder diagnostics retain at most 1 MiB across stdout
 and stderr; the collector drops overflow as it arrives, reports the limit
 failure and verifies cleanup. Heap limits alone do not establish aggregate RSS limits.
 SAZ and qlog refuse decoding when neither a Node heap limit nor a Windows Job Object bound can be enforced. Existing HAR availability is preserved.
-When REA runs on Bun, the HAR/SAZ/qlog decoder runs on Bun, which ignores these V8 heap
+When AS Inspect runs on Bun, the HAR/SAZ/qlog decoder runs on Bun, which ignores these V8 heap
 flags; its limitations and resource failures then omit the heap sizes. On
 Windows, the decoder's owned Job Object instead limits its committed memory to
 704 MiB, the 192 MiB budget plus a 512 MiB reserve for Bun itself. The
@@ -718,7 +718,7 @@ original failure information. The original capture is never changed.
 
 ## Excluded coordinates and read failures
 
-Explicitly marked values also exclude matching source coordinates and their sidecars. A hidden record coordinate is reported as `location.kind: "unknown"`; REA does not invent a replacement pointer. Original record ordinals and artifact digests remain available.
+Explicitly marked values also exclude matching source coordinates and their sidecars. A hidden record coordinate is reported as `location.kind: "unknown"`; AS Inspect does not invent a replacement pointer. Original record ordinals and artifact digests remain available.
 
 Host filesystem read denials return `code: "access_denied"`, `category: "unavailable"`, the actual `EACCES`/`EPERM` code and read-access guidance. Missing files remain input failures. Cleanup failures retain the prior structured error, including its input constraints or provider diagnostics, with explicitly marked text excluded.
 
@@ -729,7 +729,7 @@ the capture file is stable before retrying. No unstable snapshot is decoded.
 Command cleanup failures retain the original status and both diagnostic streams;
 the decoder's ownership preparation receives the same cancellation signal.
 
-MCP advertises the same strict named input contract used by the application. Historical inspection delegates argument validation to that shared application boundary so accepted explicit-sensitive declarations also cover invalid argument names and other correction details. The SDK receives raw arguments through its Standard Schema interface; malformed inputs still fail before decoder or filesystem effects and return the normal structured REA error. Protocol-envelope validation remains owned by MCP.
+MCP advertises the same strict named input contract used by the application. Historical inspection delegates argument validation to that shared application boundary so accepted explicit-sensitive declarations also cover invalid argument names and other correction details. The SDK receives raw arguments through its Standard Schema interface; malformed inputs still fail before decoder or filesystem effects and return the normal structured AS Inspect error. Protocol-envelope validation remains owned by MCP.
 
 ## Retained aioquic qlog
 

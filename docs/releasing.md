@@ -1,4 +1,4 @@
-# Releasing REA
+# Releasing AS Inspect
 
 Pushes to main automatically open or refresh a Release Please PR with the next
 version and changelog. Review its migration notes and wait for its current CI
@@ -73,7 +73,7 @@ the optional manual path below. It retains explicit prepare and publish phases.
 
 ## Contributor-aware release notes
 
-Use [the rea-changelog-update skill](https://github.com/morluto/rea/blob/main/.agents/skills/rea-changelog-update/SKILL.md)
+Use [the rea-changelog-update skill](https://github.com/abusafyan-official/AS-Inspect/blob/main/.agents/skills/rea-changelog-update/SKILL.md)
 to turn the bot draft into grouped Highlights, Changes, and Fixes with inline
 `Thanks @...` credit. `npm run release:notes -- inventory` collects the full
 selected Git range and paginated GitHub PR/author/closing-issue metadata;
@@ -142,7 +142,7 @@ migration notes for the release being prepared. The
 [6.1 to 6.2 migration guide](migration-6.2.md) records that release's changes;
 it is a historical reference, not the compatibility checklist for later releases.
 
-REA uses Release Please's `always-bump-minor` strategy: every release increments
+AS Inspect uses Release Please's `always-bump-minor` strategy: every release increments
 minor and resets patch, including releases with breaking changes. For example,
 the next release after 6.0.0 is 6.1.0. Version numbers use the SemVer format,
 but a minor increment does not promise backward compatibility. Review the
@@ -285,7 +285,7 @@ the combined contracts with the released package version.
 Before merging, check whether GitHub permits merge commits:
 
 ```bash
-gh api repos/morluto/rea --jq .allow_merge_commit
+gh api repos/abusafyan-official/AS-Inspect --jq .allow_merge_commit
 ```
 
 If disabled, a maintainer must arrange an approved ancestry-preserving merge
@@ -303,7 +303,7 @@ tag is an ancestor of main:
 
 ```bash
 git fetch origin main --tags
-git merge-base --is-ancestor rea-agents-5.0.0 origin/main
+git merge-base --is-ancestor as-inspect-agents-5.0.0 origin/main
 ```
 
 Close the superseded main proposal before merging the synchronization PR.

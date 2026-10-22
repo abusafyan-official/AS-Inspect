@@ -114,7 +114,7 @@ const isOwnedPackageReference = (packageReference: string): boolean => {
   );
 };
 
-/** Check that one parsed command points to REA's MCP entry point. */
+/** Check that one parsed command points to AS Inspect's MCP entry point. */
 export type ClientRegistrationCommandIdentity = "owned" | "foreign" | "unknown";
 
 /** Compare entrypoint paths without turning failed resolution into a foreign identity. */

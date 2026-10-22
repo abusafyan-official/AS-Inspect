@@ -88,7 +88,7 @@ export const inspectElectronPage = async (
           limitations: [
             ...report.data.limitations,
             partial.cleanup === "transport-closed"
-              ? "REA closed its CDP transport; this does not imply target shutdown."
+              ? "AS Inspect closed its CDP transport; this does not imply target shutdown."
               : "CDP transport cleanup remains incomplete.",
           ],
         } satisfies ElectronPageInspection;

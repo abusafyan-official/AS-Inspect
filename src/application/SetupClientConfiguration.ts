@@ -251,7 +251,7 @@ const persistClientConfiguration = async ({
       };
     if (target.value) return { status: "failed", reason: "target_changed" };
   }
-  // A native OpenCode V2 entry replaces REA's legacy V1 entry, which would
+  // A native OpenCode V2 entry replaces AS Inspect's legacy V1 entry, which would
   // otherwise conflict with it.
   const legacyPath = legacyClientServerPath(
     parsed,
@@ -297,7 +297,7 @@ const persistClientConfiguration = async ({
         ...(legacyPath === undefined ? [] : [legacyPath]),
         ...(enableOmp ? [[OMP_DISABLED_SERVERS_KEY]] : []),
       ],
-      // Setup deletes only REA's OpenCode V1 name, which the native V2 entry
+      // Setup deletes only AS Inspect's OpenCode V1 name, which the native V2 entry
       // supersedes whatever its launcher; every repeat goes, as one member does.
       { removeShadowedMembersAt: legacyPath === undefined ? [] : [legacyPath] },
     );
@@ -673,7 +673,7 @@ const rollbackOrReadbackFailure = async (
 const errorDetail = (cause: unknown): string =>
   cause instanceof Error ? cause.message : String(cause);
 
-/** Whether REA's entry matches, no legacy entry remains, and no client disable list suppresses it. */
+/** Whether AS Inspect's entry matches, no legacy entry remains, and no client disable list suppresses it. */
 const registrationCurrent = (
   parsed: ClientConfigurationDocument,
   desired: unknown,

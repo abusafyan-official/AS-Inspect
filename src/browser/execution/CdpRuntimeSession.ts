@@ -218,7 +218,7 @@ export class CdpRuntimeSession {
       });
   }
 
-  /** Cleanup uses its own deadline after caller cancellation, then closes REA's transport. */
+  /** Cleanup uses its own deadline after caller cancellation, then closes AS Inspect's transport. */
   async close(
     previousError: AnalysisError | undefined,
     objectGroup?: string,

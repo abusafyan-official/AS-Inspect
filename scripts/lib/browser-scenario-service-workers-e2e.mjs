@@ -222,7 +222,7 @@ export async function verifyScenarioServiceWorkers(endpoint, targetId) {
     await page.goto("about:blank");
 
     // The caller installs a real worker at a different origin, then moves the
-    // selected target away before REA attaches. Its registration must survive.
+    // selected target away before AS Inspect attaches. Its registration must survive.
     await page.goto(second.origin);
     await page.evaluate(async () => {
       await navigator.serviceWorker.register("/sw.js");

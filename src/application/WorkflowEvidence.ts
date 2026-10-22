@@ -96,7 +96,7 @@ export const createWorkflowEvidence = (input: {
         }),
     confidence: "derived",
     limitations: [
-      "Derived by an REA composed workflow.",
+      "Derived by an AS Inspect composed workflow.",
       ...input.upstreamLimitations,
     ],
     ...(input.operation === "batch_decompile"

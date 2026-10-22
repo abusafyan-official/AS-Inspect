@@ -229,7 +229,7 @@ const compare = (left: string, right: string): number =>
  * Resolve each root segment by segment, as dependency candidates are, so a
  * symlink in an intermediate directory cannot lead outside the analyzed root.
  * A root the caller selected that fails is an input error on that root; a
- * root REA derived itself keeps reporting an artifact failure.
+ * root AS Inspect derived itself keeps reporting an artifact failure.
  */
 const requireMachoRoots = async (
   view: FilesystemTreeView,

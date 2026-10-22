@@ -116,7 +116,7 @@ export const setupInstallFailure = (
         status: "failed",
         code: "integrity_mismatch",
         remediation:
-          "The Hopper download failed integrity verification. Retry setup; if it repeats, update REA before installing.",
+          "The Hopper download failed integrity verification. Retry setup; if it repeats, update AS Inspect before installing.",
       };
     case "authorization_or_package_manager":
       return {
@@ -171,7 +171,7 @@ export const setupInstallFailure = (
         status: "failed",
         code: "bundle_invalid",
         remediation:
-          "The mounted package did not contain the expected Hopper application bundle. Retry setup; if it repeats, update REA before installing.",
+          "The mounted package did not contain the expected Hopper application bundle. Retry setup; if it repeats, update AS Inspect before installing.",
       };
     case "publisher_verification_failed":
       return {
@@ -180,14 +180,14 @@ export const setupInstallFailure = (
         remediation:
           platform === "linux"
             ? `The Hopper package signature did not verify under the pinned primary PGP fingerprint ${HOPPER_LINUX_PRIMARY_FINGERPRINT}; the package manager was not run. Download the official package and retry setup.`
-            : `The mounted Hopper application is not signed by the publisher REA pins (${HOPPER_PUBLISHER.bundleIdentifier}, Apple team ${HOPPER_PUBLISHER.teamIdentifier}); nothing was copied or launched. Install Hopper yourself and set HOPPER_LAUNCHER_PATH to its launcher, then rerun rea setup.`,
+            : `The mounted Hopper application is not signed by the publisher AS Inspect pins (${HOPPER_PUBLISHER.bundleIdentifier}, Apple team ${HOPPER_PUBLISHER.teamIdentifier}); nothing was copied or launched. Install Hopper yourself and set HOPPER_LAUNCHER_PATH to its launcher, then rerun rea setup.`,
       };
     case "verification_unavailable":
       return {
         status: "failed",
         code: "publisher_verification_failed",
         remediation:
-          "REA could not authenticate or retain the signed Hopper package. Check vendor access, native package inspection tools and caller-owned cache permissions, then retry setup.",
+          "AS Inspect could not authenticate or retain the signed Hopper package. Check vendor access, native package inspection tools and caller-owned cache permissions, then retry setup.",
       };
     case "cleanup_failed":
       return {
@@ -208,7 +208,7 @@ export const setupInstallFailure = (
         status: "failed",
         code: "download_failed",
         remediation:
-          "REA could not download or unpack the official Hopper package. Check network and filesystem access, then retry setup.",
+          "AS Inspect could not download or unpack the official Hopper package. Check network and filesystem access, then retry setup.",
       };
   }
 };

@@ -11,7 +11,7 @@ const clients = [
   { name: "grok_build", path: ".grok/config.toml" },
 ] as const;
 
-/** Parsed values other than REA's registration. */
+/** Parsed values other than AS Inspect's registration. */
 const unrelatedValues = (text: string) => {
   const document = parseToml(text);
   const servers = document.mcp_servers;
@@ -24,7 +24,7 @@ const unrelatedValues = (text: string) => {
 
 const scenarios = [
   {
-    name: "a stale REA table between other tables",
+    name: "a stale AS Inspect table between other tables",
     original: [
       "# root explanation",
       'model = "x" # inline model note',
@@ -59,7 +59,7 @@ const scenarios = [
     ],
   },
   {
-    name: "a leading REA table and a final note without a line break",
+    name: "a leading AS Inspect table and a final note without a line break",
     original: [
       "# about rea",
       "[mcp_servers.rea]",
@@ -153,7 +153,7 @@ for (const scenario of scenarios)
         expect(unrelatedValues(text), path).toEqual(
           unrelatedValues(scenario.original),
         );
-        // Setup ended the file with REA's table; removing it keeps that break.
+        // Setup ended the file with AS Inspect's table; removing it keeps that break.
         expect(text.endsWith("\n"), path).toBe(true);
       }
       // Both TOML clients share one editor, so their text matches.

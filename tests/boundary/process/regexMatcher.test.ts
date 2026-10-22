@@ -471,7 +471,7 @@ it("stops a slow match at the configured deadline and names the setting", async 
   expect(projected.message).toContain("default 5000 ms");
   expect(projected.message).toContain("maximum 2147483647 ms");
   expect(projected.remediation.action).toContain(
-    "Set REA_REGEX_MATCHING_DEADLINE_MS in the environment that starts REA",
+    "Set REA_REGEX_MATCHING_DEADLINE_MS in the environment that starts AS Inspect",
   );
   expect(projected.remediation.action).not.toContain("no runtime override");
   expect(matched.error).toMatchObject({

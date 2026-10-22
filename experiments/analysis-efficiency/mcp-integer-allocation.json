@@ -7,7 +7,7 @@
   },
   "context_scope": "Question, explicit recipe, server instructions, one complete name/description/input-schema directory, every tool argument and text reply, plus prompt directory for discovery. This projection assumes the client retains a single unchanged directory. Raw catalog result costs include every observed tools/list result separately, with output schemas and without JSON-RPC envelopes. SDK initialization/framing, reasoning and actual model usage are unmeasured. The analysis task includes retained-read, rejection, export/oracle and post-materialization directory checks.",
   "cache_scope": "Cold disables server Node compile cache. Warm enables a prepopulated role/profile-specific cache after one complete analysis priming run. Fresh server/client processes and HOME each trial. Driver compile cache disabled in both cohorts. Cache hit rate and OS page cache are unmeasured; source/runtime audits warm compiled-file pages before startup.",
-  "resource_scope": "Whole SDK driver, resource observer and owned REA process family. Includes before/after source-and-all-compiled-JS/JSON binding, SDK schema checks, extra validation calls, bundle export and independent oracle checking. Kernel cgroup peak includes file cache. Build/download/oracle preparation and cache priming excluded. Retained V8 heap and forced-GC diagnostics were not separately measured.",
+  "resource_scope": "Whole SDK driver, resource observer and owned AS Inspect process family. Includes before/after source-and-all-compiled-JS/JSON binding, SDK schema checks, extra validation calls, bundle export and independent oracle checking. Kernel cgroup peak includes file cache. Build/download/oracle preparation and cache priming excluded. Retained V8 heap and forced-GC diagnostics were not separately measured.",
   "measurement_inputs": {
     "baseline_revision": "4a4bbab3c337701febeb6b532ace49041c4876e0",
     "candidate_revision": "461f342c71a72ef2be60912391df2393aa4e2ea3",
@@ -882,7 +882,7 @@
     },
     "questions": {
       "analysis": "Which serde package versions and package kinds occur in the selected Rust binary? Preserve complete source Evidence and verify retained reads.",
-      "discovery": "Discover the complete REA tool and prompt directory."
+      "discovery": "Discover the complete AS Inspect tool and prompt directory."
     },
     "recipes": {
       "analysis": "Initialize; list tools; inspect_rust_binary selecting serde name/version/kind; read the exact retained parent twice; verify canonical rejection of a negative offset; export and independently check all packages and edges; confirm the catalog remains identical; close.",
@@ -6486,7 +6486,7 @@
     "warmup-full-candidate": "20898a99fd20feba9256ec8bdccb4f53e7a0fa9adda905ddc307a873597cb041"
   },
   "heap_diagnostics": {
-    "scope": "Separate three-pair Zellij tasks per profile, with an explicitly launched loopback inspector. Four CDP calls verify the owned REA PID, read heap, force GC and read heap again after the completed SDK task. These whole-family costs include inspector and diagnostic GC overhead; they are excluded from the normal timing cohort. Heap values describe REA V8 only, not the client or the whole process family.",
+    "scope": "Separate three-pair Zellij tasks per profile, with an explicitly launched loopback inspector. Four CDP calls verify the owned AS Inspect PID, read heap, force GC and read heap again after the completed SDK task. These whole-family costs include inspector and diagnostic GC overhead; they are excluded from the normal timing cohort. Heap values describe AS Inspect V8 only, not the client or the whole process family.",
     "summary": [
       {
         "profile": "default",
@@ -6682,7 +6682,7 @@
           "transcript.json": "e8d7a880546372bdd78eb791df31a98a2eb86c2c6c285794062e0fff2173301b"
         },
         "heap_observation": {
-          "scope": "Owned REA V8 heap after the complete SDK task; inspector and forced GC are diagnostic overhead",
+          "scope": "Owned AS Inspect V8 heap after the complete SDK task; inspector and forced GC are diagnostic overhead",
           "pid_verified": true,
           "before_gc": {
             "usedSize": 238140008,
@@ -6777,7 +6777,7 @@
           "transcript.json": "8b03b41bd9facf340bda5e387a406dd1594135092ca17b858dcb97c95777bf8e"
         },
         "heap_observation": {
-          "scope": "Owned REA V8 heap after the complete SDK task; inspector and forced GC are diagnostic overhead",
+          "scope": "Owned AS Inspect V8 heap after the complete SDK task; inspector and forced GC are diagnostic overhead",
           "pid_verified": true,
           "before_gc": {
             "usedSize": 217959688,
@@ -6872,7 +6872,7 @@
           "transcript.json": "1637727fe6c4e69828b34b40dd50a8349c7acd9d0666fe25ac285da2140212d1"
         },
         "heap_observation": {
-          "scope": "Owned REA V8 heap after the complete SDK task; inspector and forced GC are diagnostic overhead",
+          "scope": "Owned AS Inspect V8 heap after the complete SDK task; inspector and forced GC are diagnostic overhead",
           "pid_verified": true,
           "before_gc": {
             "usedSize": 219276512,
@@ -6967,7 +6967,7 @@
           "transcript.json": "9b730cab0ae6cfcf2fdc74dd204c8df04864f9865c0f1182b308cf363f90ee35"
         },
         "heap_observation": {
-          "scope": "Owned REA V8 heap after the complete SDK task; inspector and forced GC are diagnostic overhead",
+          "scope": "Owned AS Inspect V8 heap after the complete SDK task; inspector and forced GC are diagnostic overhead",
           "pid_verified": true,
           "before_gc": {
             "usedSize": 239489224,
@@ -7062,7 +7062,7 @@
           "transcript.json": "819f24ec467b54f457edbbc5f44b21be43284f16eb0231f2f8114695c809f524"
         },
         "heap_observation": {
-          "scope": "Owned REA V8 heap after the complete SDK task; inspector and forced GC are diagnostic overhead",
+          "scope": "Owned AS Inspect V8 heap after the complete SDK task; inspector and forced GC are diagnostic overhead",
           "pid_verified": true,
           "before_gc": {
             "usedSize": 235174488,
@@ -7157,7 +7157,7 @@
           "transcript.json": "458a968487cf6a933b83a464d3eedb8144fab8ffccf60da8333d738ebef16bc5"
         },
         "heap_observation": {
-          "scope": "Owned REA V8 heap after the complete SDK task; inspector and forced GC are diagnostic overhead",
+          "scope": "Owned AS Inspect V8 heap after the complete SDK task; inspector and forced GC are diagnostic overhead",
           "pid_verified": true,
           "before_gc": {
             "usedSize": 218634944,
@@ -7252,7 +7252,7 @@
           "transcript.json": "97b6d0f20daf9eb7d29750bcf89795537462daa4f7ef07a4ba7ca8ae8edaf07a"
         },
         "heap_observation": {
-          "scope": "Owned REA V8 heap after the complete SDK task; inspector and forced GC are diagnostic overhead",
+          "scope": "Owned AS Inspect V8 heap after the complete SDK task; inspector and forced GC are diagnostic overhead",
           "pid_verified": true,
           "before_gc": {
             "usedSize": 211609016,
@@ -7347,7 +7347,7 @@
           "transcript.json": "a575a270e4b284c87ab001b937e761baab258ba90dcb8b2262963b16334e7947"
         },
         "heap_observation": {
-          "scope": "Owned REA V8 heap after the complete SDK task; inspector and forced GC are diagnostic overhead",
+          "scope": "Owned AS Inspect V8 heap after the complete SDK task; inspector and forced GC are diagnostic overhead",
           "pid_verified": true,
           "before_gc": {
             "usedSize": 228392936,
@@ -7442,7 +7442,7 @@
           "transcript.json": "3758bc587adbe3157a8ef0c2b8f6d4c7361346c25d4a01a8811c0189a30f54ba"
         },
         "heap_observation": {
-          "scope": "Owned REA V8 heap after the complete SDK task; inspector and forced GC are diagnostic overhead",
+          "scope": "Owned AS Inspect V8 heap after the complete SDK task; inspector and forced GC are diagnostic overhead",
           "pid_verified": true,
           "before_gc": {
             "usedSize": 228568600,
@@ -7537,7 +7537,7 @@
           "transcript.json": "86f3d37c770ace750d27a64e7b0cdd8948d3316d967c87360076380653cb0f59"
         },
         "heap_observation": {
-          "scope": "Owned REA V8 heap after the complete SDK task; inspector and forced GC are diagnostic overhead",
+          "scope": "Owned AS Inspect V8 heap after the complete SDK task; inspector and forced GC are diagnostic overhead",
           "pid_verified": true,
           "before_gc": {
             "usedSize": 211816064,
@@ -7632,7 +7632,7 @@
           "transcript.json": "52b94176a1d629f5202331278e058ebd4bfcb96b020b830eacc05bec9f1020e0"
         },
         "heap_observation": {
-          "scope": "Owned REA V8 heap after the complete SDK task; inspector and forced GC are diagnostic overhead",
+          "scope": "Owned AS Inspect V8 heap after the complete SDK task; inspector and forced GC are diagnostic overhead",
           "pid_verified": true,
           "before_gc": {
             "usedSize": 245802760,
@@ -7727,7 +7727,7 @@
           "transcript.json": "495273e19ff9a019aea0799248a73bcca6ffceb46229ba431e4c6375291f709d"
         },
         "heap_observation": {
-          "scope": "Owned REA V8 heap after the complete SDK task; inspector and forced GC are diagnostic overhead",
+          "scope": "Owned AS Inspect V8 heap after the complete SDK task; inspector and forced GC are diagnostic overhead",
           "pid_verified": true,
           "before_gc": {
             "usedSize": 229169088,

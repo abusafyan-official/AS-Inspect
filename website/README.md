@@ -1,4 +1,4 @@
-# REA website
+# AS Inspect website
 
 > A good website is like a good paper: easy to follow, clear and concise, with a clean, refined presentation.
 >
@@ -300,7 +300,7 @@ package. Keep the core learning path inside the site. Source, issue and evidence
 reference links may point to the corresponding repositories.
 
 [evidence/guide-examples.md](evidence/guide-examples.md) records the published
-REA package, example digests and observed results behind the guides. The Notes
+AS Inspect package, example digests and observed results behind the guides. The Notes
 Electron fixture is for static analysis; Electron is not a prerequisite for
 following that example. The separate Notes browser app runs in the local preview
 and constructs a CSV download after fetching its JSON data.
@@ -354,7 +354,7 @@ commit `a55dca27ec0a07018c1b2c95ae2be027f7d8c3c4`. Update those links and figure
 together when moving to another checkpoint. Case-study source excerpts come
 from the MIT-licensed DX-Ball reconstruction repository.
 
-The assembly excerpts were transcribed from the project's saved REA/Ghidra
+The assembly excerpts were transcribed from the project's saved AS Inspect/Ghidra
 Evidence. [evidence/dx-ball-sound-pan.md](evidence/dx-ball-sound-pan.md) records
 their provenance and the scope of the validation claims. The original executable
 and complete private Evidence records are not website assets.
@@ -420,7 +420,7 @@ explanations based on findings.
 The general investigation and DX-Ball overview diagrams are maintained as SVG source. Initial layout references were
 created with the built-in image generation tool; [figures.md](figures.md) retains
 their prompts and the current asset notes. Figures provide an overview;
-REA requests, assembly and C remain selectable HTML text. On narrow
+AS Inspect requests, assembly and C remain selectable HTML text. On narrow
 screens, the diagrams scroll horizontally and can also be opened at full size.
 The worked guides use semantic HTML flows that stack vertically on smaller
 screens. The Electron teaching example uses CommonJS, matching its preload
@@ -433,12 +433,12 @@ collapsed details. Only selected source details and generic
 example data belong on the site. Machine paths, account identifiers, local
 configuration, complete vendor bundles and raw captured results stay outside
 the website.
-[evidence/notion-clipboard.md](evidence/notion-clipboard.md) records the REA
+[evidence/notion-clipboard.md](evidence/notion-clipboard.md) records the AS Inspect
 package version, selected findings, source anchors and module-probe scope.
 
 ## Aegis Android case study
 
-The Aegis case inspects the official 3.4.3 APK through REA 6.1.0. It follows
+The Aegis case inspects the official 3.4.3 APK through AS Inspect 6.1.0. It follows
 the default login-code calculation from class search and display references to
 the time block, keyed hash and six-digit output. Selected decompiled Java is
 paired with a readable summary; the original app and excerpts are credited to
@@ -453,7 +453,7 @@ analysis-provider JAR remain official external downloads.
 
 ## TH04 case study
 
-The TH04 case inspects the original PC-98 DOS angle helper through REA 4.1.0.
+The TH04 case inspects the original PC-98 DOS angle helper through AS Inspect 4.1.0.
 Its selected instructions are paired with readable C++ and a source SVG of
 fixed and aimed rings. [evidence/th04-bullet-ring.md](evidence/th04-bullet-ring.md)
 records the fresh load-image/function evidence and separately credited TH04
@@ -465,9 +465,9 @@ original game assets and executable bytes are not website downloads.
 The DownUnderCTF 2023 case follows the official `ms_flag_checker` handout from
 prompt references to checking functions, compressed masks, equations and an
 accepted flag. [evidence/ctf-masked-squares.md](evidence/ctf-masked-squares.md)
-records the REA analysis, extracted data and positive/negative process captures.
+records the AS Inspect analysis, extracted data and positive/negative process captures.
 The downloadable `public/showcase/ctf/solve.py` uses Python and `z3-solver`;
-its constants come from REA's byte reads. The original executable stays in the
+its constants come from AS Inspect's byte reads. The original executable stays in the
 organizers' repository and is linked from the page.
 
 The mask SVG is drawn from the seventh decoded mask. It selects zero-based
@@ -480,7 +480,7 @@ solver constants and evidence notes aligned when changing this case.
 no Worker script or frontend framework. Before a preview or deployment, Wrangler
 runs the Python scripts to build the language editions, prepare the example ZIP and verify the
 website. Node.js and Python 3 must be available; the commands below use a pinned
-Wrangler version without adding it to REA's package dependencies.
+Wrangler version without adding it to AS Inspect's package dependencies.
 
 Cloudflare documents static-asset requests as free and unlimited, with no
 additional storage cost. See [billing and limitations](https://developers.cloudflare.com/workers/static-assets/billing-and-limitations/).
@@ -590,7 +590,7 @@ publishing job has been removed, so enabling this build workflow cannot publish
 the old site.
 
 After the site is approved and merged, select **GitHub Actions** under the
-repository's **Settings → Pages → Build and deployment**. Then run **Publish REA
+repository's **Settings → Pages → Build and deployment**. Then run **Publish AS Inspect
 website** from the Actions tab on `main`. This publishes both production hosts.
 The workflow uses the `github-pages` environment, the official Pages actions and
 Cloudflare's Wrangler action.

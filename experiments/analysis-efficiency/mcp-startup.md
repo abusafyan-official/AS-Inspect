@@ -2,7 +2,7 @@
 
 Target-free stdio discovery previously constructed the canonical analysis runtime before the client could inspect its directory. The candidate records SDK advertisements at build time for default/explicit compact and explicit full inputs. Its first tool, prompt or completion request materializes canonical validators and handlers on the same SDK server. HTTP, output-schema-off, initial-target and unrecorded source runs retain eager composition.
 
-Pinned baseline: [`main@c465ff5a8`](https://github.com/morluto/rea/commit/c465ff5a814b8e1a386fc547cbcd94df5c35f086). Measured candidate: [`04900abbc`](https://github.com/leeguooooo/rea/commit/04900abbcd3c3438fce4af932ff28400fe744a7d). Both use the same main base and locked dependencies. Before/after source and all compiled JS/JSON bindings identify the exact runtime used in every trial. The input manifest and producer scripts are also hashed and checked.
+Pinned baseline: [`main@c465ff5a8`](https://github.com/abusafyan-official/AS-Inspect/commit/c465ff5a814b8e1a386fc547cbcd94df5c35f086). Measured candidate: [`04900abbc`](https://github.com/leeguooooo/rea/commit/04900abbcd3c3438fce4af932ff28400fe744a7d). Both use the same main base and locked dependencies. Before/after source and all compiled JS/JSON bindings identify the exact runtime used in every trial. The input manifest and producer scripts are also hashed and checked.
 
 ## Real tasks and independent facts
 
@@ -14,7 +14,7 @@ All 72 paired trials and four priming runs passed. Each artifact has identical a
 
 ## Measured cost
 
-Three alternating pairs per condition; table values are medians. Min/max ranges and individual receipts are in [mcp-startup.json](mcp-startup.json). Each cell is baseline → candidate. Kernel process-family peak includes file cache, SDK driver, observer and REA children.
+Three alternating pairs per condition; table values are medians. Min/max ranges and individual receipts are in [mcp-startup.json](mcp-startup.json). Each cell is baseline → candidate. Kernel process-family peak includes file cache, SDK driver, observer and AS Inspect children.
 
 | Task      | Cache | Inputs            |  Wall seconds | Family CPU seconds | Family peak MiB |
 | --------- | ----- | ----------------- | ------------: | -----------------: | --------------: |

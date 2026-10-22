@@ -444,7 +444,7 @@ it("retains complete segmented XML keys in native plist fallback evidence", () =
     Blob: { $plist_type: "data", base64: "AA==" },
   });
   expect(parsed.value.limitations).toContain(
-    "1 dictionary entry keyed __proto__ was omitted because REA results cannot represent that key.",
+    "1 dictionary entry keyed __proto__ was omitted because AS Inspect results cannot represent that key.",
   );
 });
 

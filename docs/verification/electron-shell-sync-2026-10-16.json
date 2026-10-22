@@ -1163,7 +1163,7 @@
           "error": {
             "tag": "ProviderAdapterError",
             "diagnostics": {
-              "message": "locator.waitFor: Error: strict mode violation: locator('iframe') resolved to 2 elements:\n    1) <iframe class=\"noteTextViewer\" aria-label=\"Note viewer\" src=\"joplin-content://note-viewer//tmp/rea-4388-runtime-20261016/resources/app.asar/gui/note-viewer/index.html\" allow=\"clipboard-write joplin-content://note-viewer/; fullscreen joplin-content://note-viewer/; autoplay joplin-content://note-viewer/; local-fonts joplin-content://note-viewer/; encrypted-media joplin-content://note-viewer/\"></iframe> aka getByRole('main', { name: 'Note' }).locator('iframe')\n    2) <iframe class=\"plugin-user-webview -fit-to-content \" id=\"plugin-view-io.github.jackgruber.backup-backupDialog\" src=\"file:///tmp/rea-4388-runtime-20261016/resources/app.asar/services/plugins/UserWebviewIndex.html\"></iframe> aka locator('[id=\"plugin-view-io.github.jackgruber.backup-backupDialog\"]')\n\nCall log:\n\u001b[2m  - waiting for locator('iframe').contentFrame().getByRole('img', { name: 'REA attachment' }) to be visible\u001b[22m\n"
+              "message": "locator.waitFor: Error: strict mode violation: locator('iframe') resolved to 2 elements:\n    1) <iframe class=\"noteTextViewer\" aria-label=\"Note viewer\" src=\"joplin-content://note-viewer//tmp/rea-4388-runtime-20261016/resources/app.asar/gui/note-viewer/index.html\" allow=\"clipboard-write joplin-content://note-viewer/; fullscreen joplin-content://note-viewer/; autoplay joplin-content://note-viewer/; local-fonts joplin-content://note-viewer/; encrypted-media joplin-content://note-viewer/\"></iframe> aka getByRole('main', { name: 'Note' }).locator('iframe')\n    2) <iframe class=\"plugin-user-webview -fit-to-content \" id=\"plugin-view-io.github.jackgruber.backup-backupDialog\" src=\"file:///tmp/rea-4388-runtime-20261016/resources/app.asar/services/plugins/UserWebviewIndex.html\"></iframe> aka locator('[id=\"plugin-view-io.github.jackgruber.backup-backupDialog\"]')\n\nCall log:\n\u001b[2m  - waiting for locator('iframe').contentFrame().getByRole('img', { name: 'AS Inspect attachment' }) to be visible\u001b[22m\n"
             }
           },
           "deadline_triggered": false,
@@ -1263,7 +1263,7 @@
           "error": {
             "tag": "ProviderAdapterError",
             "diagnostics": {
-              "message": "locator.waitFor: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('iframe.noteTextViewer').contentFrame().getByRole('img', { name: 'REA attachment' }) to be visible\u001b[22m\n"
+              "message": "locator.waitFor: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('iframe.noteTextViewer').contentFrame().getByRole('img', { name: 'AS Inspect attachment' }) to be visible\u001b[22m\n"
             }
           },
           "deadline_triggered": false,

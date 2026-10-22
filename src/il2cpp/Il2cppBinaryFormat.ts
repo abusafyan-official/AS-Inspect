@@ -27,7 +27,7 @@ export const IL2CPP_BINARY_FAILURE_REASONS = {
 export type Il2cppBinaryFailureReason =
   (typeof IL2CPP_BINARY_FAILURE_REASONS)[keyof typeof IL2CPP_BINARY_FAILURE_REASONS][number];
 
-/** A native image REA cannot link, either outside coverage or inconsistent with the metadata. */
+/** A native image AS Inspect cannot link, either outside coverage or inconsistent with the metadata. */
 export class Il2cppBinaryFormatFailure extends Error {
   readonly kind: "unsupported" | "malformed" | "capacity";
   constructor(

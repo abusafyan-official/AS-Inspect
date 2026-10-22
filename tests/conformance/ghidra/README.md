@@ -28,7 +28,7 @@ binaries and Ghidra projects are never committed.
   and independently identified entries. Run `npm run build:cached`, then
   `node scripts/verify-real-ghidra-noreturn.mjs` with the Ghidra/JDK environment
   below on Linux or macOS x64/arm64. On Linux, use a procps-compatible process
-  table that exposes REA's current process for owned cleanup. It also checks
+  table that exposes AS Inspect's current process for owned cleanup. It also checks
   named limitations through the real read-only TCP bridge and provider Evidence
   projection; default Unix-socket transport, Windows, and the reported Amethyst
   artifact need separate verification. Fixture target code is never executed.
@@ -39,7 +39,7 @@ binaries and Ghidra projects are never committed.
   and p-code value flow unavailable with the decompiler's reason, and that
   cancellation still ends the request. Run `npm run build:cached`, then
   `node scripts/verify-real-ghidra-decompiler-failure.mjs` on Linux or macOS
-  x64/arm64. The lane also parses the degraded dossier with REA's Ghidra output
+  x64/arm64. The lane also parses the degraded dossier with AS Inspect's Ghidra output
   contract and checks the healthy provider path through the real read-only TCP bridge.
   Decompiler failure marks only that observation as live: retain its Evidence,
   retry after backend recovery, and keep healthy dossier snapshot reuse.
@@ -63,7 +63,7 @@ must leave no process, socket, project, or runtime root after close.
 
 `relative-switch-signed.S` covers signed halfword offsets, the CBZ zero-entry
 route, and selector biases of 0, 2 and 10 in the AArch64 jump-table lane. The
-nonzero biases exercise overlapping and disjoint typed label/index ranges. REA
+nonzero biases exercise overlapping and disjoint typed label/index ranges. AS Inspect
 retains Ghidra's typed labels when the compared selector has an earlier register
 definition; additional labels remain unknown until their relationship to the
 typed switch selector can be proved. The oracle rejects extra numeric labels

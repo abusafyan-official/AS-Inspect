@@ -56,7 +56,7 @@ it("reads PE32 and PE32+ PKCS#7 certificate tables", () => {
     });
     const certificate = report.entries[0]?.pkcs7?.certificates[0];
     expect(certificate?.serial_hex).toBe("11223344");
-    expect(certificate?.subject.text).toContain("commonName=REA Fixture");
+    expect(certificate?.subject.text).toContain("commonName=AS Inspect Fixture");
     expect(certificate?.not_before).toBe("250101000000Z");
     expect(report.entries[0]?.pkcs7?.signers[0]).toMatchObject({
       serial_hex: "11223344",
@@ -475,7 +475,7 @@ it("decodes BMPString names once and shares the decoded-byte budget", () => {
     return der(0x1e, content);
   };
   const certificate = readDer(
-    namedCertificate(directoryName(bmp("REA")), directoryName(bmp("Fixture"))),
+    namedCertificate(directoryName(bmp("AS Inspect")), directoryName(bmp("Fixture"))),
   );
   expect(parseCertificate(certificate).subject.text).toBe("commonName=Fixture");
   const half = Math.floor((MAX_DECODED_NAME_BYTES - (2 + 13 * 6 * 2)) / 4) * 2;
@@ -517,12 +517,12 @@ it("decodes UniversalString names as UTF-32BE", () => {
     return der(0x1c, content);
   };
   const cn = Buffer.from([0x06, 0x03, 0x55, 0x04, 0x03]);
-  const name = derSeq(derSet(derSeq(cn, universal("REA"))));
+  const name = derSeq(derSet(derSeq(cn, universal("AS Inspect"))));
   const tbs = derSeq(derInt(1), SHA256_ALG, name, validity, name, spki);
   const certificate = readDer(
     derSeq(tbs, SHA256_ALG, der(0x03, Buffer.from([0]))),
   );
-  expect(parseCertificate(certificate).subject.text).toBe("commonName=REA");
+  expect(parseCertificate(certificate).subject.text).toBe("commonName=AS Inspect");
   const emoji = readDer(
     namedCertificate(
       directoryName(der(0x1c, Buffer.from([0x00, 0x01, 0xf6, 0x00]))),

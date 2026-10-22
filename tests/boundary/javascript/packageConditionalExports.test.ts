@@ -54,7 +54,7 @@ const nodeTarget = async (
 };
 /**
  * Install one real package on disk and mirror it into an artifact inventory,
- * so Node and REA observe the same container, then resolve through both.
+ * so Node and AS Inspect observe the same container, then resolve through both.
  */
 const compareWithNode = async (
   exportsMap: unknown,
@@ -149,7 +149,7 @@ const compareWithNode = async (
 };
 const resolvedLeaf = (outcome: ArtifactPathResolution): string | null =>
   outcome.resolved_path?.split("/").pop() ?? null;
-/** Pin the real Node result, then require REA to select the same target. */
+/** Pin the real Node result, then require AS Inspect to select the same target. */
 const expectNodeAgreement = async (
   exportsMap: unknown,
   expected: string | null,

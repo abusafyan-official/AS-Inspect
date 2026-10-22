@@ -1,6 +1,6 @@
 # Retained investigation query checkpoint
 
-[#3134](https://github.com/morluto/rea/issues/3134) measured existing retained
+[#3134](https://github.com/abusafyan-official/AS-Inspect/issues/3134) measured existing retained
 queries on Linux. Selected reads preserved the requested facts, original
 Evidence and Unknown revisions, including a mixed investigation. Existing
 contracts suffice for these questions; this checkpoint adds no production API,
@@ -8,7 +8,7 @@ cache, persistence or default change.
 
 Imported JavaScript pages repeatedly validated their entire source graph. That
 separate, observed bottleneck is owned by
-[#4810](https://github.com/morluto/rea/issues/4810). Smaller replies did not
+[#4810](https://github.com/abusafyan-official/AS-Inspect/issues/4810). Smaller replies did not
 establish a general model-token or whole-task latency improvement.
 
 The [curated measurements](retained-investigation-results.json) retain individual
@@ -117,7 +117,7 @@ All twelve attempts retained their costs. Ten supplied every checked fact and
 current Unknown identity/status; runtime and unselected-source coverage stayed
 unknown. One initial JavaScript selected attempt searched the wrong connector
 and received an approval-policy refusal. One guided complete attempt stopped
-without an REA RPC and asserted tool unavailability without a supporting
+without an AS Inspect RPC and asserted tool unavailability without a supporting
 connection/discovery observation. Both are failed tasks, despite CLI exit zero.
 
 | Cohort / arm                          | Successful tasks |       Total input tokens |                  Elapsed |
@@ -134,7 +134,7 @@ allowed one sufficiently large Unknown page for this bounded question. Both
 arms received the same discovery guidance. Its single completed complete-arm
 sample is insufficient for a stable repeated-pair benefit claim. Native total
 input/time overlapped; extra pages and model turns can consume the reply saving.
-Do not pool failed tasks as fast answers or attribute guidance changes to REA.
+Do not pool failed tasks as fast answers or attribute guidance changes to AS Inspect.
 
 The JSON report records total/cached/uncached input, output, local CPU and peak
 memory per attempt. These are client-reported usage counters, not tokenizer

@@ -72,11 +72,11 @@ it("converts a retained raw Electron inspection into partial Evidence", async ()
       normalized_result: {
         ...inspection,
         limitations: [
-          "REA closed its CDP transport; this does not imply target shutdown.",
+          "AS Inspect closed its CDP transport; this does not imply target shutdown.",
         ],
       },
       limitations: expect.arrayContaining([
-        "REA closed its CDP transport; this does not imply target shutdown.",
+        "AS Inspect closed its CDP transport; this does not imply target shutdown.",
       ]),
     });
   }

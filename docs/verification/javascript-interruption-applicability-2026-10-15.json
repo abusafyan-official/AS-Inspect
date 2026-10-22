@@ -10,7 +10,7 @@
   },
   "input": {
     "application": "Joplin v3.7.21 Linux AppImage",
-    "acquisition_reference": "https://github.com/morluto/rea/blob/c7f6b8bad1a34d5efb30ff2a017672dea1fcdabb/docs/verification/javascript-native-handoff-identity-2026-10-15.md",
+    "acquisition_reference": "https://github.com/abusafyan-official/AS-Inspect/blob/c7f6b8bad1a34d5efb30ff2a017672dea1fcdabb/docs/verification/javascript-native-handoff-identity-2026-10-15.md",
     "appimage_sha256": "5d202dcaca31e14206826aa3f04125e7c218dbc3dc3d98479d811efbd6b856c1",
     "asar_sha256": "767df409b18effe60421fbefcca873de237c7e813eac744ecdeebbc5e825a33a",
     "keytar_sha256": "0700016bcd761cbe02d275f2046c7cc42f39f730a50d66e3d3307aa9d413373a",
@@ -2468,11 +2468,11 @@
     }
   },
   "review_oracle": {
-    "thread": "https://github.com/morluto/rea/pull/4207#discussion_r4287026723",
+    "thread": "https://github.com/abusafyan-official/AS-Inspect/pull/4207#discussion_r4287026723",
     "root_cause": "The real verifier previously rejected JavaScript operation names but accepted any other metadata operation and ignored analysis_status. That could falsely accept the wrong metadata phase.",
     "correction": "Scenario supplies independent per-path exact operation/status expectations. Every retained gap must also have artifact-bytes authority, unavailable state and unknown confidence. Missing expectations, empty gap sets and any conflicting observation fail.",
     "runtime_change": "None in this review correction. Original analytical observations, identities, coverage, token projections and CLI/MCP parity match exactly in both strict reruns; timing receipts are additional runs and do not replace the slower original rows.",
-    "initial_ci_failure": "At pre_review_revision,36 checks succeeded; Apple fixture hdiutil create failed before REA verification, causing aggregate CI required failure. Apple fixture/workflow code is unchanged; no Apple coverage pass claimed for that attempt."
+    "initial_ci_failure": "At pre_review_revision,36 checks succeeded; Apple fixture hdiutil create failed before AS Inspect verification, causing aggregate CI required failure. Apple fixture/workflow code is unchanged; no Apple coverage pass claimed for that attempt."
   },
   "pre_shared_boundary_revision": "323fae8cbf3e36677bcb7b22ba31fa1a7e3c5cd4",
   "pre_shared_boundary_source_sha256": {
@@ -2626,7 +2626,7 @@
     "post_shared_boundary_controls": "Current final_source_sha256, after the shared semantic boundary correction"
   },
   "shared_semantic_boundary_review": {
-    "thread": "https://github.com/morluto/rea/pull/4207#discussion_r4287280551",
+    "thread": "https://github.com/abusafyan-official/AS-Inspect/pull/4207#discussion_r4287280551",
     "observed_baseline": "Actual artifact reader + full analysis + application/semantic graph builders with source_paths=[a.js] created semantic modules for five excluded non-JavaScript kinds: native-addon, JSON, HTML, package-json and source-map. Selected a.js and excluded b.js are positive controls. Baseline regression failed with all7 paths instead of only2 JavaScript paths.",
     "root_cause": "Incremental callers guarded semantic applicability individually; the full builder called the same projection without that guard.",
     "structural_fix": "The semantic projection recordUnavailableFile entry point now ignores non-JavaScript file kinds before retaining limits, nodes, roots or unknowns. Both construction paths use it; removed3 duplicate caller-side checks. Actual excluded JavaScript continues to produce partial semantic coverage and source-bound unknowns.",

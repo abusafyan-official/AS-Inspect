@@ -1,4 +1,4 @@
-// Diagnostic only: inspect the explicitly launched REA process after its task.
+// Diagnostic only: inspect the explicitly launched AS Inspect process after its task.
 import assert from "node:assert/strict";
 
 export const sampleRetainedHeap = async (endpoint, expectedPid) => {
@@ -20,10 +20,10 @@ export const sampleRetainedHeap = async (endpoint, expectedPid) => {
     pending.clear();
   };
   socket.addEventListener("error", () =>
-    rejectPending(new Error("Owned REA inspector connection failed")),
+    rejectPending(new Error("Owned AS Inspect inspector connection failed")),
   );
   socket.addEventListener("close", () =>
-    rejectPending(new Error("Owned REA inspector connection closed")),
+    rejectPending(new Error("Owned AS Inspect inspector connection closed")),
   );
   socket.addEventListener("message", (event) => {
     try {
@@ -46,7 +46,7 @@ export const sampleRetainedHeap = async (endpoint, expectedPid) => {
         promise,
         new Promise((_, reject) => {
           timer = setTimeout(
-            () => reject(new Error("Owned REA inspector deadline exceeded")),
+            () => reject(new Error("Owned AS Inspect inspector deadline exceeded")),
             10_000,
           );
         }),
@@ -60,7 +60,7 @@ export const sampleRetainedHeap = async (endpoint, expectedPid) => {
       const id = ++sequence;
       const timer = setTimeout(() => {
         pending.delete(id);
-        reject(new Error(`Owned REA inspector timed out: ${method}`));
+        reject(new Error(`Owned AS Inspect inspector timed out: ${method}`));
       }, 10_000);
       pending.set(id, { resolve, reject, timer });
       try {
@@ -94,13 +94,13 @@ export const sampleRetainedHeap = async (endpoint, expectedPid) => {
     }
     return {
       scope:
-        "Owned REA V8 heap after the complete SDK task; inspector and forced GC are diagnostic overhead",
+        "Owned AS Inspect V8 heap after the complete SDK task; inspector and forced GC are diagnostic overhead",
       pid_verified: true,
       before_gc: before,
       after_gc: after,
     };
   } finally {
-    rejectPending(new Error("Owned REA inspector diagnostic finished"));
+    rejectPending(new Error("Owned AS Inspect inspector diagnostic finished"));
     socket.close();
     await withinDeadline(closed);
   }

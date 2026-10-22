@@ -184,7 +184,7 @@ const fixture = await createOpenAiModelFixture({
   onRequest: async ({ body, tools }) => {
     // Native title/summary requests cannot execute the analyst workflow.
     if (!tools.some((tool) => tool.name === "search_tool"))
-      return { role: "assistant", content: "REA fixture auxiliary response" };
+      return { role: "assistant", content: "AS Inspect fixture auxiliary response" };
     turn++;
     assert(
       containsText(body.messages, skillDirectory),
@@ -239,7 +239,7 @@ const fixture = await createOpenAiModelFixture({
         return call("run_terminal_command", {
           command: `${diagnostic} > ${shellQuote(diagnosticFile)} && ${projection}`,
           description:
-            "Diagnose REA registration while native MCP discovery is pending",
+            "Diagnose AS Inspect registration while native MCP discovery is pending",
         });
       }
       if (lastTool === "run_terminal_command") {
@@ -248,7 +248,7 @@ const fixture = await createOpenAiModelFixture({
           .find((item) => item.startsWith('{"rea_client_diagnostic":'));
         assert(
           line,
-          "Native REA diagnostics failed or did not return the selected status",
+          "Native AS Inspect diagnostics failed or did not return the selected status",
         );
         const diagnostic = JSON.parse(line).rea_client_diagnostic;
         assert.equal(diagnostic.healthy, true);
@@ -270,7 +270,7 @@ const fixture = await createOpenAiModelFixture({
       assert.deepEqual(
         inventory.map((tool) => tool.tool_name).sort(),
         expectedNames,
-        "Native search_tool must discover the complete REA catalog",
+        "Native search_tool must discover the complete AS Inspect catalog",
       );
       for (const tool of inventory) {
         assert(tool.input_schema, `${tool.tool_name}: missing input schema`);
@@ -318,7 +318,7 @@ const fixture = await createOpenAiModelFixture({
           .map(shellQuote)
           .join(" "),
         description:
-          "Query full saved REA Evidence while preserving artifact identity",
+          "Query full saved AS Inspect Evidence while preserving artifact identity",
       });
     }
     const line = last
@@ -435,7 +435,7 @@ try {
       "-p",
       mode === "chat"
         ? "Say hello briefly."
-        : `Use the REA skill to analyze ${target}.`,
+        : `Use the AS Inspect skill to analyze ${target}.`,
       "-m",
       "rea-client-fixture",
       "--output-format",
@@ -512,7 +512,7 @@ try {
     discovery:
       "native GROK_HOME, isolated additional skill directory, disabled foreign compatibility sources; default OS-home skill discovery and Windows unverified",
     interface:
-      "default native search_tool/use_tool with a complete explicit inventory query; asynchronous partial discovery may trigger native REA diagnosis; large MCP outputs are queried via native terminal",
+      "default native search_tool/use_tool with a complete explicit inventory query; asynchronous partial discovery may trigger native AS Inspect diagnosis; large MCP outputs are queried via native terminal",
     catalogChecked,
     catalogSize: catalogChecked ? expectedNames.length : 0,
     schemasChecked,

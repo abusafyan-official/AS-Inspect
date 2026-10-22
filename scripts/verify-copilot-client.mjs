@@ -134,11 +134,11 @@ const fixture = await createOpenAiModelFixture({
     wireModels.push(body.model);
     // Auxiliary requests without tools cannot execute the analyst's workflow.
     if (tools.length === 0)
-      return { role: "assistant", content: "REA fixture title" };
+      return { role: "assistant", content: "AS Inspect fixture title" };
     const analysis = tools.find((t) =>
       t.name.endsWith("analyze_javascript_application"),
     );
-    assert(analysis, "Copilot CLI must expose the REA analysis tool");
+    assert(analysis, "Copilot CLI must expose the AS Inspect analysis tool");
     const prefix = analysis.name.slice(
       0,
       -"analyze_javascript_application".length,
@@ -148,7 +148,7 @@ const fixture = await createOpenAiModelFixture({
     assert.deepEqual(
       reaTools.map((t) => t.name).sort(),
       expected,
-      "Copilot CLI must forward the complete REA catalog",
+      "Copilot CLI must forward the complete AS Inspect catalog",
     );
     catalogSize = expected.length;
     if (schemasChecked === 0) {
@@ -229,7 +229,7 @@ const fixture = await createOpenAiModelFixture({
     }
     assert(
       skillLoaded,
-      "Copilot CLI must load the installed personal REA skill",
+      "Copilot CLI must load the installed personal AS Inspect skill",
     );
     const spilled = replies.find(
       (message) =>
@@ -388,7 +388,7 @@ try {
       "--prompt",
       mode === "chat"
         ? "Say hello briefly."
-        : `Use the REA skill and tools to analyze the JavaScript directory ${target}. Report the result.`,
+        : `Use the AS Inspect skill and tools to analyze the JavaScript directory ${target}. Report the result.`,
     ],
     {
       env: { ...environment, COPILOT_PROVIDER_BASE_URL: fixture.baseUrl },

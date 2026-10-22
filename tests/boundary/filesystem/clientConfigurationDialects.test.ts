@@ -428,7 +428,7 @@ const openCodeClient = async (prefix: string) => {
 const legacyEntry = JSON.stringify({ type: "local", command, enabled: true });
 
 describe("OpenCode V2 native server table", () => {
-  it("registers in mcp.servers, replaces REA's V1 entry, and uninstalls", async () => {
+  it("registers in mcp.servers, replaces AS Inspect's V1 entry, and uninstalls", async () => {
     const { home, client } = await openCodeClient("rea-opencode-v2-");
     await writeFile(
       client.configPath,
@@ -482,7 +482,7 @@ describe("OpenCode V2 native server table", () => {
     });
   });
 
-  it("updates and removes REA's entry after OpenCode migrates it to mcp.servers", async () => {
+  it("updates and removes AS Inspect's entry after OpenCode migrates it to mcp.servers", async () => {
     const { home, client } = await openCodeClient("rea-opencode-migrated-");
     const stale = ["npx", "-y", `${PRODUCT_IDENTITY.packageName}@3.2.0`, "mcp"];
     await writeFile(
@@ -704,8 +704,8 @@ describe("platform-aware client config paths", () => {
 
 describe("client registration command ownership", () => {
   it.skipIf(process.platform === "win32").each([
-    ["rea", "rea-agents"],
-    ["rea-agents", "rea"],
+    ["rea", "as-inspect-agents"],
+    ["as-inspect-agents", "rea"],
   ])(
     "recognizes %s through its %s launcher alias",
     async (registered, current) => {
@@ -734,9 +734,9 @@ describe("client registration command ownership", () => {
       await writeFile(owned, "// owned\n");
       await writeFile(foreign, "// foreign\n");
       await symlink(owned, join(root, "rea"));
-      await symlink(foreign, join(root, "rea-agents"));
+      await symlink(foreign, join(root, "as-inspect-agents"));
       await symlink(join(root, "missing.mjs"), join(root, "missing"));
-      for (const candidate of ["rea-agents", "missing"]) {
+      for (const candidate of ["as-inspect-agents", "missing"]) {
         const command = [join(root, candidate), "mcp"];
         expect(
           classifyClientRegistrationCommand(command, join(root, "rea")),
@@ -820,7 +820,7 @@ describe("client launcher traversal semantics", () => {
     },
   );
 
-  it("recognizes prior exact REA releases while rejecting foreign package commands", () => {
+  it("recognizes prior exact AS Inspect releases while rejecting foreign package commands", () => {
     expect(classifyClientRegistrationCommand(["rea", "mcp"], undefined)).toBe(
       "owned",
     );

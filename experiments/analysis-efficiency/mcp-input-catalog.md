@@ -1,6 +1,6 @@
 # Default MCP input catalog cost
 
-Continues [#5861](https://github.com/morluto/rea/issues/5861). Baseline is
+Continues [#5861](https://github.com/abusafyan-official/AS-Inspect/issues/5861). Baseline is
 `705058f3e2df82503f1c601fc464aea7cbb626b8`. The candidate selects the existing
 compact input presentation when the setting is omitted. Explicit `full` and
 `compact` choices, all 213 tools, descriptions, output contracts, canonical
@@ -22,7 +22,7 @@ releases are ripgrep 14.1.1-r0 (3,416,168 bytes) and Zellij 0.40.0-r0
 (17,151,864 bytes). Neither binary was executed. The independent
 [oracle](mcp-input-catalog-oracle.py) reads ELF section headers, decompresses
 `.dep-v0` with Python zlib, and derives original package indices and dependency
-edges from the embedded JSON, independently of REA.
+edges from the embedded JSON, independently of AS Inspect.
 
 Each [production stdio SDK task](mcp-input-catalog.mjs) discovers and validates
 the complete advertised input catalog, requests exact serde package fields,

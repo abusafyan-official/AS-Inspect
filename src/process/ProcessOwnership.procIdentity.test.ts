@@ -57,7 +57,7 @@ const procStat = (
 };
 
 /**
- * Select REA's caller credentials for the simulated Linux host. Windows has no
+ * Select AS Inspect's caller credentials for the simulated Linux host. Windows has no
  * `process.geteuid`/`getegid`, so define them for the call and restore the
  * original properties (or their absence) afterwards.
  */

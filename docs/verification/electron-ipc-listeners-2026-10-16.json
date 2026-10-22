@@ -8340,17 +8340,17 @@
         ],
         "failed": [
           {
-            "html_url": "https://github.com/morluto/rea/actions/runs/38943919946/job/117119626359",
+            "html_url": "https://github.com/abusafyan-official/AS-Inspect/actions/runs/38943919946/job/117119626359",
             "id": 117119626359,
             "name": "Test shard (5/5)"
           },
           {
-            "html_url": "https://github.com/morluto/rea/actions/runs/38943919946/job/117123527867",
+            "html_url": "https://github.com/abusafyan-official/AS-Inspect/actions/runs/38943919946/job/117123527867",
             "id": 117123527867,
             "name": "Portable tests"
           },
           {
-            "html_url": "https://github.com/morluto/rea/actions/runs/38943919946/job/117124523233",
+            "html_url": "https://github.com/abusafyan-official/AS-Inspect/actions/runs/38943919946/job/117124523233",
             "id": 117124523233,
             "name": "CI required"
           }
@@ -8812,17 +8812,17 @@
         ],
         "failed": [
           {
-            "html_url": "https://github.com/morluto/rea/actions/runs/38946503183/job/117127335056",
+            "html_url": "https://github.com/abusafyan-official/AS-Inspect/actions/runs/38946503183/job/117127335056",
             "id": 117127335056,
             "name": "Test shard (5/5)"
           },
           {
-            "html_url": "https://github.com/morluto/rea/actions/runs/38946503183/job/117131309826",
+            "html_url": "https://github.com/abusafyan-official/AS-Inspect/actions/runs/38946503183/job/117131309826",
             "id": 117131309826,
             "name": "Portable tests"
           },
           {
-            "html_url": "https://github.com/morluto/rea/actions/runs/38946503183/job/117132060598",
+            "html_url": "https://github.com/abusafyan-official/AS-Inspect/actions/runs/38946503183/job/117132060598",
             "id": 117132060598,
             "name": "CI required"
           }
@@ -9276,17 +9276,17 @@
         ],
         "failed": [
           {
-            "html_url": "https://github.com/morluto/rea/actions/runs/38949129899/job/117136988800",
+            "html_url": "https://github.com/abusafyan-official/AS-Inspect/actions/runs/38949129899/job/117136988800",
             "id": 117136988800,
             "name": "Test shard (5/5)"
           },
           {
-            "html_url": "https://github.com/morluto/rea/actions/runs/38949129899/job/117141889043",
+            "html_url": "https://github.com/abusafyan-official/AS-Inspect/actions/runs/38949129899/job/117141889043",
             "id": 117141889043,
             "name": "Portable tests"
           },
           {
-            "html_url": "https://github.com/morluto/rea/actions/runs/38949129899/job/117142144521",
+            "html_url": "https://github.com/abusafyan-official/AS-Inspect/actions/runs/38949129899/job/117142144521",
             "id": 117142144521,
             "name": "CI required"
           }

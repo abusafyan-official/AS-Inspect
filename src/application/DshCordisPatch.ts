@@ -121,7 +121,7 @@ export class DshCordisDocument {
               (op) => op.unknownApplicability && op.ownedRows.length > 0,
             )
           ? new ConfigurationError(
-              "Cordis REA insertion targets a group with unknown activity; use a direct insertion before setup",
+              "Cordis AS Inspect insertion targets a group with unknown activity; use a direct insertion before setup",
             )
           : this.#unknownSelector
             ? new ConfigurationError(
@@ -209,7 +209,7 @@ export class DshCordisDocument {
       );
     if (config !== undefined && !isRecord(config))
       return err(
-        new ConfigurationError("Cordis REA config must be a mapping", {
+        new ConfigurationError("Cordis AS Inspect config must be a mapping", {
           settings: [
             {
               setting: "config",
@@ -324,7 +324,7 @@ export class DshCordisDocument {
         return [this.#entry(desired, invalidated)] as typeof inserted.items;
       });
       if (inserted.items.length === 0) copy.delete("insert");
-      // An emptied operation keeps caller fields unless it would patch REA's row.
+      // An emptied operation keeps caller fields unless it would patch AS Inspect's row.
       const kept =
         inserted.items.length > 0 ||
         (this.#id(op.map) !== DSH_ENTRY_ID &&

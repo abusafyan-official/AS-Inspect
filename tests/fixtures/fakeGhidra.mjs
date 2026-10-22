@@ -304,7 +304,7 @@ const sessionInfo = ({
   targetSha256: sha256,
   timedOut,
 }) => ({
-  name: "REA Ghidra bridge",
+  name: "AS Inspect Ghidra bridge",
   run_id: sessionRunId,
   profile_digest: digest,
   provider: { id: "ghidra", version },

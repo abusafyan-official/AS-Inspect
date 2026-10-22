@@ -530,7 +530,7 @@ describe("MSIX Claude Desktop uninstall", () => {
     expect(await readFile(manifest, "utf8")).toContain("managed fixture");
   });
 
-  it("removes REA from both the private copy and AppData on uninstall", async () => {
+  it("removes AS Inspect from both the private copy and AppData on uninstall", async () => {
     const { home, env, appDataConfig, privateConfig } = await windowsProfile();
     await writeJson(privateConfig, {
       preferences: {},

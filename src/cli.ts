@@ -112,7 +112,7 @@ export const createCli = (
     sync: false,
     update: {
       // Incur's update:false only suppresses notices. Reject its explicit
-      // installer so ambiguous flags cannot bypass REA's verified workflow.
+      // installer so ambiguous flags cannot bypass AS Inspect's verified workflow.
       install: () => {
         throw new Error(
           "Use 'rea update' to update the identified installation. The '--update' alias accepts only global output flags.",

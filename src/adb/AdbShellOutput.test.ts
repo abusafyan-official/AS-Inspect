@@ -27,7 +27,7 @@ describe("parseDumpsysPackageOutput", () => {
   });
 
   // Package Manager prints an absent String field as the text "null"; a
-  // missing or empty declaration means the same absence (morluto/rea#3943).
+  // missing or empty declaration means the same absence (abusafyan-official/AS-Inspect#3943).
   it.each([
     ["the literal null sentinel", "installerPackageName=null"],
     ["an empty value", "installerPackageName="],
@@ -258,7 +258,7 @@ describe("parseWmDensityOutput", () => {
   });
 
   // Older builds print the physical density as a bare number
-  // (morluto/rea#3942); it must not be lost as an unread declaration.
+  // (abusafyan-official/AS-Inspect#3942); it must not be lost as an unread declaration.
   it("reads a bare numeric density as the physical density", () => {
     expect(parseWmDensityOutput("420\n")).toEqual({
       physical: 420,

@@ -132,14 +132,14 @@ export interface KunaProject {
 /** One request to produce or reuse the export for a target. */
 export interface KunaProjectRequest {
   readonly installation: KunaInstallation;
-  /** Caller-selected target path; REA decompiles a verified copy of it. */
+  /** Caller-selected target path; AS Inspect decompiles a verified copy of it. */
   readonly targetPath: string;
   readonly targetSha256: string;
   readonly signal?: AbortSignal;
   readonly onStatus?: (status: KunaExportStatus) => void;
 }
 
-/** One build whose process tree REA could not prove stopped. */
+/** One build whose process tree AS Inspect could not prove stopped. */
 interface RetainedProcess {
   readonly key: string;
   readonly error: ProviderCleanupError;
@@ -217,13 +217,13 @@ const manifestBytes = (manifest: KunaProjectManifest): number =>
   Object.values(manifest.files).reduce((sum, file) => sum + file.bytes, 0);
 
 /**
- * REA-owned on-disk cache of `kuna decompile-project` exports.
+ * AS Inspect-owned on-disk cache of `kuna decompile-project` exports.
  *
  * Layout under the root: `projects/<key>/` holds published entries
  * (`manifest.json` plus the export and inventory in `project/`), `staging/`
  * holds builds whose processes may still be live, `trash/` holds retired
  * workspaces and evicted entries awaiting removal,
- * and `home/` is Kuna's own HOME so its spec cache stays inside REA's
+ * and `home/` is Kuna's own HOME so its spec cache stays inside AS Inspect's
  * ownership.
  *
  * Entries are content-addressed and immutable. A build runs in private

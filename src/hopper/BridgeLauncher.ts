@@ -151,16 +151,16 @@ export interface HopperApplicationLauncherDependencies {
 }
 
 /**
- * Launches Hopper through its documented CLI and injects only REA's owned bridge.
+ * Launches Hopper through its documented CLI and injects only AS Inspect's owned bridge.
  *
  * Hopper's `hopper` helper internally issues an AppleScript `activate` command.
  * Consequently, opening a target may bring Hopper to the foreground even though
- * REA first asks macOS to start the application hidden and in the background.
- * REA cannot reliably suppress that activation without replacing Hopper's
+ * AS Inspect first asks macOS to start the application hidden and in the background.
+ * AS Inspect cannot reliably suppress that activation without replacing Hopper's
  * supported launcher; callers must treat possible foreground UI as an upstream
  * Hopper constraint, not as evidence that analysis failed.
  *
- * REA owns only the short-lived launcher helper's run-token-authenticated
+ * AS Inspect owns only the short-lived launcher helper's run-token-authenticated
  * process group. It does not claim ownership of the Hopper GUI process that
  * macOS LaunchServices may create or reuse.
  */
@@ -458,9 +458,9 @@ export class HopperApplicationLauncher implements BridgeLauncher {
           new HopperStartError({
             ownerRunId: acquisition.owner.runId,
             userMessage: applicationLease
-              ? `Linux Hopper is already active in REA session ${acquisition.owner.runId}; it cannot open ${this.options.targetPath} in another session. This build forwards new launches to the existing application. Use the owning REA session to switch targets, or close it before retrying.`
-              : `This Hopper target is already open in REA session ${acquisition.owner.runId}. ` +
-                "Use that REA session or close it before opening this target again.",
+              ? `Linux Hopper is already active in AS Inspect session ${acquisition.owner.runId}; it cannot open ${this.options.targetPath} in another session. This build forwards new launches to the existing application. Use the owning AS Inspect session to switch targets, or close it before retrying.`
+              : `This Hopper target is already open in AS Inspect session ${acquisition.owner.runId}. ` +
+                "Use that AS Inspect session or close it before opening this target again.",
           }),
         );
       return ok(acquisition.lease);
@@ -575,7 +575,7 @@ const launchHopperProcess = async (input: {
       runId: input.session.runId,
       expectedCommand: ownershipCommand,
       hostEnvironment: input.options.environment,
-      // The helper observes EOF when this REA process exits, including SIGKILL.
+      // The helper observes EOF when this AS Inspect process exits, including SIGKILL.
       stdin: "pipe",
       ...(input.signal === undefined ? {} : { signal: input.signal }),
     });

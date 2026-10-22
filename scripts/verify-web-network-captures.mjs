@@ -1021,8 +1021,8 @@ function assertSensitiveLimitations(evidence, literals) {
   assert.equal(
     result.decoder.name,
     result.format === "har"
-      ? "REA HAR capture adapter"
-      : "REA offline native mitmproxy adapter",
+      ? "AS Inspect HAR capture adapter"
+      : "AS Inspect offline native mitmproxy adapter",
   );
   const texts = [
     evidence.limitations,

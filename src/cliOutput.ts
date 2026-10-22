@@ -66,7 +66,7 @@ export interface IncurBuiltinArgumentSplit {
 
 /**
  * Mirror Incur's builtin pass over normalized arguments without stopping at a
- * rejected value, so callers can still see every later token. REA configures
+ * rejected value, so callers can still see every later token. AS Inspect configures
  * neither a config flag nor global options, which Incur would also remove.
  */
 export const splitIncurBuiltinArguments = (

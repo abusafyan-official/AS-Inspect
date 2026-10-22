@@ -1,7 +1,7 @@
 # Dart AOT summary and retained string pools
 
-Continues [#2016](https://github.com/morluto/rea/issues/2016) and
-[#2455](https://github.com/morluto/rea/pull/2455). The selected analyst question
+Continues [#2016](https://github.com/abusafyan-official/AS-Inspect/issues/2016) and
+[#2455](https://github.com/abusafyan-official/AS-Inspect/pull/2455). The selected analyst question
 asks for shipped LocalSend target/ABI/library identity, every nullable snapshot
 observation, string-pool lower bounds and returned counts, and original coverage
 and limitations. It does not require individual observed strings.
@@ -78,7 +78,7 @@ remain intact; the original exported record is deeply equal to its source.
 
 The first private verification attempt used a nonexistent receipt filename and
 failed before import or artifact relocation. That driver error is retained;
-the corrected attempt selects the fresh old-runtime record. It is not a REA
+the corrected attempt selects the fresh old-runtime record. It is not a AS Inspect
 defect or a successful migration trial.
 
 ## Actual Codex task outcomes
@@ -88,7 +88,7 @@ complete order. Requested configuration is Codex CLI 0.161.0, `gpt-5.6-terra`
 high, one exact enabled tool (`inspect_dart_aot`), and identical optional owned
 context capture/discovery guidance. This requested alias does not certify the
 server-resolved model. Temporary configuration points to the modified frozen
-REA MCP; all copied credential profiles are removed and target bytes remain
+AS Inspect MCP; all copied credential profiles are removed and target bytes remain
 unchanged. The source question is fixed; equal treatment instructions choose
 detail and explain the summary carrier and parent reference.
 

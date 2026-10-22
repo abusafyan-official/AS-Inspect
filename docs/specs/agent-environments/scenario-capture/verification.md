@@ -19,7 +19,7 @@ Run on macOS 26.5.1 with Node 22.23.1 on that tree:
 
 ## Real browser captures
 
-`npm pack` of this commit (`rea-agents-6.7.0.tgz`) was installed on Ubuntu 24.04 amd64 hosts
+`npm pack` of this commit (`as-inspect-agents-6.7.0.tgz`) was installed on Ubuntu 24.04 amd64 hosts
 (8 vCPU, 32 GB) with Chromium 155.0.8059.79 at `/snap/bin/chromium`, Node 24, Docker and
 `agentenv-framework` 0.9.1334. Every capture below is `rea capture-browser-scenario` output;
 no HAR was recorded, scoped or edited.

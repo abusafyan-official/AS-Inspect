@@ -228,7 +228,7 @@ async function exerciseTrustedRetentionWithLegacyTarget(
     cwd: runnerWorkspace,
     env: {
       PATH: join(runnerWorkspace, "bin"),
-      CI_REPOSITORY: "morluto/rea",
+      CI_REPOSITORY: "abusafyan-official/AS-Inspect",
       CACHE_PREFIX: prefix,
       CACHE_KEEP_KEY: keepKey,
       FAKE_GH_LOG: ghLog,
@@ -244,8 +244,8 @@ async function exerciseTrustedRetentionWithLegacyTarget(
     npmDuplicateDeleteBytes: 0,
   });
   expect(requests.trim().split("\n")).toEqual([
-    "GET repos/morluto/rea/actions/caches?per_page=100&page=1&key=rea-static-v1-Linux-X64-",
-    "DELETE repos/morluto/rea/actions/caches/1",
+    "GET repos/abusafyan-official/AS-Inspect/actions/caches?per_page=100&page=1&key=rea-static-v1-Linux-X64-",
+    "DELETE repos/abusafyan-official/AS-Inspect/actions/caches/1",
   ]);
 }
 

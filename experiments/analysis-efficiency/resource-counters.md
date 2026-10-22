@@ -1,6 +1,6 @@
 # Resource counters at payload completion
 
-Continues [#2016](https://github.com/morluto/rea/issues/2016) from merged main
+Continues [#2016](https://github.com/abusafyan-official/AS-Inspect/issues/2016) from merged main
 `4f4f6cd7b5d7a400b90772a138d7b9f942c2a556`. A transient cgroup can disappear
 before the existing supervisor reads terminal counters. Earlier reports keep
 those counters unknown; sampled zero events are not final no-OOM proof.
@@ -55,17 +55,17 @@ Actual Linux cgroup/systemd probes additionally verify:
   its scope; missing completion counters are not replaced with zeros.
 
 These are metering/lifecycle probes, not a new model/provider performance claim.
-Actual REA workflows and repeated observer-overhead measurements remain necessary
+Actual AS Inspect workflows and repeated observer-overhead measurements remain necessary
 before relying on the new mode for domain comparisons. Raw receipts remain in
 the private experiment lab outside Git.
 
-## Actual REA and model observations
+## Actual AS Inspect and model observations
 
 Checkpoint `d1f2cfe76df28e6effe973123f2e19313f6d0d4b` repeats real SDK workflows
 against the unchanged frozen candidate `8bc1601ca51e417ca472d90ea0367e9418a1a0f2`
 (runtime file-table SHA-256
 `9e7380f537301bf0cfe2926f5619011af848af7c220750e75189498e65d825e1`).
-The resource supervisor changes; the compiled REA/provider algorithms do not.
+The resource supervisor changes; the compiled AS Inspect/provider algorithms do not.
 Managed pairs use default/observer/observer/default order with the same question,
 settings, two public calls and identical selected facts. Raw receipts remain
 private and new measurements do not replace historical resource unknowns.

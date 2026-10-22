@@ -453,7 +453,7 @@ const installSkillAction = async (
   appliedActions: string[],
   skillClientIds: readonly string[],
 ): Promise<SetupSkillInstallError | undefined> => {
-  const label = "REA reverse-engineering skill";
+  const label = "AS Inspect reverse-engineering skill";
   emitProgress(options, {
     actionId: "install_skill",
     label,

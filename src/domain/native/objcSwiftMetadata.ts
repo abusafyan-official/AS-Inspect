@@ -362,7 +362,7 @@ export const DEFAULT_DISPATCH_METADATA_INPUT_BYTES = 64 * 1024 * 1024;
 
 /**
  * Largest caller-selected budget. The reader holds the whole selected file in
- * REA's own heap; larger images belong to a deep provider that loads them in
+ * AS Inspect's own heap; larger images belong to a deep provider that loads them in
  * its own process.
  */
 export const MAXIMUM_DISPATCH_METADATA_INPUT_BYTES = 1024 * 1024 * 1024;
@@ -393,7 +393,7 @@ export const nativeDispatchMetadataResultSchema = z.strictObject({
     version: z.string().nullable(),
   }),
   analysis_profile_digest: z.string().min(1).nullable(),
-  /** Present when REA read the target bytes itself; symbol-only inventories have none. */
+  /** Present when AS Inspect read the target bytes itself; symbol-only inventories have none. */
   input_admission: dispatchMetadataInputAdmissionSchema.exactOptional(),
   result: objcSwiftMetadataSchema,
 });

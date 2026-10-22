@@ -208,7 +208,7 @@ export const analysisViewJavaScriptEvidence = (
     },
     {
       id: "rea-javascript-application",
-      name: "REA JavaScript application analyzer",
+      name: "AS Inspect JavaScript application analyzer",
       version: "1",
     },
     {

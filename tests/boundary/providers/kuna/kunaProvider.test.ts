@@ -843,7 +843,7 @@ it.each([
     behavior: { project: "hang" } as const,
     environment: { REA_KUNA_PROJECT_TIMEOUT_MS: "300" },
     cause: "AnalysisTimeoutError",
-    next: "To retry, set REA_KUNA_PROJECT_TIMEOUT_MS above 300 ms or raise REA_KUNA_JOBS in the environment that starts REA. REA reads Kuna settings when it starts, so restart REA, then reopen the target.",
+    next: "To retry, set REA_KUNA_PROJECT_TIMEOUT_MS above 300 ms or raise REA_KUNA_JOBS in the environment that starts AS Inspect. AS Inspect reads Kuna settings when it starts, so restart AS Inspect, then reopen the target.",
     details: {
       timeout_ms: 300,
       captured_output: { truncated: expect.any(Boolean) },
@@ -862,7 +862,7 @@ it.each([
     behavior: { asmPadding: 2 * 1024 ** 2 },
     environment: { REA_KUNA_CACHE_MAX_BYTES: String(1024 ** 2) },
     cause: "AnalysisResourceConstraintError",
-    next: "Raise REA_KUNA_CACHE_MAX_BYTES above the export size, or analyze this target with another provider. REA reads Kuna settings when it starts, so restart REA, then reopen the target.",
+    next: "Raise REA_KUNA_CACHE_MAX_BYTES above the export size, or analyze this target with another provider. AS Inspect reads Kuna settings when it starts, so restart AS Inspect, then reopen the target.",
     details: {
       resource: "capacity",
       reported_limits: {
@@ -877,7 +877,7 @@ it.each([
     behavior: { project: "noisy" } as const,
     environment: {},
     cause: "AnalysisResourceConstraintError",
-    next: "REA buffers at most 8388608 bytes of kuna decompile-project output, so repeating this request for this target fails the same way. Use another provider for it.",
+    next: "AS Inspect buffers at most 8388608 bytes of kuna decompile-project output, so repeating this request for this target fails the same way. Use another provider for it.",
     details: {
       resource: "memory",
       reported_limits: { output_limit_bytes: 8 * 1024 ** 2 },

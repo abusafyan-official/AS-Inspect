@@ -20,7 +20,7 @@ import { SharedStartupAttempt } from "../process/SharedStartupAttempt.js";
 import { err, ok, type Result } from "../domain/result.js";
 import { JebMcpDeadline } from "./JebMcpDeadline.js";
 
-/** Upstream protocol names for the operations REA exposes. */
+/** Upstream protocol names for the operations AS Inspect exposes. */
 export const JEB_ENGINE_TOOLS = {
   inspect_jeb_client: "get_client_information",
   open_jeb_project: "open_project",
@@ -31,9 +31,9 @@ const RELEVANT_ENGINE_TOOLS = new Set<string>(Object.values(JEB_ENGINE_TOOLS));
 
 /** Injectable MCP boundary used by the provider and conformance tests. */
 export interface JebMcpConnection {
-  /** Connect lazily and return advertised names used by REA. */
+  /** Connect lazily and return advertised names used by AS Inspect. */
   connect(signal?: AbortSignal): Promise<readonly string[]>;
-  /** Refresh support for REA operations from the live engine catalog. */
+  /** Refresh support for AS Inspect operations from the live engine catalog. */
   listTools(signal?: AbortSignal): Promise<readonly string[]>;
   /** Invoke one JEB MCP tool and decode its single structured result. */
   call(

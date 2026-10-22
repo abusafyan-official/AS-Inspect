@@ -100,7 +100,7 @@ export interface KunaInstallation {
   /** Canonical path of the probed executable. */
   readonly executable: string;
   readonly version: string;
-  /** Whether this release is the one REA verified. */
+  /** Whether this release is the one AS Inspect verified. */
   readonly verified: boolean;
   readonly sha256: string;
   readonly bytes: number;
@@ -257,7 +257,7 @@ export const createKunaResourceScope = (
 /**
  * Environment for every Kuna child. Kuna unpacks its built-in SLEIGH tree into
  * the per-user cache under HOME (macOS) or XDG_CACHE_HOME (Linux), so both
- * point inside REA's own cache root instead of the user's.
+ * point inside AS Inspect's own cache root instead of the user's.
  */
 export const kunaChildEnvironment = (
   configuration: KunaConfiguration,

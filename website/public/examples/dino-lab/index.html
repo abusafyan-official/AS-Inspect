@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Chrome Dinosaur Game: Rebuild Its Speed Rule — REA</title>
+    <title>Chrome Dinosaur Game: Rebuild Its Speed Rule — AS Inspect</title>
     <meta
       name="description"
-      content="Read the dinosaur game’s speed rule with REA, rebuild it, then change the speed and play."
+      content="Read the dinosaur game’s speed rule with AS Inspect, rebuild it, then change the speed and play."
     />
     <!-- website:sharing:start -->
     <!-- prettier-ignore -->
@@ -60,11 +60,11 @@
     <!-- prettier-ignore -->
     <meta property="og:type" content="website" />
     <!-- prettier-ignore -->
-    <meta property="og:site_name" content="REA" />
+    <meta property="og:site_name" content="AS Inspect" />
     <!-- prettier-ignore -->
-    <meta property="og:title" content="Chrome Dinosaur Game: Rebuild Its Speed Rule — REA" />
+    <meta property="og:title" content="Chrome Dinosaur Game: Rebuild Its Speed Rule — AS Inspect" />
     <!-- prettier-ignore -->
-    <meta property="og:description" content="Read the dinosaur game’s speed rule with REA, rebuild it, then change the speed and play." />
+    <meta property="og:description" content="Read the dinosaur game’s speed rule with AS Inspect, rebuild it, then change the speed and play." />
     <!-- prettier-ignore -->
     <meta property="og:url" content="https://rea.tools/examples/dino-lab/" />
     <!-- prettier-ignore -->
@@ -78,20 +78,20 @@
     <!-- prettier-ignore -->
     <meta
       property="og:image:alt"
-      content="REA — Find out how software works. Reverse engineering with your coding agent."
+      content="AS Inspect — Find out how software works. Reverse engineering with your coding agent."
     />
     <!-- prettier-ignore -->
     <meta name="twitter:card" content="summary_large_image" />
     <!-- prettier-ignore -->
-    <meta name="twitter:title" content="Chrome Dinosaur Game: Rebuild Its Speed Rule — REA" />
+    <meta name="twitter:title" content="Chrome Dinosaur Game: Rebuild Its Speed Rule — AS Inspect" />
     <!-- prettier-ignore -->
-    <meta name="twitter:description" content="Read the dinosaur game’s speed rule with REA, rebuild it, then change the speed and play." />
+    <meta name="twitter:description" content="Read the dinosaur game’s speed rule with AS Inspect, rebuild it, then change the speed and play." />
     <!-- prettier-ignore -->
     <meta name="twitter:image" content="https://rea.tools/assets/social-card.png" />
     <!-- prettier-ignore -->
     <meta
       name="twitter:image:alt"
-      content="REA — Find out how software works. Reverse engineering with your coding agent."
+      content="AS Inspect — Find out how software works. Reverse engineering with your coding agent."
     />
     <!-- website:sharing:end -->
     <!-- website:theme:start -->
@@ -110,8 +110,8 @@
     <!-- prettier-ignore -->
     <header class="site-header">
       <div class="container header-inner">
-        <a class="brand" href="../../" aria-label="REA home"
-          ><span class="brand-name">REA</span
+        <a class="brand" href="../../" aria-label="AS Inspect home"
+          ><span class="brand-name">AS Inspect</span
           ><span class="brand-caption" data-i18n-skip>Reverse Engineer Anything</span></a
         >
         <nav class="navigation" aria-label="Main navigation">
@@ -136,8 +136,8 @@
           <a
             class="nav-github"
             href="https://github.com/abusafyan-official/AS-Inspect"
-            aria-label="REA on GitHub"
-            title="REA on GitHub"
+            aria-label="AS Inspect on GitHub"
+            title="AS Inspect on GitHub"
           >
             <svg
               width="22"
@@ -156,8 +156,8 @@
           <a
             class="nav-discord"
             href="https://discord.gg/GkcryMnJDM"
-            aria-label="Join REA on Discord"
-            title="Join REA on Discord"
+            aria-label="Join AS Inspect on Discord"
+            title="Join AS Inspect on Discord"
           >
             <svg
               width="22"
@@ -175,8 +175,8 @@
           <a
             class="nav-x"
             href="https://x.com/reatools"
-            aria-label="Follow REA on X"
-            title="Follow REA on X"
+            aria-label="Follow AS Inspect on X"
+            title="Follow AS Inspect on X"
           >
             <svg
               width="18"
@@ -204,7 +204,7 @@
         <h1>Rebuild the dinosaur’s speed rule.</h1>
         <p class="lede">
           To recreate the game’s acceleration, first find the rule that controls
-          its speed. <strong>REA returned the running script;</strong>
+          its speed. <strong>AS Inspect returned the running script;</strong>
           we used its rule to build this mini-game with
           <mark class="prose-highlight">adjustable speed.</mark>
         </p>
@@ -297,18 +297,18 @@
             </figure>
           </section>
           <section class="article-section" id="rule">
-            <h2>Read the script REA returned</h2>
+            <h2>Read the script AS Inspect returned</h2>
             <p>
               We inspected
               <a href="https://wayou.github.io/t-rex-runner/"
                 >wayou’s Chromium-derived browser edition</a
               >
-              with REA. It returned the loaded <code>index.js</code>, including
+              with AS Inspect. It returned the loaded <code>index.js</code>, including
               this branch in the game’s update function:
             </p>
             <div class="code-block">
               <div class="code-header">
-                <span>REA · selected script source</span>
+                <span>AS Inspect · selected script source</span>
               </div>
               <pre><code>if (this.currentSpeed &lt; this.config.MAX_SPEED) {
   this.currentSpeed += this.config.ACCELERATION;
@@ -403,7 +403,7 @@
             <h2>Try the analysis yourself</h2>
             <ol>
               <li>
-                <a href="../../get-started/">Set up REA</a> with your coding
+                <a href="../../get-started/">Set up AS Inspect</a> with your coding
                 agent.
               </li>
               <li>
@@ -436,7 +436,7 @@
               <p class="terminal-prompt">
                 <span class="prompt-symbol" aria-hidden="true">›</span
                 ><span id="lab-analysis-prompt"
-                  >Use REA to inspect this dinosaur game. Why does it get
+                  >Use AS Inspect to inspect this dinosaur game. Why does it get
                   faster? Show the speed rule, then build a small version with
                   an adjustable speed.</span
                 ><span class="terminal-cursor" aria-hidden="true"></span>
@@ -457,7 +457,7 @@
               >, Chromium Authors.
               <a href="../../assets/licenses/dinosaur.txt"
                 >Copyright and BSD license</a
-              >. REA 4.1.0 inspected the running HTTP edition in Chrome 150.
+              >. AS Inspect 4.1.0 inspected the running HTTP edition in Chrome 150.
             </p>
           </section>
         </article>
@@ -467,7 +467,7 @@
     <!-- prettier-ignore -->
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p>REA · Reverse Engineer Anything</p>
+        <p>AS Inspect · Reverse Engineer Anything</p>
         <div class="footer-links">
           <a href="../../contributors/">Contributors</a
           ><a href="https://github.com/abusafyan-official/AS-Inspect">Source</a

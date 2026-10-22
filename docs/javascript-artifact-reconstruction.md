@@ -31,7 +31,7 @@ parsing, graph construction, validation, and Evidence hashing begin. Stdout
 remains the selected result document. Completion is reported after Evidence
 creation; a failed analysis retains its typed diagnostic result.
 
-Configure an MCP client with the ordinary REA setup command:
+Configure an MCP client with the ordinary AS Inspect setup command:
 
 ```bash
 rea setup
@@ -85,7 +85,7 @@ rea analyze /absolute/path/to/app.asar \
 }
 ```
 
-REA inventories and verifies the complete artifact, including unselected bytes,
+AS Inspect inventories and verifies the complete artifact, including unselected bytes,
 but allocates source text and performs static analysis only for selected files.
 Include supporting manifests, HTML or source maps explicitly when needed;
 imports do not expand the selection. Paths must match relevant inventoried
@@ -107,8 +107,8 @@ Explicit native provider or snapshot routing rejects `--source-path` rather
 than ignoring it.
 
 ASAR header/index admission defaults to 16 MiB / 16777216 bytes. Set
-`REA_ASAR_MAX_HEADER_BYTES` in the environment that starts REA to a decimal
-byte count of at most 268435456 (256 MiB) to raise or lower it; restart REA
+`REA_ASAR_MAX_HEADER_BYTES` in the environment that starts AS Inspect to a decimal
+byte count of at most 268435456 (256 MiB) to raise or lower it; restart AS Inspect
 after changing it. Invalid values are configuration errors, never a silent
 fallback. The archive index is read before any member can be selected, so
 `source_paths`, `--source-path`, `detail: "summary"`, `max_heap_mb`, and
@@ -174,7 +174,7 @@ graph coverage partial and include every contradicted path in the limitations.
 Mismatched nested ASARs stay opaque rather than being expanded.
 
 An unpacked entry whose companion bytes were not supplied remains
-`unavailable`. REA continues analyzing embedded JavaScript and records the
+`unavailable`. AS Inspect continues analyzing embedded JavaScript and records the
 missing native/resource bytes as unknown. The occurrence keeps
 `hash_status: unavailable`; no content-addressed child artifact is created for
 those missing bytes. See [MCP integrity handling](mcp-contracts.md#integrity-record-and-continue)
@@ -364,7 +364,7 @@ are absent.
 
 Source-map contents are parsed as local input. The graph stores original source names and optional content digests, not raw `sourcesContent` text.
 
-Only explicitly present BrowserWindow values are observations. REA does not
+Only explicitly present BrowserWindow values are observations. AS Inspect does not
 substitute version-dependent Electron defaults for omitted `webPreferences`.
 Unresolved option objects, bridge keys, API objects, and IPC channel expressions
 remain unknown and make coverage partial.
@@ -498,7 +498,7 @@ parses as a URL. When a recognized request target cannot be resolved exactly,
 the endpoint's partial resolution retains the original source expression with
 its call-site provenance. This does not establish that the request executed.
 Artifact paths, digests, parse locations, and analysis metadata remain
-actionable because REA is local-only.
+actionable because AS Inspect is local-only.
 
 ## Safety boundary
 
@@ -600,7 +600,7 @@ deadline per source, including startup and fact transfer. Select
 `max_heap_mb` and `analysis_timeout_ms` through MCP, or `--max-heap-mb` and
 `--analysis-timeout-ms` on the dedicated CLI command. These choices control the
 analyzer; the caller's `NODE_OPTIONS` still controls the CLI/MCP process heap.
-V8 old-space limits do not impose a process RSS limit. When REA runs on Bun,
+V8 old-space limits do not impose a process RSS limit. When AS Inspect runs on Bun,
 the analyzer ignores the V8 heap flags; resource failures then report
 `worker_heap_limit_bytes` as null instead of a requested or V8-reported limit.
 On Windows, the analyzer's owned Job Object instead limits its committed
@@ -658,7 +658,7 @@ process. On Node, the failure names `max_heap_mb` (CLI `--max-heap-mb`), the
 effective mebibytes, the inclusive range 128 to 16384, and the 1024 MiB
 default. A changed value applies on the next analysis, which starts a new
 worker. It does not change a worker that is already running and does not
-require restarting the REA server. On Bun, the same heap-exhaustion diagnostic
+require restarting the AS Inspect server. On Bun, the same heap-exhaustion diagnostic
 is not attributed to that V8 old-space limit, because Bun ignores the flag.
 Raising `max_heap_mb` does not raise the parent result budget,
 the transfer record ceiling, the 2 GiB transfer file maximum, the CLI/MCP

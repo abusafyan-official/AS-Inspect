@@ -1,6 +1,6 @@
 # Retained command observations
 
-Addresses [#5584](https://github.com/morluto/rea/issues/5584). GDB command Evidence
+Addresses [#5584](https://github.com/abusafyan-official/AS-Inspect/issues/5584). GDB command Evidence
 repeats ordered MI records in stream groups and a raw mirror; objdump repeats
 stdout/stderr in its raw mirror. Explicit `detail: summary` retains the complete
 parent and projects existing owner facts once. Default complete Evidence is

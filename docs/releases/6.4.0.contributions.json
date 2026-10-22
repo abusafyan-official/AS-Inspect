@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "repository": "morluto/rea",
+  "repository": "abusafyan-official/AS-Inspect",
   "version": "6.4.0",
   "base": "74cf9e1401fcd89482fe39c27cc898f5858e9b72",
   "target": "ee46323b493994902b04824a7dc8aae2a8117903",
   "commits": [
     {
       "sha": "08ec2bf82fa88f5e8caa2b7da9093636731dc55c",
-      "subject": "chore(main): release rea-agents 6.3.0 (#1341)",
-      "body": "chore(main): release rea-agents 6.3.0 (#1341)\n\nCo-authored-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>",
+      "subject": "chore(main): release as-inspect-agents 6.3.0 (#1341)",
+      "body": "chore(main): release as-inspect-agents 6.3.0 (#1341)\n\nCo-authored-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>",
       "parents": ["001851fde6f972e6ebd01fddccdff4c645a85f63"],
       "authors": [
         {
@@ -187,7 +187,7 @@
     {
       "sha": "1f0f728c63a4d9f32fc183c6a41627eedb8d1fe2",
       "subject": "perf(hopper): stop repeating Hopper replies as raw_result (#1405)",
-      "body": "perf(hopper): stop repeating Hopper replies as raw_result (#1405)\n\nHopperProvider passed the bridge reply as rawResult and, for every\noperation except address_to_file_offset, the same object as the result.\nEvery Hopper Evidence record (decompilation, procedure and string\nlistings, xrefs, ...) therefore carried its complete result twice, and\nan MCP response four times counting its text copy.\n\nraw_result is now null unless REA transformed the reply, which only the\nfile-offset mapping does; that case keeps Hopper's original reply.\n\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+      "body": "perf(hopper): stop repeating Hopper replies as raw_result (#1405)\n\nHopperProvider passed the bridge reply as rawResult and, for every\noperation except address_to_file_offset, the same object as the result.\nEvery Hopper Evidence record (decompilation, procedure and string\nlistings, xrefs, ...) therefore carried its complete result twice, and\nan MCP response four times counting its text copy.\n\nraw_result is now null unless AS Inspect transformed the reply, which only the\nfile-offset mapping does; that case keeps Hopper's original reply.\n\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
       "parents": ["7623e21ff02cf4eb00ccb4fa357936e4ed01425e"],
       "authors": [
         {
@@ -246,7 +246,7 @@
     {
       "sha": "ca3131b36ccf025f64b9e43ecae2698d37747de7",
       "subject": "perf(cli): write compact JSON when output is not a terminal (#1413)",
-      "body": "perf(cli): write compact JSON when output is not a terminal (#1413)\n\n`--json` / `--format json` always indented its streamed result. Agents and\nscripts read REA through pipes and redirects, where indentation carries no\ninformation: on real application results it added 16-45% model tokens\n(o200k proxy) and 25-73% bytes. The skill's CLI fallback uses `--json`.\n\nIndent only when stdout is a TTY, as `gh --json` does; piped or redirected\nJSON is compact. The JSON value, `jsonl`, `--filter-output`,\n`--full-output` and the token-window paths are unchanged. `jq .` restores\nindentation for files.\n\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+      "body": "perf(cli): write compact JSON when output is not a terminal (#1413)\n\n`--json` / `--format json` always indented its streamed result. Agents and\nscripts read AS Inspect through pipes and redirects, where indentation carries no\ninformation: on real application results it added 16-45% model tokens\n(o200k proxy) and 25-73% bytes. The skill's CLI fallback uses `--json`.\n\nIndent only when stdout is a TTY, as `gh --json` does; piped or redirected\nJSON is compact. The JSON value, `jsonl`, `--filter-output`,\n`--full-output` and the token-window paths are unchanged. `jq .` restores\nindentation for files.\n\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
       "parents": ["de8fc6719596305b1d76204e6b052cf46d7e7fc3"],
       "authors": [
         {
@@ -1069,8 +1069,8 @@
     },
     {
       "sha": "79f6756239105164eac7aa5618844ffd9bdf41e5",
-      "subject": "docs(website): link the Discord community and REA on X (#1469)",
-      "body": "docs(website): link the Discord community and REA on X (#1469)\n\nAdd an X link beside the GitHub and Discord header icons on every content\npage, name the footer links \"Join the community\" and \"Follow us on X\", and\nclose the homepage with a \"Join the community\" section.\n\nOn narrow screens, pad the footer so the floating Top link no longer\ncovers its last row of links.\n\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+      "subject": "docs(website): link the Discord community and AS Inspect on X (#1469)",
+      "body": "docs(website): link the Discord community and AS Inspect on X (#1469)\n\nAdd an X link beside the GitHub and Discord header icons on every content\npage, name the footer links \"Join the community\" and \"Follow us on X\", and\nclose the homepage with a \"Join the community\" section.\n\nOn narrow screens, pad the footer so the floating Top link no longer\ncovers its last row of links.\n\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
       "parents": ["78e1308f49492011be448c9b35ce16d98d60c4ad"],
       "authors": [
         {
@@ -1499,7 +1499,7 @@
     {
       "sha": "f970b886aace516383caaa6d974f9df63faff340",
       "subject": "feat: add Hermes as a supported MCP client (#1403)",
-      "body": "feat: add Hermes as a supported MCP client (#1403)\n\n* feat: add Hermes as a supported MCP client\n\nHermes Agent reads stdio MCP servers from `mcp_servers.<name>` in\n`config.yaml`. REA had no Hermes client, so setup could not register it and\nHermes users had to wire the server up by hand.\n\n- SupportedClients: add the `hermes` format and client definition, resolving\n  the config path from HERMES_HOME, else the platform default that Hermes's own\n  resolver uses (LOCALAPPDATA/hermes on Windows, ~/.hermes elsewhere), including\n  HERMES_DATA_DIR_SUFFIX.\n- ClientConfigurationDocument: parse and serialize Hermes YAML, upserting the\n  rea entry into the parsed document so user comments and unrelated settings are\n  preserved; emit `enabled: true` since Hermes connects entries unless disabled.\n- ClientRegistrationStatus: forward the Hermes location variables so status\n  checks resolve the same path as setup.\n- Tests: cover path resolution on both platforms and the register/read/uninstall\n  round trip, and clear the Hermes location variables between tests.\n\n- delilah 🌸\n\n* docs: document the Hermes client and its config path\n\n- delilah 🌸\n\n* refactor(setup): resolve skill destinations per client\n\n* fix(setup): install Hermes skills in the active profile\n\n* fix(setup): identify each client skill action uniquely\n\n---------\n\nCo-authored-by: morluto <76467478+morluto@users.noreply.github.com>",
+      "body": "feat: add Hermes as a supported MCP client (#1403)\n\n* feat: add Hermes as a supported MCP client\n\nHermes Agent reads stdio MCP servers from `mcp_servers.<name>` in\n`config.yaml`. AS Inspect had no Hermes client, so setup could not register it and\nHermes users had to wire the server up by hand.\n\n- SupportedClients: add the `hermes` format and client definition, resolving\n  the config path from HERMES_HOME, else the platform default that Hermes's own\n  resolver uses (LOCALAPPDATA/hermes on Windows, ~/.hermes elsewhere), including\n  HERMES_DATA_DIR_SUFFIX.\n- ClientConfigurationDocument: parse and serialize Hermes YAML, upserting the\n  rea entry into the parsed document so user comments and unrelated settings are\n  preserved; emit `enabled: true` since Hermes connects entries unless disabled.\n- ClientRegistrationStatus: forward the Hermes location variables so status\n  checks resolve the same path as setup.\n- Tests: cover path resolution on both platforms and the register/read/uninstall\n  round trip, and clear the Hermes location variables between tests.\n\n- delilah 🌸\n\n* docs: document the Hermes client and its config path\n\n- delilah 🌸\n\n* refactor(setup): resolve skill destinations per client\n\n* fix(setup): install Hermes skills in the active profile\n\n* fix(setup): identify each client skill action uniquely\n\n---------\n\nCo-authored-by: morluto <76467478+morluto@users.noreply.github.com>",
       "parents": ["a0e5e9db2b9e3645295e1c060c01d1f24aa7e277"],
       "authors": [
         {
@@ -1921,8 +1921,8 @@
     },
     {
       "sha": "92741187ecb77674bd9c1f6f6ad9ebb21b32bbf9",
-      "subject": "docs: list all supported clients in the REA skill (#1523)",
-      "body": "docs: list all supported clients in the REA skill (#1523)\n\ndocs: include all supported clients in the REA skill\n\nCo-authored-by: Ysopwnable <161784452+N0zoM1z0@users.noreply.github.com>",
+      "subject": "docs: list all supported clients in the AS Inspect skill (#1523)",
+      "body": "docs: list all supported clients in the AS Inspect skill (#1523)\n\ndocs: include all supported clients in the AS Inspect skill\n\nCo-authored-by: Ysopwnable <161784452+N0zoM1z0@users.noreply.github.com>",
       "parents": ["5fdb0636b4734cabfa3147e8fcc94976c3bd8aa4"],
       "authors": [
         {
@@ -2604,7 +2604,7 @@
     {
       "sha": "de619bd33450a9869395eaeb25fe5c4d6e034e36",
       "subject": "fix(ida): canonicalize the headless workspace root before opening (#1481)",
-      "body": "fix(ida): canonicalize the headless workspace root before opening (#1481)\n\nOn macOS the default workspace root is os.tmpdir() under /var/folders,\nand /var is a symlink to /private/var. idalib-mcp reports the canonical\ninput path from idb_open/idb_list, while REA compared it against the\nuncanonicalized private copy with normalize(), so every headless IDA\nanalysis failed its identity check (surfacing as unreadable_output) and\nthe spawned idalib worker was never released.\n\nResolve the workspace root with realpath() when allocating the private\nworkspace so the input path REA sends already matches what upstream\nreports.\n\nCo-authored-by: Xingchuan Ma <xingchuan.ma@msn.com>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+      "body": "fix(ida): canonicalize the headless workspace root before opening (#1481)\n\nOn macOS the default workspace root is os.tmpdir() under /var/folders,\nand /var is a symlink to /private/var. idalib-mcp reports the canonical\ninput path from idb_open/idb_list, while AS Inspect compared it against the\nuncanonicalized private copy with normalize(), so every headless IDA\nanalysis failed its identity check (surfacing as unreadable_output) and\nthe spawned idalib worker was never released.\n\nResolve the workspace root with realpath() when allocating the private\nworkspace so the input path AS Inspect sends already matches what upstream\nreports.\n\nCo-authored-by: Xingchuan Ma <xingchuan.ma@msn.com>\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
       "parents": ["24d93376492d167fe7d96f6c10dee071b9ef363f"],
       "authors": [
         {
@@ -2819,7 +2819,7 @@
     {
       "sha": "fef6f730643dd60a80a109fc9751e1782b79ab4a",
       "subject": "feat(adb): complete ADB device support for Android reverse engineering (#1552)",
-      "body": "feat(adb): complete ADB device support for Android reverse engineering (#1552)\n\n* feat(adb): acquire installed APK sets from connected Android devices\n\nAdd a read-only ADB device-acquisition family over the caller's adb binary:\ninspect_adb_client, list_adb_devices, inspect_adb_device, list_adb_packages,\nand pull_adb_package, exposed through the CLI and MCP with shared admission,\nEvidence provenance (binary, version, serial, transport), and fixed argv\nvectors that never reach a shell.\n\npull_adb_package acquires the complete split set reported by pm path into a\npackage-named directory that must not exist, digesting every file with\nSHA-256 and keeping per-file failure reasons and partial coverage. Device\nkind is reported as an inference with its basis; getprop whitelisting keeps\nbuild identity bounded. REA installs nothing and never manages devices or\nemulators; the first device query may start the caller's local adb server,\nrecorded when observed.\n\nVerified against adb 34.0.5 on Linux with an Android 14 (API 34) x86_64\nemulator: full 224-package inventory, a real two-APK split set pulled with\nbyte-exact digests, and a 73.9 MB system-package pull. npm run verify:adb\nrecords the lane; parser goldens come from the same device. READMEs carry\nthe new row in every supported language.\n\n* feat(adb): complete the adb surface with observation, transfer, and lifecycle tools\n\nExtend the ADB family from five to twenty-four operations, all through\nfixed adb argument vectors with no shell exposure:\n\nObservation: read_adb_logcat (bounded dump, count/buffer/pid), inspect_adb_package\n(dumpsys package projection), list_adb_processes (ps -A), list_adb_directory\n(ls -la with kinds and symlink targets), list_adb_features (hex GL versions),\nlist_adb_services (AIDL slash-suffixed names), inspect_adb_display (wm size and\ndensity), inspect_adb_window (focus declarations), read_adb_setting (device-side\nnulls reported as such), capture_adb_screen (exec-out screencap with PNG\ndimensions), collect_adb_bugreport (digested device archive).\n\nTransfer and search: pull_adb_file and push_adb_file (device-side sha256sum\nverification, explicit overwrite authority), resolve_adb_packages (substring\npackage search with exact-match flag — the find step of an easy get).\n\nLifecycle for dynamic analysis, each declaring mutatesTarget:\ninstall_adb_package and uninstall_adb_package preserving the device's\nSuccess/Failure verdict, start_adb_app (resolve-activity then am start -W),\nstart_adb_activity (typed extras as --es/--ez/--ei/--el/--ef), and stop_adb_app\n(am force-stop).\n\nVerified end-to-end against adb 34.0.5 on Linux with an Android 14 (API 34)\nx86_64 emulator: 287 services, 92 features, split-set pulls with byte-exact\ndigests, verified push/pull roundtrip, sized screen capture, and the full\ninstall → resolve → start → observe-in-ps → force-stop → uninstall lifecycle.\nFixed a v-mode regex incompatibility in the settings key pattern and added\nargument descriptions required by the CLI catalog audit.\n\n* fix(adb): quote remote shell operands and protect captured output\n\n* test(adb): cover bugreport destinations containing spaces\n\n---------\n\nCo-authored-by: REA Contributor <contributor@rea.tools>\nCo-authored-by: morluto <76467478+morluto@users.noreply.github.com>",
+      "body": "feat(adb): complete ADB device support for Android reverse engineering (#1552)\n\n* feat(adb): acquire installed APK sets from connected Android devices\n\nAdd a read-only ADB device-acquisition family over the caller's adb binary:\ninspect_adb_client, list_adb_devices, inspect_adb_device, list_adb_packages,\nand pull_adb_package, exposed through the CLI and MCP with shared admission,\nEvidence provenance (binary, version, serial, transport), and fixed argv\nvectors that never reach a shell.\n\npull_adb_package acquires the complete split set reported by pm path into a\npackage-named directory that must not exist, digesting every file with\nSHA-256 and keeping per-file failure reasons and partial coverage. Device\nkind is reported as an inference with its basis; getprop whitelisting keeps\nbuild identity bounded. AS Inspect installs nothing and never manages devices or\nemulators; the first device query may start the caller's local adb server,\nrecorded when observed.\n\nVerified against adb 34.0.5 on Linux with an Android 14 (API 34) x86_64\nemulator: full 224-package inventory, a real two-APK split set pulled with\nbyte-exact digests, and a 73.9 MB system-package pull. npm run verify:adb\nrecords the lane; parser goldens come from the same device. READMEs carry\nthe new row in every supported language.\n\n* feat(adb): complete the adb surface with observation, transfer, and lifecycle tools\n\nExtend the ADB family from five to twenty-four operations, all through\nfixed adb argument vectors with no shell exposure:\n\nObservation: read_adb_logcat (bounded dump, count/buffer/pid), inspect_adb_package\n(dumpsys package projection), list_adb_processes (ps -A), list_adb_directory\n(ls -la with kinds and symlink targets), list_adb_features (hex GL versions),\nlist_adb_services (AIDL slash-suffixed names), inspect_adb_display (wm size and\ndensity), inspect_adb_window (focus declarations), read_adb_setting (device-side\nnulls reported as such), capture_adb_screen (exec-out screencap with PNG\ndimensions), collect_adb_bugreport (digested device archive).\n\nTransfer and search: pull_adb_file and push_adb_file (device-side sha256sum\nverification, explicit overwrite authority), resolve_adb_packages (substring\npackage search with exact-match flag — the find step of an easy get).\n\nLifecycle for dynamic analysis, each declaring mutatesTarget:\ninstall_adb_package and uninstall_adb_package preserving the device's\nSuccess/Failure verdict, start_adb_app (resolve-activity then am start -W),\nstart_adb_activity (typed extras as --es/--ez/--ei/--el/--ef), and stop_adb_app\n(am force-stop).\n\nVerified end-to-end against adb 34.0.5 on Linux with an Android 14 (API 34)\nx86_64 emulator: 287 services, 92 features, split-set pulls with byte-exact\ndigests, verified push/pull roundtrip, sized screen capture, and the full\ninstall → resolve → start → observe-in-ps → force-stop → uninstall lifecycle.\nFixed a v-mode regex incompatibility in the settings key pattern and added\nargument descriptions required by the CLI catalog audit.\n\n* fix(adb): quote remote shell operands and protect captured output\n\n* test(adb): cover bugreport destinations containing spaces\n\n---------\n\nCo-authored-by: AS Inspect Contributor <contributor@rea.tools>\nCo-authored-by: morluto <76467478+morluto@users.noreply.github.com>",
       "parents": ["efd81f977604a7b0ed55c2ee11f8b0da356d6c0f"],
       "authors": [
         {
@@ -2831,7 +2831,7 @@
           }
         },
         {
-          "name": "REA Contributor",
+          "name": "AS Inspect Contributor",
           "email": "contributor@rea.tools",
           "user": null
         },
@@ -2990,7 +2990,7 @@
     {
       "sha": "ded59689cebad45d2d7af7685266b9e9a1985593",
       "subject": "fix(javascript): accept the Wakaru 1.x release line and verify 1.14.0 (#1540)",
-      "body": "fix(javascript): accept the Wakaru 1.x release line and verify 1.14.0 (#1540)\n\n* fix(javascript): accept the Wakaru 1.x release line and verify 1.14.0\n\nExact --version equality rejected every Wakaru build except 1.13.0, and\nstrict report schemas rejected any added field, so each upstream release\nbroke recovery until REA re-pinned. Wakaru now documents that --version,\n--json and provenance.json change only by addition within a major version.\n\nAdmit ^1.13.0 with the verified/compatible split used for Binwalk and\nUnblob, report the observed version instead of the pinned constant, and\nadd a limitation for unverified releases. Parse reports with loose\nobjects and keep the reported module status as a string; path, identity,\nrange and file-set checks stay exact.\n\nMove the audited pin, submodule, CI binary and verifier to 1.14.0, and\ndocument where to get the binary from the refusal message.\n\n* fix(javascript): project known Wakaru warning fields\n\n---------\n\nCo-authored-by: morluto <76467478+morluto@users.noreply.github.com>",
+      "body": "fix(javascript): accept the Wakaru 1.x release line and verify 1.14.0 (#1540)\n\n* fix(javascript): accept the Wakaru 1.x release line and verify 1.14.0\n\nExact --version equality rejected every Wakaru build except 1.13.0, and\nstrict report schemas rejected any added field, so each upstream release\nbroke recovery until AS Inspect re-pinned. Wakaru now documents that --version,\n--json and provenance.json change only by addition within a major version.\n\nAdmit ^1.13.0 with the verified/compatible split used for Binwalk and\nUnblob, report the observed version instead of the pinned constant, and\nadd a limitation for unverified releases. Parse reports with loose\nobjects and keep the reported module status as a string; path, identity,\nrange and file-set checks stay exact.\n\nMove the audited pin, submodule, CI binary and verifier to 1.14.0, and\ndocument where to get the binary from the refusal message.\n\n* fix(javascript): project known Wakaru warning fields\n\n---------\n\nCo-authored-by: morluto <76467478+morluto@users.noreply.github.com>",
       "parents": ["0363e5a8e1be47f534c2fb7dfa26c579aa31ddd0"],
       "authors": [
         {
@@ -3015,7 +3015,7 @@
     {
       "sha": "749e58772a0b1dd72fbfc938a5135ba2a1c11538",
       "subject": "feat(jeb): add JEB engine provider over its MCP interface (#1536)",
-      "body": "feat(jeb): add JEB engine provider over its MCP interface (#1536)\n\n* feat(jeb): add JEB engine provider over its MCP interface\n\nAdd a bring-your-own JEB provider that serves project, unit, and\ndecompilation inspection from a caller-started JEB client speaking MCP\n(streamable HTTP, selected with REA_JEB_MCP_URL). Expose four provider-neutral\noperations through shared CLI/MCP workflows: inspect_jeb_client,\nopen_jeb_project, list_jeb_units, and decompile_jeb_item, each returning\nEvidence with engine identity, endpoint, and preserved refusal reasons.\n\nThe adapter keeps JEB's envelope semantics: success fields are parsed\nformat-aware at the boundary, message-only refusals become unsupported-target\nerrors with the engine's own reason, transport failures become availability\nfailures with recovery guidance, and unit pagination derives coverage from the\nengine's 100-item page cap. Explicit unknowns (implicitly selected unit,\nomitted filters) are reported instead of guessed.\n\nVerified against a real JEB 5.48.0 licensed build serving jeb-mcp-server 1.3.0\nheadless: client inspection, unit listing, and method decompilation were\nexercised through the CLI, MCP boundary, and scripts/verify-jeb.mjs.\nJEB 5.48.0 headless instances do not advertise open_project; the refusal is\npreserved and documented.\n\n* fix(jeb): verify against a real signed APK and fix CLI option surface\n\nVerify the provider against a locally built, v1/v2/v3-signed probe APK\n(binary manifest, classes.dex with a launcher activity) on JEB 5.48.0: the\nfull unit tree (apk, manifest, three certificate units, dex bytecode,\ndecompiler), wildcard-filtered and paginated unit listing with derived\ncoverage, parent-restricted listing, and launcher-activity method\ndecompilation through both CLI and MCP, including dexdec's inline\nconstant folding of the probe's obfuscated tag.\n\nMove list-jeb-units filter/pagination and decompile-jeb-item unit selection\nfrom positional arguments to options; the MCP schemas are unchanged.\n\n* fix(jeb): preserve engine refusals through the real MCP boundary\n\nTesting against the published Signal 8.30.3 universal APK exposed a boundary\nbug the scripted provider tests missed: decodeJebToolResult raised a protocol\nerror for isError results before the provider could map JEB's\n{success:false, message} envelope, so real engine refusals surfaced as\nunreadable output instead of the engine's own reason. Decode refusal\nenvelopes like any structured result and let the provider preserve the\nreason; cover the decoder directly, including contentless and unparseable\nresults.\n\nSignal verification: full 109 MB R8/Kotlin/Compose APK with four signature\nschemes and native arm64 ELF units parsed; MainActivity.onCreate and R8\nsynthetic lambdas decompiled through CLI and MCP; paginated, filtered, and\nparent-restricted unit listing; refusal path confirmed on the live engine.\n\n* docs(jeb): record Flutter Gallery verification on the real-engine lane\n\nVerify the provider against the official Flutter Gallery 2.9.2 release APK\n(112 MB): per-ABI libapp.so Dart AOT snapshot images analyzed as native code\nwith 75k methods on arm64, snapshot internals and wrapper methods decompiled\nthrough both CLI and MCP with explicit unit selection, decoded manifest, and\nfiltered native-library unit discovery. Note that JEB 5.48.0 headless does\nnot expose the dedicated Dart snapshot processor or run_script; both remain\nGUI-only engine surfaces.\n\n* docs(jeb): translate the README JEB row for every supported language\n\nThe JEB row was inserted in English across all translated READMEs; each now\ncarries its own label, capability summary, requirements, and guide link\nfollowing that language's Android-row conventions.\n\n* fix(jeb): enforce local endpoints and preserve cancellation\n\n* fix(jeb): refuse redirects across the local MCP boundary\n\n---------\n\nCo-authored-by: REA Contributor <contributor@rea.tools>\nCo-authored-by: morluto <76467478+morluto@users.noreply.github.com>",
+      "body": "feat(jeb): add JEB engine provider over its MCP interface (#1536)\n\n* feat(jeb): add JEB engine provider over its MCP interface\n\nAdd a bring-your-own JEB provider that serves project, unit, and\ndecompilation inspection from a caller-started JEB client speaking MCP\n(streamable HTTP, selected with REA_JEB_MCP_URL). Expose four provider-neutral\noperations through shared CLI/MCP workflows: inspect_jeb_client,\nopen_jeb_project, list_jeb_units, and decompile_jeb_item, each returning\nEvidence with engine identity, endpoint, and preserved refusal reasons.\n\nThe adapter keeps JEB's envelope semantics: success fields are parsed\nformat-aware at the boundary, message-only refusals become unsupported-target\nerrors with the engine's own reason, transport failures become availability\nfailures with recovery guidance, and unit pagination derives coverage from the\nengine's 100-item page cap. Explicit unknowns (implicitly selected unit,\nomitted filters) are reported instead of guessed.\n\nVerified against a real JEB 5.48.0 licensed build serving jeb-mcp-server 1.3.0\nheadless: client inspection, unit listing, and method decompilation were\nexercised through the CLI, MCP boundary, and scripts/verify-jeb.mjs.\nJEB 5.48.0 headless instances do not advertise open_project; the refusal is\npreserved and documented.\n\n* fix(jeb): verify against a real signed APK and fix CLI option surface\n\nVerify the provider against a locally built, v1/v2/v3-signed probe APK\n(binary manifest, classes.dex with a launcher activity) on JEB 5.48.0: the\nfull unit tree (apk, manifest, three certificate units, dex bytecode,\ndecompiler), wildcard-filtered and paginated unit listing with derived\ncoverage, parent-restricted listing, and launcher-activity method\ndecompilation through both CLI and MCP, including dexdec's inline\nconstant folding of the probe's obfuscated tag.\n\nMove list-jeb-units filter/pagination and decompile-jeb-item unit selection\nfrom positional arguments to options; the MCP schemas are unchanged.\n\n* fix(jeb): preserve engine refusals through the real MCP boundary\n\nTesting against the published Signal 8.30.3 universal APK exposed a boundary\nbug the scripted provider tests missed: decodeJebToolResult raised a protocol\nerror for isError results before the provider could map JEB's\n{success:false, message} envelope, so real engine refusals surfaced as\nunreadable output instead of the engine's own reason. Decode refusal\nenvelopes like any structured result and let the provider preserve the\nreason; cover the decoder directly, including contentless and unparseable\nresults.\n\nSignal verification: full 109 MB R8/Kotlin/Compose APK with four signature\nschemes and native arm64 ELF units parsed; MainActivity.onCreate and R8\nsynthetic lambdas decompiled through CLI and MCP; paginated, filtered, and\nparent-restricted unit listing; refusal path confirmed on the live engine.\n\n* docs(jeb): record Flutter Gallery verification on the real-engine lane\n\nVerify the provider against the official Flutter Gallery 2.9.2 release APK\n(112 MB): per-ABI libapp.so Dart AOT snapshot images analyzed as native code\nwith 75k methods on arm64, snapshot internals and wrapper methods decompiled\nthrough both CLI and MCP with explicit unit selection, decoded manifest, and\nfiltered native-library unit discovery. Note that JEB 5.48.0 headless does\nnot expose the dedicated Dart snapshot processor or run_script; both remain\nGUI-only engine surfaces.\n\n* docs(jeb): translate the README JEB row for every supported language\n\nThe JEB row was inserted in English across all translated READMEs; each now\ncarries its own label, capability summary, requirements, and guide link\nfollowing that language's Android-row conventions.\n\n* fix(jeb): enforce local endpoints and preserve cancellation\n\n* fix(jeb): refuse redirects across the local MCP boundary\n\n---------\n\nCo-authored-by: AS Inspect Contributor <contributor@rea.tools>\nCo-authored-by: morluto <76467478+morluto@users.noreply.github.com>",
       "parents": ["ded59689cebad45d2d7af7685266b9e9a1985593"],
       "authors": [
         {
@@ -3027,7 +3027,7 @@
           }
         },
         {
-          "name": "REA Contributor",
+          "name": "AS Inspect Contributor",
           "email": "contributor@rea.tools",
           "user": null
         },
@@ -3045,7 +3045,7 @@
     {
       "sha": "96fd98cce06e1f93b027487d38048e56c05181bd",
       "subject": "feat(apktool): decode Android resource tables through a caller-supplied launcher (#1556)",
-      "body": "feat(apktool): decode Android resource tables through a caller-supplied launcher (#1556)\n\n* feat(apktool): decode Android resource tables through a caller-supplied launcher\n\nAdd an Apktool family with two operations over the caller's apktool\nlauncher (REA_APKTOOL_COMMAND, absolute, or apktool on PATH):\n\n- inspect_apktool_client: resolved launcher, selection source, and\n  version; decodes nothing.\n- decode_android_resources: apktool d --no-src in a provider-owned\n  workspace that is removed before the result returns. Projects the\n  decoded AndroidManifest.xml (bounded at 512 KiB), apktool.yml version\n  and SDK facts exactly as printed, string resources verbatim (default or\n  one locale, bounded at 2000 entries, nested-markup entries counted as\n  unparsed), available string locales, and the decoded file count with a\n  hard cap. The target APK is digested with SHA-256 before decoding so\n  Evidence binds the observation to the exact input.\n\nSmali production is skipped by design: Java-source recovery belongs to\nthe JADX family. Workspace cleanup happens before results return; an\nunremovable workspace is named in the limitations instead of abandoned.\n\nVerified against apktool 2.7.0-dirty (Debian packaging) on Linux with\nOpenJDK 25 against a signed aapt2-built probe APK with two resource\nlocales: launcher version, on-disk digest agreement, metadata projection,\nmanifest package agreement, and both string tables (default and de).\nParser goldens come from the same decode. READMEs carry the new\n'Android resources' row in every supported language.\n\n* fix(apktool): own snapshots and bound decoded resource reads\n\n* docs(apktool): describe owned resources and bounded projection\n\n---------\n\nCo-authored-by: REA Contributor <contributor@rea.tools>\nCo-authored-by: morluto <76467478+morluto@users.noreply.github.com>",
+      "body": "feat(apktool): decode Android resource tables through a caller-supplied launcher (#1556)\n\n* feat(apktool): decode Android resource tables through a caller-supplied launcher\n\nAdd an Apktool family with two operations over the caller's apktool\nlauncher (REA_APKTOOL_COMMAND, absolute, or apktool on PATH):\n\n- inspect_apktool_client: resolved launcher, selection source, and\n  version; decodes nothing.\n- decode_android_resources: apktool d --no-src in a provider-owned\n  workspace that is removed before the result returns. Projects the\n  decoded AndroidManifest.xml (bounded at 512 KiB), apktool.yml version\n  and SDK facts exactly as printed, string resources verbatim (default or\n  one locale, bounded at 2000 entries, nested-markup entries counted as\n  unparsed), available string locales, and the decoded file count with a\n  hard cap. The target APK is digested with SHA-256 before decoding so\n  Evidence binds the observation to the exact input.\n\nSmali production is skipped by design: Java-source recovery belongs to\nthe JADX family. Workspace cleanup happens before results return; an\nunremovable workspace is named in the limitations instead of abandoned.\n\nVerified against apktool 2.7.0-dirty (Debian packaging) on Linux with\nOpenJDK 25 against a signed aapt2-built probe APK with two resource\nlocales: launcher version, on-disk digest agreement, metadata projection,\nmanifest package agreement, and both string tables (default and de).\nParser goldens come from the same decode. READMEs carry the new\n'Android resources' row in every supported language.\n\n* fix(apktool): own snapshots and bound decoded resource reads\n\n* docs(apktool): describe owned resources and bounded projection\n\n---------\n\nCo-authored-by: AS Inspect Contributor <contributor@rea.tools>\nCo-authored-by: morluto <76467478+morluto@users.noreply.github.com>",
       "parents": ["749e58772a0b1dd72fbfc938a5135ba2a1c11538"],
       "authors": [
         {
@@ -3057,7 +3057,7 @@
           }
         },
         {
-          "name": "REA Contributor",
+          "name": "AS Inspect Contributor",
           "email": "contributor@rea.tools",
           "user": null
         },
@@ -3075,7 +3075,7 @@
     {
       "sha": "bddddccdee3129d0b1b11e32b751be2b6d501c23",
       "subject": "feat(native): admit bounded MIPS ELF analysis through Ghidra (#1362)",
-      "body": "feat(native): admit bounded MIPS ELF analysis through Ghidra (#1362)\n\n* feat(native): admit bounded MIPS ELF analysis through Ghidra\n\nRetain MIPS ELF identity and interpretation through Evidence and snapshots.\nKeep provider admission bounded to ELF32 ET_EXEC o32 MIPS32r2, without\nimplicitly widening Hopper, IDA or Windows P0 coverage. Add source-owned\nfixtures and an optional real-provider verifier; real Ghidra verification\nremains pending in this contribution environment.\n\nRefs #718\n\n* fix(ghidra): bound MIPS floating-point mode admission\n\nReject explicit EF_MIPS_FP64 and EF_MIPS_NAN2008 declarations until their\nsemantics have a real-provider verification lane. Add PSP PRX/Allegrex,\no64/EABI and floating-point-mode refusal regressions. Document that the\nheader gate is not a full .MIPS.abiflags check and advance the profile lane\nidentity to invalidate older interpretation bindings.\n\nValidation: 24 standalone checks against the transpiled production profile\nmodule passed; the two new flag cases failed before this change. Clang 17\nand LLD compiled the source-owned fixture for both endian targets. The\ncomplete Vitest/typecheck suite and real Ghidra verification remain pending.\n\nRefs morluto/rea#718; PSP support remains follow-up morluto/rea#1330.\n\n* fix(native): validate MIPS ABI records before Ghidra admission\n\nRead bounded ELF32 PT_MIPS_ABIFLAGS and SHT_MIPS_ABIFLAGS records through\nthe already-open target handle. Preserve declared ABI fields, reject\nconflicting/duplicate/truncated records, and keep missing records unknown.\nWire inspection into target resolution before provider selection. Require\ncompatible declarations for the deliberately narrow Ghidra lane and bind\nall ABI fields into profile identity (v3) for snapshot invalidation.\n\nClang 17 produced eight source-owned fixtures spanning both byte orders\nand FPXX/FP32/FP64/soft-float modes with identical ELF header flags. The\nnew reader and policy distinguish them. 24 focused regression test bodies\npassed after TypeScript transpilation using node:test in place of Vitest;\nstrict isolated TypeScript checking of the reader and target/result types\npassed. These are limited checks, not full Vitest/project typechecking or\nreal-Ghidra verification, which remain pending.\n\nAdvances morluto/rea#718. PSP/Allegrex remains morluto/rea#1330 follow-up.\n\n* fix(native): repair MIPS integration boundaries and test resolver behavior\n\nKeep ELF targets out of Hopper Mach-O preparation and scope existing PE fixture types correctly. Move ABI tests into the filesystem boundary lane, use shared cleanup, add resolver regressions, apply the pinned formatter, and register the real MIPS verifier through the existing package-command pattern. Validated with repository-pinned Node/npm, check:ci, actual focused Vitest, discovery and docs:check. Real Ghidra conformance remains pending.\n\n* fix(test): honor caller-selected JDK in real MIPS verification\n\n* test(native): strengthen MIPS Ghidra conformance\n\nCross-check the source-owned fixture with bounded GNU readelf inspection, compare production ELF/ABI interpretation and independent symbol addresses, and verify effective Ghidra language/compiler identity through existing public operations. Add a source-owned fixed-encoding probe for immediate and conditional branch checks plus global/string byte assertions.\n\nAdd 16 assertion/producer-boundary regression cases without widening production admission, changing provider contracts, or introducing proprietary dependencies. Local focused suite: 99 passed, one existing root-permission test skipped. Typecheck, lint/module boundaries, formatting and 700-file discovery pass; full hosted checks and real Ghidra verification remain pending for this checkpoint.\n\n* fix(ghidra): preserve native-tool architecture checks after MIPS integration\n\nThe conflict-free upstream merge failed TypeScript compilation because includes on the union of MIPS-only and other architecture arrays requires never. Use equality-based membership without casts or changing accepted native hosts. Extend the existing native-decompiler rejection table with a MIPS executable at a Linux x64 tool path; retain upstream FAT and unknown-header behavior. Hosted verification follows this commit; no success is claimed yet.\n\n---------\n\nCo-authored-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>",
+      "body": "feat(native): admit bounded MIPS ELF analysis through Ghidra (#1362)\n\n* feat(native): admit bounded MIPS ELF analysis through Ghidra\n\nRetain MIPS ELF identity and interpretation through Evidence and snapshots.\nKeep provider admission bounded to ELF32 ET_EXEC o32 MIPS32r2, without\nimplicitly widening Hopper, IDA or Windows P0 coverage. Add source-owned\nfixtures and an optional real-provider verifier; real Ghidra verification\nremains pending in this contribution environment.\n\nRefs #718\n\n* fix(ghidra): bound MIPS floating-point mode admission\n\nReject explicit EF_MIPS_FP64 and EF_MIPS_NAN2008 declarations until their\nsemantics have a real-provider verification lane. Add PSP PRX/Allegrex,\no64/EABI and floating-point-mode refusal regressions. Document that the\nheader gate is not a full .MIPS.abiflags check and advance the profile lane\nidentity to invalidate older interpretation bindings.\n\nValidation: 24 standalone checks against the transpiled production profile\nmodule passed; the two new flag cases failed before this change. Clang 17\nand LLD compiled the source-owned fixture for both endian targets. The\ncomplete Vitest/typecheck suite and real Ghidra verification remain pending.\n\nRefs abusafyan-official/AS-Inspect#718; PSP support remains follow-up abusafyan-official/AS-Inspect#1330.\n\n* fix(native): validate MIPS ABI records before Ghidra admission\n\nRead bounded ELF32 PT_MIPS_ABIFLAGS and SHT_MIPS_ABIFLAGS records through\nthe already-open target handle. Preserve declared ABI fields, reject\nconflicting/duplicate/truncated records, and keep missing records unknown.\nWire inspection into target resolution before provider selection. Require\ncompatible declarations for the deliberately narrow Ghidra lane and bind\nall ABI fields into profile identity (v3) for snapshot invalidation.\n\nClang 17 produced eight source-owned fixtures spanning both byte orders\nand FPXX/FP32/FP64/soft-float modes with identical ELF header flags. The\nnew reader and policy distinguish them. 24 focused regression test bodies\npassed after TypeScript transpilation using node:test in place of Vitest;\nstrict isolated TypeScript checking of the reader and target/result types\npassed. These are limited checks, not full Vitest/project typechecking or\nreal-Ghidra verification, which remain pending.\n\nAdvances abusafyan-official/AS-Inspect#718. PSP/Allegrex remains abusafyan-official/AS-Inspect#1330 follow-up.\n\n* fix(native): repair MIPS integration boundaries and test resolver behavior\n\nKeep ELF targets out of Hopper Mach-O preparation and scope existing PE fixture types correctly. Move ABI tests into the filesystem boundary lane, use shared cleanup, add resolver regressions, apply the pinned formatter, and register the real MIPS verifier through the existing package-command pattern. Validated with repository-pinned Node/npm, check:ci, actual focused Vitest, discovery and docs:check. Real Ghidra conformance remains pending.\n\n* fix(test): honor caller-selected JDK in real MIPS verification\n\n* test(native): strengthen MIPS Ghidra conformance\n\nCross-check the source-owned fixture with bounded GNU readelf inspection, compare production ELF/ABI interpretation and independent symbol addresses, and verify effective Ghidra language/compiler identity through existing public operations. Add a source-owned fixed-encoding probe for immediate and conditional branch checks plus global/string byte assertions.\n\nAdd 16 assertion/producer-boundary regression cases without widening production admission, changing provider contracts, or introducing proprietary dependencies. Local focused suite: 99 passed, one existing root-permission test skipped. Typecheck, lint/module boundaries, formatting and 700-file discovery pass; full hosted checks and real Ghidra verification remain pending for this checkpoint.\n\n* fix(ghidra): preserve native-tool architecture checks after MIPS integration\n\nThe conflict-free upstream merge failed TypeScript compilation because includes on the union of MIPS-only and other architecture arrays requires never. Use equality-based membership without casts or changing accepted native hosts. Extend the existing native-decompiler rejection table with a MIPS executable at a Linux x64 tool path; retain upstream FAT and unknown-header behavior. Hosted verification follows this commit; no success is claimed yet.\n\n---------\n\nCo-authored-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>",
       "parents": ["96fd98cce06e1f93b027487d38048e56c05181bd"],
       "authors": [
         {
@@ -6463,7 +6463,7 @@
     {
       "sha": "ea06264a5656ef4b4f52058895030f89d799d7ff",
       "subject": "docs(website): list the setup guide first on the Guides page (#1688)",
-      "body": "docs(website): list the setup guide first on the Guides page (#1688)\n\nMove the \"Set up REA\" entry ahead of the native, JavaScript and browser\nguides so new readers see setup before the worked examples.\n\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+      "body": "docs(website): list the setup guide first on the Guides page (#1688)\n\nMove the \"Set up AS Inspect\" entry ahead of the native, JavaScript and browser\nguides so new readers see setup before the worked examples.\n\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
       "parents": ["59b4a3c319fc6f617f20d5023ff3e1526288d485"],
       "authors": [
         {
@@ -6505,7 +6505,7 @@
     {
       "sha": "92dac97102190395613c868b1582efc8a4f054c8",
       "subject": "docs(website): add beginner help to the native analysis guide (#1689)",
-      "body": "docs(website): add beginner help to the native analysis guide (#1689)\n\nAdd a short glossary, an analysis-tool chooser linked to native setup,\na note that REA does not include DX-Ball, and help for copying a file's\nfull path.\n\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+      "body": "docs(website): add beginner help to the native analysis guide (#1689)\n\nAdd a short glossary, an analysis-tool chooser linked to native setup,\na note that AS Inspect does not include DX-Ball, and help for copying a file's\nfull path.\n\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
       "parents": ["89ea2cad1977b73a4ddf5818d54f5bc51cdae2b6"],
       "authors": [
         {
@@ -6600,7 +6600,7 @@
     {
       "number": 1303,
       "title": "feat(ghidra): support native PE DLLs on Windows",
-      "url": "https://github.com/morluto/rea/pull/1303",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1303",
       "author": {
         "login": "kvalls",
         "__typename": "User"
@@ -6611,21 +6611,21 @@
       "issues": [
         {
           "number": 1290,
-          "url": "https://github.com/morluto/rea/issues/1290",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1290",
           "author": {
             "login": "kvalls",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
     },
     {
       "number": 1341,
-      "title": "chore(main): release rea-agents 6.3.0",
-      "url": "https://github.com/morluto/rea/pull/1341",
+      "title": "chore(main): release as-inspect-agents 6.3.0",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1341",
       "author": {
         "login": "github-actions",
         "__typename": "Bot"
@@ -6636,46 +6636,46 @@
       "issues": [
         {
           "number": 1192,
-          "url": "https://github.com/morluto/rea/issues/1192",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1192",
           "author": {
             "login": "coygeek",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         },
         {
           "number": 1329,
-          "url": "https://github.com/morluto/rea/issues/1329",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1329",
           "author": {
             "login": "commit-regrets",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         },
         {
           "number": 1331,
-          "url": "https://github.com/morluto/rea/issues/1331",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1331",
           "author": {
             "login": "jopemachine",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         },
         {
           "number": 1364,
-          "url": "https://github.com/morluto/rea/issues/1364",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1364",
           "author": {
             "login": "N0zoM1z0",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -6683,7 +6683,7 @@
     {
       "number": 1345,
       "title": "feat(native): inspect oversized retained function dossiers via bounded views",
-      "url": "https://github.com/morluto/rea/pull/1345",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1345",
       "author": {
         "login": "jhuang-tw",
         "__typename": "User"
@@ -6696,7 +6696,7 @@
     {
       "number": 1349,
       "title": "docs: celebrate 50,000 GitHub stars 🎉",
-      "url": "https://github.com/morluto/rea/pull/1349",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1349",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -6709,7 +6709,7 @@
     {
       "number": 1362,
       "title": "feat(native): admit bounded MIPS ELF analysis through Ghidra",
-      "url": "https://github.com/morluto/rea/pull/1362",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1362",
       "author": {
         "login": "jaelliot",
         "__typename": "User"
@@ -6720,13 +6720,13 @@
       "issues": [
         {
           "number": 718,
-          "url": "https://github.com/morluto/rea/issues/718",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/718",
           "author": {
             "login": "N0zoM1z0",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -6734,7 +6734,7 @@
     {
       "number": 1368,
       "title": "fix(javascript): scan direct returns without recursive stack growth",
-      "url": "https://github.com/morluto/rea/pull/1368",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1368",
       "author": {
         "login": "rudycelekli",
         "__typename": "User"
@@ -6747,7 +6747,7 @@
     {
       "number": 1376,
       "title": "feat(setup): add native Pi client support",
-      "url": "https://github.com/morluto/rea/pull/1376",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1376",
       "author": {
         "login": "rasatpetabit",
         "__typename": "User"
@@ -6760,7 +6760,7 @@
     {
       "number": 1378,
       "title": "fix(apple): scope keyed archive traversal to the selection",
-      "url": "https://github.com/morluto/rea/pull/1378",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1378",
       "author": {
         "login": "rudycelekli",
         "__typename": "User"
@@ -6773,7 +6773,7 @@
     {
       "number": 1382,
       "title": "fix(ghidra): keep the cross-format branch callee multi-block",
-      "url": "https://github.com/morluto/rea/pull/1382",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1382",
       "author": {
         "login": "BaaRai",
         "__typename": "User"
@@ -6786,7 +6786,7 @@
     {
       "number": 1386,
       "title": "fix(javascript): handle oversized inline source maps",
-      "url": "https://github.com/morluto/rea/pull/1386",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1386",
       "author": {
         "login": "cold-atom",
         "__typename": "User"
@@ -6797,13 +6797,13 @@
       "issues": [
         {
           "number": 1380,
-          "url": "https://github.com/morluto/rea/issues/1380",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1380",
           "author": {
             "login": "KadirJeager",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -6811,7 +6811,7 @@
     {
       "number": 1390,
       "title": "fix(javascript): bound member-mutation paths through reassignment loops",
-      "url": "https://github.com/morluto/rea/pull/1390",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1390",
       "author": {
         "login": "marnixpluim",
         "__typename": "User"
@@ -6822,13 +6822,13 @@
       "issues": [
         {
           "number": 1401,
-          "url": "https://github.com/morluto/rea/issues/1401",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1401",
           "author": {
             "login": "N0zoM1z0",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -6836,7 +6836,7 @@
     {
       "number": 1391,
       "title": "fix(javascript): recognize Electron APIs through renamed bindings",
-      "url": "https://github.com/morluto/rea/pull/1391",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1391",
       "author": {
         "login": "marnixpluim",
         "__typename": "User"
@@ -6849,7 +6849,7 @@
     {
       "number": 1393,
       "title": "fix(javascript): stop reading media preload attributes as Electron preloads",
-      "url": "https://github.com/morluto/rea/pull/1393",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1393",
       "author": {
         "login": "marnixpluim",
         "__typename": "User"
@@ -6862,7 +6862,7 @@
     {
       "number": 1395,
       "title": "fix(cli): stop advertising multi-letter single-dash option aliases",
-      "url": "https://github.com/morluto/rea/pull/1395",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1395",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -6875,7 +6875,7 @@
     {
       "number": 1396,
       "title": "fix(browser): classify selected web trace file failures by cause",
-      "url": "https://github.com/morluto/rea/pull/1396",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1396",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -6888,7 +6888,7 @@
     {
       "number": 1397,
       "title": "fix(cli): accept JSON files for web capture and screenshot comparisons",
-      "url": "https://github.com/morluto/rea/pull/1397",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1397",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -6901,7 +6901,7 @@
     {
       "number": 1400,
       "title": "fix(electron): support packaged app.asar pages and rewritten unpacked companions",
-      "url": "https://github.com/morluto/rea/pull/1400",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1400",
       "author": {
         "login": "suninrain086",
         "__typename": "User"
@@ -6914,7 +6914,7 @@
     {
       "number": 1402,
       "title": "perf(evidence): stop copying normalized results into raw_result",
-      "url": "https://github.com/morluto/rea/pull/1402",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1402",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -6927,7 +6927,7 @@
     {
       "number": 1403,
       "title": "feat: add Hermes as a supported MCP client",
-      "url": "https://github.com/morluto/rea/pull/1403",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1403",
       "author": {
         "login": "zaydiscold",
         "__typename": "User"
@@ -6940,7 +6940,7 @@
     {
       "number": 1404,
       "title": "perf(native): record pwntools diagnostics once in their Evidence",
-      "url": "https://github.com/morluto/rea/pull/1404",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1404",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -6953,7 +6953,7 @@
     {
       "number": 1405,
       "title": "perf(hopper): stop repeating Hopper replies as raw_result",
-      "url": "https://github.com/morluto/rea/pull/1405",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1405",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -6966,7 +6966,7 @@
     {
       "number": 1407,
       "title": "fix(javascript)!: stop copying literals into semantic metadata",
-      "url": "https://github.com/morluto/rea/pull/1407",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1407",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -6979,7 +6979,7 @@
     {
       "number": 1408,
       "title": "fix(javascript): retain shorter literal metadata encodings",
-      "url": "https://github.com/morluto/rea/pull/1408",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1408",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -6992,7 +6992,7 @@
     {
       "number": 1410,
       "title": "perf(javascript): aggregate semantic family coverage once",
-      "url": "https://github.com/morluto/rea/pull/1410",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1410",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -7005,7 +7005,7 @@
     {
       "number": 1413,
       "title": "perf(cli): write compact JSON when output is not a terminal",
-      "url": "https://github.com/morluto/rea/pull/1413",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1413",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -7018,7 +7018,7 @@
     {
       "number": 1415,
       "title": "feat(clients): register Qwen Code during setup",
-      "url": "https://github.com/morluto/rea/pull/1415",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1415",
       "author": {
         "login": "yiliang114",
         "__typename": "User"
@@ -7029,13 +7029,13 @@
       "issues": [
         {
           "number": 1409,
-          "url": "https://github.com/morluto/rea/issues/1409",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1409",
           "author": {
             "login": "yiliang114",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -7043,7 +7043,7 @@
     {
       "number": 1419,
       "title": "fix(ghidra): clear wrong no-return flags before serving a session",
-      "url": "https://github.com/morluto/rea/pull/1419",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1419",
       "author": {
         "login": "JonahSimon",
         "__typename": "User"
@@ -7056,7 +7056,7 @@
     {
       "number": 1420,
       "title": "docs: correct stale logging, Ghidra host, and example path statements",
-      "url": "https://github.com/morluto/rea/pull/1420",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1420",
       "author": {
         "login": "Fazmin",
         "__typename": "User"
@@ -7069,7 +7069,7 @@
     {
       "number": 1422,
       "title": "docs: correct host requirements in the README analysis tables",
-      "url": "https://github.com/morluto/rea/pull/1422",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1422",
       "author": {
         "login": "Fazmin",
         "__typename": "User"
@@ -7082,7 +7082,7 @@
     {
       "number": 1423,
       "title": "fix(javascript)!: avoid endpoint payload copies in graph metadata",
-      "url": "https://github.com/morluto/rea/pull/1423",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1423",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -7095,7 +7095,7 @@
     {
       "number": 1424,
       "title": "fix(javascript): unify package resolution and resolve exact exports subpaths",
-      "url": "https://github.com/morluto/rea/pull/1424",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1424",
       "author": {
         "login": "AWUQAQ",
         "__typename": "User"
@@ -7106,13 +7106,13 @@
       "issues": [
         {
           "number": 1365,
-          "url": "https://github.com/morluto/rea/issues/1365",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1365",
           "author": {
             "login": "akshitkhokhani",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -7120,7 +7120,7 @@
     {
       "number": 1425,
       "title": "fix(validation): retain unmatched union correction details",
-      "url": "https://github.com/morluto/rea/pull/1425",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1425",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -7131,13 +7131,13 @@
       "issues": [
         {
           "number": 1421,
-          "url": "https://github.com/morluto/rea/issues/1421",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1421",
           "author": {
             "login": "N0zoM1z0",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -7145,7 +7145,7 @@
     {
       "number": 1426,
       "title": "fix(hopper): treat a directory launcher path as missing",
-      "url": "https://github.com/morluto/rea/pull/1426",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1426",
       "author": {
         "login": "Fazmin",
         "__typename": "User"
@@ -7158,7 +7158,7 @@
     {
       "number": 1427,
       "title": "fix(javascript)!: avoid event payload copies in graph metadata",
-      "url": "https://github.com/morluto/rea/pull/1427",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1427",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -7171,7 +7171,7 @@
     {
       "number": 1429,
       "title": "docs(skill): save CLI application Evidence and read a summary view",
-      "url": "https://github.com/morluto/rea/pull/1429",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1429",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -7184,7 +7184,7 @@
     {
       "number": 1430,
       "title": "perf(native): record macOS command provenance once in its Evidence",
-      "url": "https://github.com/morluto/rea/pull/1430",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1430",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -7197,7 +7197,7 @@
     {
       "number": 1433,
       "title": "perf(mcp): reuse output validators across catalog refreshes",
-      "url": "https://github.com/morluto/rea/pull/1433",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1433",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -7210,7 +7210,7 @@
     {
       "number": 1434,
       "title": "perf(javascript): index change-graph nodes once per comparison",
-      "url": "https://github.com/morluto/rea/pull/1434",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1434",
       "author": {
         "login": "keemsisi",
         "__typename": "User"
@@ -7223,7 +7223,7 @@
     {
       "number": 1436,
       "title": "test(native): verify macOS provenance through real CLI and MCP",
-      "url": "https://github.com/morluto/rea/pull/1436",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1436",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -7236,7 +7236,7 @@
     {
       "number": 1437,
       "title": "fix(javascript): preserve effects through yielded array references",
-      "url": "https://github.com/morluto/rea/pull/1437",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1437",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -7247,13 +7247,13 @@
       "issues": [
         {
           "number": 1428,
-          "url": "https://github.com/morluto/rea/issues/1428",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1428",
           "author": {
             "login": "CassieFox23",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -7261,7 +7261,7 @@
     {
       "number": 1438,
       "title": "fix(native): preserve compact reference provenance",
-      "url": "https://github.com/morluto/rea/pull/1438",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1438",
       "author": {
         "login": "JosephDemarest",
         "__typename": "User"
@@ -7274,7 +7274,7 @@
     {
       "number": 1439,
       "title": "perf(cli): defer Playwright and isomorphic-git until a command needs them",
-      "url": "https://github.com/morluto/rea/pull/1439",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1439",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -7287,7 +7287,7 @@
     {
       "number": 1440,
       "title": "docs(process): verify independent full-report hashing budgets",
-      "url": "https://github.com/morluto/rea/pull/1440",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1440",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -7298,13 +7298,13 @@
       "issues": [
         {
           "number": 1251,
-          "url": "https://github.com/morluto/rea/issues/1251",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1251",
           "author": {
             "login": "N0zoM1z0",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -7312,7 +7312,7 @@
     {
       "number": 1443,
       "title": "test(android): retain incomplete cleanup failure reasons",
-      "url": "https://github.com/morluto/rea/pull/1443",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1443",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -7325,7 +7325,7 @@
     {
       "number": 1444,
       "title": "fix(javascript): stop replaying earlier writes for each object property write",
-      "url": "https://github.com/morluto/rea/pull/1444",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1444",
       "author": {
         "login": "zeynelacikgoez",
         "__typename": "User"
@@ -7338,7 +7338,7 @@
     {
       "number": 1445,
       "title": "fix(javascript): invalidate references stored through property targets",
-      "url": "https://github.com/morluto/rea/pull/1445",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1445",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -7349,13 +7349,13 @@
       "issues": [
         {
           "number": 1442,
-          "url": "https://github.com/morluto/rea/issues/1442",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1442",
           "author": {
             "login": "CassieFox23",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -7363,7 +7363,7 @@
     {
       "number": 1448,
       "title": "test(javascript): reuse comparison node fixtures",
-      "url": "https://github.com/morluto/rea/pull/1448",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1448",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -7374,13 +7374,13 @@
       "issues": [
         {
           "number": 1446,
-          "url": "https://github.com/morluto/rea/issues/1446",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1446",
           "author": {
             "login": "N0zoM1z0",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -7388,7 +7388,7 @@
     {
       "number": 1450,
       "title": "perf(process): stop padding rendered terminal lines to full width",
-      "url": "https://github.com/morluto/rea/pull/1450",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1450",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -7401,7 +7401,7 @@
     {
       "number": 1452,
       "title": "docs(mcp): record real Windows first-query recovery",
-      "url": "https://github.com/morluto/rea/pull/1452",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1452",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -7414,7 +7414,7 @@
     {
       "number": 1455,
       "title": "docs: add Italian (it) README translation",
-      "url": "https://github.com/morluto/rea/pull/1455",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1455",
       "author": {
         "login": "Franky100-pig",
         "__typename": "User"
@@ -7425,13 +7425,13 @@
       "issues": [
         {
           "number": 1453,
-          "url": "https://github.com/morluto/rea/issues/1453",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1453",
           "author": {
             "login": "Franky100-pig",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -7439,7 +7439,7 @@
     {
       "number": 1456,
       "title": "fix(process)!: preserve literal replacement and comparison semantics",
-      "url": "https://github.com/morluto/rea/pull/1456",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1456",
       "author": {
         "login": "Madhavan006",
         "__typename": "User"
@@ -7452,7 +7452,7 @@
     {
       "number": 1457,
       "title": "perf(javascript): hash each semantic evidence context once",
-      "url": "https://github.com/morluto/rea/pull/1457",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1457",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -7465,7 +7465,7 @@
     {
       "number": 1458,
       "title": "perf(javascript): derive the application graph ID once",
-      "url": "https://github.com/morluto/rea/pull/1458",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1458",
       "author": {
         "login": "keemsisi",
         "__typename": "User"
@@ -7478,7 +7478,7 @@
     {
       "number": 1460,
       "title": "perf(apple): stop repeating the archive path in Interface Builder evidence",
-      "url": "https://github.com/morluto/rea/pull/1460",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1460",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -7491,7 +7491,7 @@
     {
       "number": 1461,
       "title": "fix(mcp): validate doctor probe against its discovered output contract",
-      "url": "https://github.com/morluto/rea/pull/1461",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1461",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -7502,13 +7502,13 @@
       "issues": [
         {
           "number": 1454,
-          "url": "https://github.com/morluto/rea/issues/1454",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1454",
           "author": {
             "login": "N0zoM1z0",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -7516,7 +7516,7 @@
     {
       "number": 1463,
       "title": "fix(skills): expose authored skill to repository discovery",
-      "url": "https://github.com/morluto/rea/pull/1463",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1463",
       "author": {
         "login": "morluto",
         "__typename": "User"
@@ -7527,13 +7527,13 @@
       "issues": [
         {
           "number": 1459,
-          "url": "https://github.com/morluto/rea/issues/1459",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1459",
           "author": {
             "login": "morluto",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -7541,7 +7541,7 @@
     {
       "number": 1465,
       "title": "docs(process): clarify normalized terminal line representation",
-      "url": "https://github.com/morluto/rea/pull/1465",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1465",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -7552,21 +7552,21 @@
       "issues": [
         {
           "number": 1464,
-          "url": "https://github.com/morluto/rea/issues/1464",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1464",
           "author": {
             "login": "N0zoM1z0",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
     },
     {
       "number": 1469,
-      "title": "docs(website): link the Discord community and REA on X",
-      "url": "https://github.com/morluto/rea/pull/1469",
+      "title": "docs(website): link the Discord community and AS Inspect on X",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1469",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -7579,7 +7579,7 @@
     {
       "number": 1471,
       "title": "fix(javascript): retain returned-reference mutation uncertainty",
-      "url": "https://github.com/morluto/rea/pull/1471",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1471",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -7590,13 +7590,13 @@
       "issues": [
         {
           "number": 1449,
-          "url": "https://github.com/morluto/rea/issues/1449",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1449",
           "author": {
             "login": "CassieFox23",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -7604,7 +7604,7 @@
     {
       "number": 1473,
       "title": "perf(artifacts): deliver the inspected artifact graph once",
-      "url": "https://github.com/morluto/rea/pull/1473",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1473",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -7617,7 +7617,7 @@
     {
       "number": 1474,
       "title": "perf(javascript)!: stop repeating the semantic identifier strategy per fact",
-      "url": "https://github.com/morluto/rea/pull/1474",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1474",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -7630,7 +7630,7 @@
     {
       "number": 1475,
       "title": "feat(website): add a Blog and Touhou reconstruction essay",
-      "url": "https://github.com/morluto/rea/pull/1475",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1475",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -7643,7 +7643,7 @@
     {
       "number": 1476,
       "title": "fix(apple): decode binary app Info.plist files without plutil",
-      "url": "https://github.com/morluto/rea/pull/1476",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1476",
       "author": {
         "login": "jayhemnani9910",
         "__typename": "User"
@@ -7656,7 +7656,7 @@
     {
       "number": 1477,
       "title": "perf(apple): state each NIB object's class, label, and ID once",
-      "url": "https://github.com/morluto/rea/pull/1477",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1477",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -7669,7 +7669,7 @@
     {
       "number": 1479,
       "title": "perf(mcp): stop advertising placeholder input descriptions",
-      "url": "https://github.com/morluto/rea/pull/1479",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1479",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -7682,7 +7682,7 @@
     {
       "number": 1480,
       "title": "fix(artifacts): keep case-distinct archive names in inventory",
-      "url": "https://github.com/morluto/rea/pull/1480",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1480",
       "author": {
         "login": "morluto",
         "__typename": "User"
@@ -7693,13 +7693,13 @@
       "issues": [
         {
           "number": 1470,
-          "url": "https://github.com/morluto/rea/issues/1470",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1470",
           "author": {
             "login": "CassieFox23",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -7707,7 +7707,7 @@
     {
       "number": 1481,
       "title": "fix(ida): canonicalize the headless workspace root before opening",
-      "url": "https://github.com/morluto/rea/pull/1481",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1481",
       "author": {
         "login": "AS9929",
         "__typename": "User"
@@ -7720,7 +7720,7 @@
     {
       "number": 1482,
       "title": "feat(artifacts): inspect PE resource identities and payload ranges",
-      "url": "https://github.com/morluto/rea/pull/1482",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1482",
       "author": {
         "login": "thangldw",
         "__typename": "User"
@@ -7731,13 +7731,13 @@
       "issues": [
         {
           "number": 1254,
-          "url": "https://github.com/morluto/rea/issues/1254",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1254",
           "author": {
             "login": "N0zoM1z0",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -7745,7 +7745,7 @@
     {
       "number": 1483,
       "title": "feat(process): report bounded live capture progress",
-      "url": "https://github.com/morluto/rea/pull/1483",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1483",
       "author": {
         "login": "sathariels",
         "__typename": "User"
@@ -7756,13 +7756,13 @@
       "issues": [
         {
           "number": 1252,
-          "url": "https://github.com/morluto/rea/issues/1252",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1252",
           "author": {
             "login": "N0zoM1z0",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -7770,7 +7770,7 @@
     {
       "number": 1492,
       "title": "perf(artifacts): stop repeating every artifact path as Evidence locations",
-      "url": "https://github.com/morluto/rea/pull/1492",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1492",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -7783,7 +7783,7 @@
     {
       "number": 1493,
       "title": "perf(artifacts)!: name each edge's child through its occurrence",
-      "url": "https://github.com/morluto/rea/pull/1493",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1493",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -7796,7 +7796,7 @@
     {
       "number": 1504,
       "title": "fix(setup): honor active client configuration and skill roots",
-      "url": "https://github.com/morluto/rea/pull/1504",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1504",
       "author": {
         "login": "morluto",
         "__typename": "User"
@@ -7809,7 +7809,7 @@
     {
       "number": 1505,
       "title": "fix(artifacts): record each case collision once at its diverging segment",
-      "url": "https://github.com/morluto/rea/pull/1505",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1505",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -7822,7 +7822,7 @@
     {
       "number": 1506,
       "title": "fix(mobile): bound framework conventions to path segments",
-      "url": "https://github.com/morluto/rea/pull/1506",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1506",
       "author": {
         "login": "thangldw",
         "__typename": "User"
@@ -7833,13 +7833,13 @@
       "issues": [
         {
           "number": 1489,
-          "url": "https://github.com/morluto/rea/issues/1489",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1489",
           "author": {
             "login": "cursor",
             "__typename": "Bot"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -7847,7 +7847,7 @@
     {
       "number": 1507,
       "title": "fix(native): page every retained function dossier collection",
-      "url": "https://github.com/morluto/rea/pull/1507",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1507",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -7860,7 +7860,7 @@
     {
       "number": 1509,
       "title": "fix(browser): accept HAR files that begin with a byte-order mark",
-      "url": "https://github.com/morluto/rea/pull/1509",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1509",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -7873,7 +7873,7 @@
     {
       "number": 1510,
       "title": "fix(json): name a leading byte-order mark in rejected JSON input",
-      "url": "https://github.com/morluto/rea/pull/1510",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1510",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -7886,7 +7886,7 @@
     {
       "number": 1511,
       "title": "test(clients): verify native Qwen Pi and Hermes workflows",
-      "url": "https://github.com/morluto/rea/pull/1511",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1511",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -7899,7 +7899,7 @@
     {
       "number": 1512,
       "title": "docs: align the Indonesian README with the other translations",
-      "url": "https://github.com/morluto/rea/pull/1512",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1512",
       "author": {
         "login": "morluto",
         "__typename": "User"
@@ -7912,7 +7912,7 @@
     {
       "number": 1513,
       "title": "fix: bind identity and coverage to the producing rule",
-      "url": "https://github.com/morluto/rea/pull/1513",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1513",
       "author": {
         "login": "morluto",
         "__typename": "User"
@@ -7923,13 +7923,13 @@
       "issues": [
         {
           "number": 1485,
-          "url": "https://github.com/morluto/rea/issues/1485",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1485",
           "author": {
             "login": "cursor",
             "__typename": "Bot"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -7937,7 +7937,7 @@
     {
       "number": 1514,
       "title": "feat(mcp): compact input schema profile for size-capped providers (kimi-cli/Moonshot)",
-      "url": "https://github.com/morluto/rea/pull/1514",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1514",
       "author": {
         "login": "haythemsellami",
         "__typename": "User"
@@ -7948,13 +7948,13 @@
       "issues": [
         {
           "number": 1484,
-          "url": "https://github.com/morluto/rea/issues/1484",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1484",
           "author": {
             "login": "haythemsellami",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -7962,7 +7962,7 @@
     {
       "number": 1515,
       "title": "fix(apple): bound binary plist expansion before decoding keyed archives",
-      "url": "https://github.com/morluto/rea/pull/1515",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1515",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -7975,7 +7975,7 @@
     {
       "number": 1516,
       "title": "fix(browser): keep the first DOM attribute when the name is repeated",
-      "url": "https://github.com/morluto/rea/pull/1516",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1516",
       "author": {
         "login": "taljeri",
         "__typename": "User"
@@ -7986,13 +7986,13 @@
       "issues": [
         {
           "number": 1496,
-          "url": "https://github.com/morluto/rea/issues/1496",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1496",
           "author": {
             "login": "cursor",
             "__typename": "Bot"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -8000,7 +8000,7 @@
     {
       "number": 1517,
       "title": "fix(javascript): expand an escaped receiver's methods once (#1495)",
-      "url": "https://github.com/morluto/rea/pull/1517",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1517",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -8011,21 +8011,21 @@
       "issues": [
         {
           "number": 1495,
-          "url": "https://github.com/morluto/rea/issues/1495",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1495",
           "author": {
             "login": "CassieFox23",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
     },
     {
       "number": 1523,
-      "title": "docs: list all supported clients in the REA skill",
-      "url": "https://github.com/morluto/rea/pull/1523",
+      "title": "docs: list all supported clients in the AS Inspect skill",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1523",
       "author": {
         "login": "peter-research",
         "__typename": "User"
@@ -8036,13 +8036,13 @@
       "issues": [
         {
           "number": 1522,
-          "url": "https://github.com/morluto/rea/issues/1522",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1522",
           "author": {
             "login": "CassieFox23",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -8050,7 +8050,7 @@
     {
       "number": 1524,
       "title": "test(clients): verify native DeepSeek Harness integration",
-      "url": "https://github.com/morluto/rea/pull/1524",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1524",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -8063,7 +8063,7 @@
     {
       "number": 1525,
       "title": "fix(javascript): yield during per-file projection and graph construction",
-      "url": "https://github.com/morluto/rea/pull/1525",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1525",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -8076,7 +8076,7 @@
     {
       "number": 1526,
       "title": "test(javascript): verify escaped receivers through CLI and MCP",
-      "url": "https://github.com/morluto/rea/pull/1526",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1526",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -8089,7 +8089,7 @@
     {
       "number": 1527,
       "title": "fix(verification): reuse validators for shared output schema ids",
-      "url": "https://github.com/morluto/rea/pull/1527",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1527",
       "author": {
         "login": "peter-research",
         "__typename": "User"
@@ -8100,13 +8100,13 @@
       "issues": [
         {
           "number": 1518,
-          "url": "https://github.com/morluto/rea/issues/1518",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1518",
           "author": {
             "login": "CassieFox23",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -8114,7 +8114,7 @@
     {
       "number": 1528,
       "title": "fix(setup): follow and validate Hermes sticky profiles",
-      "url": "https://github.com/morluto/rea/pull/1528",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1528",
       "author": {
         "login": "peter-research",
         "__typename": "User"
@@ -8125,13 +8125,13 @@
       "issues": [
         {
           "number": 1521,
-          "url": "https://github.com/morluto/rea/issues/1521",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1521",
           "author": {
             "login": "CassieFox23",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -8139,7 +8139,7 @@
     {
       "number": 1531,
       "title": "fix(windows): load native controls in Node-API hosts not named node.exe",
-      "url": "https://github.com/morluto/rea/pull/1531",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1531",
       "author": {
         "login": "xeropresence",
         "__typename": "User"
@@ -8152,7 +8152,7 @@
     {
       "number": 1532,
       "title": "docs(website): expand the Touhou essay with oracle lessons",
-      "url": "https://github.com/morluto/rea/pull/1532",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1532",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -8165,7 +8165,7 @@
     {
       "number": 1534,
       "title": "fix(ci): synchronize browser fixture events before inspection",
-      "url": "https://github.com/morluto/rea/pull/1534",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1534",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -8178,7 +8178,7 @@
     {
       "number": 1535,
       "title": "fix(reference): join internal symlink targets with the inventory NFC normalizer",
-      "url": "https://github.com/morluto/rea/pull/1535",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1535",
       "author": {
         "login": "anujsingh-cse",
         "__typename": "User"
@@ -8191,7 +8191,7 @@
     {
       "number": 1536,
       "title": "feat(jeb): add JEB engine provider over its MCP interface",
-      "url": "https://github.com/morluto/rea/pull/1536",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1536",
       "author": {
         "login": "3QL",
         "__typename": "User"
@@ -8204,7 +8204,7 @@
     {
       "number": 1537,
       "title": "perf(javascript): index returned object targets",
-      "url": "https://github.com/morluto/rea/pull/1537",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1537",
       "author": {
         "login": "geekwolf",
         "__typename": "User"
@@ -8215,13 +8215,13 @@
       "issues": [
         {
           "number": 1495,
-          "url": "https://github.com/morluto/rea/issues/1495",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1495",
           "author": {
             "login": "CassieFox23",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -8229,7 +8229,7 @@
     {
       "number": 1539,
       "title": "fix(javascript): avoid argument limits when expanding escaped receivers",
-      "url": "https://github.com/morluto/rea/pull/1539",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1539",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -8240,13 +8240,13 @@
       "issues": [
         {
           "number": 1538,
-          "url": "https://github.com/morluto/rea/issues/1538",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1538",
           "author": {
             "login": "N0zoM1z0",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -8254,7 +8254,7 @@
     {
       "number": 1540,
       "title": "fix(javascript): accept the Wakaru 1.x release line and verify 1.14.0",
-      "url": "https://github.com/morluto/rea/pull/1540",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1540",
       "author": {
         "login": "pionxzh",
         "__typename": "User"
@@ -8267,7 +8267,7 @@
     {
       "number": 1541,
       "title": "test(clients): verify native Gemini CLI integration",
-      "url": "https://github.com/morluto/rea/pull/1541",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1541",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -8280,7 +8280,7 @@
     {
       "number": 1542,
       "title": "fix(javascript): yield inside semantic analysis and large projection passes",
-      "url": "https://github.com/morluto/rea/pull/1542",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1542",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -8293,7 +8293,7 @@
     {
       "number": 1545,
       "title": "fix(javascript): yield during the largest AST traversals",
-      "url": "https://github.com/morluto/rea/pull/1545",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1545",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -8306,7 +8306,7 @@
     {
       "number": 1546,
       "title": "test(clients): verify native OpenCode integration",
-      "url": "https://github.com/morluto/rea/pull/1546",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1546",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -8319,7 +8319,7 @@
     {
       "number": 1547,
       "title": "chore(website): simplify maintenance and detect documentation drift",
-      "url": "https://github.com/morluto/rea/pull/1547",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1547",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -8332,7 +8332,7 @@
     {
       "number": 1549,
       "title": "test(clients): verify native Claude Code integration",
-      "url": "https://github.com/morluto/rea/pull/1549",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1549",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -8345,7 +8345,7 @@
     {
       "number": 1550,
       "title": "test(ghidra): preserve Node heap options in adapter verification",
-      "url": "https://github.com/morluto/rea/pull/1550",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1550",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -8356,13 +8356,13 @@
       "issues": [
         {
           "number": 1548,
-          "url": "https://github.com/morluto/rea/issues/1548",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1548",
           "author": {
             "login": "N0zoM1z0",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -8370,7 +8370,7 @@
     {
       "number": 1552,
       "title": "feat(adb): complete ADB device support for Android reverse engineering",
-      "url": "https://github.com/morluto/rea/pull/1552",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1552",
       "author": {
         "login": "3QL",
         "__typename": "User"
@@ -8383,7 +8383,7 @@
     {
       "number": 1553,
       "title": "fix(artifacts): take nested container families from bytes",
-      "url": "https://github.com/morluto/rea/pull/1553",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1553",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -8394,13 +8394,13 @@
       "issues": [
         {
           "number": 1491,
-          "url": "https://github.com/morluto/rea/issues/1491",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1491",
           "author": {
             "login": "cursor",
             "__typename": "Bot"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -8408,7 +8408,7 @@
     {
       "number": 1555,
       "title": "test(clients): verify native GitHub Copilot CLI integration",
-      "url": "https://github.com/morluto/rea/pull/1555",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1555",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -8421,7 +8421,7 @@
     {
       "number": 1556,
       "title": "feat(apktool): decode Android resource tables through a caller-supplied launcher",
-      "url": "https://github.com/morluto/rea/pull/1556",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1556",
       "author": {
         "login": "3QL",
         "__typename": "User"
@@ -8434,7 +8434,7 @@
     {
       "number": 1557,
       "title": "fix(javascript): yield during receiver and reference classification",
-      "url": "https://github.com/morluto/rea/pull/1557",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1557",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -8445,13 +8445,13 @@
       "issues": [
         {
           "number": 1462,
-          "url": "https://github.com/morluto/rea/issues/1462",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1462",
           "author": {
             "login": "N0zoM1z0",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -8459,7 +8459,7 @@
     {
       "number": 1559,
       "title": "docs: celebrate 60,000 GitHub stars 🎉",
-      "url": "https://github.com/morluto/rea/pull/1559",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1559",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -8472,7 +8472,7 @@
     {
       "number": 1560,
       "title": "fix(mcp): stop advertising complete Evidence in input examples",
-      "url": "https://github.com/morluto/rea/pull/1560",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1560",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -8485,7 +8485,7 @@
     {
       "number": 1562,
       "title": "fix(setup): reject invalid OMP profiles before fallback writes",
-      "url": "https://github.com/morluto/rea/pull/1562",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1562",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -8496,13 +8496,13 @@
       "issues": [
         {
           "number": 1561,
-          "url": "https://github.com/morluto/rea/issues/1561",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1561",
           "author": {
             "login": "N0zoM1z0",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -8510,7 +8510,7 @@
     {
       "number": 1568,
       "title": "feat(javascript): return a retained summary view on request",
-      "url": "https://github.com/morluto/rea/pull/1568",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1568",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -8523,7 +8523,7 @@
     {
       "number": 1570,
       "title": "feat(native): return a retained summary view of binary layouts on request",
-      "url": "https://github.com/morluto/rea/pull/1570",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1570",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -8536,7 +8536,7 @@
     {
       "number": 1571,
       "title": "test(clients): verify native Grok Build workflows",
-      "url": "https://github.com/morluto/rea/pull/1571",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1571",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -8549,7 +8549,7 @@
     {
       "number": 1577,
       "title": "fix(javascript): retain runtime scope in bundled module relationships",
-      "url": "https://github.com/morluto/rea/pull/1577",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1577",
       "author": {
         "login": "dakjdakd",
         "__typename": "User"
@@ -8560,13 +8560,13 @@
       "issues": [
         {
           "number": 1576,
-          "url": "https://github.com/morluto/rea/issues/1576",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1576",
           "author": {
             "login": "dakjdakd",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -8574,7 +8574,7 @@
     {
       "number": 1580,
       "title": "fix(clients): preserve portable MCP schemas in native workflows",
-      "url": "https://github.com/morluto/rea/pull/1580",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1580",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -8585,13 +8585,13 @@
       "issues": [
         {
           "number": 1581,
-          "url": "https://github.com/morluto/rea/issues/1581",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1581",
           "author": {
             "login": "N0zoM1z0",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -8599,7 +8599,7 @@
     {
       "number": 1583,
       "title": "feat(process): bound a finalization interval before forced capture timeout",
-      "url": "https://github.com/morluto/rea/pull/1583",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1583",
       "author": {
         "login": "nikolay-dementiev",
         "__typename": "User"
@@ -8610,13 +8610,13 @@
       "issues": [
         {
           "number": 1253,
-          "url": "https://github.com/morluto/rea/issues/1253",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1253",
           "author": {
             "login": "N0zoM1z0",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         },
         {
@@ -8635,7 +8635,7 @@
     {
       "number": 1588,
       "title": "fix(browser): skip Windows Electron signals without verified lineage",
-      "url": "https://github.com/morluto/rea/pull/1588",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1588",
       "author": {
         "login": "Adolanium",
         "__typename": "User"
@@ -8646,13 +8646,13 @@
       "issues": [
         {
           "number": 1589,
-          "url": "https://github.com/morluto/rea/issues/1589",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1589",
           "author": {
             "login": "Adolanium",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -8660,7 +8660,7 @@
     {
       "number": 1590,
       "title": "fix(browser): keep declared scenario secrets out of redacted evidence",
-      "url": "https://github.com/morluto/rea/pull/1590",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1590",
       "author": {
         "login": "Adolanium",
         "__typename": "User"
@@ -8671,13 +8671,13 @@
       "issues": [
         {
           "number": 1591,
-          "url": "https://github.com/morluto/rea/issues/1591",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1591",
           "author": {
             "login": "Adolanium",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -8685,7 +8685,7 @@
     {
       "number": 1592,
       "title": "feat(ghidra): recover signed AArch64 relative jump tables",
-      "url": "https://github.com/morluto/rea/pull/1592",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1592",
       "author": {
         "login": "RishTheFish21",
         "__typename": "User"
@@ -8698,7 +8698,7 @@
     {
       "number": 1601,
       "title": "perf(javascript): reduce retained semantic analysis allocations",
-      "url": "https://github.com/morluto/rea/pull/1601",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1601",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -8711,7 +8711,7 @@
     {
       "number": 1602,
       "title": "fix(browser): report SVG xlink:href links in dom_urls",
-      "url": "https://github.com/morluto/rea/pull/1602",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1602",
       "author": {
         "login": "sathariels",
         "__typename": "User"
@@ -8722,13 +8722,13 @@
       "issues": [
         {
           "number": 1586,
-          "url": "https://github.com/morluto/rea/issues/1586",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1586",
           "author": {
             "login": "CassieFox23",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -8736,7 +8736,7 @@
     {
       "number": 1604,
       "title": "fix(browser): fold loopback spellings into one attach admission key",
-      "url": "https://github.com/morluto/rea/pull/1604",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1604",
       "author": {
         "login": "akushonkamen",
         "__typename": "User"
@@ -8747,13 +8747,13 @@
       "issues": [
         {
           "number": 1497,
-          "url": "https://github.com/morluto/rea/issues/1497",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1497",
           "author": {
             "login": "cursor",
             "__typename": "Bot"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -8761,7 +8761,7 @@
     {
       "number": 1607,
       "title": "fix(setup): preserve configured MCP server environment",
-      "url": "https://github.com/morluto/rea/pull/1607",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1607",
       "author": {
         "login": "Adkid-Zephyr",
         "__typename": "User"
@@ -8772,13 +8772,13 @@
       "issues": [
         {
           "number": 1606,
-          "url": "https://github.com/morluto/rea/issues/1606",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1606",
           "author": {
             "login": "Adkid-Zephyr",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -8786,7 +8786,7 @@
     {
       "number": 1613,
       "title": "feat(skills)!: improve Codex onboarding and task recovery",
-      "url": "https://github.com/morluto/rea/pull/1613",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1613",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -8799,7 +8799,7 @@
     {
       "number": 1615,
       "title": "fix(javascript): preserve trailing slash in package directory requests",
-      "url": "https://github.com/morluto/rea/pull/1615",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1615",
       "author": {
         "login": "immanuwell",
         "__typename": "User"
@@ -8812,7 +8812,7 @@
     {
       "number": 1616,
       "title": "fix(firmware): recover after workspace removal failures",
-      "url": "https://github.com/morluto/rea/pull/1616",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1616",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -8823,13 +8823,13 @@
       "issues": [
         {
           "number": 1501,
-          "url": "https://github.com/morluto/rea/issues/1501",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1501",
           "author": {
             "login": "cursor",
             "__typename": "Bot"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -8837,7 +8837,7 @@
     {
       "number": 1618,
       "title": "fix(ci): preserve cleanup boundaries and bounded failure assertions",
-      "url": "https://github.com/morluto/rea/pull/1618",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1618",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -8850,7 +8850,7 @@
     {
       "number": 1621,
       "title": "test: remove module and timestamp assumptions from boundary fixtures",
-      "url": "https://github.com/morluto/rea/pull/1621",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1621",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -8863,7 +8863,7 @@
     {
       "number": 1622,
       "title": "perf(evm): avoid repeated cleanup diagnostics",
-      "url": "https://github.com/morluto/rea/pull/1622",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1622",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -8876,7 +8876,7 @@
     {
       "number": 1623,
       "title": "fix(apple): preserve directory requirements in dylib paths",
-      "url": "https://github.com/morluto/rea/pull/1623",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1623",
       "author": {
         "login": "evenafterallisaid",
         "__typename": "User"
@@ -8889,7 +8889,7 @@
     {
       "number": 1624,
       "title": "test(clients): verify Copilot compact schema workflows",
-      "url": "https://github.com/morluto/rea/pull/1624",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1624",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -8902,7 +8902,7 @@
     {
       "number": 1627,
       "title": "fix(onboarding): isolate client homes and clarify npm release support",
-      "url": "https://github.com/morluto/rea/pull/1627",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1627",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -8913,24 +8913,24 @@
       "issues": [
         {
           "number": 1625,
-          "url": "https://github.com/morluto/rea/issues/1625",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1625",
           "author": {
             "login": "N0zoM1z0",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         },
         {
           "number": 1626,
-          "url": "https://github.com/morluto/rea/issues/1626",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1626",
           "author": {
             "login": "N0zoM1z0",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -8938,7 +8938,7 @@
     {
       "number": 1629,
       "title": "fix(ghidra): admit carved MIPS ELF with incomplete section tables",
-      "url": "https://github.com/morluto/rea/pull/1629",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1629",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -8949,13 +8949,13 @@
       "issues": [
         {
           "number": 1619,
-          "url": "https://github.com/morluto/rea/issues/1619",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1619",
           "author": {
             "login": "bqw371",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -8963,7 +8963,7 @@
     {
       "number": 1631,
       "title": "test(javascript): share semantic graph fixtures",
-      "url": "https://github.com/morluto/rea/pull/1631",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1631",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -8974,13 +8974,13 @@
       "issues": [
         {
           "number": 1630,
-          "url": "https://github.com/morluto/rea/issues/1630",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1630",
           "author": {
             "login": "N0zoM1z0",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -8988,7 +8988,7 @@
     {
       "number": 1635,
       "title": "feat(ghidra): admit set_address_name and set_addresses_names",
-      "url": "https://github.com/morluto/rea/pull/1635",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1635",
       "author": {
         "login": "giri256",
         "__typename": "User"
@@ -8999,13 +8999,13 @@
       "issues": [
         {
           "number": 1634,
-          "url": "https://github.com/morluto/rea/issues/1634",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1634",
           "author": {
             "login": "giri256",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -9013,7 +9013,7 @@
     {
       "number": 1637,
       "title": "docs(installation): clarify that npm 6.3.0 excludes automatic pi and hermes setup",
-      "url": "https://github.com/morluto/rea/pull/1637",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1637",
       "author": {
         "login": "Totopo27",
         "__typename": "User"
@@ -9024,13 +9024,13 @@
       "issues": [
         {
           "number": 1626,
-          "url": "https://github.com/morluto/rea/issues/1626",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1626",
           "author": {
             "login": "N0zoM1z0",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -9038,7 +9038,7 @@
     {
       "number": 1638,
       "title": "fix(tests): bind HOME in native client and deepseek verifiers",
-      "url": "https://github.com/morluto/rea/pull/1638",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1638",
       "author": {
         "login": "Totopo27",
         "__typename": "User"
@@ -9049,13 +9049,13 @@
       "issues": [
         {
           "number": 1625,
-          "url": "https://github.com/morluto/rea/issues/1625",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1625",
           "author": {
             "login": "N0zoM1z0",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -9063,7 +9063,7 @@
     {
       "number": 1639,
       "title": "test(android): preserve reason in JADX cleanup-failure teardown poll",
-      "url": "https://github.com/morluto/rea/pull/1639",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1639",
       "author": {
         "login": "Totopo27",
         "__typename": "User"
@@ -9074,13 +9074,13 @@
       "issues": [
         {
           "number": 1441,
-          "url": "https://github.com/morluto/rea/issues/1441",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1441",
           "author": {
             "login": "N0zoM1z0",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -9088,7 +9088,7 @@
     {
       "number": 1640,
       "title": "fix(test): preserve Ghidra interior-label controls on Mach-O",
-      "url": "https://github.com/morluto/rea/pull/1640",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1640",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -9099,13 +9099,13 @@
       "issues": [
         {
           "number": 1597,
-          "url": "https://github.com/morluto/rea/issues/1597",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1597",
           "author": {
             "login": "RishTheFish21",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -9113,7 +9113,7 @@
     {
       "number": 1644,
       "title": "test(javascript): retain resource ownership in deep-return fixture",
-      "url": "https://github.com/morluto/rea/pull/1644",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1644",
       "author": {
         "login": "evenafterallisaid",
         "__typename": "User"
@@ -9126,7 +9126,7 @@
     {
       "number": 1646,
       "title": "fix(tests): verify Qwen skills through an isolated native home",
-      "url": "https://github.com/morluto/rea/pull/1646",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1646",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -9139,7 +9139,7 @@
     {
       "number": 1647,
       "title": "fix(tests): separate Copilot model IDs from wire models",
-      "url": "https://github.com/morluto/rea/pull/1647",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1647",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -9152,7 +9152,7 @@
     {
       "number": 1648,
       "title": "fix(ci): check decoded reference paths and restore formatting",
-      "url": "https://github.com/morluto/rea/pull/1648",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1648",
       "author": {
         "login": "morluto",
         "__typename": "User"
@@ -9165,7 +9165,7 @@
     {
       "number": 1651,
       "title": "fix(javascript): isolate source analysis and retain bounded partial evidence",
-      "url": "https://github.com/morluto/rea/pull/1651",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1651",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -9176,24 +9176,24 @@
       "issues": [
         {
           "number": 1563,
-          "url": "https://github.com/morluto/rea/issues/1563",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1563",
           "author": {
             "login": "N0zoM1z0",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         },
         {
           "number": 1565,
-          "url": "https://github.com/morluto/rea/issues/1565",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1565",
           "author": {
             "login": "peter-research",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -9201,7 +9201,7 @@
     {
       "number": 1654,
       "title": "fix(javascript): preserve cleanup failures during preparation cancellation",
-      "url": "https://github.com/morluto/rea/pull/1654",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1654",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -9212,13 +9212,13 @@
       "issues": [
         {
           "number": 1653,
-          "url": "https://github.com/morluto/rea/issues/1653",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1653",
           "author": {
             "login": "N0zoM1z0",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -9226,7 +9226,7 @@
     {
       "number": 1655,
       "title": "fix(browser): support Termux Android scenarios",
-      "url": "https://github.com/morluto/rea/pull/1655",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1655",
       "author": {
         "login": "tyloryang",
         "__typename": "User"
@@ -9239,7 +9239,7 @@
     {
       "number": 1660,
       "title": "ci: scope provider and native verification by changed inputs",
-      "url": "https://github.com/morluto/rea/pull/1660",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1660",
       "author": {
         "login": "morluto",
         "__typename": "User"
@@ -9252,7 +9252,7 @@
     {
       "number": 1662,
       "title": "fix(setup): recognize Omarchy as an Arch-based host",
-      "url": "https://github.com/morluto/rea/pull/1662",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1662",
       "author": {
         "login": "LuisTaffelli",
         "__typename": "User"
@@ -9265,7 +9265,7 @@
     {
       "number": 1664,
       "title": "fix(javascript): exclude overwritten Electron API identities",
-      "url": "https://github.com/morluto/rea/pull/1664",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1664",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -9278,7 +9278,7 @@
     {
       "number": 1667,
       "title": "feat(ghidra): configurable import language and analysis seeds",
-      "url": "https://github.com/morluto/rea/pull/1667",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1667",
       "author": {
         "login": "sqmagellan",
         "__typename": "User"
@@ -9291,7 +9291,7 @@
     {
       "number": 1670,
       "title": "feat(javascript): recognize tRPC procedures and GraphQL operations",
-      "url": "https://github.com/morluto/rea/pull/1670",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1670",
       "author": {
         "login": "pompiliodonatoapp",
         "__typename": "User"
@@ -9304,7 +9304,7 @@
     {
       "number": 1673,
       "title": "fix(javascript): recover Electron APIs through default imports and optional calls",
-      "url": "https://github.com/morluto/rea/pull/1673",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1673",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -9317,7 +9317,7 @@
     {
       "number": 1675,
       "title": "ci: select semantic tests and fixture lanes for their guarded inputs",
-      "url": "https://github.com/morluto/rea/pull/1675",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1675",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -9330,7 +9330,7 @@
     {
       "number": 1678,
       "title": "fix(native): bound PE resource RVAs by section virtual size",
-      "url": "https://github.com/morluto/rea/pull/1678",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1678",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -9343,7 +9343,7 @@
     {
       "number": 1682,
       "title": "feat(evidence): discover retained records without full payloads",
-      "url": "https://github.com/morluto/rea/pull/1682",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1682",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -9354,13 +9354,13 @@
       "issues": [
         {
           "number": 1247,
-          "url": "https://github.com/morluto/rea/issues/1247",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/1247",
           "author": {
             "login": "N0zoM1z0",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]
@@ -9368,7 +9368,7 @@
     {
       "number": 1683,
       "title": "fix(browser): resolve XLink and SVG prefixes in XHTML dom_urls",
-      "url": "https://github.com/morluto/rea/pull/1683",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1683",
       "author": {
         "login": "sathariels",
         "__typename": "User"
@@ -9381,7 +9381,7 @@
     {
       "number": 1684,
       "title": "docs(website): add beginner help to the Get started page",
-      "url": "https://github.com/morluto/rea/pull/1684",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1684",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -9394,7 +9394,7 @@
     {
       "number": 1687,
       "title": "perf(domain): reuse canonical JSON key encodings",
-      "url": "https://github.com/morluto/rea/pull/1687",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1687",
       "author": {
         "login": "N0zoM1z0",
         "__typename": "User"
@@ -9407,7 +9407,7 @@
     {
       "number": 1688,
       "title": "docs(website): list the setup guide first on the Guides page",
-      "url": "https://github.com/morluto/rea/pull/1688",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1688",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -9420,7 +9420,7 @@
     {
       "number": 1689,
       "title": "docs(website): add beginner help to the native analysis guide",
-      "url": "https://github.com/morluto/rea/pull/1689",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/1689",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"

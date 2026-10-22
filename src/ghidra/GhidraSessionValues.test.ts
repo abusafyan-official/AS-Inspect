@@ -18,7 +18,7 @@ const session = (
   language = expected.expectedLanguageId,
   compiler = "default",
 ) => ({
-  name: "REA Ghidra bridge",
+  name: "AS Inspect Ghidra bridge",
   run_id: expected.runId,
   profile_digest: expected.profileDigest,
   provider: { id: "ghidra", version: expected.providerVersion },

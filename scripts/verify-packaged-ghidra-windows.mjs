@@ -116,7 +116,7 @@ if (packageRootArgument === undefined) {
       ],
       { timeout: 120_000, maxBuffer: 8 * 1024 * 1024 },
     );
-    packageRoot = join(prefix, "node_modules", "rea-agents");
+    packageRoot = join(prefix, "node_modules", "as-inspect-agents");
   } catch (cause) {
     throw new Error("Packaged Windows verifier installation failed.", {
       cause,

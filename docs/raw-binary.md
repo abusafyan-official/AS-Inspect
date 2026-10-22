@@ -1,6 +1,6 @@
 # Headerless raw-binary analysis with Ghidra
 
-REA admits a headerless executable when the caller supplies the CPU family and
+AS Inspect admits a headerless executable when the caller supplies the CPU family and
 the address where file offset 0 should be mapped. That interpretation is not
 inferred from a `.bin` suffix or from unrecognized bytes.
 
@@ -94,7 +94,7 @@ calling conventions are analysis conventions, not a recovered source ABI.
 
 This lane does not interpret iNES headers, cartridge mappers, bank switching,
 or other console-specific memory layouts. 65C02 and 65816 programs need different
-processor semantics and are not admitted as those variants. REA does not infer
+processor semantics and are not admitted as those variants. AS Inspect does not infer
 the CPU from the file suffix, guess the reset vector, or emulate the target.
 
 `npm run verify:ghidra:6502` assembles and links the source-owned fixture with
@@ -127,7 +127,7 @@ selected language, entry, file digest, and verified source mapping. Register and
 calling conventions are analysis conventions, not a recovered source ABI.
 
 This lane does not interpret Amiga hunks, Atari ST, or other container headers,
-cartridge or console memory maps, or bank switching. REA does not read the
+cartridge or console memory maps, or bank switching. AS Inspect does not read the
 initial stack pointer and reset vector from the first eight bytes; select the
 entry explicitly. Windows Ghidra P0 does not admit m68k.
 

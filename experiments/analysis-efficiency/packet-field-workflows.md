@@ -1,6 +1,6 @@
 # Larger and non-HTTP packet investigation costs
 
-This closes the bounded experiment in [#3130](https://github.com/morluto/rea/issues/3130).
+This closes the bounded experiment in [#3130](https://github.com/abusafyan-official/AS-Inspect/issues/3130).
 Existing field, filter and input/output-window controls substantially reduce
 delivered JSON for the selected questions. Actual Codex total input and elapsed
 time are less consistent. Requiring field discovery for a known field adds cost.
@@ -112,7 +112,7 @@ complete delivery returns 7,601 bytes and summary plus a two-URI retained page
 ## Actual Codex CLI observations
 
 Six actual Codex CLI 0.161.0 runs use requested alias `gpt-5.6-terra`, reasoning
-`high`, a disposable configuration and the pinned REA MCP runtime. Resolved
+`high`, a disposable configuration and the pinned AS Inspect MCP runtime. Resolved
 server-side model identity is not inferred. Both tool names are enabled in every
 arm, exact-name discovery guidance is identical, shell/browser/other-agent tools
 are disabled and copied authentication is removed after each run.

@@ -51,7 +51,7 @@ import { sameRegularFileState } from "../filesystem/RegularFile.js";
 
 export const GPU_CODE_OBJECTS_PROVIDER_IDENTITY = {
   id: "gpu-code-objects",
-  name: "REA static GPU code-object reader",
+  name: "AS Inspect static GPU code-object reader",
   version: "1",
 } as const;
 const OPERATION = "inspect_gpu_code_objects";

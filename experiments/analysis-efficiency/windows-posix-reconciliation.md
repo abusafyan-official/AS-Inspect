@@ -1,6 +1,6 @@
 # Windows reconciliation of recorded POSIX paths
 
-Follow-up to [#2422](https://github.com/morluto/rea/pull/2422), including
+Follow-up to [#2422](https://github.com/abusafyan-official/AS-Inspect/pull/2422), including
 @Aurantium-47's diagnosis of the host-dependent relative-path operation.
 
 ## Source pins and real data
@@ -23,11 +23,11 @@ Two actual Linux filesystem directories, Runtime/App and Runtime/app,
 held byte-identical module copies and had distinct directory identities.
 A controlled Node 24.18.0 process loaded the public module and ran its real
 function against 587 locked dependency records: compatible trees returned zero
-errors, and one controlled version mismatch returned one error. A passive REA
+errors, and one controlled version mismatch returned one error. A passive AS Inspect
 Inspector capture recorded 114 loaded scripts, including the selected module.
 The provider did not evaluate, pause, resume or read source. The owned process
 exited normally. Function execution is established by the harness receipt;
-REA's passive script metadata establishes loaded status.
+AS Inspect's passive script metadata establishes loaded status.
 
 Production static analysis inspected both directories plus an independent
 Static/public-module copy. The latter prevents implicit root matching from
@@ -110,7 +110,7 @@ selects both Windows package and JavaScript recovery lanes; 85 scope checks and
 two curated-path checks pass. Runtime code and the real-data checks are unchanged.
 
 The original production fix merged as
-[1a1b67c88](https://github.com/morluto/rea/commit/1a1b67c88) while this follow-up
+[1a1b67c88](https://github.com/abusafyan-official/AS-Inspect/commit/1a1b67c88) while this follow-up
 was open. The follow-up was then rebased onto main fb28ec153 and contains only
 the stronger workflow assertions, Windows lane ownership, scope classification
 and this verification record. The updated 131 related tests, two representative

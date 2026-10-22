@@ -218,7 +218,7 @@ describe("configured Linux Hopper selection", () => {
     expect(discovery.installHopper).toBe(false);
   });
 
-  it("still offers repair for an unconfigured REA managed install", async () => {
+  it("still offers repair for an unconfigured AS Inspect managed install", async () => {
     const host = new FakeSetupHost("linux");
     host.distribution = {
       id: "ubuntu",
@@ -455,7 +455,7 @@ describe("MSIX Claude Desktop setup", () => {
   it("refuses registrations whose launcher only one MSIX package can see", async () => {
     const host = new FakeSetupHost("win32");
     host.hopper = join(PROFILE, "Hopper");
-    host.registrationCommandBlocker = "Install REA outside the package.";
+    host.registrationCommandBlocker = "Install AS Inspect outside the package.";
     host.clients = [
       { name: "codex", displayName: "Codex", configPath: "/codex.toml" },
     ];
@@ -465,7 +465,7 @@ describe("MSIX Claude Desktop setup", () => {
       host,
     );
     expect(blocked.status).toBe("needs_human");
-    expect(blocked.remediation).toBe("Install REA outside the package.");
+    expect(blocked.remediation).toBe("Install AS Inspect outside the package.");
     expect(host.configurations).toBe(0);
     expect(host.skillInstalls).toBe(0);
 

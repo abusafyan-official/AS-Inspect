@@ -3,16 +3,16 @@
 [English](../../README.md) · [简体中文](README_zh.md) · [繁體中文](README_zh-TW.md) · [日本語](README_ja.md) · [한국어](README_ko.md) · [Türkçe](README_tr.md) · [Русский](README_ru.md) · [Tiếng Việt](README_vi.md) · [ไทย](README_th.md) · [Deutsch](README_de.md) · [Español](README_es.md) · [Français](README_fr.md) · **Українська** · [Polski](README_pl.md) · [Português (Brasil)](README_pt-BR.md) · [العربية](README_ar.md) · [فارسی](README_fa.md) · [Bahasa Indonesia](README_id.md) · [Italiano](README_it.md)
 · [Ελληνικά](README_el.md) · [മലയാളം](README_ml.md)
 
-# REA: Реверс-інжиніринг будь-чого
+# AS Inspect: Реверс-інжиніринг будь-чого
 
 ### Один MCP для реверс-інжинірингу бінарних файлів, застосунків і поведінки під час виконання.
 
 **Побачили цікаву функцію? Зрозумійте, як вона працює, аж до рівня двійкового коду.**
 
-[![npm version](https://img.shields.io/npm/v/rea-agents?style=flat-square&color=cb3837)](https://www.npmjs.com/package/rea-agents)
+[![npm version](https://img.shields.io/npm/v/as-inspect-agents?style=flat-square&color=cb3837)](https://www.npmjs.com/package/as-inspect-agents)
 [![MCP tool catalog](https://img.shields.io/badge/MCP-tool_catalog-5c4ee5?style=flat-square)](../mcp-contracts.md#generated-catalog)
 [![Node.js requirements](https://img.shields.io/badge/Node.js-requirements-339933?style=flat-square&logo=nodedotjs&logoColor=white)](#current-status)
-[![skills.sh](https://skills.sh/b/morluto/rea?style=flat-square)](https://skills.sh/morluto/rea/reverse-engineer-anything)
+[![skills.sh](https://skills.sh/b/abusafyan-official/AS-Inspect?style=flat-square)](https://skills.sh/abusafyan-official/AS-Inspect/reverse-engineer-anything)
 [![MIT license](https://img.shields.io/badge/license-MIT-f4c430?style=flat-square)](../../LICENSE)
 [![Discord](https://img.shields.io/discord/1556595354999332884?logo=discord&logoColor=white&label=Discord&color=5865F2)](https://discord.gg/GkcryMnJDM)
 
@@ -20,25 +20,25 @@
 
 **[Сайт](https://rea.tools/uk/) · [Посібники](https://rea.tools/uk/guides/) · [Приклади](https://rea.tools/uk/showcase/)**
 
-[Швидкий старт](#швидкий-старт) · [Як працює REA](#як-працює-rea) · [Що можна аналізувати](#що-можна-аналізувати) · [Приклади](#приклади) · [Поширені запитання](#поширені-запитання) · [Інструменти GNU objdump і Rizin](../reverse-engineering-tools.md) · [Документація](#документація)
+[Швидкий старт](#швидкий-старт) · [Як працює AS Inspect](#як-працює-rea) · [Що можна аналізувати](#що-можна-аналізувати) · [Приклади](#приклади) · [Поширені запитання](#поширені-запитання) · [Інструменти GNU objdump і Rizin](../reverse-engineering-tools.md) · [Документація](#документація)
 
-<code>npx rea-agents setup</code>
+<code>npx as-inspect-agents setup</code>
 
 </div>
 
 > [!IMPORTANT]
-> Офіційні джерела REA: [morluto/rea](https://github.com/morluto/rea), [rea.tools](https://rea.tools/), [rea-agents](https://www.npmjs.com/package/rea-agents) (npm).
+> Офіційні джерела AS Inspect: [abusafyan-official/AS-Inspect](https://github.com/abusafyan-official/AS-Inspect), [rea.tools](https://rea.tools/), [as-inspect-agents](https://www.npmjs.com/package/as-inspect-agents) (npm).
 > Користуйтеся посиланнями на встановлення та випуски з цих офіційних джерел. Схожа назва репозиторію або скопійований README не підтверджують, що завантажуваний файл є офіційним.
 
 <div align="center">
 
 <br />
 
-<img src="../assets/rea-hopper-analysis.png" alt="REA запускає міст аналізу всередині Hopper під час дослідження нативного бінарного файла" width="1200" />
+<img src="../assets/rea-hopper-analysis.png" alt="AS Inspect запускає міст аналізу всередині Hopper під час дослідження нативного бінарного файла" width="1200" />
 
 <br /><br />
 
-<table aria-label="Спільнота REA">
+<table aria-label="Спільнота AS Inspect">
 <tr>
 <td align="center" width="360">
   <a href="https://discord.gg/GkcryMnJDM">
@@ -56,13 +56,13 @@
 
 ---
 
-Побачили в застосунку функцію, яку хочете додати до свого продукту? Попросіть агента дослідити її за допомогою REA. Він може перевірити застосунок без вихідного коду, пояснити роботу функції, показати підтвердження та створити реалізацію для вашого проєкту.
+Побачили в застосунку функцію, яку хочете додати до свого продукту? Попросіть агента дослідити її за допомогою AS Inspect. Він може перевірити застосунок без вихідного коду, пояснити роботу функції, показати підтвердження та створити реалізацію для вашого проєкту.
 
-REA підключає вашого агента до інструментів дослідження нативних бінарних файлів, застосунків JavaScript і Electron, збірок .NET та сайтів. Ті самі інструменти можна використовувати з термінала. Аналіз виконується локально, а результати містять підтвердження й обмеження, на яких ґрунтується кожен висновок.
+AS Inspect підключає вашого агента до інструментів дослідження нативних бінарних файлів, застосунків JavaScript і Electron, збірок .NET та сайтів. Ті самі інструменти можна використовувати з термінала. Аналіз виконується локально, а результати містять підтвердження й обмеження, на яких ґрунтується кожен висновок.
 
-Налаштування реєструє REA у вашому агенті та встановлює відповідні інструкції робочих процесів. Для нативного аналізу можна використати вже встановлений Hopper або Ghidra; налаштування також може встановити Hopper за вашою згодою. Статичному аналізу JavaScript не потрібен жоден із цих рушіїв.
+Налаштування реєструє AS Inspect у вашому агенті та встановлює відповідні інструкції робочих процесів. Для нативного аналізу можна використати вже встановлений Hopper або Ghidra; налаштування також може встановити Hopper за вашою згодою. Статичному аналізу JavaScript не потрібен жоден із цих рушіїв.
 
-> **[Відвідайте сайт REA](https://rea.tools/uk/)**, щоб знайти інструкції налаштування, ілюстровані посібники та реальні дослідження.
+> **[Відвідайте сайт AS Inspect](https://rea.tools/uk/)**, щоб знайти інструкції налаштування, ілюстровані посібники та реальні дослідження.
 
 ## Швидкий старт
 
@@ -71,10 +71,10 @@ REA підключає вашого агента до інструментів �
 Якщо Node.js і npm встановлено, виконайте:
 
 ```bash
-npx rea-agents setup
+npx as-inspect-agents setup
 ```
 
-Виберіть агентів, перевірте запропоновані зміни та схваліть їх. Налаштування додає MCP-сервер REA та відповідні інструкції робочих процесів, створюючи резервні копії наявної конфігурації. Після цього перезапустіть агента.
+Виберіть агентів, перевірте запропоновані зміни та схваліть їх. Налаштування додає MCP-сервер AS Inspect та відповідні інструкції робочих процесів, створюючи резервні копії наявної конфігурації. Після цього перезапустіть агента.
 
 Налаштування підтримує Claude Code, Codex, Cursor, Gemini CLI, Grok Build та [інших агентів](../installation.md#supported-agents). Конфігурацію провайдерів і ручну реєстрацію MCP описано в розділі [встановлення й налаштування](../installation.md).
 
@@ -91,7 +91,7 @@ npx rea-agents setup
 Перевірте розпакований каталог застосунку JavaScript/Electron або файл ASAR:
 
 ```bash
-npx -y rea-agents@latest analyze-javascript-application /absolute/path/to/app --json
+npx -y as-inspect-agents@latest analyze-javascript-application /absolute/path/to/app --json
 ```
 
 Результат містить модулі, імпорти, межі Electron і підтвердження для них. Замініть шлях своїм, наприклад `"D:/apps/example"` у Windows.
@@ -99,15 +99,15 @@ npx -y rea-agents@latest analyze-javascript-application /absolute/path/to/app --
 Для регулярного використання встановіть команду `rea`:
 
 ```bash
-npm install --global rea-agents
+npm install --global as-inspect-agents
 rea --help
 ```
 
 Для нативного аналізу спочатку налаштуйте провайдера. Нативні команди, вибір провайдера, знімки та використання у скриптах описує [посібник CLI та Evidence](../cli.md).
 
-### Оновіть REA
+### Оновіть AS Inspect
 
-REA швидко розвивається, а нові випуски часто містять виправлення помилок. Підтримуйте встановлену версію актуальною.
+AS Inspect швидко розвивається, а нові випуски часто містять виправлення помилок. Підтримуйте встановлену версію актуальною.
 
 Для CLI, встановленого через npm:
 
@@ -120,16 +120,16 @@ rea update
 Якщо використовуєте `npx`, оновіть налаштування агента командою:
 
 ```bash
-npx rea-agents@latest setup
+npx as-inspect-agents@latest setup
 ```
 
-Перевірте зміни налаштувань і перезапустіть агента. Для разових команд CLI використовуйте `npx rea-agents@latest`, а потім потрібну команду.
+Перевірте зміни налаштувань і перезапустіть агента. Для разових команд CLI використовуйте `npx as-inspect-agents@latest`, а потім потрібну команду.
 
-## Як працює REA
+## Як працює AS Inspect
 
-Агент викликає REA через MCP, щоб перевірити ціль і простежити пов'язаний код. REA повертає знахідки разом із підтвердженнями. Агент використовує їх для уточнювальних запитань, пояснення поведінки або написання й тестування реалізації. Команди CLI використовують ті самі робочі процеси.
+Агент викликає AS Inspect через MCP, щоб перевірити ціль і простежити пов'язаний код. AS Inspect повертає знахідки разом із підтвердженнями. Агент використовує їх для уточнювальних запитань, пояснення поведінки або написання й тестування реалізації. Команди CLI використовують ті самі робочі процеси.
 
-![Процес дослідження з REA: агент запитує про локальну ціль, REA перевіряє й простежує її інструментами аналізу, а агент використовує повернений код, посилання та невідомі дані для пояснення, реалізації й тестування.](../../website/public/assets/figures/rea-investigation-flow.svg)
+![Процес дослідження з AS Inspect: агент запитує про локальну ціль, AS Inspect перевіряє й простежує її інструментами аналізу, а агент використовує повернений код, посилання та невідомі дані для пояснення, реалізації й тестування.](../../website/public/assets/figures/rea-investigation-flow.svg)
 
 [Відкрити зображення в повному розмірі](../../website/public/assets/figures/rea-investigation-flow.svg).
 
@@ -137,9 +137,9 @@ npx rea-agents@latest setup
 
 ## Що можна аналізувати
 
-REA потребує Node.js 22.x (>=22.19), 24.x (>=24.11) або 26+, а також npm. Додаткові інструменти й підтримувані системи залежать від цілі:
+AS Inspect потребує Node.js 22.x (>=22.19), 24.x (>=24.11) або 26+, а також npm. Додаткові інструменти й підтримувані системи залежать від цілі:
 
-| Ціль                                 | Що повертає REA                                                                                                   | Вимоги й посібник                                                                                                                                 |
+| Ціль                                 | Що повертає AS Inspect                                                                                                   | Вимоги й посібник                                                                                                                                 |
 | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Нативні бінарні файли                | Псевдокод, асемблерний код, рядки, символи, виклики й посилання                                                   | Hopper, Ghidra або IDA; [нативний аналіз](../native-investigation.md)                                                                             |
 | Структура ELF без запуску            | Секції, сегменти, початкові символи/релокації та можливі захисні механізми за даними статичного аналізу           | pwntools, наданий стороною, що викликає інструмент, у Linux x64; [діагностика бінарних файлів](../binary-diagnostics.md)                          |
@@ -195,12 +195,12 @@ REA потребує Node.js 22.x (>=22.19), 24.x (>=24.11) або 26+, а та�
 
 [Прочитати дослідження](https://rea.tools/uk/showcase/th04/) · [Репозиторій реконструкції](https://github.com/N0zoM1z0/th04)
 
-Якщо ви дослідили з REA щось цікаве, поділіться результатом. Створіть [issue](https://github.com/morluto/rea/issues) або [pull request](https://github.com/morluto/rea/pulls) і вкажіть ціль, ваше запитання, як допоміг REA та що ви з'ясували.
+Якщо ви дослідили з AS Inspect щось цікаве, поділіться результатом. Створіть [issue](https://github.com/abusafyan-official/AS-Inspect/issues) або [pull request](https://github.com/abusafyan-official/AS-Inspect/pulls) і вкажіть ціль, ваше запитання, як допоміг AS Inspect та що ви з'ясували.
 
 ## Поширені запитання
 
 <details>
-<summary><strong>Які агенти можуть використовувати REA?</strong></summary>
+<summary><strong>Які агенти можуть використовувати AS Inspect?</strong></summary>
 
 Будь-який агент, що підтримує локальні MCP-сервери. Налаштування конфігурує [підтримуваних агентів](../installation.md#supported-agents); інші клієнти можуть використати [ручну реєстрацію MCP](../installation.md#mcp-registry).
 
@@ -216,28 +216,28 @@ REA потребує Node.js 22.x (>=22.19), 24.x (>=24.11) або 26+, а та�
 <details>
 <summary><strong>Чи потрібно спочатку запускати Hopper?</strong></summary>
 
-REA запускає Hopper, коли він потрібен для операції. У macOS під час першого запуску може з'явитися діалог вибору деморежиму або активації ліцензії. Дивіться [запуск Hopper та усунення неполадок](../installation.md#launcher-paths-and-troubleshooting).
+AS Inspect запускає Hopper, коли він потрібен для операції. У macOS під час першого запуску може з'явитися діалог вибору деморежиму або активації ліцензії. Дивіться [запуск Hopper та усунення неполадок](../installation.md#launcher-paths-and-troubleshooting).
 
 </details>
 
 <details>
 <summary><strong>Що дає встановлення skill із skills.sh?</strong></summary>
 
-Skill надає агенту інструкції дослідження. Використовуйте `npx rea-agents setup`, щоб зареєструвати MCP-сервер REA та встановити відповідні інструкції, а потім перезапустіть агента. Дивіться [встановлення лише skill](../installation.md#skill-only-installation).
+Skill надає агенту інструкції дослідження. Використовуйте `npx as-inspect-agents setup`, щоб зареєструвати MCP-сервер AS Inspect та встановити відповідні інструкції, а потім перезапустіть агента. Дивіться [встановлення лише skill](../installation.md#skill-only-installation).
 
 </details>
 
 <details>
-<summary><strong>Який код повертає REA?</strong></summary>
+<summary><strong>Який код повертає AS Inspect?</strong></summary>
 
 Нативний аналіз повертає псевдокод і асемблерний код. Аналіз JavaScript/Electron відновлює модулі та їхні зв'язки. Агент використовує ці результати, щоб написати й протестувати реалізацію; [приклади](#приклади) містять практичні дослідження.
 
 </details>
 
 <details>
-<summary><strong>Чи завантажує REA мій застосунок на сервер?</strong></summary>
+<summary><strong>Чи завантажує AS Inspect мій застосунок на сервер?</strong></summary>
 
-REA аналізує цілі локально. Ваш агент отримує результати інструментів, а постачальник його моделі має власну політику даних.
+AS Inspect аналізує цілі локально. Ваш агент отримує результати інструментів, а постачальник його моделі має власну політику даних.
 
 </details>
 
@@ -255,10 +255,10 @@ rea update
 Для налаштування агента через `npx`:
 
 ```bash
-npx rea-agents@latest setup
+npx as-inspect-agents@latest setup
 ```
 
-Якщо використовуєте агента, завершіть [оновлення налаштувань](#оновіть-rea) і перезапустіть його. Повторіть те саме завдання. Якщо проблема залишається, [відкрийте issue](https://github.com/morluto/rea/issues) із версією REA, типом цілі, кроками відтворення та виводом помилки.
+Якщо використовуєте агента, завершіть [оновлення налаштувань](#оновіть-rea) і перезапустіть його. Повторіть те саме завдання. Якщо проблема залишається, [відкрийте issue](https://github.com/abusafyan-official/AS-Inspect/issues) із версією AS Inspect, типом цілі, кроками відтворення та виводом помилки.
 
 </details>
 
@@ -281,13 +281,13 @@ npx rea-agents@latest setup
 
 🎉 **300 000 зірок на GitHub — дякуємо!**
 
-Дякуємо всім, хто використовує REA, повідомляє про помилки, пропонує нові функції, тестує збірки й допомагає з виправленнями.
+Дякуємо всім, хто використовує AS Inspect, повідомляє про помилки, пропонує нові функції, тестує збірки й допомагає з виправленнями.
 
 <a href="https://www.star-history.com/?repos=morluto%2Frea&amp;type=date">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=morluto/rea&amp;type=date&amp;theme=dark&amp;legend=top-left" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=morluto/rea&amp;type=date" />
-    <img alt="Історія зірок REA на GitHub" src="https://api.star-history.com/chart?repos=morluto/rea&amp;type=date" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=abusafyan-official/AS-Inspect&amp;type=date&amp;theme=dark&amp;legend=top-left" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=abusafyan-official/AS-Inspect&amp;type=date" />
+    <img alt="Історія зірок AS Inspect на GitHub" src="https://api.star-history.com/chart?repos=abusafyan-official/AS-Inspect&amp;type=date" />
   </picture>
 </a>
 
@@ -295,15 +295,15 @@ npx rea-agents@latest setup
 
 Рекомендації щодо відповідального використання наведено в [DISCLAIMER.md](../../DISCLAIMER.md).
 
-REA призначений для законних досліджень, навчання, забезпечення сумісності, збереження програмного забезпечення й аналізу програм, якими ви володієте або які маєте дозвіл досліджувати.
+AS Inspect призначений для законних досліджень, навчання, забезпечення сумісності, збереження програмного забезпечення й аналізу програм, якими ви володієте або які маєте дозвіл досліджувати.
 
-The project's position on illegal or unauthorized use covers all REA
+The project's position on illegal or unauthorized use covers all AS Inspect
 versions, distribution channels, and platforms; each copy retains its
 applicable licenses.
 
 ## Участь у проєкті
 
-Будемо раді вашій допомозі з REA! [Відкрийте issue](https://github.com/morluto/rea/issues), щоб повідомити про помилку чи запропонувати функцію, або [надішліть pull request](https://github.com/morluto/rea/pulls) з поліпшеннями коду чи документації.
+Будемо раді вашій допомозі з AS Inspect! [Відкрийте issue](https://github.com/abusafyan-official/AS-Inspect/issues), щоб повідомити про помилку чи запропонувати функцію, або [надішліть pull request](https://github.com/abusafyan-official/AS-Inspect/pulls) з поліпшеннями коду чи документації.
 
 Налаштування середовища розробки й перевірки описано в [CONTRIBUTING.md](../../CONTRIBUTING.md), шляхи верифікації — у [посібнику тестування](../testing.md), а структуру проєкту — на [схемі архітектури](../architecture.mermaid).
 
@@ -311,13 +311,13 @@ applicable licenses.
 
 [MIT](../../LICENSE)
 
-REA-authored code is licensed under MIT. Third-party material retains its own
+AS Inspect-authored code is licensed under MIT. Third-party material retains its own
 licenses and copyright notices; see [Third-party notices](../../THIRD_PARTY_NOTICES.md)
 for the dependency inventory, preserved license texts, and external-tool terms.
 
 **You must legally obtain and be authorized to use commercial tools**, including
 IDA Pro / Hex-Rays decompilers, Hopper, and JEB, under their applicable licenses.
-REA grants no tool license, key, or activation entitlement. Trials and demos
+AS Inspect grants no tool license, key, or activation entitlement. Trials and demos
 remain subject to vendor terms, including user, feature, automation, and output
 sharing restrictions. Cracked copies, stolen keys, unauthorized key sharing,
 and bypassing license restrictions are not authorized. This guidance does not

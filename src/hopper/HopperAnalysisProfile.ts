@@ -176,7 +176,7 @@ const HOPPER_DECLINED_ARCHITECTURE_LABELS: Record<
 export const hopperDeclinedArchitectureReason = (
   architecture: ElfMetadataArchitecture | "hexagon",
 ): string =>
-  `REA's Hopper adapter does not admit ${HOPPER_DECLINED_ARCHITECTURE_LABELS[architecture]} targets. Select a verified Ghidra ${HOPPER_DECLINED_ARCHITECTURE_LABELS[architecture]} profile instead.`;
+  `AS Inspect's Hopper adapter does not admit ${HOPPER_DECLINED_ARCHITECTURE_LABELS[architecture]} targets. Select a verified Ghidra ${HOPPER_DECLINED_ARCHITECTURE_LABELS[architecture]} profile instead.`;
 
 /** Derive Hopper's complete non-interactive CLI loader selection. */
 export const hopperLoaderArgsForTarget = (

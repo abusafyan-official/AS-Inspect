@@ -1,6 +1,6 @@
 # Export an environment manifest as an agent environment bundle
 
-Issue: https://github.com/morluto/rea/issues/4933
+Issue: https://github.com/abusafyan-official/AS-Inspect/issues/4933
 
 ## Outcome
 
@@ -8,7 +8,7 @@ Issue: https://github.com/morluto/rea/issues/4933
 [--package-tarball <path>] [--name <override>]` writes the manifest and
 capture pair that `environment-serve` serves as a bundle folder the agentenv
 framework runs with `agent-env run <dir>`: a README with provenance, an env
-folder whose Dockerfile installs this exact `rea-agents` version and serves the
+folder whose Dockerfile installs this exact `as-inspect-agents` version and serves the
 copied pair, a Python replay verifier and a smoke task. The hosted
 `real-agentenv` lane exports such a bundle from the source-owned Grafana-shaped
 capture through the built CLI, packs the checkout into the image and runs it
@@ -39,8 +39,8 @@ previous increment.
 - The Dockerfile reads `FROM node:24.18.0-bookworm-slim`, sets
   `MCP_HOST=0.0.0.0` and `MCP_PORT=18765`, installs Debian's `python3` for the
   framework's readiness probe, installs
-  `rea-agents@<PRODUCT_IDENTITY.packageVersion>` from the registry or, with
-  `--package-tarball`, copies the tarball as `rea-agents.tgz`, installs it
+  `as-inspect-agents@<PRODUCT_IDENTITY.packageVersion>` from the registry or, with
+  `--package-tarball`, copies the tarball as `as-inspect-agents.tgz`, installs it
   from `/tmp/` and removes it in the same layer, copies the pair to `/env/`,
   switches to the image's `node` user
   and runs `rea environment-serve /env/manifest.json --evidence

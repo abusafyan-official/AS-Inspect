@@ -125,7 +125,7 @@ describe("exportEnvironmentBundle", () => {
       state: { served: true, evidence_id: expect.stringMatching(/^ev_/u) },
       package_source: {
         kind: "registry",
-        specifier: `rea-agents@${PACKAGE_METADATA.version}`,
+        specifier: `as-inspect-agents@${PACKAGE_METADATA.version}`,
       },
     });
     const written = exported.value.files.map((file) => file.path).sort();
@@ -158,7 +158,7 @@ describe("exportEnvironmentBundle", () => {
     const { root, input, directory } = await prepare(
       "rea-environment-export-tarball-",
     );
-    const tarball = join(root, "rea-agents-0.0.0.tgz");
+    const tarball = join(root, "as-inspect-agents-0.0.0.tgz");
     await writeFile(tarball, Buffer.from([0x1f, 0x8b, 8, 0, 1, 2, 3]));
     const exported = await exportEnvironmentBundle({
       ...input,
@@ -172,15 +172,15 @@ describe("exportEnvironmentBundle", () => {
       path: tarball,
     });
     expect(exported.value.files).toContainEqual({
-      path: "envs/replay-copy/rea-agents.tgz",
+      path: "envs/replay-copy/as-inspect-agents.tgz",
       bytes: 7,
     });
     expect(
-      await readFile(join(directory, "envs/replay-copy/rea-agents.tgz")),
+      await readFile(join(directory, "envs/replay-copy/as-inspect-agents.tgz")),
     ).toEqual(await readFile(tarball));
     expect(
       await readFile(join(directory, "envs/replay-copy/Dockerfile"), "utf8"),
-    ).toContain("COPY rea-agents.tgz /tmp/");
+    ).toContain("COPY as-inspect-agents.tgz /tmp/");
   });
 
   it("refuses a non-empty directory, a file path and a missing tarball before writing anything", async () => {

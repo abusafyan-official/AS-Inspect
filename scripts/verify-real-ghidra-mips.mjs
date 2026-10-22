@@ -150,7 +150,7 @@ try {
       assert.deepEqual(
         resolved.value.mips.limitations ?? [],
         legacy.limitations,
-        "REA legacy ABI-record absence interpretation disagrees with GNU readelf",
+        "AS Inspect legacy ABI-record absence interpretation disagrees with GNU readelf",
       );
       assert.equal(resolved.value.sha256, fixture.sha256);
       const snapshotPath = join(workspace, `${byteOrder}-legacy.snapshot.json`);
@@ -307,13 +307,13 @@ try {
       assert.deepEqual(
         resolved.value.mips,
         independent.mips,
-        "REA PSP ELF/ABI interpretation disagrees with GNU readelf and raw ABI bytes",
+        "AS Inspect PSP ELF/ABI interpretation disagrees with GNU readelf and raw ABI bytes",
       );
     } else {
       assert.deepEqual(
         resolved.value.mips,
         independent.mips,
-        "REA ELF/ABI interpretation disagrees with GNU readelf",
+        "AS Inspect ELF/ABI interpretation disagrees with GNU readelf",
       );
     }
     assert.equal(resolved.value.sha256, fixture.sha256);

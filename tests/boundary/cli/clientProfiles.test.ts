@@ -390,7 +390,7 @@ cliTest(
     const home = await createTestTempDirectory("rea-gemini-case-");
     const system = join(home, "system.json");
     const defaults = join(home, "defaults.json");
-    await writeFile(system, JSON.stringify({ mcp: { allowed: ["REA"] } }));
+    await writeFile(system, JSON.stringify({ mcp: { allowed: ["AS Inspect"] } }));
     const environment = {
       HOME: home,
       USERPROFILE: home,
@@ -407,8 +407,8 @@ cliTest(
     // survives must not decide the outcome: the same pair of policies in
     // either arrangement has to consolidate to the same decision.
     for (const [systemSpelling, defaultSpelling] of [
-      ["REA", "rea"],
-      ["rea", "REA"],
+      ["AS Inspect", "rea"],
+      ["rea", "AS Inspect"],
     ]) {
       await writeFile(
         system,
@@ -451,7 +451,7 @@ cliTest(
     // An exclusion is a membership test over the same names the intersection
     // compares, so a differently spelled and padded entry blocks setup rather
     // than slipping past the raw comparison.
-    await writeFile(system, JSON.stringify({ mcp: { excluded: [" REA "] } }));
+    await writeFile(system, JSON.stringify({ mcp: { excluded: [" AS Inspect "] } }));
     const blocked = await run();
     expect(blocked.exitCode).toBe(1);
     expect(blocked.json).toMatchObject({
@@ -462,7 +462,7 @@ cliTest(
     });
     // Padding is presentation, not identity: a padded allowlist entry permits
     // the same server its exact spelling permits.
-    await writeFile(system, JSON.stringify({ mcp: { allowed: [" REA "] } }));
+    await writeFile(system, JSON.stringify({ mcp: { allowed: [" AS Inspect "] } }));
     const allowed = await run();
     expect(allowed.exitCode).toBe(0);
     expect(allowed.json).toMatchObject({ status: "ready" });

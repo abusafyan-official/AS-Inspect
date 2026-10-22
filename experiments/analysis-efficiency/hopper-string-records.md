@@ -1,6 +1,6 @@
 # Hopper literal search: reuse decoded records
 
-For [#5010](https://github.com/morluto/rea/issues/5010), the bridge now keeps
+For [#5010](https://github.com/abusafyan-official/AS-Inspect/issues/5010), the bridge now keeps
 the existing decoded records in its sorted search inventory and projects only
 matches. Previously, every positive literal search called `_string_inventory`
 again, sorting all native object addresses and building another complete map
@@ -32,7 +32,7 @@ pagination, broader binary string discovery or a new context contract.
 
 ## Pinned real-provider scope
 
-Baseline: REA 6.7.0 at `c12d9eda87aa5a022ee7e18ea96d8d03bfd12e96`, Node
+Baseline: AS Inspect 6.7.0 at `c12d9eda87aa5a022ee7e18ea96d8d03bfd12e96`, Node
 24.18.0, Debian 12 x86-64, Linux `6.1.0-53-cloud-amd64`. All paired tasks used
 the same compiled runtime SHA-256
 `0809b5004f214efa4b79775d5fda796eaecf4ad5756c55ee3b9d7cf82d91b750`.
@@ -40,7 +40,7 @@ Baseline and candidate bridge digests are recorded separately in the receipt;
 the baseline file was mounted read-only over the bridge for baseline runs.
 
 The official [Hopper 6.6.0 Linux demo package](https://www.hopperapp.com:443/downloader/public/Hopper-6.6.0-Linux-demo.deb)
-was authenticated through REA's production publisher verifier: 35,748,722
+was authenticated through AS Inspect's production publisher verifier: 35,748,722
 bytes, SHA-256
 `59705e50f7ebf9104abe1e72ac3949bed1a8e43ec67a8c9510a1c5056c200d27`,
 primary signing fingerprint `7C2D73BAFAF5B9A710A69DA1A26DF815099B1BCD`.
@@ -199,7 +199,7 @@ The receipt preserves setup, diagnostic, failed and completed costs separately:
 - Two unchanged-baseline launches timed out at bridge startup. An owned-display
   observation showed completed native analysis but a Python bootstrap failure.
   Adding only the missing embedded Python library made the baseline pass;
-  [#5015](https://github.com/morluto/rea/issues/5015) records the separate
+  [#5015](https://github.com/abusafyan-official/AS-Inspect/issues/5015) records the separate
   installer dependency hypothesis and its unverified actual-installer scope.
 - C2 stopped after 82.607 seconds when host available memory crossed the
   unchanged stop threshold. Its sampled family peak was 1,517,019,136 bytes

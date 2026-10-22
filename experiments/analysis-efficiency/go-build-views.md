@@ -1,6 +1,6 @@
 # Selected Go build metadata
 
-Addresses [#5499](https://github.com/morluto/rea/issues/5499). A compiler/main-module
+Addresses [#5499](https://github.com/abusafyan-official/AS-Inspect/issues/5499). A compiler/main-module
 identity question previously required the complete Go report, including raw framed
 bytes, base64, module text and every parsed dependency. Opt-in `detail: summary`
 retains the same complete parent and returns identity, source ranges, counts and
@@ -37,7 +37,7 @@ reported compiler and framed module bytes. Before/after exports have identical
 complete normalized results and parent Evidence identity. The small real case
 is the installed 12,366,352-byte Go tool: embedded `go1.23.5`, no decoded main
 module and zero retained dependencies, with dependency coverage still unknown.
-REA reads both inputs without executing them. The installed Go tool also runs
+AS Inspect reads both inputs without executing them. The installed Go tool also runs
 as the trusted native verifier; the downloaded GitHub CLI binary is never
 executed.
 
@@ -70,7 +70,7 @@ remain unmeasured.
 | Compiler, main module and one selected dependency      |                   2 → 3 |          158,538 → 186,812 (17.8% more) |
 | Same selected dependency question plus Evidence export |                   3 → 4 |           256,342 → 250,352 (2.3% less) |
 
-The actual REA namespace costs 51,821 → 51,983 proxy tokens **per request**.
+The actual AS Inspect namespace costs 51,821 → 51,983 proxy tokens **per request**.
 An extra round can outweigh a smaller reply. Summary is useful when identity
 and counts already answer the question; complete delivery remains useful for
 an initial compound question. Retained views provide selected follow-up facts,

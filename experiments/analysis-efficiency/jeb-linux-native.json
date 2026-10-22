@@ -1,5 +1,5 @@
 {
-  "issue": "https://github.com/morluto/rea/issues/4996",
+  "issue": "https://github.com/abusafyan-official/AS-Inspect/issues/4996",
   "baseline": "7c458f04b9155707c8ba406f8b455b10016f1b99",
   "scope": "Selected native method qualification and existing-cost audit. Documentation-only change; no provider/cache/API optimization or before/after speedup claim.",
   "host": {
@@ -1562,7 +1562,7 @@
   ],
   "limitations": [
     "CE native selected-read qualification only; Java/Android/Demo/GUI/Windows/macOS and >100-unit pagination unverified here.",
-    "Known method reference supplied to each final task. Native code-item discovery exists upstream but is not exposed by the four current REA JEB operations.",
+    "Known method reference supplied to each final task. Native code-item discovery exists upstream but is not exposed by the four current AS Inspect JEB operations.",
     "Provider subject remains explicitly unknown; separate native project digest observation is not substituted for an atomically bound artifact identity.",
     "Decompiled text/ABI/full program equivalence not proved; literal/arithmetic oracles and exact transport preservation are narrower.",
     "All earlier refusals/failures retained. Larger last-run time/cpu spread remains unexplained; no favorable resampling or stable latency/memory improvement claim.",

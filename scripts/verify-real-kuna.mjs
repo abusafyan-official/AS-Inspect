@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Real Kuna provider lane. Requires a caller-supplied kuna (REA_KUNA_COMMAND)
-// and a host C compiler; REA installs neither. The default run builds a
+// and a host C compiler; AS Inspect installs neither. The default run builds a
 // source-owned fixture, with symbols and stripped, and verifies the public MCP
 // workflow: cold single-function pseudocode, the project export, warm reuse
 // from a fresh server, and cleanup. `--targets DIR --functions a,b` adds
@@ -94,7 +94,7 @@ let kunaVersion;
 const FIXTURE_SOURCE = String.raw`
 #include <stdio.h>
 #include <stdlib.h>
-static const char rea_kuna_utf8[] __attribute__((used)) = "＿φ( °-°)/ REA unicode marker";
+static const char rea_kuna_utf8[] __attribute__((used)) = "＿φ( °-°)/ AS Inspect unicode marker";
 /* The leading NUL unit ends any UTF-16 run that bytes before this array would
    start: the UTF-8 marker's last byte and NUL decode as the unit 'r', so on
    layouts where it precedes this array Kuna reports "rREA wide marker". */
@@ -549,8 +549,8 @@ try {
     results.push({
       binary: binary.slice(workspace.length + 1),
       kuna: await verifyKuna(binary, [...fixtureFunctions], fixtureMain, [
-        "＿φ( °-°)/ REA unicode marker",
-        "REA wide marker",
+        "＿φ( °-°)/ AS Inspect unicode marker",
+        "AS Inspect wide marker",
       ]),
     });
 

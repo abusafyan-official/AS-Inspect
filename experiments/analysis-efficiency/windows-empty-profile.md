@@ -1,13 +1,13 @@
 # Windows empty-profile startup verification
 
-Follow-up to [#2345](https://github.com/morluto/rea/pull/2345), including
+Follow-up to [#2345](https://github.com/abusafyan-official/AS-Inspect/pull/2345), including
 @gefrezim's diagnosis of the import-time Windows home lookup.
 
 ## Source and boundary
 
 Baseline: main `172407787f1842dedbcd27b5385177595f786ce4`. Verification used
 the real Windows 11 10.0.22631.0 host, official Windows x64 Node 24.18.0,
-locked production dependencies and REA's compiled public CLI / SDK 2.3.1 MCP
+locked production dependencies and AS Inspect's compiled public CLI / SDK 2.3.1 MCP
 server. No IDA or Ghidra engine was used. Runtime copies and compact receipts
 live outside the checkout; no account profile path or ambient environment is
 recorded here.

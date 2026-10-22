@@ -285,7 +285,7 @@ const fixture = await createOpenAiModelFixture({
       );
       assert(
         JSON.stringify(messages).includes(skillPath),
-        "Pi must advertise the installed REA skill.",
+        "Pi must advertise the installed AS Inspect skill.",
       );
       callRequested = true;
       return call(tool.name, {
@@ -373,13 +373,13 @@ const args =
         "-p",
         mode === "chat"
           ? "Say hello briefly."
-          : `Use REA to analyze ${target}.`,
+          : `Use AS Inspect to analyze ${target}.`,
       ]
     : [
         "--oneshot",
         mode === "chat"
           ? "Say hello briefly."
-          : `Use REA to analyze ${target}.`,
+          : `Use AS Inspect to analyze ${target}.`,
         "--provider",
         "custom",
         "--model",
@@ -416,7 +416,7 @@ try {
     assert.deepEqual(
       catalog?.sort(),
       TOOL_CONTRACTS.map((t) => t.name).sort(),
-      "The complete REA catalog must survive native client discovery.",
+      "The complete AS Inspect catalog must survive native client discovery.",
     );
   }
 } catch (cause) {

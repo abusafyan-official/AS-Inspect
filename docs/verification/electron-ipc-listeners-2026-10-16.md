@@ -1,8 +1,8 @@
 # Electron IPC listener verification, 2026-10-16
 
-[#4390](https://github.com/morluto/rea/issues/4390), existing
-[#4389](https://github.com/morluto/rea/pull/4389), umbrella
-[#4027](https://github.com/morluto/rea/issues/4027).
+[#4390](https://github.com/abusafyan-official/AS-Inspect/issues/4390), existing
+[#4389](https://github.com/abusafyan-official/AS-Inspect/pull/4389), umbrella
+[#4027](https://github.com/abusafyan-official/AS-Inspect/issues/4027).
 
 All 73 IPC boundary regressions pass, alongside shared projection/actions and
 converted MCP schema checks. Real draw.io operation phases succeed.
@@ -52,13 +52,13 @@ runtime compatibility.
 
 The real renderer initially displays an **Invalid file data** dialog. A public
 CLI startup smoke and independent DOM/argv probes preserve this failure, tracked
-separately in [#4494](https://github.com/morluto/rea/issues/4494). Its exact cause
+separately in [#4494](https://github.com/abusafyan-official/AS-Inspect/issues/4494). Its exact cause
 is not proven. Two attempts to click a palette item without handling the dialog
 timed out and were cancelled; they remain failed diagnostics. An initial helper
 also incorrectly queried `application.process()` after transport closure; the
 corrected helper retains the original ChildProcess handle instead.
 
-The final scenario uses declared REA clicks to dismiss that actual error and
+The final scenario uses declared AS Inspect clicks to dismiss that actual error and
 insert a visible palette item, then waits for rendering. Independent DOM reads
 confirm SVG elements **0 → 2**, disappearance of the error and the real unsaved
 changes indicator. The verifier exercises the real app callbacks and channels;
@@ -82,7 +82,7 @@ declared actions run in the order baseline, candidate, candidate, baseline.
 Every declared action completed, every insertion oracle passed, and no verifier
 deadline fired. Every provider returned `cleanup_failed`; the captures remain
 partial/failed, including possible dirty-editor teardown and the known Linux
-ownership gap [#4282](https://github.com/morluto/rea/issues/4282). Baseline 2 also
+ownership gap [#4282](https://github.com/abusafyan-official/AS-Inspect/issues/4282). Baseline 2 also
 reports Xvfb temporary-directory cleanup failure (payload exit 5). Its directory
 identity was not captured; no broad path-based deletion was attempted.
 
@@ -185,7 +185,7 @@ Fresh review also found a distinct remaining metadata case: changing a raw
 recording wrapper's writable `.listener` property can make an app decorator
 reject removal. A production-hook/native-Node probe reproduces this (plain:
 removed; hook: decorator throws and one listener remains). Exact reproduction
-and the ownership conflict are tracked in [#4513](https://github.com/morluto/rea/issues/4513).
+and the ownership conflict are tracked in [#4513](https://github.com/abusafyan-official/AS-Inspect/issues/4513).
 No affected real app has been identified. Removing the descriptor guard alone
 does not make native removal match the mutated wrapper; temporarily rewriting
 public app metadata would add further visible mutations. This limitation is
@@ -218,7 +218,7 @@ Overall provider cleanup still fails; no deadline fires. Its 12.290 s pipeline
 run is a validation observation, not a paired performance comparison. Exact
 source hashes, failures, resource measurements and post-scope states are appended
 under `native_dispatch_followup`; all previous records remain unchanged.
-The separate raw metadata limitation [#4513](https://github.com/morluto/rea/issues/4513)
+The separate raw metadata limitation [#4513](https://github.com/abusafyan-official/AS-Inspect/issues/4513)
 remains open and is not represented as fixed.
 
 Final-source static checks pass: two uncached tasks, 171.430 s wall,
@@ -362,8 +362,8 @@ CI run `38935598884` tested synthetic merge `eedae92d406015895a6d0eced5035da1b9e
 shard was cancelled by fail-fast. A fresh, unmodified detached checkout of that
 exact base reproduces the same failures: **33 passed, two failed** in
 `tests/boundary/firmware/firmwareIntegration.test.ts`. Evidence is posted on
-[the PR](https://github.com/morluto/rea/pull/4389#issuecomment-6221054273) and
-[existing #4475](https://github.com/morluto/rea/issues/4475#issuecomment-6221054775).
+[the PR](https://github.com/abusafyan-official/AS-Inspect/pull/4389#issuecomment-6221054273) and
+[existing #4475](https://github.com/abusafyan-official/AS-Inspect/issues/4475#issuecomment-6221054775).
 This establishes that these failures predate the Electron changes; it does not
 resolve whether the firmware producer or its expectations need correction. No
 firmware code or assertions are changed here, and required CI is not bypassed.

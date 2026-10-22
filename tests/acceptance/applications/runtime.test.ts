@@ -283,7 +283,7 @@ describe("production stdio saved-database admission", () => {
                 provider_id: "hopper",
                 code: "target_kind_unsupported",
                 reason: expect.stringContaining(
-                  "cannot start REA's analysis bridge",
+                  "cannot start AS Inspect's analysis bridge",
                 ),
                 diagnostics: {
                   target_kind: "database",

@@ -1,6 +1,6 @@
 # Historical network upstream profiles
 
-REA uses unmodified upstream packages or a caller-supplied tool. The adapter
+AS Inspect uses unmodified upstream packages or a caller-supplied tool. The adapter
 code lives under `src/browser/history/` and `bridge/mitmproxy/`; this directory
 records provenance rather than vendoring a second parser implementation.
 
@@ -15,7 +15,7 @@ records provenance rather than vendoring a second parser implementation.
 
 The npm lockfile pins exact package versions and distribution integrity hashes;
 their original code and license files remain in the installed packages. Native
-mitmproxy is bring-your-own. REA never installs or upgrades it and rejects a
+mitmproxy is bring-your-own. AS Inspect never installs or upgrades it and rejects a
 different runtime version. The Linux verification lane downloads the official
 standalone release into runner temporary storage with fixed archive SHA-256
 `2e95286b618fa6fd33e5e62a78c2e5112571d85f42ec2bac29b97ee242bdb5c5`.
@@ -31,7 +31,7 @@ only in a validation copy for that declared producer profile, with the original
 null retained. The upstream schemas themselves remain unchanged.
 
 The strict JSON visitor supplies member events before object materialization;
-REA rejects all duplicate names and retains original numeric token spelling.
+AS Inspect rejects all duplicate names and retains original numeric token spelling.
 The shared JSON representation preserves all own members, including `__proto__`,
 `constructor`, and `prototype`, without invoking prototype setters. These names
 do not make a capture unsupported.

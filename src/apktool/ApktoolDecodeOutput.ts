@@ -8,7 +8,7 @@ import {
   type Document as YamlDocument,
 } from "yaml";
 
-/** Project only the Apktool metadata fields REA publishes. */
+/** Project only the Apktool metadata fields AS Inspect publishes. */
 export interface ApktoolMetadata {
   readonly versionName: string | null;
   readonly versionCode: string | null;

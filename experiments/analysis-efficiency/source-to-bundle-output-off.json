@@ -75,7 +75,7 @@
       ],
       "proof": {
         "status": "passed",
-        "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no REA parser or matcher.",
+        "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no AS Inspect parser or matcher.",
         "source_files": 180,
         "embedded_nodes": 99,
         "candidate_relations": 210,
@@ -167,7 +167,7 @@
       ],
       "proof": {
         "status": "passed",
-        "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no REA parser or matcher.",
+        "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no AS Inspect parser or matcher.",
         "source_files": 180,
         "embedded_nodes": 99,
         "candidate_relations": 210,
@@ -259,7 +259,7 @@
       ],
       "proof": {
         "status": "passed",
-        "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no REA parser or matcher.",
+        "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no AS Inspect parser or matcher.",
         "source_files": 180,
         "embedded_nodes": 99,
         "candidate_relations": 210,
@@ -337,7 +337,7 @@
       ],
       "proof": {
         "status": "passed",
-        "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no REA parser or matcher.",
+        "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no AS Inspect parser or matcher.",
         "source_files": 180,
         "embedded_nodes": 99,
         "candidate_relations": 210,
@@ -415,7 +415,7 @@
       ],
       "proof": {
         "status": "passed",
-        "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no REA parser or matcher.",
+        "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no AS Inspect parser or matcher.",
         "source_files": 180,
         "embedded_nodes": 99,
         "candidate_relations": 210,
@@ -507,7 +507,7 @@
       ],
       "proof": {
         "status": "passed",
-        "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no REA parser or matcher.",
+        "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no AS Inspect parser or matcher.",
         "source_files": 180,
         "embedded_nodes": 99,
         "candidate_relations": 210,
@@ -531,7 +531,7 @@
     }
   ],
   "baseline_revision": "01788bac8",
-  "configuration_scope": "Both cohorts explicitly use existing REA_MCP_OUTPUT_SCHEMA_PROFILE=off. REA still canonical-validates successful results; clients do not receive output schemas. Defaults remain unchanged. Pilot off-1/off-2 and warm calibration excluded.",
+  "configuration_scope": "Both cohorts explicitly use existing REA_MCP_OUTPUT_SCHEMA_PROFILE=off. AS Inspect still canonical-validates successful results; clients do not receive output schemas. Defaults remain unchanged. Pilot off-1/off-2 and warm calibration excluded.",
   "implementation_files_sha256": {
     "src/application/javascript/SourceToBundleReference.ts": "00f590540b1d8a1755badd7318a4f65b472671e505989c98338f2c63dbe5f7fe",
     "src/cli/applicationCommands.ts": "7a436590d7d8f38c059b1ef9a008a20b6021eb04a6caafb72d473149f8762a00",

@@ -132,7 +132,7 @@ export const parseLinuxVmRssBytes = (status) => {
 /**
  * Collect unique file-backed ESM module URLs from Node's diagnostic stream.
  */
-export const createEsmModuleProfileCollector = (packageName = "rea-agents") => {
+export const createEsmModuleProfileCollector = (packageName = "as-inspect-agents") => {
   const modules = new Set();
   let buffer = "";
   let debugLines = 0;
@@ -226,7 +226,7 @@ const createLinuxRssSampler = (pid) => {
 
 /** Same sentence as `fixedMcpPhaseBudgetRecovery`; this script cannot import that TypeScript module. */
 export const fixedMcpStartupPhaseBudgetRecovery = (phase, value, unit) =>
-  `REA's fixed ${phase} is ${String(value)} ${unit} and this release has no runtime override.`;
+  `AS Inspect's fixed ${phase} is ${String(value)} ${unit} and this release has no runtime override.`;
 
 const phaseTimeout = (cause) => {
   const message = cause instanceof Error ? cause.message : String(cause);

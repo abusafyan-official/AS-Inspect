@@ -265,7 +265,7 @@ describe("HopperClient startup failures", () => {
     expect(restarted).toEqual({
       ok: true,
       value: {
-        name: "REA Hopper bridge",
+        name: "AS Inspect Hopper bridge",
         version: "1.0.0",
         processId: retriedProcess?.pid,
       },
@@ -297,7 +297,7 @@ describe("HopperClient startup failures", () => {
     expect(started).toEqual({
       ok: true,
       value: {
-        name: "REA Hopper bridge",
+        name: "AS Inspect Hopper bridge",
         version: "1.0.0",
         processId: launcher.processes[0]?.pid,
       },

@@ -1,6 +1,6 @@
 # Frida status delivery and runtime-observation audit
 
-Issue: [#5640](https://github.com/morluto/rea/issues/5640). Paired runtime base:
+Issue: [#5640](https://github.com/abusafyan-official/AS-Inspect/issues/5640). Paired runtime base:
 `17f581ff75d2b6cf643a997275e3e296f6c95760`. Final candidate source: `32a4690059907f09fb29e284ad492d94c1722278` (clean tree).
 Exact package, patch, native input,
 script and resource pins are in [the measurement record](frida-status-views.json).
@@ -58,7 +58,7 @@ summary status was slower (107.8 versus 79.3 ms).
 ## Actual client context
 
 Codex app-server 0.163.0 performs the native Frida workflow through the actual
-REA MCP package. A deterministic local Responses/SSE fixture selects the calls;
+AS Inspect MCP package. A deterministic local Responses/SSE fixture selects the calls;
 there is no AI inference, paid model, model-quality or billing claim. The capture
 contains all 211 tool input schemas on each request and all history replays. `tiktoken`
 0.12.0 `cl100k_base` counts compact JSON as a token estimate, not actual model
@@ -104,7 +104,7 @@ not qualify real remote behavior.
 
 ## Other providers in this audit
 
-Inspector was measured against a test-owned real REA MCP process while it
+Inspector was measured against a test-owned real AS Inspect MCP process while it
 handled a verified GitHub CLI Go build-information request. A concurrent native
 CDP metadata subscription matched all 776 retained scripts by hash and reported
 length: 565 file locations and 211 built-ins. The reply was 608,719 bytes;

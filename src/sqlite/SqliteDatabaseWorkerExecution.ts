@@ -95,7 +95,7 @@ const rejectedReply = (
       {
         capturedOutput,
         userMessage: reply.message,
-        remediationAction: `The database is readable; only the listed column values failed. REA's SQLite connection loads no extensions or application functions and disables schema trust. ${
+        remediationAction: `The database is readable; only the listed column values failed. AS Inspect's SQLite connection loads no extensions or application functions and disables schema trust. ${
           readable.length === 0
             ? "No other readable column was found"
             : `Select columns whose values were read: columns: ${JSON.stringify(readable)} (CLI: one --column per name)`

@@ -143,7 +143,7 @@ const fixture = await createOpenAiModelFixture({
   onRequest: async ({ body, tools, requestIndex }) => {
     // Harness generates a session title in a separate, tool-free model request.
     if (tools.length === 0)
-      return { role: "assistant", content: "REA validation" };
+      return { role: "assistant", content: "AS Inspect validation" };
     assert(
       ++mainRequests <= 4,
       "Harness did not complete the bounded fixture workflow.",
@@ -336,7 +336,7 @@ try {
       "--profile",
       "headless",
       "--json",
-      mode === "chat" ? "Say hello briefly." : `Use REA to analyze ${target}.`,
+      mode === "chat" ? "Say hello briefly." : `Use AS Inspect to analyze ${target}.`,
     ],
     {
       env: environment,

@@ -270,7 +270,7 @@ for (const scenario of [
         exactTaskFacts(fact, original);
         assert.ok(
           fact.limitations.some((limitation) =>
-            limitation.includes("local REA analysis snapshot"),
+            limitation.includes("local AS Inspect analysis snapshot"),
           ),
           "No producer cache-reuse marker",
         );

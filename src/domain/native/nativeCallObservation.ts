@@ -74,7 +74,7 @@ export const nativeCallObservationInputSchema = z.strictObject({
       z.string().regex(/^[^\x00]*$/u, "Environment values cannot contain NUL"),
     )
     .default({})
-    .describe("Overrides on top of the environment REA runs with."),
+    .describe("Overrides on top of the environment AS Inspect runs with."),
   working_directory: localPathStringSchema.optional(),
   duration_ms: z
     .int()
@@ -178,7 +178,7 @@ export const nativeCallObservationResultSchema = z.strictObject({
     outcome: nativeCallProcessOutcomeSchema,
     exit_status: z.int().nullable(),
     exit_description: z.string().nullable(),
-    /** REA confirmed the process is gone when observation ended. */
+    /** AS Inspect confirmed the process is gone when observation ended. */
     terminated: z.boolean(),
     elapsed_ms: z.number().nonnegative(),
     stdout: nativeCapturedOutputSchema,

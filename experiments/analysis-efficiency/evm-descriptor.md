@@ -1,6 +1,6 @@
 # EVM descriptor and real-template checkpoint
 
-Continues [#2016](https://github.com/morluto/rea/issues/2016) after the native
+Continues [#2016](https://github.com/abusafyan-official/AS-Inspect/issues/2016) after the native
 checkpoint merged. The internal descriptor binds the existing exact EVM
 contract, CLI name and typed service lifetime. Existing complete inputs, output,
 provider selection and cleanup remain the baseline. Wiring alone does not establish
@@ -39,7 +39,7 @@ WETH remains a published historical RPC example, with unknown live authenticity.
 Actual control CLI observations infer 7 Factory and 26 Pool functions. The
 [independent verifier](verify-evm-template.mjs) hashes each canonical published ABI
 signature with caller-supplied Ethereum Keccak and checks the complete ABI-dispatch
-selector multiset against the original REA response. Both sets match. This does not
+selector multiset against the original AS Inspect response. Both sets match. This does not
 establish inferred argument/mutability equivalence, deployment authenticity or
 runtime semantics; all producer unknowns remain visible.
 

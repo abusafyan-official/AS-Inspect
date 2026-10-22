@@ -56,8 +56,8 @@ const limitationFor = (limit: FridaOwnedCaptureLimit): string => {
 };
 
 /**
- * Read capture caps from REA-owned observation fields. `payload` is caller
- * data, so flags inside it are not REA dropping bytes.
+ * Read capture caps from AS Inspect-owned observation fields. `payload` is caller
+ * data, so flags inside it are not AS Inspect dropping bytes.
  */
 const collectOwnedCaps = (
   value: unknown,
@@ -87,7 +87,7 @@ const collectOwnedCaps = (
   }
 };
 
-/** Name only the caps that REA itself recorded while dropping data. */
+/** Name only the caps that AS Inspect itself recorded while dropping data. */
 export const fridaCaptureLimitations = (result: unknown): readonly string[] => {
   const caps = new Set<FridaOwnedCaptureLimit>();
   collectOwnedCaps(result, caps);

@@ -1,7 +1,7 @@
 # Omitted GGUF string validation
 
-[Issue #5774](https://github.com/morluto/rea/issues/5774) follows the existing
-real-model and completed-task audit in [#5603](https://github.com/morluto/rea/pull/5603).
+[Issue #5774](https://github.com/abusafyan-official/AS-Inspect/issues/5774) follows the existing
+real-model and completed-task audit in [#5603](https://github.com/abusafyan-official/AS-Inspect/pull/5603).
 The [coverage reconciliation](coverage-review-20261021.md) explains why neither
 model inspection nor IL2CPP, firmware extraction or IDA should be described as
 wholly unaudited. This experiment changes only one model producer hot path.

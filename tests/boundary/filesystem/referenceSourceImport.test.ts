@@ -723,7 +723,7 @@ describe("reference source import behavior", () => {
       const oid = await commit({
         fs,
         dir: root,
-        author: { name: "REA Test", email: "rea@example.invalid" },
+        author: { name: "AS Inspect Test", email: "rea@example.invalid" },
         message: "fixture",
       });
       const result = await importTree(root);

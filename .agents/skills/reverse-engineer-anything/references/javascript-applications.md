@@ -6,13 +6,13 @@ For captured or bundled JavaScript that needs readable source recovery, use
 `additional_paths` when advertised, then analyze the returned `analysis_input`
 directory together. Each input retains its own snapshot, digest and byte-range
 provenance; inputs and recovered code are never executed. Recovery requires a
-caller-supplied Wakaru on Linux x64; see [the recovery guide](https://github.com/morluto/rea/blob/main/docs/javascript-recovery.md).
+caller-supplied Wakaru on Linux x64; see [the recovery guide](https://github.com/abusafyan-official/AS-Inspect/blob/main/docs/javascript-recovery.md).
 
 Use `analyze_javascript_application` directly on the operator-supplied ASAR or
 extracted tree. When the question concerns known source paths and the connected
 schema advertises `source_paths`, select exact inventoried paths such as
 `["package.json", "main.js", "preload.js"]`. Include supporting manifests or
-source maps explicitly; dependencies are not implicitly analyzed. REA retains
+source maps explicitly; dependencies are not implicitly analyzed. AS Inspect retains
 the complete artifact inventory and identity but reads source text and analyzes
 only selected files. The result and summary record `source_selection`; files
 outside scope and their relationships remain unknown, so partial application
@@ -23,7 +23,7 @@ unfiltered request. `detail: "summary"` reduces delivery
 and does not by itself reduce analysis work.
 
 ASAR header/index admission defaults to 16 MiB / 16777216 bytes;
-`REA_ASAR_MAX_HEADER_BYTES` (at most 256 MiB, set where REA starts) changes it.
+`REA_ASAR_MAX_HEADER_BYTES` (at most 256 MiB, set where AS Inspect starts) changes it.
 `source_paths`, `detail`, and `max_heap_mb` do not bypass or raise it. Or
 analyze an extracted directory.
 
@@ -41,9 +41,9 @@ the complete application Evidence inline when it fits.
 When the connected schema advertises `max_heap_mb` and `analysis_timeout_ms`,
 these select the isolated source analyzer's old-space heap and per-source
 deadline. Defaults are 1024 MiB and 300000 ms. They do not change the MCP
-process heap or the client's tool deadline. For a host timeout without REA
+process heap or the client's tool deadline. For a host timeout without AS Inspect
 output, use the [deadline recovery guide](connection-and-recovery.md#distinguish-client-and-server-deadlines)
-instead of raising the server budget. A Bun-hosted REA does not enforce the heap choice; on Windows it
+instead of raising the server budget. A Bun-hosted AS Inspect does not enforce the heap choice; on Windows it
 instead limits the analyzer's committed memory to that choice plus a 512 MiB
 runtime reserve.
 Resource-limited analyses preserve completed static facts and
@@ -71,7 +71,7 @@ The complete source Evidence is retained; use its `parent_evidence_id` with
 complete record. Static patterns, inferred deployment bases, heuristic system
 classification, and unavailable sources never establish route reachability or
 the complete application route denominator. See the
-[route inventory guide](https://github.com/morluto/rea/blob/main/docs/javascript-route-inventory.md).
+[route inventory guide](https://github.com/abusafyan-official/AS-Inspect/blob/main/docs/javascript-route-inventory.md).
 
 ## Read a module without repeating analysis
 
@@ -172,7 +172,7 @@ caller-selected file. These workflows keep the original Evidence and coverage;
 a broad follow-up can also exceed framing.
 
 A client can truncate a successful result inside its text envelope without a
-REA `resource_constraint`. Treat a truncation notice or incomplete JSON as a
+AS Inspect `resource_constraint`. Treat a truncation notice or incomplete JSON as a
 display limitation; do not claim the full record was examined. Reuse the known
 parent ID for smaller views, or export complete Evidence to a selected file
 while the session remains open. If the parent ID was lost from the preview,

@@ -21,7 +21,7 @@ const reconciliationEvidence = createEvidence(
   undefined,
   {
     id: "rea-javascript-runtime-reconciliation",
-    name: "REA JavaScript runtime reconciliation",
+    name: "AS Inspect JavaScript runtime reconciliation",
     version: "1",
   },
   {

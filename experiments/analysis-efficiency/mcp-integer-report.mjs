@@ -51,7 +51,7 @@ const changesText = [...new Set(changes.map((value) => fixed(value, 1)))].join(
 const separated = heaps.every(
   (item) => item.baseline[heapMetric].min > item.candidate[heapMetric].max,
 );
-const provenance = `Baseline \`main@${data.measurement_inputs.baseline_revision}\`; candidate \`${data.measurement_inputs.candidate_revision}\`. This is a pinned comparison.\n\nIn separate inspector/forced-GC diagnostics, retained REA V8 heap decreases by about ${changesText} MiB. ${separated ? "The three-pair ranges do not overlap in either profile." : "Ranges overlap; inspect the observations below."} Inspector perturbation is included. Normal task timing, CPU and peak memory are reported separately; these observations do not establish a general latency or peak-memory reduction.`;
+const provenance = `Baseline \`main@${data.measurement_inputs.baseline_revision}\`; candidate \`${data.measurement_inputs.candidate_revision}\`. This is a pinned comparison.\n\nIn separate inspector/forced-GC diagnostics, retained AS Inspect V8 heap decreases by about ${changesText} MiB. ${separated ? "The three-pair ranges do not overlap in either profile." : "Ranges overlap; inspect the observations below."} Inspector perturbation is included. Normal task timing, CPU and peak memory are reported separately; these observations do not establish a general latency or peak-memory reduction.`;
 const normal = table(
   [
     "Task",
@@ -108,7 +108,7 @@ const sdk =
 const heap = table(
   [
     "Inputs",
-    "REA V8 retained MiB",
+    "AS Inspect V8 retained MiB",
     "Baseline range",
     "Candidate range",
     "Diagnostic wall s",

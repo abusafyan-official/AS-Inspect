@@ -6,7 +6,7 @@ import { Client } from "@modelcontextprotocol/client";
 import { StdioClientTransport } from "@modelcontextprotocol/client/stdio";
 import { closeVerifierResources } from "./verifier-cleanup.mjs";
 
-// REA registers process-static tool contracts. Bind their parsed definitions to
+// AS Inspect registers process-static tool contracts. Bind their parsed definitions to
 // the SDK's negotiated connection identity, including when a Client reconnects.
 const toolBindings = new WeakMap();
 

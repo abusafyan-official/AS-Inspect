@@ -63,7 +63,7 @@ export const classifyAndroidStringsTable = (
 
 /**
  * Caller intent for Apktool-backed resource decoding. Apktool is
- * bring-your-own: REA never installs it, and decoding happens in a
+ * bring-your-own: AS Inspect never installs it, and decoding happens in a
  * provider-owned workspace that is removed after the facts are projected.
  */
 export const apktoolInputSchemas = {

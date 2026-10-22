@@ -1,6 +1,6 @@
 # WAT framing costs on shipped WASM
 
-[Issue #5760](https://github.com/morluto/rea/issues/5760) follows the current
+[Issue #5760](https://github.com/abusafyan-official/AS-Inspect/issues/5760) follows the current
 WASM summary workflow; no new tool, selector, cache or default is needed.
 The [curated measurements](wasm-string-framing.json) pin source, runtime,
 artifact, producer and answer fingerprints, including every final sample.

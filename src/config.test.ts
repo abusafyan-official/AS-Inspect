@@ -159,7 +159,7 @@ describe("runtime target configuration", () => {
   it("rejects invalid target kinds with actionable environment diagnostics", () => {
     const result = parseConfig({ HOPPER_TARGET_KIND: "archive" });
     if (result.ok) throw new Error("Expected invalid target kind");
-    expect(result.error.message).toContain("Invalid REA environment");
+    expect(result.error.message).toContain("Invalid AS Inspect environment");
   });
 
   it("parses database kind and loader arguments", () => {
@@ -359,7 +359,7 @@ describe("configuration failure diagnostics", () => {
       expect(projectAnalysisError(result.error)).toMatchObject({
         code: "configuration_invalid",
         category: "invalid_input",
-        message: `REA configuration is invalid: ${constraint}.`,
+        message: `AS Inspect configuration is invalid: ${constraint}.`,
         remediation: { action: expect.stringContaining(`Correct ${setting} `) },
         details: { settings: [{ setting, constraint }] },
       });
@@ -437,7 +437,7 @@ describe("default Linux Hopper launcher", () => {
     },
   );
 
-  it("prefers REA-managed and user-local launchers over system paths", () => {
+  it("prefers AS Inspect-managed and user-local launchers over system paths", () => {
     expect(
       defaultHopperLauncherPath(
         "linux",

@@ -74,7 +74,7 @@
       ],
       "proof": {
         "status": "passed",
-        "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no REA parser or matcher.",
+        "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no AS Inspect parser or matcher.",
         "source_files": 180,
         "embedded_nodes": 99,
         "candidate_relations": 210,
@@ -165,7 +165,7 @@
       ],
       "proof": {
         "status": "passed",
-        "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no REA parser or matcher.",
+        "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no AS Inspect parser or matcher.",
         "source_files": 180,
         "embedded_nodes": 99,
         "candidate_relations": 210,
@@ -256,7 +256,7 @@
       ],
       "proof": {
         "status": "passed",
-        "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no REA parser or matcher.",
+        "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no AS Inspect parser or matcher.",
         "source_files": 180,
         "embedded_nodes": 99,
         "candidate_relations": 210,
@@ -333,7 +333,7 @@
       ],
       "proof": {
         "status": "passed",
-        "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no REA parser or matcher.",
+        "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no AS Inspect parser or matcher.",
         "source_files": 180,
         "embedded_nodes": 99,
         "candidate_relations": 210,
@@ -410,7 +410,7 @@
       ],
       "proof": {
         "status": "passed",
-        "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no REA parser or matcher.",
+        "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no AS Inspect parser or matcher.",
         "source_files": 180,
         "embedded_nodes": 99,
         "candidate_relations": 210,
@@ -501,7 +501,7 @@
       ],
       "proof": {
         "status": "passed",
-        "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no REA parser or matcher.",
+        "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no AS Inspect parser or matcher.",
         "source_files": 180,
         "embedded_nodes": 99,
         "candidate_relations": 210,
@@ -673,7 +673,7 @@
         "whole_task_cl100k_estimate": 54835,
         "independent_proof": {
           "status": "passed",
-          "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no REA parser or matcher.",
+          "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no AS Inspect parser or matcher.",
           "source_files": 180,
           "embedded_nodes": 99,
           "candidate_relations": 210,
@@ -730,7 +730,7 @@
         "whole_task_cl100k_estimate": 54835,
         "independent_proof": {
           "status": "passed",
-          "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no REA parser or matcher.",
+          "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no AS Inspect parser or matcher.",
           "source_files": 180,
           "embedded_nodes": 99,
           "candidate_relations": 210,
@@ -820,7 +820,7 @@
         "whole_task_cl100k_estimate": 54896,
         "independent_proof": {
           "status": "passed",
-          "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no REA parser or matcher.",
+          "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no AS Inspect parser or matcher.",
           "source_files": 180,
           "embedded_nodes": 99,
           "candidate_relations": 210,
@@ -883,7 +883,7 @@
         "whole_task_cl100k_estimate": 54896,
         "independent_proof": {
           "status": "passed",
-          "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no REA parser or matcher.",
+          "method": "Independent Python JSON/SHA-256/POSIX path and basename joins; no AS Inspect parser or matcher.",
           "source_files": 180,
           "embedded_nodes": 99,
           "candidate_relations": 210,

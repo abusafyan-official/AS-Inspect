@@ -83,7 +83,7 @@ and scope; reused content-based Evidence identities are valid.
 ## Complete real-model task costs
 
 Eight actual Codex CLI 0.161.0 tasks requested `gpt-5.6-terra` / `high`, in isolated
-profiles using this runtime's REA MCP. Both tools were enabled and preapproved
+profiles using this runtime's AS Inspect MCP. Both tools were enabled and preapproved
 identically in all arms; shell, browser and extra agents were disabled. The model
 alias is a requested identifier, not independently resolved backend identity.
 Questions contain no expected payloads. Trial order is baseline 1, focused 1,
@@ -116,11 +116,11 @@ established across these two questions; reply projection alone is insufficient.
 
 Eight separately bounded direct producer runs preserve source bytes and render
 correct stdout: UART baseline 159/131 ms versus focused 163/130 ms; I2C baseline
-355/298 ms versus focused 317/290 ms. This isolates the producer process from REA
+355/298 ms versus focused 317/290 ms. This isolates the producer process from AS Inspect
 RPC, version probing and snapshot work, but startup/decoding/annotation formatting
 remain combined. Decoding-only versus formatting-only time is unmeasured.
 
-REA literal-window extraction and JSON encoding were measured separately from
+AS Inspect literal-window extraction and JSON encoding were measured separately from
 retained producer text (one cold observation and 200 warm iterations per arm).
 Warm mean extraction ranges from 0.0040 to 0.1794 ms; JSON encoding from 0.0021 to 0.0121 ms. These exclude file reads, RPC and decoding.
 

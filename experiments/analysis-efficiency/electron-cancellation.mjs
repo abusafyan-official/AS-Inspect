@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Real applications run unchanged. Fault cases hold a REA-side Playwright reply;
+// Real applications run unchanged. Fault cases hold a AS Inspect-side Playwright reply;
 // they do not establish that the application naturally exhibits that failure.
 import assert from "node:assert/strict";
 import { mkdtemp, readFile } from "node:fs/promises";

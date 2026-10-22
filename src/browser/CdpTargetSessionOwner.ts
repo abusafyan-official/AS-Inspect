@@ -53,7 +53,7 @@ interface OwnedConnection {
   failure: ProviderCleanupError | undefined;
 }
 
-/** Retains exact REA-owned CDP transports until their close is observed. */
+/** Retains exact AS Inspect-owned CDP transports until their close is observed. */
 export class CdpTargetSessionOwner {
   readonly #connections = new Map<CdpConnection, OwnedConnection>();
   #closing = false;
@@ -269,7 +269,7 @@ const aggregateCleanupFailures = (
       operation: "close_cdp_transports",
       cause: new AggregateError(
         failures,
-        "One or more REA-owned CDP transports remain open.",
+        "One or more AS Inspect-owned CDP transports remain open.",
       ),
       diagnostics: {
         failures: failures.map(({ message, diagnostics }) => ({

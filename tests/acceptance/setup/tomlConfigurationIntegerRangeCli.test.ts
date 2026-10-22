@@ -72,7 +72,7 @@ cliTest(
 );
 
 cliTest(
-  "codex setup keeps exact integers and a large REA timeout in an inline server table",
+  "codex setup keeps exact integers and a large AS Inspect timeout in an inline server table",
   async ({ cli }) => {
     const home = await createTestTempDirectory("rea-toml-int64-inline-");
     const config = join(home, ".codex/config.toml");

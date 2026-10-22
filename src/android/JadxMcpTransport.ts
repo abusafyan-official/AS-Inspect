@@ -33,7 +33,7 @@ export type JadxTransportFailure =
   | { readonly kind: "protocol"; readonly cause: Error }
   | { readonly kind: "interrupted"; readonly reason: unknown };
 
-/** SDK-framed stdio with REA-owned process cleanup rather than an unowned child. */
+/** SDK-framed stdio with AS Inspect-owned process cleanup rather than an unowned child. */
 export class JadxMcpTransport implements Transport {
   onclose: Transport["onclose"];
   onerror: Transport["onerror"];

@@ -258,7 +258,7 @@ const factorySource = (scenario: (typeof scenarios)[number]) => {
 const runtimeChannels = (source: string, flag: boolean) => {
   const channels: string[] = [];
   try {
-    // Only this authored fixture executes. REA reads the same bytes as inert
+    // Only this authored fixture executes. AS Inspect reads the same bytes as inert
     // source; the stub does not establish real Electron runtime behavior.
     runInNewContext(
       source,

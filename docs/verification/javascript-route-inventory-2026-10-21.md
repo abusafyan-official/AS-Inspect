@@ -1,6 +1,6 @@
 # Static JavaScript route inventory verification
 
-Issue [#4772](https://github.com/morluto/rea/issues/4772). Qualified runtime
+Issue [#4772](https://github.com/abusafyan-official/AS-Inspect/issues/4772). Qualified runtime
 `b49ee40bf330b7bf1c5180b14dcc104c1c613a8e`, tree `0e5f8fe2feae1796c340c07c26e0e28e5d4328d8`,
 integrates main `c8ed32853881b08aa83459d4da55a28a4e09b0c8`. Recorded at
 `2026-10-22T08:30:58.269Z`. Subsequent verification-only
@@ -52,7 +52,7 @@ environment, CLI resource closing and Electron file scope; earlier startup/
 publication checks remain pinned to their recorded runtime.
 Selected-path identity runs separately with its original 30-second deadline.
 Typecheck/lint passed; documentation checks are recorded in JSON after generation.
-The main-baseline service-worker deadline correction [#6186](https://github.com/morluto/rea/pull/6186)
+The main-baseline service-worker deadline correction [#6186](https://github.com/abusafyan-official/AS-Inspect/pull/6186)
 is included; it retains the original stalled-handshake assertions and test guard.
 
 A valid review case exposed overwritten query fields hiding independent route

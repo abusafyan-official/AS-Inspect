@@ -65,7 +65,7 @@ export const analysisErrorRemediationAction = (
     error instanceof BrowserObservationError &&
     error.reason === "service_worker_blocked"
   )
-    return "Set environment.service_workers to allow to permit this capture, or remove the service worker registration through the browser. REA never removes existing registrations.";
+    return "Set environment.service_workers to allow to permit this capture, or remove the service worker registration through the browser. AS Inspect never removes existing registrations.";
   if (error instanceof AnalysisCapabilityUnavailableError && error.retryable)
     return "Review details.reason, then retry the same analysis after the condition clears.";
   if (error instanceof EvidenceFileError && error.published !== undefined)
@@ -90,10 +90,10 @@ export const analysisErrorRemediationAction = (
           : error.resource === "transport"
             ? MCP_TRANSPORT_EVIDENCE_DISCOVERY
             : error.resource === "cpu"
-              ? "Review the reported worker CPU limits and observed signal. Retry with sufficient CPU time or a smaller artifact; REA retains tighter inherited limits."
+              ? "Review the reported worker CPU limits and observed signal. Retry with sufficient CPU time or a smaller artifact; AS Inspect retains tighter inherited limits."
               : error.resource === "file-size"
-                ? "Review the reported worker file-size limits and write failure. Retry with a sufficient file-size allowance for the evidence reply; REA retains tighter inherited limits."
-                : "Review the reported worker memory limits and available host memory. Retry with sufficient memory or a smaller artifact; REA retains tighter inherited limits.")
+                ? "Review the reported worker file-size limits and write failure. Retry with a sufficient file-size allowance for the evidence reply; AS Inspect retains tighter inherited limits."
+                : "Review the reported worker memory limits and available host memory. Retry with sufficient memory or a smaller artifact; AS Inspect retains tighter inherited limits.")
     );
   if (
     error instanceof AnalysisTimeoutError &&
@@ -103,7 +103,7 @@ export const analysisErrorRemediationAction = (
   if (error instanceof AnalysisTimeoutError) return timeoutRemediation(error);
   if (error instanceof HopperTimeoutError)
     return error.operation === undefined
-      ? "Review details.launcher and inspect Hopper for ongoing initial analysis or a pending loader, demo, or license dialog. For a large target, increase REA_HOPPER_STARTUP_TIMEOUT_MS in the environment that starts REA and allow at least that long in the MCP client. Resolve retained cleanup before reopening."
+      ? "Review details.launcher and inspect Hopper for ongoing initial analysis or a pending loader, demo, or license dialog. For a large target, increase REA_HOPPER_STARTUP_TIMEOUT_MS in the environment that starts AS Inspect and allow at least that long in the MCP client. Resolve retained cleanup before reopening."
       : error.providerState === "busy"
         ? "Check binary_session.analysis_activity, wait for the active Hopper request to finish, then retry."
         : "Check binary_session for Hopper health, then retry the operation.";
@@ -112,7 +112,7 @@ export const analysisErrorRemediationAction = (
   if (error instanceof HopperStartError)
     return error.ownerRunId === undefined
       ? "Check the Hopper launcher and target details, then retry opening the target."
-      : `Use the active REA session ${error.ownerRunId} or close it before opening this target again.`;
+      : `Use the active AS Inspect session ${error.ownerRunId} or close it before opening this target again.`;
   if (error instanceof HopperRemoteError)
     return error.diagnosticType === "invalid_request"
       ? "Correct the reported address, document, or arguments and retry."
@@ -138,16 +138,16 @@ export const analysisErrorRemediationAction = (
     error instanceof BinaryTargetError &&
     error.constraint === "wasm_requires_static_inspection"
   )
-    return `For static inspection, call inspect_wasm_artifact with ${JSON.stringify({ path: error.path })} or run \`rea inspect-wasm-artifact <path> --format json\`. This separate lane requires caller-supplied WABT 1.0.42 via absolute REA_WABT_BIN_DIRECTORY; check its availability in binary_session. REA does not execute WASM or install tools, and the header alone does not establish that the complete module is valid.`;
+    return `For static inspection, call inspect_wasm_artifact with ${JSON.stringify({ path: error.path })} or run \`rea inspect-wasm-artifact <path> --format json\`. This separate lane requires caller-supplied WABT 1.0.42 via absolute REA_WABT_BIN_DIRECTORY; check its availability in binary_session. AS Inspect does not execute WASM or install tools, and the header alone does not establish that the complete module is valid.`;
   if (
     error instanceof AnalysisAccessDeniedError ||
     (error instanceof BinaryTargetError && error.systemCode !== undefined)
   )
     return "Check the current process's read access to the selected path. Retry with a readable local file.";
   if (error instanceof AnalysisArtifactChangedError)
-    return "Wait until the selected file is stable. For an active binary session, reopen the target with open_binary before retrying so REA acquires its current identity; for a CLI command or target-free tool, rerun the operation.";
+    return "Wait until the selected file is stable. For an active binary session, reopen the target with open_binary before retrying so AS Inspect acquires its current identity; for a CLI command or target-free tool, rerun the operation.";
   if (error instanceof ConfigurationError && error.settings.length > 0)
-    return `Correct ${[...new Set(error.settings.map(({ setting }) => setting))].join(", ")} in the environment that starts REA (your shell or the MCP client's registration), then rerun.`;
+    return `Correct ${[...new Set(error.settings.map(({ setting }) => setting))].join(", ")} in the environment that starts AS Inspect (your shell or the MCP client's registration), then rerun.`;
   if (error instanceof AnalysisInputError)
     return `Read the declared input schema or CLI usage for ${error.operation}; if using MCP and the catalog may be stale, call tools/list. Correct the listed fields, then retry. Do not repeat the unchanged call.`;
   if (
@@ -297,8 +297,8 @@ export const analysisErrorUserMessage = (error: AnalysisError): string => {
     return "Evidence state changed before the update completed. Refresh the current state and try again.";
   if (error instanceof ConfigurationError)
     return error.settings.length === 0
-      ? "REA configuration is invalid. Run `rea doctor` and fix the reported setting."
-      : `REA configuration is invalid: ${error.settings
+      ? "AS Inspect configuration is invalid. Run `rea doctor` and fix the reported setting."
+      : `AS Inspect configuration is invalid: ${error.settings
           .map(({ setting, constraint }) =>
             constraint.includes(setting)
               ? constraint.replace(/\.$/u, "")
@@ -329,7 +329,7 @@ export const analysisErrorUserMessage = (error: AnalysisError): string => {
 const hopperErrorUserMessage = (error: AnalysisError): string | undefined => {
   if (error instanceof HopperTimeoutError) {
     if (error.operation === undefined)
-      return "REA timed out waiting for Hopper bridge readiness, which includes initial analysis. Hopper may still be analyzing the target or waiting for a loader, demo, or license dialog. Review the captured launcher outcome and resolve retained cleanup before retrying.";
+      return "AS Inspect timed out waiting for Hopper bridge readiness, which includes initial analysis. Hopper may still be analyzing the target or waiting for a loader, demo, or license dialog. Review the captured launcher outcome and resolve retained cleanup before retrying.";
     const request = error.operation;
     return error.providerState === "busy"
       ? `Hopper timed out during ${request} while the provider remained busy. Check binary_session.analysis_activity, wait for the active request to finish, then retry.`
@@ -386,7 +386,7 @@ const hopperProcessMessage = (error: HopperProcessError): string => {
   }
   if (error.providerState === "unreachable")
     return `Hopper became unreachable during ${where}; its process exit was not observed. ${RESTART_UNREACHABLE_HOPPER}${startup}${request}`;
-  return `Hopper failed during ${where} and REA could not determine whether the provider is busy, exited, or unreachable.${startup} Read binary_session.provider_operation_health for this request before retrying or restarting.${request}`;
+  return `Hopper failed during ${where} and AS Inspect could not determine whether the provider is busy, exited, or unreachable.${startup} Read binary_session.provider_operation_health for this request before retrying or restarting.${request}`;
 };
 
 const standardErrorMessage = (tag: AnalysisErrorTag): string | undefined => {
@@ -406,7 +406,7 @@ const standardErrorMessage = (tag: AnalysisErrorTag): string | undefined => {
 };
 
 const timeoutUserMessage = (error: AnalysisTimeoutError): string =>
-  `REA's ${error.operation} operation reached its ${String(error.timeoutMs)}ms server/provider deadline. This is not a client-side timeout; extending only the MCP client's deadline does not change this budget.`;
+  `AS Inspect's ${error.operation} operation reached its ${String(error.timeoutMs)}ms server/provider deadline. This is not a client-side timeout; extending only the MCP client's deadline does not change this budget.`;
 
 const timeoutRemediation = (error: AnalysisTimeoutError): string =>
   `Inspect any partial Evidence, provider diagnostics and reported session/provider cleanup state for ${error.operation}. Reduce the request if supported, or resolve the reported provider condition before retrying. Do not repeat the unchanged call or retry while work or cleanup may still be active.`;

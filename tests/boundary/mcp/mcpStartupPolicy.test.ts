@@ -16,14 +16,14 @@ import {
 } from "../../../src/mcpStartupPolicy.js";
 
 describe("MCP startup policy", () => {
-  it("names fixed phase budgets without turning Codex's 30s into a REA knob", () => {
+  it("names fixed phase budgets without turning Codex's 30s into a AS Inspect knob", () => {
     const initialize = fixedMcpPhaseBudgetRecovery(
       "MCP initialize phase budget",
       MCP_STARTUP_POLICY.initializeBudgetMs,
       "ms",
     );
     expect(initialize).toBe(
-      "REA's fixed MCP initialize phase budget is 15000 ms and this release has no runtime override.",
+      "AS Inspect's fixed MCP initialize phase budget is 15000 ms and this release has no runtime override.",
     );
     expect(initialize).toBe(
       fixedMcpStartupPhaseBudgetRecovery(
@@ -177,7 +177,7 @@ describe("packaged MCP startup probe failures", () => {
         args: [probeChild],
         environment: { ...process.env, REA_MCP_PROBE_MODE: "hang" },
         policy: probePolicy({ doctorDeadlineMs: budgetMs }),
-        packageName: "rea-agents",
+        packageName: "as-inspect-agents",
       }),
     ).rejects.toThrow(
       `MCP doctor startup deadline is ${String(budgetMs)} ms and this release has no runtime override.`,
@@ -195,7 +195,7 @@ describe("packaged MCP startup probe failures", () => {
           REA_MCP_PROBE_MODE: "initialize-then-hang",
         },
         policy: probePolicy({ toolsListBudgetMs: budgetMs }),
-        packageName: "rea-agents",
+        packageName: "as-inspect-agents",
       }),
     ).rejects.toThrow(
       `MCP tools/list phase budget is ${String(budgetMs)} ms and this release has no runtime override.`,
@@ -209,7 +209,7 @@ describe("packaged MCP startup probe failures", () => {
         args: [probeChild],
         environment: { ...process.env, REA_MCP_PROBE_MODE: "fail" },
         policy: probePolicy(),
-        packageName: "rea-agents",
+        packageName: "as-inspect-agents",
       });
       throw new Error("expected the unrelated probe failure");
     } catch (cause) {

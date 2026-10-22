@@ -116,7 +116,7 @@ including pointer-backed strings. It does not scan arbitrary byte strings as
 compiler metadata.
 
 A universal (FAT) Mach-O needs `architecture` (`x86`, `x86_64`, `arm`
-or `arm64`; CLI `--architecture`). REA reads its own FAT table, without `lipo`,
+or `arm64`; CLI `--architecture`). AS Inspect reads its own FAT table, without `lipo`,
 and validates the selected slice's range, alignment and Mach-O header CPU
 against the table. The result keeps the universal file as `artifact` (its
 SHA-256 and size), adds `selected_slice` with the slice offset, length, raw CPU

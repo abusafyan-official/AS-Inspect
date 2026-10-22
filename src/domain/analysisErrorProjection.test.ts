@@ -532,7 +532,7 @@ describe("analysis error projection: browser provider failures", () => {
       "inspect_web_page",
       "cleanup_failed",
       {
-        detail: "Target page-1 closed while REA released its session.",
+        detail: "Target page-1 closed while AS Inspect released its session.",
         remediationAction: "Release session page-1, then retry.",
         cleanup: { reason: "socket close failed", resources: ["page-1"] },
         diagnostics: { endpoint: "loopback" },
@@ -558,7 +558,7 @@ describe("analysis error projection: browser provider failures", () => {
     expect(projected).toEqual(originalProjected);
     expect(projected).toMatchObject({
       code: "cleanup_incomplete",
-      message: "Target page-1 closed while REA released its session.",
+      message: "Target page-1 closed while AS Inspect released its session.",
       remediation: { action: "Release session page-1, then retry." },
     });
     expect(details).toEqual({
@@ -628,18 +628,18 @@ describe("analysis error projection: Hopper provider failures", () => {
     );
   });
 
-  it("identifies the REA session that already owns a Hopper target", () => {
+  it("identifies the AS Inspect session that already owns a Hopper target", () => {
     const error = new HopperStartError({
       ownerRunId: "session-owner",
       userMessage:
-        "This Hopper target is already open in REA session session-owner. Use that REA session or close it before opening this target again.",
+        "This Hopper target is already open in AS Inspect session session-owner. Use that AS Inspect session or close it before opening this target again.",
     });
     expect(projectAnalysisError(error)).toMatchObject({
       category: "unavailable",
       message: expect.stringContaining("session-owner"),
       remediation: {
         action: expect.stringContaining(
-          "Use the active REA session session-owner",
+          "Use the active AS Inspect session session-owner",
         ),
       },
     });

@@ -43,7 +43,7 @@ export const asarHeaderAdmissionRecovery = (
 ): string =>
   [
     `ASAR header/index admission is limited to ${byteAllowance(admission.maximumBytes)}${admission.source === "setting" ? ` by ${ASAR_HEADER_ADMISSION_SETTING}` : ""}.`,
-    `Set ${ASAR_HEADER_ADMISSION_SETTING} in the environment that starts REA to a byte count up to ${byteAllowance(MAXIMUM_ASAR_MAX_HEADER_BYTES)} (default ${byteAllowance(DEFAULT_ASAR_MAX_HEADER_BYTES)}), then restart REA.`,
+    `Set ${ASAR_HEADER_ADMISSION_SETTING} in the environment that starts AS Inspect to a byte count up to ${byteAllowance(MAXIMUM_ASAR_MAX_HEADER_BYTES)} (default ${byteAllowance(DEFAULT_ASAR_MAX_HEADER_BYTES)}), then restart AS Inspect.`,
     "Selecting fewer sources or narrowing an internal path does not bypass header admission, because the archive index is read before any member can be selected.",
     "Raising max_heap_mb or available host memory does not raise it.",
     "Alternatively, analyze an extracted application directory, which does not admit an ASAR header.",

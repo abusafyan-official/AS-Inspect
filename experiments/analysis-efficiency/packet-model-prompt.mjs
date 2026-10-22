@@ -34,7 +34,7 @@ const plan = [
 ];
 process.stdout.write(
   question +
-    "\nExecute this fixed public REA MCP plan in order. These are input selections, not expected answers. Preserve omitted defaults. All calls count toward the comparison.\n" +
+    "\nExecute this fixed public AS Inspect MCP plan in order. These are input selections, not expected answers. Preserve omitted defaults. All calls count toward the comparison.\n" +
     JSON.stringify(plan, null, 2) +
     "\n",
 );

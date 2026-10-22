@@ -12,7 +12,7 @@ import {
   plistNestingLimitMessage,
 } from "./apple/plistValue.js";
 
-/** The dictionary key REA results cannot carry: validation strips it. */
+/** The dictionary key AS Inspect results cannot carry: validation strips it. */
 const PROTOTYPE_KEY = "__proto__";
 
 /** A decoded plist without `__proto__` entries, and how many were omitted. */
@@ -29,8 +29,8 @@ export interface ParsedPropertyList extends PropertyListWithoutPrototypeKeys {
 /** Limitation for results whose source plist held `__proto__` entries. */
 export const omittedPrototypeKeysLimitation = (count: number | null): string =>
   count === null
-    ? "Dictionary entries keyed __proto__ were omitted because REA results cannot represent that key."
-    : `${String(count)} dictionary ${count === 1 ? "entry" : "entries"} keyed __proto__ ${count === 1 ? "was" : "were"} omitted because REA results cannot represent that key.`;
+    ? "Dictionary entries keyed __proto__ were omitted because AS Inspect results cannot represent that key."
+    : `${String(count)} dictionary ${count === 1 ? "entry" : "entries"} keyed __proto__ ${count === 1 ? "was" : "were"} omitted because AS Inspect results cannot represent that key.`;
 
 /** Remove own `__proto__` entries, such as JSON.parse creates, and count them. */
 export const omitPrototypeKeys = (

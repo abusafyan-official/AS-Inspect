@@ -1,6 +1,6 @@
 # Fiddler SAZ selection checkpoint
 
-This experiment addresses [#3132](https://github.com/morluto/rea/issues/3132).
+This experiment addresses [#3132](https://github.com/abusafyan-official/AS-Inspect/issues/3132).
 Its runtime baseline is `ca1b2f8608c52ed721d3576ba5eeb1d66717b08c`.
 Production APIs and defaults are unchanged. The measured cohort establishes no
 stable whole-task token/time benefit; no new production preset, cache or API is
@@ -39,7 +39,7 @@ Bodies retain their archived encoding. CONNECT trailing bytes are stored data,
 not an inferred HTTP application body or certificate interpretation. Empty bodies
 have zero bytes and the empty digest; an absent response remains absent. Header
 duplication/folding, Latin-1 spelling and binary body bytes are independently
-read without REA imports. Synthetic reader tests cover those semantics and
+read without AS Inspect imports. Synthetic reader tests cover those semantics and
 malformed input; they establish no provider coverage.
 
 The oracle admits only immutable corpus size/digest matches before constructing
@@ -178,7 +178,7 @@ selected-parent page.
 
 The second focus makes zero MCP calls and reports unavailable tools. Its owned
 exact-name discovery returns an empty list, while the same names work in other
-trials; stderr is empty. The cause is unknown, not proof of a REA outage. Keep
+trials; stderr is empty. The cause is unknown, not proof of a AS Inspect outage. Keep
 its 21,379 input tokens / 16.301 seconds as a failed task, without a replacement retry
 or an apparent speed win.
 

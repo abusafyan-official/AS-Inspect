@@ -104,7 +104,7 @@ const registerDoctorCommand = (
   environment: Readonly<NodeJS.ProcessEnv>,
 ): void => {
   cli.command(CLI_COMMANDS.doctor, {
-    description: "Check whether REA is ready",
+    description: "Check whether AS Inspect is ready",
     options: z.object({
       target: z.string().optional().describe("Optional app path to check"),
       client: z
@@ -118,7 +118,7 @@ const registerDoctorCommand = (
       skill: z
         .boolean()
         .optional()
-        .describe("Require the installed REA skill identity to be aligned"),
+        .describe("Require the installed AS Inspect skill identity to be aligned"),
     }),
     run: ({ options }) =>
       withCommandCancellation((signal) =>
@@ -144,12 +144,12 @@ const registerMaintenanceCommands = (
   environment: Readonly<NodeJS.ProcessEnv>,
 ): void => {
   cli.command(CLI_COMMANDS.uninstall, {
-    description: "Remove REA-owned agent configuration and skill files",
+    description: "Remove AS Inspect-owned agent configuration and skill files",
     options: z.object({
       purgeData: z
         .boolean()
         .default(false)
-        .describe("Also remove REA caches and state"),
+        .describe("Also remove AS Inspect caches and state"),
     }),
     run: ({ options }) =>
       logCliCommand(
@@ -172,7 +172,7 @@ const registerMaintenanceCommands = (
   });
   cli.command(CLI_COMMANDS.update, {
     description:
-      "Update this REA installation and verify the installed release",
+      "Update this AS Inspect installation and verify the installed release",
     run: ({ formatExplicit }) =>
       logCliCommand(
         logger,

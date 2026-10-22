@@ -536,7 +536,7 @@ describe("Kimi Code timeout alignment", () => {
     ).toMatchObject({ state });
   });
 
-  it("uses a direct installed REA command without requiring a package runner", async () => {
+  it("uses a direct installed AS Inspect command without requiring a package runner", async () => {
     const { home, client } = await kimiClient();
     const entry = join(home, "scripts", "rea.mjs");
     const launcher = [process.execPath, entry, "mcp"];

@@ -2,7 +2,7 @@
 
 Start with [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md) for the distinction
 between distributed material and separately obtained tools. These files retain
-upstream texts; they do not change [REA's MIT license](../LICENSE).
+upstream texts; they do not change [AS Inspect's MIT license](../LICENSE).
 
 | Files                                                  | Provenance and scope                                                                                                                                                                                                                                                                      |
 | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -11,7 +11,7 @@ upstream texts; they do not change [REA's MIT license](../LICENSE).
 | `protobuf-es-v2.16.0-LICENSE.txt`                      | Original Apache license omitted from the protobuf-es npm archive, preserved from its v2.16.0 source commit. Its embedded Google BSD notice is retained in `npm-runtime-notices.txt`.                                                                                                      |
 | `nativeaot-parser-MIT.txt`                             | Original Washi notice for derived NativeAOT parser code; source revision is recorded in the parser and the root notices.                                                                                                                                                                  |
 | `dotnet-runtime-MIT.txt`                               | Original .NET Foundation MIT text from the NativeAOT reference revision `a3b2d40328be0be3f8dd43f0e5cc925b8827b044`.                                                                                                                                                                       |
-| `ghidra-12.1.4-{LICENSE,NOTICE,DISCLAIMER}.txt`        | Unchanged top-level documents from `Ghidra_12.1.4_build`. Ghidra is not bundled; these reference copies do not replace its component and GPL support-program notices. The US-government-specific disclaimer applies to Ghidra, not to REA.                                                |
+| `ghidra-12.1.4-{LICENSE,NOTICE,DISCLAIMER}.txt`        | Unchanged top-level documents from `Ghidra_12.1.4_build`. Ghidra is not bundled; these reference copies do not replace its component and GPL support-program notices. The US-government-specific disclaimer applies to Ghidra, not to AS Inspect.                                                |
 | `cfworker-MIT.txt`, `xterm-MIT.txt`                    | Original notices missing from their published runtime npm archives, recovered from the releases' upstream Git revisions. They are included in the corresponding runtime entries.                                                                                                          |
 | `Apache-2.0.txt`, `MIT-template.txt`                   | Standard license texts for explicitly documented upstream notice gaps. The MIT placeholders are not an attribution to an inferred author or year.                                                                                                                                         |
 | `frida-17.23.2-COPYING.txt`, `LGPL-2.0.txt`            | Unchanged licensing supplements for the optional Frida dependency: tagged Frida wxWindows notice and GNU Library GPL v2 text. The npm archive and tagged Node binding omit a standalone license/copyright document; these texts do not recover binding or prebuild-component attribution. |
@@ -53,7 +53,7 @@ texts with the sources and SHA-256 digests in `upstream-sources.json`.
 
 When updating engines, copied code, website assets, or the Windows release
 toolchain, review their actual upstream notices as well. The Linux MinGW-w64
-compiler in release CI is not version-pinned by REA: compare its installed
+compiler in release CI is not version-pinned by AS Inspect: compare its installed
 runtime/component notices with the retained snapshots and update them if they
 differ. Do not assume that a compiler change leaves redistribution requirements
 unchanged. Preserve applicable originals with any additionally bundled engine;

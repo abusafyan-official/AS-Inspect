@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>REA FAQ: Setup, Updates and Troubleshooting</title>
+    <title>AS Inspect FAQ: Setup, Updates and Troubleshooting</title>
     <meta
       name="description"
-      content="Answers to common REA questions: installation, updates, analysis tools, coding agents, troubleshooting and sharing examples."
+      content="Answers to common AS Inspect questions: installation, updates, analysis tools, coding agents, troubleshooting and sharing examples."
     />
     <!-- website:sharing:start -->
     <!-- prettier-ignore -->
@@ -60,11 +60,11 @@
     <!-- prettier-ignore -->
     <meta property="og:type" content="website" />
     <!-- prettier-ignore -->
-    <meta property="og:site_name" content="REA" />
+    <meta property="og:site_name" content="AS Inspect" />
     <!-- prettier-ignore -->
-    <meta property="og:title" content="REA FAQ: Setup, Updates and Troubleshooting" />
+    <meta property="og:title" content="AS Inspect FAQ: Setup, Updates and Troubleshooting" />
     <!-- prettier-ignore -->
-    <meta property="og:description" content="Answers to common REA questions: installation, updates, analysis tools, coding agents, troubleshooting and sharing examples." />
+    <meta property="og:description" content="Answers to common AS Inspect questions: installation, updates, analysis tools, coding agents, troubleshooting and sharing examples." />
     <!-- prettier-ignore -->
     <meta property="og:url" content="https://rea.tools/faq/" />
     <!-- prettier-ignore -->
@@ -78,20 +78,20 @@
     <!-- prettier-ignore -->
     <meta
       property="og:image:alt"
-      content="REA — Find out how software works. Reverse engineering with your coding agent."
+      content="AS Inspect — Find out how software works. Reverse engineering with your coding agent."
     />
     <!-- prettier-ignore -->
     <meta name="twitter:card" content="summary_large_image" />
     <!-- prettier-ignore -->
-    <meta name="twitter:title" content="REA FAQ: Setup, Updates and Troubleshooting" />
+    <meta name="twitter:title" content="AS Inspect FAQ: Setup, Updates and Troubleshooting" />
     <!-- prettier-ignore -->
-    <meta name="twitter:description" content="Answers to common REA questions: installation, updates, analysis tools, coding agents, troubleshooting and sharing examples." />
+    <meta name="twitter:description" content="Answers to common AS Inspect questions: installation, updates, analysis tools, coding agents, troubleshooting and sharing examples." />
     <!-- prettier-ignore -->
     <meta name="twitter:image" content="https://rea.tools/assets/social-card.png" />
     <!-- prettier-ignore -->
     <meta
       name="twitter:image:alt"
-      content="REA — Find out how software works. Reverse engineering with your coding agent."
+      content="AS Inspect — Find out how software works. Reverse engineering with your coding agent."
     />
     <!-- website:sharing:end -->
     <!-- website:theme:start -->
@@ -109,8 +109,8 @@
     <!-- prettier-ignore -->
     <header class="site-header">
       <div class="container header-inner">
-        <a class="brand" href="../" aria-label="REA home"
-          ><span class="brand-name">REA</span
+        <a class="brand" href="../" aria-label="AS Inspect home"
+          ><span class="brand-name">AS Inspect</span
           ><span class="brand-caption" data-i18n-skip>Reverse Engineer Anything</span></a
         >
         <nav class="navigation" aria-label="Main navigation">
@@ -135,8 +135,8 @@
           <a
             class="nav-github"
             href="https://github.com/abusafyan-official/AS-Inspect"
-            aria-label="REA on GitHub"
-            title="REA on GitHub"
+            aria-label="AS Inspect on GitHub"
+            title="AS Inspect on GitHub"
           >
             <svg
               width="22"
@@ -155,8 +155,8 @@
           <a
             class="nav-discord"
             href="https://discord.gg/GkcryMnJDM"
-            aria-label="Join REA on Discord"
-            title="Join REA on Discord"
+            aria-label="Join AS Inspect on Discord"
+            title="Join AS Inspect on Discord"
           >
             <svg
               width="22"
@@ -174,8 +174,8 @@
           <a
             class="nav-x"
             href="https://x.com/reatools"
-            aria-label="Follow REA on X"
-            title="Follow REA on X"
+            aria-label="Follow AS Inspect on X"
+            title="Follow AS Inspect on X"
           >
             <svg
               width="18"
@@ -197,7 +197,7 @@
     <main id="main" class="container">
       <div class="page-heading">
         <p class="breadcrumb"><a href="../">Home</a> / FAQ</p>
-        <h1>REA FAQ.</h1>
+        <h1>AS Inspect FAQ.</h1>
         <p class="lede">Setup, updates, analysis and troubleshooting.</p>
       </div>
       <div class="article-layout">
@@ -213,13 +213,13 @@
         <article
           class="article"
           data-faq
-          aria-label="Frequently asked questions about REA"
+          aria-label="Frequently asked questions about AS Inspect"
         >
           <section class="article-section" id="setup">
             <h2>Setup and updates</h2>
             <div class="faq-list">
               <details class="faq-item" id="install">
-                <summary>How do I install REA?</summary>
+                <summary>How do I install AS Inspect?</summary>
                 <p>
                   With <span translate="no">Node.js</span> and npm available,
                   run setup, choose your coding agent and review the proposed
@@ -232,7 +232,7 @@
                       class="copy-button"
                       type="button"
                       data-copy="faq-setup"
-                      aria-label="Copy REA setup command"
+                      aria-label="Copy AS Inspect setup command"
                     >
                       Copy
                     </button>
@@ -240,7 +240,7 @@
                   <pre><code id="faq-setup">npx as-inspect-agents@latest setup</code></pre>
                 </div>
                 <p>
-                  Setup registers REA's MCP connection and installs the matching
+                  Setup registers AS Inspect's MCP connection and installs the matching
                   investigation skill. Restart your agent when it finishes, then
                   give it a target path and a question.
                   <a href="../get-started/">Follow the setup guide</a> for
@@ -248,7 +248,7 @@
                 </p>
               </details>
               <details class="faq-item" id="agents">
-                <summary>Which coding agents can use REA?</summary>
+                <summary>Which coding agents can use AS Inspect?</summary>
                 <p>
                   Any agent that supports local MCP servers. Setup includes
                   Claude Code, Claude Desktop, Codex, Cursor, Gemini CLI,
@@ -261,9 +261,9 @@
                 </p>
               </details>
               <details class="faq-item" id="update">
-                <summary>How do I update REA?</summary>
+                <summary>How do I update AS Inspect?</summary>
                 <p>
-                  REA releases frequently, including bug fixes. If you installed
+                  AS Inspect releases frequently, including bug fixes. If you installed
                   the CLI with npm:
                 </p>
                 <div class="code-block">
@@ -273,7 +273,7 @@
                       class="copy-button"
                       type="button"
                       data-copy="faq-update-cli"
-                      aria-label="Copy REA update command"
+                      aria-label="Copy AS Inspect update command"
                     >
                       Copy
                     </button>
@@ -299,7 +299,7 @@
                   <pre><code id="faq-update-agent">npx as-inspect-agents@latest setup</code></pre>
                 </div>
                 <p>
-                  Review the changes and restart your agent. Its REA connection
+                  Review the changes and restart your agent. Its AS Inspect connection
                   pins a package version, so refreshing setup makes it use the
                   new release. For one-off CLI commands, use
                   <code>npx -y as-inspect-agents@latest</code> followed by the command.
@@ -311,7 +311,7 @@
                 </summary>
                 <p>
                   The skill gives your agent investigation instructions. Run
-                  <a href="#install">REA setup</a> to connect the MCP server and
+                  <a href="#install">AS Inspect setup</a> to connect the MCP server and
                   install the matching skill, then restart your agent so it can
                   call the tools.
                 </p>
@@ -323,7 +323,7 @@
             <h2>Analysis</h2>
             <div class="faq-list">
               <details class="faq-item" id="targets">
-                <summary>What can I analyze with REA?</summary>
+                <summary>What can I analyze with AS Inspect?</summary>
                 <p>Start with the kind of software you have:</p>
                 <ul>
                   <li>
@@ -342,7 +342,7 @@
                   </li>
                 </ul>
                 <p>
-                  REA also has workflows for managed assemblies, Android APKs,
+                  AS Inspect also has workflows for managed assemblies, Android APKs,
                   firmware and packaged resources.
                   <a href="../showcase/">See the case studies</a> for worked
                   investigations.
@@ -363,7 +363,7 @@
                 </p>
               </details>
               <details class="faq-item" id="cli">
-                <summary>Can I use REA without a coding agent?</summary>
+                <summary>Can I use AS Inspect without a coding agent?</summary>
                 <p>
                   Yes. The CLI uses the same analysis workflows. For a local
                   JavaScript or Electron app:
@@ -375,7 +375,7 @@
                       class="copy-button"
                       type="button"
                       data-copy="faq-cli-analysis"
-                      aria-label="Copy REA CLI analysis command"
+                      aria-label="Copy AS Inspect CLI analysis command"
                     >
                       Copy
                     </button>
@@ -390,7 +390,7 @@
                 </p>
               </details>
               <details class="faq-item" id="code">
-                <summary>What code does REA return?</summary>
+                <summary>What code does AS Inspect return?</summary>
                 <p>
                   Native analysis returns assembly and pseudocode, with calls,
                   references and relevant constants. JavaScript analysis returns
@@ -430,7 +430,7 @@
                   <p class="terminal-prompt">
                     <span class="prompt-symbol" aria-hidden="true">›</span
                     ><span id="faq-analysis-prompt"
-                      >Use REA to analyze
+                      >Use AS Inspect to analyze
                       <span translate="no">/absolute/path/to/app</span> and
                       explain how it exports data. Show the relevant code and
                       source locations.</span
@@ -450,9 +450,9 @@
             <h2>Troubleshooting</h2>
             <div class="faq-list">
               <details class="faq-item" id="connection">
-                <summary>Why can't my agent see the REA tools?</summary>
+                <summary>Why can't my agent see the AS Inspect tools?</summary>
                 <p>
-                  Restart or reconnect your agent after setup. Check its REA
+                  Restart or reconnect your agent after setup. Check its AS Inspect
                   registration with <code>doctor</code>; for Codex:
                 </p>
                 <div class="code-block">
@@ -499,7 +499,7 @@
               <details class="faq-item" id="hopper">
                 <summary>Do I need to start Hopper first?</summary>
                 <p>
-                  REA starts Hopper when an operation needs it. On macOS,
+                  AS Inspect starts Hopper when an operation needs it. On macOS,
                   complete the first-run choice of demo mode or license
                   activation before unattended analysis.
                   <a href="../get-started/#native">See native provider setup</a
@@ -509,7 +509,7 @@
               <details class="faq-item" id="bugs">
                 <summary>What should I do if I hit a bug?</summary>
                 <p>
-                  <a href="#update">Update REA</a>, restart your agent and retry
+                  <a href="#update">Update AS Inspect</a>, restart your agent and retry
                   the same task. A recent release may already fix the problem.
                 </p>
                 <p>
@@ -517,7 +517,7 @@
                   <a href="https://github.com/abusafyan-official/AS-Inspect/issues/new/choose"
                     >open an issue</a
                   >
-                  with your REA version, operating system, target type, steps to
+                  with your AS Inspect version, operating system, target type, steps to
                   reproduce and error output. Include the provider name when the
                   problem involves native analysis.
                 </p>
@@ -529,9 +529,9 @@
             <h2>Data and sharing</h2>
             <div class="faq-list">
               <details class="faq-item" id="privacy">
-                <summary>Does REA upload my app?</summary>
+                <summary>Does AS Inspect upload my app?</summary>
                 <p>
-                  REA analyzes targets on your machine. Your agent receives the
+                  AS Inspect analyzes targets on your machine. Your agent receives the
                   results, and its model provider's data policy applies to those
                   results.
                 </p>
@@ -539,7 +539,7 @@
               <details class="faq-item" id="contribute">
                 <summary>How can I share an example or contribute?</summary>
                 <p>
-                  Have a useful REA example? We'd love to see it. Share the
+                  Have a useful AS Inspect example? We'd love to see it. Share the
                   target, your question, the findings and how you checked them
                   in an
                   <a href="https://github.com/abusafyan-official/AS-Inspect/issues/new/choose"
@@ -565,7 +565,7 @@
     <!-- prettier-ignore -->
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p>REA · Reverse Engineer Anything</p>
+        <p>AS Inspect · Reverse Engineer Anything</p>
         <div class="footer-links">
           <a href="../contributors/">Contributors</a
           ><a href="https://github.com/abusafyan-official/AS-Inspect">Source</a

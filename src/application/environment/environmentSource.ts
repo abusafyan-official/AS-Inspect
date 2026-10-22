@@ -107,7 +107,7 @@ export interface EnvironmentSource {
   readonly manifest: EnvironmentManifest;
   readonly manifestEvidenceId: string;
   readonly evidenceId: string;
-  /** Which REA operation recorded the parent capture. */
+  /** Which AS Inspect operation recorded the parent capture. */
   readonly captureKind: EnvironmentCaptureKind;
   /**
    * SHA-256 of the captured artifact for a web network capture, or of the scenario definition for a
@@ -146,7 +146,7 @@ export const parseEvidenceFile = (
       schemaInputError(
         operation,
         { prefix: [role], cause, value },
-        `The ${role} file is not authenticated REA Evidence JSON.`,
+        `The ${role} file is not authenticated AS Inspect Evidence JSON.`,
       ),
     );
   }

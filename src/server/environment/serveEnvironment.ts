@@ -102,7 +102,7 @@ export const createEnvironmentMcpServer = (
   answer: EnvironmentToolAnswer,
 ): RequestTrackingMcpServer => {
   // Tool names, descriptions and replies all come from the captured application, so the
-  // server carries REA's untrusted-content instructions plus a warning about its own catalog.
+  // server carries AS Inspect's untrusted-content instructions plus a warning about its own catalog.
   const server = new EnvironmentMcpServer(
     { name, version: PRODUCT_IDENTITY.packageVersion },
     {

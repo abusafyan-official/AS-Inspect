@@ -1,7 +1,7 @@
 # Observe the client boundary before claiming token savings
 
-Continues [#2016](https://github.com/morluto/rea/issues/2016) after the managed
-summary [PR #2413](https://github.com/morluto/rea/pull/2413) merged as
+Continues [#2016](https://github.com/abusafyan-official/AS-Inspect/issues/2016) after the managed
+summary [PR #2413](https://github.com/abusafyan-official/AS-Inspect/pull/2413) merged as
 `82cfcee19f18b0eeae9a330ba04e0411cdf85225`. That opt-in view has verified smaller
 delivery and complete-default migration, while its original real-model cohort
 does not establish token savings. This follow-up measures why raw reply bytes
@@ -11,7 +11,7 @@ and aggregate model usage cannot be treated as interchangeable observations.
 
 An individual real Codex CLI 0.161.0 control uses frozen runtime
 `ae8051302b5834322fa00cfa31c968ae74ab6ed9`, the unchanged ShareX identity question,
-requested `gpt-5.6-terra` high and the same two enabled REA tools. A private
+requested `gpt-5.6-terra` high and the same two enabled AS Inspect tools. A private
 diagnostic copy removes the original runner's explicit `--ephemeral` flag.
 Authentication/profile cleanup still runs; only selected tool/usage items are
 retained after filtering the owned rollout. Its source rollout SHA-256 is
@@ -23,7 +23,7 @@ internal passthrough are not retained in the filtered receipt.
 
 Despite the requested `direct` configuration label, the observed client uses
 three JavaScript `exec` calls. First it filters `ALL_TOOLS` with a broad
-`/REA|reverse|artifact|managed|assembly|metadata/i` expression and prints matching
+`/AS Inspect|reverse|artifact|managed|assembly|metadata/i` expression and prints matching
 metadata. The client reports truncation of a 164,005-token original output.
 This is the client's output measurement, not billed input or a complete inventory.
 Next it invokes complete managed inspection but selects requested normalized
@@ -98,11 +98,11 @@ selection and provider inputs. The default instruction is unchanged. Missing or
 invalid selected tools fail before creating an output/profile. The test gate
 also verifies the new prerequisite without acquiring a profile.
 
-Compare guided and unguided runs on the **same** frozen REA runtime with matching
+Compare guided and unguided runs on the **same** frozen AS Inspect runtime with matching
 capture mode and requested facts. A smaller discovery response or additional
 hint is not itself a task/token success: grade answers, count all response usage,
 preserve failed/truncated runs and repeat both orders before recommending this
-guidance. This is a caller-side experiment, not a new REA tool or provider preset.
+guidance. This is a caller-side experiment, not a new AS Inspect tool or provider preset.
 
 ## First committed capture pair
 

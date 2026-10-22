@@ -1,16 +1,16 @@
 # Website observation with CDP
 
-Captured Debugger sources can be exported for REA's existing static JavaScript
+Captured Debugger sources can be exported for AS Inspect's existing static JavaScript
 analysis with `export_web_scripts`. See [captured website scripts](website-script-export.md)
 for the capture options, source mappings, and browser/local resolution limits.
 Use [captured module relationships](website-module-trace.md) to resolve one
 exported script's native imports under an explicit URL/import-map context.
 
-REA can attach to a user-owned Chrome-family browser through the Chrome DevTools Protocol (CDP) and produce bounded Evidence about an existing page. This is a passive reverse-engineering capability, not a general browser automation or remote-control surface.
+AS Inspect can attach to a user-owned Chrome-family browser through the Chrome DevTools Protocol (CDP) and produce bounded Evidence about an existing page. This is a passive reverse-engineering capability, not a general browser automation or remote-control surface.
 
 For request/response bodies and traffic debugging, see
 [Fiddler Everywhere captures and MCP](web-network-captures.md#reading-fiddler-captures-saz).
-Inspect native SAZ or HAR 1.2 offline with REA, or connect Everywhere's separate MCP server.
+Inspect native SAZ or HAR 1.2 offline with AS Inspect, or connect Everywhere's separate MCP server.
 
 ## Shipped surfaces
 
@@ -18,7 +18,7 @@ Inspect native SAZ or HAR 1.2 offline with REA, or connect Everywhere's separate
 - `inspect_web_page` / `rea inspect-web-page` captures DOM structure, accessibility nodes, scripts, resources, safe response/DOM metadata, attach-window network and console metadata, WebSocket frame sizes, workers, quota, and optionally selected storage key names, redacted storage-content fingerprints, or script sources.
 - `analyze_web_bundle` / `rea analyze-web-bundle` parses selected script artifacts without execution and derives chunk edges, route and endpoint candidates, vendor fingerprints, static WebMCP declarations, and optionally source-map/original-source evidence.
 - `observe_web_session` / `rea observe-web-session` arms an observation window of the requested duration for an external user action and records ordered reload, SPA navigation, redirect, failure, lifecycle, and target-termination metadata.
-- `discover_webmcp_tools` / `rea discover-webmcp-tools` uses the experimental CDP WebMCP domain to return every in-scope registration and its complete observed `input_schema` declaration and canonical `input_schema_sha256` digest inline. Declarations are untrusted JSON data, including declared types, required fields, enums, examples and reference URLs. REA does not resolve schema references. These fields replace `input_schema_shape`. Registrations with the same name and URL in distinct observed frames retain separate identities. `tool_key` includes the observed frame ID; it is not a stable identity across navigation or browser sessions. Same-frame registration updates replace that owner only, and removal leaves other owners intact. Declared `readOnly`, `untrustedContent`, `consequential`, and `autosubmit` annotation hints are reported per registration: `true`/`false` are declared values, `null` means the declaration did not provide the hint in that capture, and a missing `consequential` key means the hint was not recorded, either in a historical capture or because the observed annotation was invalid. Consult discovery completeness and exclusions to distinguish these cases. Malformed annotation values or registration stacks retain the registration with incomplete coverage and an `invalid_protocol_value` exclusion. Other malformed protocol payloads can fail discovery explicitly. REA never exposes `WebMCP.invokeTool`.
+- `discover_webmcp_tools` / `rea discover-webmcp-tools` uses the experimental CDP WebMCP domain to return every in-scope registration and its complete observed `input_schema` declaration and canonical `input_schema_sha256` digest inline. Declarations are untrusted JSON data, including declared types, required fields, enums, examples and reference URLs. AS Inspect does not resolve schema references. These fields replace `input_schema_shape`. Registrations with the same name and URL in distinct observed frames retain separate identities. `tool_key` includes the observed frame ID; it is not a stable identity across navigation or browser sessions. Same-frame registration updates replace that owner only, and removal leaves other owners intact. Declared `readOnly`, `untrustedContent`, `consequential`, and `autosubmit` annotation hints are reported per registration: `true`/`false` are declared values, `null` means the declaration did not provide the hint in that capture, and a missing `consequential` key means the hint was not recorded, either in a historical capture or because the observed annotation was invalid. Consult discovery completeness and exclusions to distinguish these cases. Malformed annotation values or registration stacks retain the registration with incomplete coverage and an `invalid_protocol_value` exclusion. Other malformed protocol payloads can fail discovery explicitly. AS Inspect never exposes `WebMCP.invokeTool`.
 
 - `compare_web_captures` / `rea compare-web-captures` compares passive captures or exact-step-aligned browser scenarios. Scenario results commit reproducible literal normalization and expose alignment failures plus artifact-level action, screenshot, DOM, accessibility, URL, history, storage, and event differences. Missing or truncated evidence is never treated as equivalence.
 
@@ -98,15 +98,15 @@ vocabulary (`BrowserExclusionReason`): every denial reason maps onto it, even
 where a wire schema keeps a narrower historical bucket.
 
 CDP attachment is not a guarantee that the browser preserves all state.
-Chromium can clear another client's `navigator.platform` emulation when REA's
+Chromium can clear another client's `navigator.platform` emulation when AS Inspect's
 page session disconnects, even if that session sent no emulation commands.
 This affects page inspection, bundle capture, session observation, screenshots,
 WebMCP discovery, and Electron page inspection; target listing alone does not
-attach a page session. REA cannot read the other client's complete
+attach a page session. AS Inspect cannot read the other client's complete
 user-agent/client-hint configuration and does not replay guessed settings.
 Use a disposable browser when preserving externally configured emulation is
 required, or have the owning client reapply its complete configuration afterward.
-See [the reproduction and Chromium ownership limitation](https://github.com/morluto/rea/issues/4089).
+See [the reproduction and Chromium ownership limitation](https://github.com/abusafyan-official/AS-Inspect/issues/4089).
 
 Existing static application Evidence and passive web/Electron captures can be
 combined later through
@@ -123,7 +123,7 @@ google-chrome \
   http://127.0.0.1:3000
 ```
 
-REA does not launch, own, or terminate this browser. Use a dedicated profile and stop it yourself when the investigation is complete. Do not expose the debugging port on a non-loopback interface.
+AS Inspect does not launch, own, or terminate this browser. Use a dedicated profile and stop it yourself when the investigation is complete. Do not expose the debugging port on a non-loopback interface.
 
 Other Chromium-family browsers, such as Chromium or Brave, work the same way
 with the same two flags. On macOS, run the executable inside the application
@@ -132,7 +132,7 @@ bundle, for example
 `"/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"`. Fedora installs
 Chromium as `chromium-browser`.
 
-REA attaches through the browser's HTTP discovery endpoint on a loopback port,
+AS Inspect attaches through the browser's HTTP discovery endpoint on a loopback port,
 or, for some passive tools, through a
 [browser socket](#browsers-without-http-discovery). Connection failures report
 `endpoint_unreachable`; a reachable HTTP service that returns a non-200 or
@@ -146,8 +146,8 @@ restart the browser.
 On Linux, a reachable but locked desktop keyring can stall Chrome before its
 first navigation. For a dedicated investigation profile, add
 `--password-store=basic` to bypass that keyring. Empty or placeholder frame URLs
-then describe an unloaded page; REA continues to require an allowed, committed
-URL. See [the startup investigation](https://github.com/morluto/rea/issues/1384#issuecomment-6093781686).
+then describe an unloaded page; AS Inspect continues to require an allowed, committed
+URL. See [the startup investigation](https://github.com/abusafyan-official/AS-Inspect/issues/1384#issuecomment-6093781686).
 
 ### Browsers without HTTP discovery
 
@@ -165,7 +165,7 @@ rea list-browser-targets ws://127.0.0.1:9222/devtools/browser/<id>
 ```
 
 Chrome writes the port and the `/devtools/browser/<id>` path to the
-`DevToolsActivePort` file in its user data directory. REA does not read that
+`DevToolsActivePort` file in its user data directory. AS Inspect does not read that
 file for you.
 
 - Only `list_browser_targets`, `inspect_web_page`, `analyze_web_bundle`,
@@ -188,7 +188,7 @@ file for you.
   the origins you are investigating.
 
 A browser driven only through `--remote-debugging-pipe` or a vendor's private
-automation channel has neither endpoint, and REA cannot attach to it. To
+automation channel has neither endpoint, and AS Inspect cannot attach to it. To
 inspect such a page, reproduce it in a Chromium-family browser started with
 `--remote-debugging-port`.
 
@@ -306,13 +306,13 @@ Collection counts are not capped. Per-value validation, the selected observation
 window, and CDP protocol limits still apply; any incomplete or truncated values
 are reported in the result.
 
-Call `list_browser_targets` first because target IDs are browser-instance-specific. REA rechecks the selected target's current type and origin immediately before attaching. Without an origin filter, discovery lists all eligible pages; an individual capture defaults to the selected page's current origin.
+Call `list_browser_targets` first because target IDs are browser-instance-specific. AS Inspect rechecks the selected target's current type and origin immediately before attaching. Without an origin filter, discovery lists all eligible pages; an individual capture defaults to the selected page's current origin.
 
-REA establishes a main-frame origin boundary before enabling Runtime, Debugger, or Network observation, rechecks it before document capture, and validates it again afterward. If the main frame navigates during final capture, REA discards the mixed result and returns `target_changed`.
+AS Inspect establishes a main-frame origin boundary before enabling Runtime, Debugger, or Network observation, rechecks it before document capture, and validates it again afterward. If the main frame navigates during final capture, AS Inspect discards the mixed result and returns `target_changed`.
 
 The web-session timeline uses CDP monotonic seconds where the event producer
 provides a comparable timestamp; absent or invalid timestamps are `null` rather
-than a synthetic zero. Events buffered while REA samples the window boundary are
+than a synthetic zero. Events buffered while AS Inspect samples the window boundary are
 retained only when their timestamp places them after that boundary; older events
 are excluded. A buffered event without a comparable timestamp may remain as
 contextual evidence with `timestamp: null`, accompanied by a limitation stating
@@ -334,7 +334,7 @@ complete Structured Field Item, including parameters such as `report-to`.
 These are declarations, not an assessment of the document's effective policy;
 absent, malformed or non-token items project as `null`.
 
-REA retains local observation data and removes only URL userinfo credentials, explicitly declared scenario secrets, and values from structured credential/storage fields:
+AS Inspect retains local observation data and removes only URL userinfo credentials, explicitly declared scenario secrets, and values from structured credential/storage fields:
 
 - URL observations preserve the complete local URL, including query values, fragments, duplicate parameters, and their order. Only username/password userinfo is removed; malformed original URL strings remain available with `origin: null`.
 - DOM snapshots retain node types, node names, value lengths, and attribute names, but not text or attribute values.
@@ -413,7 +413,7 @@ defaults to 30000 and is an item limitation, not that analysis timeout. These
 controls are also available as CLI flags with hyphenated names. Worker protocol
 and result byte budgets have no runtime override.
 
-One web-bundle capture/analysis is admitted per REA process at a time. Completed
+One web-bundle capture/analysis is admitted per AS Inspect process at a time. Completed
 script results share an 8 MiB serialized transfer budget, with host heap
 reservation checked before decoding and validating another result.
 When the host reservation is what reaches zero, the failure names that heap
@@ -431,7 +431,7 @@ old-space flags; Bun ignores them. Windows Bun instead uses an owned process
 commit limit with a 512 MiB runtime reserve; other Bun hosts have no enforced
 memory limit. An allocation failure before that Windows limit is reported as
 reached still names the configured limit and says it was not reached. These
-bounds do not establish an aggregate host-memory limit across other REA
+bounds do not establish an aggregate host-memory limit across other AS Inspect
 operations or external processes.
 
 Resource-tree inventories distinguish a valid empty `resources` array from a
@@ -461,7 +461,7 @@ budget. A stalled handshake or command reports
 `provider_timeout` and names `command_timeout_ms` only when that operation
 accepts it; caller cancellation still reports cancellation. WebSocket messages
 remain subject to the [64 MiB limit](#request-boundary), which has no runtime
-override. REA does
+override. AS Inspect does
 not impose a message-count or pending-command quota. On cancellation, it closes
 only its own WebSocket,
 waiting up to one second before terminating it. Malformed unsolicited events
@@ -470,7 +470,7 @@ commands fail closed. A correlated reply's session ID must match the command's
 selected session. An optional method is unavailable only when the browser
 rejects it as unknown; other command rejections retain their reported failure.
 
-Network and console coverage starts only after REA attaches and enables the relevant CDP domains. `prior_activity_available` is always `false`; absence from these arrays is not evidence that an event never occurred. Scripts are different: scripts the page parsed before REA attached are still reported under `scripts`. A page that loaded before attach can therefore list its scripts while `network.requests` lacks the requests that fetched them. If CDP reuses a request ID without supplying redirect metadata, REA retains the predecessor observation and marks network coverage incomplete.
+Network and console coverage starts only after AS Inspect attaches and enables the relevant CDP domains. `prior_activity_available` is always `false`; absence from these arrays is not evidence that an event never occurred. Scripts are different: scripts the page parsed before AS Inspect attached are still reported under `scripts`. A page that loaded before attach can therefore list its scripts while `network.requests` lacks the requests that fetched them. If CDP reuses a request ID without supplying redirect metadata, AS Inspect retains the predecessor observation and marks network coverage incomplete.
 
 Source maps are not fetched by inspection. Bundle analysis fetches them only when `fetch_source_maps` is selected, with exact-origin redirect checks and no credentials, cookies, or referrer. Each fetch operation uses `source_map_fetch_timeout_ms` (default 30000) and a 64 MiB aggregate streamed-response budget across redirects. The byte budget has no runtime override. A fetch overrun is an item limitation, not a thrown analysis timeout. A deadline or byte-limit failure remains explicitly unavailable and makes bundle completeness partial. Source-map decoding also bounds raw resolved identities to 64 MiB and aggregate inline evidence to 32 MiB. Failed maps preserve their failure context when it fits; if another context cannot fit, collection stops with the full requested count, the returned processed count, and an explicit unknown-results limitation. Retained mappings and original sources are returned inline. See [source-location limits](web-source-location.md) for the structural decoder bounds. Original source artifacts with `.ts`, `.tsx`, `.mts`, or `.cts` suffixes carry `text/typescript`; other source names retain `text/javascript`.
 
@@ -487,8 +487,8 @@ cleanup context and resource constraint.
 
 ## Non-goals and threat model
 
-The browser provider deliberately does not expose generic CDP commands, `Runtime.evaluate`, WebMCP invocation, navigation, input, downloads, page closure, or browser closure. Screenshot capture is the sole pixel surface and returns an image only when requested. REA disables the domains it enabled, detaches the target session, and closes only its own WebSocket.
+The browser provider deliberately does not expose generic CDP commands, `Runtime.evaluate`, WebMCP invocation, navigation, input, downloads, page closure, or browser closure. Screenshot capture is the sole pixel surface and returns an image only when requested. AS Inspect disables the domains it enabled, detaches the target session, and closes only its own WebSocket.
 
-This feature is not a browser sandbox or network containment mechanism. The attached page and browser continue running with their existing privileges and may make external requests independently of REA. CDP gives deep access to the selected browser profile, so use a dedicated profile, include only origins you intend to inspect, and treat other same-user processes as outside this boundary.
+This feature is not a browser sandbox or network containment mechanism. The attached page and browser continue running with their existing privileges and may make external requests independently of AS Inspect. CDP gives deep access to the selected browser profile, so use a dedicated profile, include only origins you intend to inspect, and treat other same-user processes as outside this boundary.
 
 Response metadata normalizes a `Referrer-Policy` fallback list to its last recognized nonempty policy, including mixed-case tokens. Unknown policy names are skipped; malformed token syntax and lists without a recognized policy remain `null`. This reports the response's declared policy, not the effective policy of a document or an inferred browser default.

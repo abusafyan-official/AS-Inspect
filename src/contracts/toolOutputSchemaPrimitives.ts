@@ -313,7 +313,7 @@ const clientFeatureNameSchema = z.enum([
   "sampling",
 ]);
 
-/** Negotiated MCP client features that affect REA workflow availability. */
+/** Negotiated MCP client features that affect AS Inspect workflow availability. */
 export const clientFeatureAvailabilitySchema = z.object({
   elicitation_form: z.boolean(),
   elicitation_url: z.boolean(),

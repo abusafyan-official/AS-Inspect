@@ -15,7 +15,7 @@ import {
   type CliCommandSession,
 } from "./cliCommandSession.js";
 
-/** Caller-controlled values for one compiled REA CLI invocation. */
+/** Caller-controlled values for one compiled AS Inspect CLI invocation. */
 export interface CliInvocation {
   readonly arguments: readonly string[];
   readonly cwd?: string;
@@ -24,7 +24,7 @@ export interface CliInvocation {
   readonly timeoutMs?: number;
 }
 
-/** Normalized result from the compiled REA CLI. */
+/** Normalized result from the compiled AS Inspect CLI. */
 export interface CliResult extends ProcessResult {
   readonly json: unknown | undefined;
 }
@@ -36,7 +36,7 @@ export type SharedMcpCall = Awaited<
   >
 >["call"];
 
-/** Compiled REA CLI driver owned by one test. */
+/** Compiled AS Inspect CLI driver owned by one test. */
 export interface TestCli {
   run(invocation: CliInvocation): Promise<CliResult>;
   /**

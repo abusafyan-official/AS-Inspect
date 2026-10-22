@@ -25,7 +25,7 @@ const compositeProviderIdentity = (
     .map(({ id }) => id)
     .sort()
     .join("+")}`,
-  name: "REA composite analysis provider",
+  name: "AS Inspect composite analysis provider",
   version: null,
 });
 

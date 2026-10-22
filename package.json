@@ -1,6 +1,6 @@
 {
   "name": "as-inspect-agents",
-  "mcpName": "io.github.morluto/rea",
+  "mcpName": "io.github.abusafyan-official/AS-Inspect",
   "version": "6.7.0",
   "description": "AS Inspect — Reverse engineer anything with evidence. Developed by Abu Safyan.",
   "license": "MIT",
@@ -10,7 +10,7 @@
   },
   "homepage": "https://github.com/abusafyan-official/AS-Inspect",
   "bugs": {
-    "url": "https://github.com/morluto/rea/issues"
+    "url": "https://github.com/abusafyan-official/AS-Inspect/issues"
   },
   "keywords": [
     "reverse-engineering",
@@ -39,8 +39,8 @@
     "#web-bundle-analysis-worker": "./dist/composition/webBundleAnalysisWorkerProcess.js"
   },
   "bin": {
-    "rea": "scripts/rea.mjs",
-    "rea-agents": "scripts/rea.mjs"
+    "rea": "scripts/as-inspect.mjs",
+    "as-inspect-agents": "scripts/as-inspect.mjs"
   },
   "engines": {
     "node": "^22.19.0 || ^24.11.0 || >=26.0.0"
@@ -67,7 +67,7 @@
     "bridge/ghidra/ReaGhidraPrepareRaw.java",
     "bridge/android/ReaJadxBridge.java",
     "bridge/mitmproxy/capture.py",
-    "scripts/rea.mjs",
+    "scripts/as-inspect.mjs",
     "scripts/rea-android-workspace-guardian.mjs",
     "scripts/electron-active-hook.cjs",
     "scripts/electron-active-hook-boundaries.cjs",
@@ -141,7 +141,7 @@
     "jscpd": "node scripts/ci/static-check-report.mjs duplicates",
     "jscpd:details": "jscpd src/ tests/ --no-tips",
     "scan:todos": "node scripts/scan-todos.mjs",
-    "start": "node scripts/rea.mjs mcp",
+    "start": "node scripts/as-inspect.mjs mcp",
     "test": "npm run test:with-build",
     "test:with-build": "npm run test:prepare && vitest run",
     "test:run": "vitest run",

@@ -25,7 +25,7 @@ assert(
 );
 assert.equal(
   await readFile(join(account, ".rea-client-verification"), "utf8"),
-  "Disposable REA client verification account\n",
+  "Disposable AS Inspect client verification account\n",
 );
 const repo = fileURLToPath(new URL("..", import.meta.url));
 const runtimeRoot = process.env.REA_VERIFY_RUNTIME_ROOT ?? repo;
@@ -115,7 +115,7 @@ const validateCatalog = async (text) => {
   assert.deepEqual(
     entries.map((entry) => entry[1]).sort(),
     expectedNames,
-    "Native exact-name search must return every REA input schema",
+    "Native exact-name search must return every AS Inspect input schema",
   );
   for (const entry of entries) {
     const schema = JSON.parse(entry[2]);
@@ -145,7 +145,7 @@ const fixture = await createOpenAiModelFixture({
       assert.deepEqual(
         names,
         expectedNames,
-        "Default native deferred-tool prompt must advertise the complete REA inventory",
+        "Default native deferred-tool prompt must advertise the complete AS Inspect inventory",
       );
       assert.equal(
         tools.filter((tool) => tool.name.startsWith("mcp__rea__")).length,
@@ -362,7 +362,7 @@ try {
       "-p",
       mode === "chat"
         ? "Say hello briefly."
-        : `Use the REA skill to analyze ${target}.`,
+        : `Use the AS Inspect skill to analyze ${target}.`,
       "-m",
       "rea-local/rea-client-fixture",
       "--local-only",

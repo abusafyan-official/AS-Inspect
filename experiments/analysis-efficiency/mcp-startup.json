@@ -7,7 +7,7 @@
   },
   "context_scope": "Question, explicit recipe, server instructions, one complete name/description/input-schema directory, every tool argument and text reply, plus prompt directory for discovery. This projection assumes the client retains a single unchanged directory. Raw catalog result costs include every observed tools/list result separately, with output schemas and without JSON-RPC envelopes. SDK initialization/framing, reasoning and actual model usage are unmeasured. The analysis task includes retained-read, rejection, export/oracle and post-materialization directory checks.",
   "cache_scope": "Cold disables server Node compile cache. Warm enables a prepopulated role/profile-specific cache after one complete analysis priming run. Fresh server/client processes and HOME each trial. Driver compile cache disabled in both cohorts. Cache hit rate and OS page cache are unmeasured; source/runtime audits warm compiled-file pages before startup.",
-  "resource_scope": "Whole SDK driver, resource observer and owned REA process family. Includes before/after source-and-all-compiled-JS/JSON binding, SDK schema checks, extra validation calls, bundle export and independent oracle checking. Kernel cgroup peak includes file cache. Build/download/oracle preparation and cache priming excluded. Retained V8 heap and forced-GC diagnostics were not separately measured.",
+  "resource_scope": "Whole SDK driver, resource observer and owned AS Inspect process family. Includes before/after source-and-all-compiled-JS/JSON binding, SDK schema checks, extra validation calls, bundle export and independent oracle checking. Kernel cgroup peak includes file cache. Build/download/oracle preparation and cache priming excluded. Retained V8 heap and forced-GC diagnostics were not separately measured.",
   "measurement_inputs": {
     "baseline_revision": "c465ff5a814b8e1a386fc547cbcd94df5c35f086",
     "candidate_revision": "04900abbcd3c3438fce4af932ff28400fe744a7d",
@@ -759,7 +759,7 @@
     },
     "questions": {
       "analysis": "Which serde package versions and package kinds occur in the selected Rust binary? Preserve complete source Evidence and verify retained reads.",
-      "discovery": "Discover the complete REA tool and prompt directory."
+      "discovery": "Discover the complete AS Inspect tool and prompt directory."
     },
     "recipes": {
       "analysis": "Initialize; list tools; inspect_rust_binary selecting serde name/version/kind; read the exact retained parent twice; verify canonical rejection of a negative offset; export and independently check all packages and edges; confirm the catalog remains identical; close.",

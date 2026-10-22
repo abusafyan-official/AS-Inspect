@@ -51,7 +51,7 @@ try {
     assert.match(matched.error.reason, /5000 ms \\(source default\\)/);
     assert.match(matched.error.reason, /REA_REGEX_MATCHING_DEADLINE_MS/);
     assert.match(matched.error.reason, /maximum 2147483647 ms/);
-    assert.match(matched.error.remediationAction, /Set REA_REGEX_MATCHING_DEADLINE_MS in the environment that starts REA/);
+    assert.match(matched.error.remediationAction, /Set REA_REGEX_MATCHING_DEADLINE_MS in the environment that starts AS Inspect/);
     assert.equal(matched.error.reason.includes("no runtime override"), false);
     assert.equal(matched.error.remediationAction.includes("no runtime override"), false);
     const limitation = provider.capabilities().find((capability) => capability.operation === ${JSON.stringify(operation)}).limitations.join(" ");

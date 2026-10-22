@@ -112,7 +112,7 @@ export interface UninstallItem extends UninstallAction {
   readonly actions?: readonly UninstallAction[];
 }
 
-/** Structured, idempotent result of removing REA-owned state. */
+/** Structured, idempotent result of removing AS Inspect-owned state. */
 export interface UninstallResult {
   readonly status: "complete" | "failed";
   readonly items: readonly UninstallItem[];
@@ -131,7 +131,7 @@ export interface UninstallHost {
 }
 
 /**
- * Remove only REA-owned registrations and managed files, optionally including
+ * Remove only AS Inspect-owned registrations and managed files, optionally including
  * local state. A client configuration that cannot be read safely stops the
  * operation before anything is removed; one that fails during removal stops
  * the remaining removals.
@@ -160,14 +160,14 @@ export const runUninstall = async (
             item(
               "uninstall",
               "skipped",
-              "No REA registration, skill, or data was removed. Repair each failed configuration, then rerun uninstall.",
+              "No AS Inspect registration, skill, or data was removed. Repair each failed configuration, then rerun uninstall.",
             ),
           ]
         : await removeAll(clients, purgeData, host);
     items.push({
       name: "analysis_engine",
       status: "retained",
-      detail: "Hopper is not owned by REA uninstall.",
+      detail: "Hopper is not owned by AS Inspect uninstall.",
     });
     const reported = collapseUninstallItems(items);
     result = {
@@ -233,7 +233,7 @@ const removeAll = async (
   return items;
 };
 
-/** Create uninstall effects contained to detected client configs and REA-owned paths. */
+/** Create uninstall effects contained to detected client configs and AS Inspect-owned paths. */
 export const systemUninstallHost = (
   selectedHome: string | undefined = undefined,
   selectedFileSystem: UninstallFileSystem | undefined = undefined,
@@ -352,9 +352,9 @@ export const systemUninstallHost = (
 };
 
 /**
- * Every user file that can hold REA's registration for one client. An MSIX
+ * Every user file that can hold AS Inspect's registration for one client. An MSIX
  * package can read either its private copy or the AppData file, and earlier
- * setups wrote the AppData file, so both lose REA's entry.
+ * setups wrote the AppData file, so both lose AS Inspect's entry.
  */
 const uninstallConfigPaths = (client: SetupClient): readonly string[] => [
   ...new Set([
@@ -520,9 +520,9 @@ const clientRegistrationRemoval = (
   });
 };
 
-const SHADOWED_UNOWNED_MEMBER_DETAIL = `Configuration repeats the "${PRODUCT_IDENTITY.mcpServerKey}" member, and an earlier duplicate is not REA-owned; removing the registration the client reads would activate an earlier duplicate, so no change was made. Remove the duplicate members manually, then rerun uninstall.`;
+const SHADOWED_UNOWNED_MEMBER_DETAIL = `Configuration repeats the "${PRODUCT_IDENTITY.mcpServerKey}" member, and an earlier duplicate is not AS Inspect-owned; removing the registration the client reads would activate an earlier duplicate, so no change was made. Remove the duplicate members manually, then rerun uninstall.`;
 
-const UNOWNED_LEGACY_FALLBACK_DETAIL = `OpenCode falls back to the V1 "mcp.${PRODUCT_IDENTITY.mcpServerKey}" entry, which is not REA-owned; removing REA's native registration would activate it, so no change was made. Remove or replace that V1 entry manually, then rerun uninstall.`;
+const UNOWNED_LEGACY_FALLBACK_DETAIL = `OpenCode falls back to the V1 "mcp.${PRODUCT_IDENTITY.mcpServerKey}" entry, which is not AS Inspect-owned; removing AS Inspect's native registration would activate it, so no change was made. Remove or replace that V1 entry manually, then rerun uninstall.`;
 
 /** Preserve the bytes uninstall is about to edit and return the backup holding them. */
 const backupClientConfiguration = async (
@@ -576,7 +576,7 @@ const removeClient = async (
       "A Cordis expression may produce registration rows, so the patch was retained without changes.",
     );
   if (!registrationPresent(parsed))
-    return item(client.name, "skipped", "REA registration is absent.");
+    return item(client.name, "skipped", "AS Inspect registration is absent.");
   const removal = clientRegistrationRemoval(parsed, original, client);
   if (!removal.ok) return item(client.name, "failed", removal.error.detail);
   const { removeNative, legacyPath } = removal.value;
@@ -585,7 +585,7 @@ const removeClient = async (
     return item(
       client.name,
       "retained",
-      "The rea-named registration is not REA-owned.",
+      "The rea-named registration is not AS Inspect-owned.",
     );
   const blocker = writeBlocker?.();
   if (blocker !== undefined) return item(client.name, "failed", blocker);
@@ -607,7 +607,7 @@ const removeClient = async (
       client.format,
       original,
       editedPaths,
-      // clientRegistrationRemoval admitted only names whose repeats REA owns.
+      // clientRegistrationRemoval admitted only names whose repeats AS Inspect owns.
       { removeShadowedMembersAt: editedPaths },
     );
   } catch {
@@ -719,7 +719,7 @@ const resolveUninstallConfigPath = async (
   );
 };
 
-/** Ownership rule for persistent MCP registrations created by REA setup. */
+/** Ownership rule for persistent MCP registrations created by AS Inspect setup. */
 const isOwnedRegistration = (value: unknown, client: SetupClient): boolean => {
   if (client.format === "opencode") {
     const parsed = z
@@ -757,7 +757,7 @@ const purgeManagedData = async (
         item(
           name,
           "retained",
-          `REA did not remove this item because its managed data root ${root} is ${linked ? "a symbolic link" : "not a directory"}. Verify the root before removing its data manually.`,
+          `AS Inspect did not remove this item because its managed data root ${root} is ${linked ? "a symbolic link" : "not a directory"}. Verify the root before removing its data manually.`,
         ),
       );
   } catch (cause: unknown) {
@@ -788,7 +788,7 @@ const removeManagedPath = async (
       return item(
         name,
         "retained",
-        "REA did not remove this item because its managed path is a symbolic link. Verify the link target before removing it manually.",
+        "AS Inspect did not remove this item because its managed path is a symbolic link. Verify the link target before removing it manually.",
       );
     await fileSystem.remove(path);
     return item(name, "removed", `Removed ${path}.`);
@@ -890,7 +890,7 @@ const inspectManagedSkill = async (
       : item(name, "failed", "Skill manifest could not be read.");
   }
   if (!isManagedSkillManifest(content))
-    return item(name, "retained", "Skill manifest is not REA-owned.");
+    return item(name, "retained", "Skill manifest is not AS Inspect-owned.");
 
   return undefined;
 };
@@ -922,7 +922,7 @@ const removeManagedSkill = async (
       item(
         name,
         "retained",
-        "REA ownership manifest was retained because a managed file could not be safely removed.",
+        "AS Inspect ownership manifest was retained because a managed file could not be safely removed.",
       ),
     );
   else {
@@ -952,7 +952,7 @@ const removeManagedSkill = async (
   return item(
     name,
     removed ? "removed" : "skipped",
-    "REA-managed skill files were removed; other files were preserved.",
+    "AS Inspect-managed skill files were removed; other files were preserved.",
   );
 };
 

@@ -1,6 +1,6 @@
 # Windows native controls
 
-REA ships one Windows x64 Node-API 8 addon. Users do not compile it or install
+AS Inspect ships one Windows x64 Node-API 8 addon. Users do not compile it or install
 another runtime. Ghidra and a full JDK remain bring-your-own prerequisites.
 The addon uses Windows 10+ APIs and admits fixed local NTFS volumes only.
 
@@ -30,23 +30,23 @@ without this lane reports Windows native controls as unavailable.
 
 The source tree omits `native/windows/build/` from Git. To run Windows
 provider-backed workflows from a checkout without the MinGW build lane, extract
-the two files from the published `rea-agents` tarball whose version exactly
+the two files from the published `as-inspect-agents` tarball whose version exactly
 matches the checkout's `package.json` version. Do not use `latest` or copy files
-from another REA version; the loader verifies the manifest version, ABI,
+from another AS Inspect version; the loader verifies the manifest version, ABI,
 architecture, and addon digest before it grants authority.
 
 From the checkout root, replace `<matching-version>` with the `version` in
 `package.json`:
 
 ```sh
-npm pack rea-agents@<matching-version>
-tar -xzf rea-agents-<matching-version>.tgz
+npm pack as-inspect-agents@<matching-version>
+tar -xzf as-inspect-agents-<matching-version>.tgz
 mkdir -p native/windows/build
 cp package/native/windows/build/manifest.json native/windows/build/
 cp package/native/windows/build/rea-windows-x64.node native/windows/build/
 ```
 
-This is a manual recovery step. REA does not fetch or install the artifact
+This is a manual recovery step. AS Inspect does not fetch or install the artifact
 automatically. Alternatively, build it using the Linux/MinGW lane above.
 
 ## Boundaries
@@ -88,7 +88,7 @@ automatically. Alternatively, build it using the Linux/MinGW lane above.
   after a JavaScript out-of-memory exception or 3 after a panic), so callers
   classify by the notification. `inspect` reports `jobMemoryLimit` only after
   creating such a job and port. An artifact without that capability refuses a
-  requested limit rather than launching an unlimited process. REA requests
+  requested limit rather than launching an unlimited process. AS Inspect requests
   limits only for its JavaScript helpers when running on Bun, which ignores
   their V8 heap flags; Node.js launches are unchanged.
 - Only the suspended child's default file owner is normalized. Caller token

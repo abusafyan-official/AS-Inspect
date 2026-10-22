@@ -6,7 +6,7 @@ import type { TestProcesses } from "../process/processFixture.js";
 const LISTENING_MESSAGE = "MCP transport listening";
 const STARTUP_TIMEOUT_MS = 30_000;
 
-/** A compiled REA listener child and the URL it announced. */
+/** A compiled AS Inspect listener child and the URL it announced. */
 export interface McpHttpProcess {
   readonly child: ChildProcessWithoutNullStreams;
   readonly url: URL;

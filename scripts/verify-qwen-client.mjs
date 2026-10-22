@@ -290,7 +290,7 @@ const fixture = await createOpenAiModelFixture({
       message = call(shell.name, {
         command: `node -e "eval(Buffer.from('${encodedScript}','base64').toString('utf8'))"`,
         description:
-          "Read the complete saved REA Evidence and verify the fixture facts.",
+          "Read the complete saved AS Inspect Evidence and verify the fixture facts.",
       });
     } else if (selected)
       message = call(selected.name, {
@@ -307,7 +307,7 @@ const fixture = await createOpenAiModelFixture({
       message = call(search.name, { query: "analyze_javascript_application" });
     } else
       throw new Error(
-        `REA analysis tool not exposed; tools: ${tools.map((t) => t.name).join(", ")}`,
+        `AS Inspect analysis tool not exposed; tools: ${tools.map((t) => t.name).join(", ")}`,
       );
     return message;
   },
@@ -316,7 +316,7 @@ const endpoint = fixture.baseUrl;
 const prompt =
   mode === "chat"
     ? "Say hello briefly."
-    : `Use REA to analyze the JavaScript directory ${target}. Report the result.`;
+    : `Use AS Inspect to analyze the JavaScript directory ${target}. Report the result.`;
 const env = {
   ...baseEnvironment,
   OPENAI_API_KEY: "local-fixture-key",
@@ -363,7 +363,7 @@ try {
   assert.deepEqual(
     observed,
     TOOL_CONTRACTS.map((c) => `mcp__rea__${c.name}`).sort(),
-    "Qwen must discover the complete REA catalog",
+    "Qwen must discover the complete AS Inspect catalog",
   );
   assert.equal(fixture.failure, undefined);
   assert(finalSeen);

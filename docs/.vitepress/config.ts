@@ -1,7 +1,7 @@
 import { defineConfig } from "vitepress";
 
 export default defineConfig({
-  title: "REA",
+  title: "AS Inspect",
   description:
     "Reverse engineer binaries, applications, and runtime behavior with one CLI and MCP server.",
   lang: "en-US",
@@ -99,11 +99,11 @@ export default defineConfig({
     ],
     search: { provider: "local" },
     socialLinks: [
-      { icon: "github", link: "https://github.com/morluto/rea" },
+      { icon: "github", link: "https://github.com/abusafyan-official/AS-Inspect" },
       { icon: "discord", link: "https://discord.gg/GkcryMnJDM" },
     ],
     editLink: {
-      pattern: "https://github.com/morluto/rea/edit/main/docs/:path",
+      pattern: "https://github.com/abusafyan-official/AS-Inspect/edit/main/docs/:path",
     },
     footer: {
       message: "Released under the MIT License.",

@@ -29,7 +29,7 @@ type ElectronPathField =
 
 /**
  * Why a selected path was not admitted. Host permission denial is not
- * malformed caller input: the path may be correct, but REA cannot read it.
+ * malformed caller input: the path may be correct, but AS Inspect cannot read it.
  */
 type PathAdmissionFailure =
   | {

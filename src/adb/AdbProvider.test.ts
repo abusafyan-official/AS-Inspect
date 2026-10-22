@@ -786,7 +786,7 @@ it("projects package details from dumpsys package output", async () => {
 
 // Package Manager prints an absent installer as the text "null"; the
 // normalized result must report the absence, not a package named "null"
-// (morluto/rea#3943).
+// (abusafyan-official/AS-Inspect#3943).
 it("reports a null installer declaration as an absent installer", async () => {
   const { binary } = await writeAdbStub(
     shellStub({
@@ -1532,7 +1532,7 @@ it("inspects the display and window focus", async () => {
 });
 
 // Older builds print `wm density` as a bare number; the display projection
-// must keep it as the physical density (morluto/rea#3942).
+// must keep it as the physical density (abusafyan-official/AS-Inspect#3942).
 it("keeps a bare numeric wm density as the physical density", async () => {
   const { binary } = await writeAdbStub(
     shellStub({

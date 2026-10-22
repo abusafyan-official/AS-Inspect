@@ -3,16 +3,16 @@
 [English](../../README.md) · [简体中文](README_zh.md) · [繁體中文](README_zh-TW.md) · [日本語](README_ja.md) · [한국어](README_ko.md) · [Türkçe](README_tr.md) · [Русский](README_ru.md) · **Tiếng Việt** · [ไทย](README_th.md) · [Deutsch](README_de.md) · [Español](README_es.md) · [Français](README_fr.md) · [Українська](README_uk.md) · [Polski](README_pl.md) · [Português (Brasil)](README_pt-BR.md) · [العربية](README_ar.md) · [فارسی](README_fa.md) · [Bahasa Indonesia](README_id.md) · [Italiano](README_it.md)
 · [Ελληνικά](README_el.md) · [മലയാളം](README_ml.md)
 
-# REA: Kỹ thuật dịch ngược cho mọi thứ
+# AS Inspect: Kỹ thuật dịch ngược cho mọi thứ
 
 ### Một MCP để dịch ngược tệp nhị phân, ứng dụng và hành vi khi chạy.
 
 **Thấy một tính năng bạn thích? Hiểu cách nó hoạt động, đến tận mức mã nhị phân.**
 
-[![npm version](https://img.shields.io/npm/v/rea-agents?style=flat-square&color=cb3837)](https://www.npmjs.com/package/rea-agents)
+[![npm version](https://img.shields.io/npm/v/as-inspect-agents?style=flat-square&color=cb3837)](https://www.npmjs.com/package/as-inspect-agents)
 [![MCP tool catalog](https://img.shields.io/badge/MCP-tool_catalog-5c4ee5?style=flat-square)](../mcp-contracts.md#generated-catalog)
 [![Node.js requirements](https://img.shields.io/badge/Node.js-requirements-339933?style=flat-square&logo=nodedotjs&logoColor=white)](#current-status)
-[![skills.sh](https://skills.sh/b/morluto/rea?style=flat-square)](https://skills.sh/morluto/rea/reverse-engineer-anything)
+[![skills.sh](https://skills.sh/b/abusafyan-official/AS-Inspect?style=flat-square)](https://skills.sh/abusafyan-official/AS-Inspect/reverse-engineer-anything)
 [![MIT license](https://img.shields.io/badge/license-MIT-f4c430?style=flat-square)](../../LICENSE)
 [![Discord](https://img.shields.io/discord/1556595354999332884?logo=discord&logoColor=white&label=Discord&color=5865F2)](https://discord.gg/GkcryMnJDM)
 
@@ -20,25 +20,25 @@
 
 **[Trang web](https://rea.tools/vi/) · [Hướng dẫn](https://rea.tools/vi/guides/) · [Các nghiên cứu điển hình](https://rea.tools/vi/showcase/)**
 
-[Bắt đầu nhanh](#bắt-đầu-nhanh) · [Cách REA hoạt động](#cách-rea-hoạt-động) · [Những gì bạn có thể phân tích](#những-gì-bạn-có-thể-phân-tích) · [Các nghiên cứu điển hình](#các-nghiên-cứu-điển-hình) · [Câu hỏi thường gặp](#câu-hỏi-thường-gặp) · [Công cụ GNU objdump và Rizin](../reverse-engineering-tools.md) · [Tài liệu](#tài-liệu)
+[Bắt đầu nhanh](#bắt-đầu-nhanh) · [Cách AS Inspect hoạt động](#cách-rea-hoạt-động) · [Những gì bạn có thể phân tích](#những-gì-bạn-có-thể-phân-tích) · [Các nghiên cứu điển hình](#các-nghiên-cứu-điển-hình) · [Câu hỏi thường gặp](#câu-hỏi-thường-gặp) · [Công cụ GNU objdump và Rizin](../reverse-engineering-tools.md) · [Tài liệu](#tài-liệu)
 
-<code>npx rea-agents setup</code>
+<code>npx as-inspect-agents setup</code>
 
 </div>
 
 > [!IMPORTANT]
-> Các nguồn chính thức của REA: [morluto/rea](https://github.com/morluto/rea), [rea.tools](https://rea.tools/), [rea-agents](https://www.npmjs.com/package/rea-agents) (npm).
+> Các nguồn chính thức của AS Inspect: [abusafyan-official/AS-Inspect](https://github.com/abusafyan-official/AS-Inspect), [rea.tools](https://rea.tools/), [as-inspect-agents](https://www.npmjs.com/package/as-inspect-agents) (npm).
 > Hãy dùng các liên kết cài đặt và bản phát hành từ những nguồn chính thức này. Tên kho mã tương tự hoặc README được sao chép không chứng minh rằng tệp tải xuống là bản chính thức.
 
 <div align="center">
 
 <br />
 
-<img src="../assets/rea-hopper-analysis.png" alt="REA khởi chạy cầu nối phân tích bên trong Hopper khi kiểm tra tệp nhị phân mã máy" width="1200" />
+<img src="../assets/rea-hopper-analysis.png" alt="AS Inspect khởi chạy cầu nối phân tích bên trong Hopper khi kiểm tra tệp nhị phân mã máy" width="1200" />
 
 <br /><br />
 
-<table aria-label="Cộng đồng REA">
+<table aria-label="Cộng đồng AS Inspect">
 <tr>
 <td align="center" width="360">
   <a href="https://discord.gg/GkcryMnJDM">
@@ -56,13 +56,13 @@
 
 ---
 
-Bạn thấy một tính năng trong ứng dụng và muốn đưa nó vào sản phẩm của mình? Hãy nhờ tác nhân của bạn điều tra bằng REA. Tác nhân có thể kiểm tra ứng dụng mà không cần mã nguồn, giải thích cách tính năng hoạt động, đưa ra bằng chứng và xây dựng một phiên bản cho dự án của bạn.
+Bạn thấy một tính năng trong ứng dụng và muốn đưa nó vào sản phẩm của mình? Hãy nhờ tác nhân của bạn điều tra bằng AS Inspect. Tác nhân có thể kiểm tra ứng dụng mà không cần mã nguồn, giải thích cách tính năng hoạt động, đưa ra bằng chứng và xây dựng một phiên bản cho dự án của bạn.
 
-REA kết nối tác nhân của bạn với các công cụ kiểm tra tệp nhị phân mã máy, ứng dụng JavaScript và Electron, assembly .NET và trang web. Bạn cũng có thể dùng các công cụ đó từ terminal. Việc phân tích chạy cục bộ; kết quả bao gồm bằng chứng và giới hạn làm cơ sở cho từng kết luận.
+AS Inspect kết nối tác nhân của bạn với các công cụ kiểm tra tệp nhị phân mã máy, ứng dụng JavaScript và Electron, assembly .NET và trang web. Bạn cũng có thể dùng các công cụ đó từ terminal. Việc phân tích chạy cục bộ; kết quả bao gồm bằng chứng và giới hạn làm cơ sở cho từng kết luận.
 
-Quá trình thiết lập đăng ký REA với tác nhân và cài đặt các hướng dẫn quy trình tương ứng. Phân tích mã máy có thể sử dụng Hopper hoặc Ghidra đã cài sẵn; quá trình thiết lập cũng có thể cài Hopper nếu bạn chấp thuận. Phân tích tĩnh JavaScript không cần công cụ nào trong hai công cụ này.
+Quá trình thiết lập đăng ký AS Inspect với tác nhân và cài đặt các hướng dẫn quy trình tương ứng. Phân tích mã máy có thể sử dụng Hopper hoặc Ghidra đã cài sẵn; quá trình thiết lập cũng có thể cài Hopper nếu bạn chấp thuận. Phân tích tĩnh JavaScript không cần công cụ nào trong hai công cụ này.
 
-> **[Truy cập trang web REA](https://rea.tools/vi/)** để xem cách thiết lập, hướng dẫn có hình minh họa và các nghiên cứu điển hình thực tế.
+> **[Truy cập trang web AS Inspect](https://rea.tools/vi/)** để xem cách thiết lập, hướng dẫn có hình minh họa và các nghiên cứu điển hình thực tế.
 
 ## Bắt đầu nhanh
 
@@ -71,10 +71,10 @@ Quá trình thiết lập đăng ký REA với tác nhân và cài đặt các h
 Sau khi cài Node.js và npm, chạy:
 
 ```bash
-npx rea-agents setup
+npx as-inspect-agents setup
 ```
 
-Chọn các tác nhân, xem lại những thay đổi được đề xuất và chấp thuận. Quá trình thiết lập thêm máy chủ MCP của REA cùng hướng dẫn quy trình tương ứng, đồng thời sao lưu cấu hình hiện có. Sau đó khởi động lại tác nhân.
+Chọn các tác nhân, xem lại những thay đổi được đề xuất và chấp thuận. Quá trình thiết lập thêm máy chủ MCP của AS Inspect cùng hướng dẫn quy trình tương ứng, đồng thời sao lưu cấu hình hiện có. Sau đó khởi động lại tác nhân.
 
 Quá trình thiết lập hỗ trợ Claude Code, Codex, Cursor, Gemini CLI, Grok Build và [các tác nhân khác](../installation.md#supported-agents). Xem [cài đặt và thiết lập](../installation.md) để cấu hình trình phân tích và đăng ký MCP thủ công.
 
@@ -91,7 +91,7 @@ Thay Notes bằng ứng dụng mục tiêu và chỉ rõ tính năng bạn muố
 Kiểm tra thư mục ứng dụng JavaScript/Electron đã giải nén hoặc tệp ASAR:
 
 ```bash
-npx -y rea-agents@latest analyze-javascript-application /absolute/path/to/app --json
+npx -y as-inspect-agents@latest analyze-javascript-application /absolute/path/to/app --json
 ```
 
 Kết quả bao gồm mô-đun, các khai báo import, ranh giới Electron và bằng chứng tương ứng. Thay đường dẫn bằng mục tiêu của bạn, chẳng hạn `"D:/apps/example"` trên Windows.
@@ -99,15 +99,15 @@ Kết quả bao gồm mô-đun, các khai báo import, ranh giới Electron và 
 Để cài lệnh `rea` cho việc sử dụng thường xuyên:
 
 ```bash
-npm install --global rea-agents
+npm install --global as-inspect-agents
 rea --help
 ```
 
 Để phân tích mã máy, trước tiên hãy cấu hình trình phân tích. Xem [hướng dẫn CLI và Evidence](../cli.md) về các lệnh phân tích mã máy, lựa chọn trình phân tích, ảnh chụp trạng thái và sử dụng trong script.
 
-### Cập nhật REA
+### Cập nhật AS Inspect
 
-REA thay đổi nhanh và các bản phát hành mới thường xuyên có bản sửa lỗi. Hãy giữ bản cài đặt của bạn được cập nhật.
+AS Inspect thay đổi nhanh và các bản phát hành mới thường xuyên có bản sửa lỗi. Hãy giữ bản cài đặt của bạn được cập nhật.
 
 Với CLI được cài bằng npm:
 
@@ -120,16 +120,16 @@ rea update
 Nếu dùng `npx`, cập nhật thiết lập tác nhân bằng:
 
 ```bash
-npx rea-agents@latest setup
+npx as-inspect-agents@latest setup
 ```
 
-Xem lại thay đổi cấu hình và khởi động lại tác nhân. Với lệnh CLI dùng một lần, dùng `npx rea-agents@latest` rồi thêm lệnh cần chạy.
+Xem lại thay đổi cấu hình và khởi động lại tác nhân. Với lệnh CLI dùng một lần, dùng `npx as-inspect-agents@latest` rồi thêm lệnh cần chạy.
 
-## Cách REA hoạt động
+## Cách AS Inspect hoạt động
 
-Tác nhân gọi REA qua MCP để kiểm tra mục tiêu và lần theo mã liên quan. REA trả về các phát hiện kèm bằng chứng. Tác nhân dùng chúng để đặt câu hỏi tiếp theo, giải thích hành vi hoặc viết và kiểm thử một cách triển khai. Các lệnh CLI sử dụng cùng quy trình.
+Tác nhân gọi AS Inspect qua MCP để kiểm tra mục tiêu và lần theo mã liên quan. AS Inspect trả về các phát hiện kèm bằng chứng. Tác nhân dùng chúng để đặt câu hỏi tiếp theo, giải thích hành vi hoặc viết và kiểm thử một cách triển khai. Các lệnh CLI sử dụng cùng quy trình.
 
-![Quy trình điều tra của REA: tác nhân hỏi về mục tiêu cục bộ, REA kiểm tra và lần theo mục tiêu bằng công cụ phân tích, rồi tác nhân dùng mã, tham chiếu và những điểm chưa biết được trả về để giải thích, triển khai và kiểm thử.](../../website/public/assets/figures/rea-investigation-flow.svg)
+![Quy trình điều tra của AS Inspect: tác nhân hỏi về mục tiêu cục bộ, AS Inspect kiểm tra và lần theo mục tiêu bằng công cụ phân tích, rồi tác nhân dùng mã, tham chiếu và những điểm chưa biết được trả về để giải thích, triển khai và kiểm thử.](../../website/public/assets/figures/rea-investigation-flow.svg)
 
 [Mở hình ở kích thước đầy đủ](../../website/public/assets/figures/rea-investigation-flow.svg).
 
@@ -137,9 +137,9 @@ Tác nhân gọi REA qua MCP để kiểm tra mục tiêu và lần theo mã li�
 
 ## Những gì bạn có thể phân tích
 
-REA yêu cầu Node.js 22.x (>=22.19), 24.x (>=24.11) hoặc 26+, cùng với npm. Công cụ bổ sung và nền tảng chạy REA được hỗ trợ tùy thuộc vào mục tiêu:
+AS Inspect yêu cầu Node.js 22.x (>=22.19), 24.x (>=24.11) hoặc 26+, cùng với npm. Công cụ bổ sung và nền tảng chạy AS Inspect được hỗ trợ tùy thuộc vào mục tiêu:
 
-| Mục tiêu                          | REA trả về gì                                                                                                   | Yêu cầu và hướng dẫn                                                                                                                      |
+| Mục tiêu                          | AS Inspect trả về gì                                                                                                   | Yêu cầu và hướng dẫn                                                                                                                      |
 | --------------------------------- | --------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | Tệp nhị phân mã máy               | Mã giả, hợp ngữ, chuỗi, ký hiệu, lời gọi và tham chiếu                                                          | Hopper, Ghidra hoặc IDA; [phân tích mã máy](../native-investigation.md)                                                                   |
 | Bố cục ELF ngoại tuyến            | Các section, segment, ký hiệu/thông tin tái định vị gốc và các biện pháp giảm thiểu có thể có từ phân tích tĩnh | pwntools do bên gọi cung cấp trên Linux x64; [chẩn đoán tệp nhị phân](../binary-diagnostics.md)                                           |
@@ -171,7 +171,7 @@ Kiểm tra tĩnh JavaScript và .NET đọc các tệp được cung cấp mà k
 
 <a id="choosing-a-deep-analysis-provider"></a>
 
-Định dạng mã máy và nền tảng chạy REA được hỗ trợ khác nhau tùy trình phân tích. Xem [thiết lập Hopper và Ghidra](../installation.md#hopper), [hướng dẫn IDA](../ida-provider.md), [Kuna](../kuna-provider.md) và [hỗ trợ Ghidra thử nghiệm trên Windows](../windows-ghidra-p0.md). Ghidra cũng hỗ trợ [phân tích DOS 16 bit](../ghidra-dos.md). Để chọn trình phân tích, xem [hướng dẫn CLI](../cli.md#choose-a-provider). Kiểm tra [khả năng sử dụng theo bản phát hành](../installation.md#released-package-and-main) đối với tính năng được bổ sung sau phiên bản npm mới nhất.
+Định dạng mã máy và nền tảng chạy AS Inspect được hỗ trợ khác nhau tùy trình phân tích. Xem [thiết lập Hopper và Ghidra](../installation.md#hopper), [hướng dẫn IDA](../ida-provider.md), [Kuna](../kuna-provider.md) và [hỗ trợ Ghidra thử nghiệm trên Windows](../windows-ghidra-p0.md). Ghidra cũng hỗ trợ [phân tích DOS 16 bit](../ghidra-dos.md). Để chọn trình phân tích, xem [hướng dẫn CLI](../cli.md#choose-a-provider). Kiểm tra [khả năng sử dụng theo bản phát hành](../installation.md#released-package-and-main) đối với tính năng được bổ sung sau phiên bản npm mới nhất.
 
 ## Các nghiên cứu điển hình
 
@@ -195,12 +195,12 @@ Kiểm tra các lệnh 16 bit của trò chơi PC-98 gốc, khôi phục phép t
 
 [Đọc nghiên cứu điển hình](https://rea.tools/vi/showcase/th04/) · [Kho mã tái tạo](https://github.com/N0zoM1z0/th04)
 
-Nếu bạn dùng REA cho một mục tiêu thú vị, chúng tôi muốn biết. Chia sẻ trường hợp của bạn qua [issue](https://github.com/morluto/rea/issues) hoặc [pull request](https://github.com/morluto/rea/pulls), nêu mục tiêu, câu hỏi, cách REA giúp bạn và những gì tìm được.
+Nếu bạn dùng AS Inspect cho một mục tiêu thú vị, chúng tôi muốn biết. Chia sẻ trường hợp của bạn qua [issue](https://github.com/abusafyan-official/AS-Inspect/issues) hoặc [pull request](https://github.com/abusafyan-official/AS-Inspect/pulls), nêu mục tiêu, câu hỏi, cách AS Inspect giúp bạn và những gì tìm được.
 
 ## Câu hỏi thường gặp
 
 <details>
-<summary><strong>Tác nhân nào có thể dùng REA?</strong></summary>
+<summary><strong>Tác nhân nào có thể dùng AS Inspect?</strong></summary>
 
 Bất kỳ tác nhân nào hỗ trợ máy chủ MCP cục bộ. Quá trình thiết lập cấu hình các [tác nhân được hỗ trợ](../installation.md#supported-agents); ứng dụng khách khác có thể dùng [đăng ký MCP thủ công](../installation.md#mcp-registry).
 
@@ -216,28 +216,28 @@ Phân tích mã máy chuyên sâu sử dụng một trong những công cụ đ�
 <details>
 <summary><strong>Tôi có cần khởi chạy Hopper trước không?</strong></summary>
 
-REA khởi chạy Hopper khi một thao tác cần đến nó. Trên macOS, hộp thoại lần chạy đầu có thể yêu cầu chọn chế độ dùng thử hoặc kích hoạt giấy phép. Xem [khởi động Hopper và khắc phục sự cố](../installation.md#launcher-paths-and-troubleshooting).
+AS Inspect khởi chạy Hopper khi một thao tác cần đến nó. Trên macOS, hộp thoại lần chạy đầu có thể yêu cầu chọn chế độ dùng thử hoặc kích hoạt giấy phép. Xem [khởi động Hopper và khắc phục sự cố](../installation.md#launcher-paths-and-troubleshooting).
 
 </details>
 
 <details>
 <summary><strong>Cài skill từ skills.sh có tác dụng gì?</strong></summary>
 
-Skill cung cấp hướng dẫn điều tra cho tác nhân. Dùng `npx rea-agents setup` để đăng ký máy chủ MCP của REA và cài hướng dẫn tương ứng, sau đó khởi động lại tác nhân. Xem [chỉ cài skill](../installation.md#skill-only-installation).
+Skill cung cấp hướng dẫn điều tra cho tác nhân. Dùng `npx as-inspect-agents setup` để đăng ký máy chủ MCP của AS Inspect và cài hướng dẫn tương ứng, sau đó khởi động lại tác nhân. Xem [chỉ cài skill](../installation.md#skill-only-installation).
 
 </details>
 
 <details>
-<summary><strong>REA trả về mã gì?</strong></summary>
+<summary><strong>AS Inspect trả về mã gì?</strong></summary>
 
 Phân tích mã máy trả về mã giả và hợp ngữ. Phân tích JavaScript/Electron khôi phục mô-đun cùng quan hệ giữa chúng. Tác nhân dùng các phát hiện này để viết và kiểm thử cách triển khai; các [nghiên cứu điển hình](#các-nghiên-cứu-điển-hình) cung cấp ví dụ thực hành.
 
 </details>
 
 <details>
-<summary><strong>REA có tải ứng dụng của tôi lên không?</strong></summary>
+<summary><strong>AS Inspect có tải ứng dụng của tôi lên không?</strong></summary>
 
-REA phân tích mục tiêu cục bộ. Tác nhân nhận kết quả công cụ, và nhà cung cấp mô hình của tác nhân có chính sách dữ liệu riêng.
+AS Inspect phân tích mục tiêu cục bộ. Tác nhân nhận kết quả công cụ, và nhà cung cấp mô hình của tác nhân có chính sách dữ liệu riêng.
 
 </details>
 
@@ -255,10 +255,10 @@ rea update
 Với thiết lập tác nhân qua `npx`:
 
 ```bash
-npx rea-agents@latest setup
+npx as-inspect-agents@latest setup
 ```
 
-Nếu dùng tác nhân, hãy hoàn tất [làm mới thiết lập](#cập-nhật-rea) và khởi động lại nó. Thử lại cùng tác vụ. Nếu vấn đề vẫn còn, [mở issue](https://github.com/morluto/rea/issues) với phiên bản REA, loại mục tiêu, các bước tái hiện và đầu ra lỗi.
+Nếu dùng tác nhân, hãy hoàn tất [làm mới thiết lập](#cập-nhật-rea) và khởi động lại nó. Thử lại cùng tác vụ. Nếu vấn đề vẫn còn, [mở issue](https://github.com/abusafyan-official/AS-Inspect/issues) với phiên bản AS Inspect, loại mục tiêu, các bước tái hiện và đầu ra lỗi.
 
 </details>
 
@@ -281,13 +281,13 @@ Báo cáo lỗ hổng theo [SECURITY.md](../../SECURITY.md).
 
 🎉 **300.000 sao trên GitHub — xin cảm ơn!**
 
-Cảm ơn mọi người đã sử dụng REA, báo lỗi, đề xuất tính năng, kiểm thử bản dựng và đóng góp bản sửa lỗi.
+Cảm ơn mọi người đã sử dụng AS Inspect, báo lỗi, đề xuất tính năng, kiểm thử bản dựng và đóng góp bản sửa lỗi.
 
 <a href="https://www.star-history.com/?repos=morluto%2Frea&amp;type=date">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=morluto/rea&amp;type=date&amp;theme=dark&amp;legend=top-left" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=morluto/rea&amp;type=date" />
-    <img alt="Lịch sử sao GitHub của REA" src="https://api.star-history.com/chart?repos=morluto/rea&amp;type=date" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=abusafyan-official/AS-Inspect&amp;type=date&amp;theme=dark&amp;legend=top-left" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=abusafyan-official/AS-Inspect&amp;type=date" />
+    <img alt="Lịch sử sao GitHub của AS Inspect" src="https://api.star-history.com/chart?repos=abusafyan-official/AS-Inspect&amp;type=date" />
   </picture>
 </a>
 
@@ -295,15 +295,15 @@ Cảm ơn mọi người đã sử dụng REA, báo lỗi, đề xuất tính n�
 
 Xem [DISCLAIMER.md](../../DISCLAIMER.md) để biết hướng dẫn sử dụng có trách nhiệm.
 
-REA dành cho nghiên cứu, giáo dục, khả năng tương tác, bảo tồn phần mềm và phân tích phần mềm bạn sở hữu hoặc được phép kiểm tra, trong khuôn khổ pháp luật.
+AS Inspect dành cho nghiên cứu, giáo dục, khả năng tương tác, bảo tồn phần mềm và phân tích phần mềm bạn sở hữu hoặc được phép kiểm tra, trong khuôn khổ pháp luật.
 
-The project's position on illegal or unauthorized use covers all REA
+The project's position on illegal or unauthorized use covers all AS Inspect
 versions, distribution channels, and platforms; each copy retains its
 applicable licenses.
 
 ## Đóng góp
 
-Chúng tôi hoan nghênh bạn giúp phát triển REA! [Mở issue](https://github.com/morluto/rea/issues) để báo lỗi hoặc đề xuất tính năng, hoặc [gửi pull request](https://github.com/morluto/rea/pulls) để cải thiện mã hay tài liệu.
+Chúng tôi hoan nghênh bạn giúp phát triển AS Inspect! [Mở issue](https://github.com/abusafyan-official/AS-Inspect/issues) để báo lỗi hoặc đề xuất tính năng, hoặc [gửi pull request](https://github.com/abusafyan-official/AS-Inspect/pulls) để cải thiện mã hay tài liệu.
 
 Xem [CONTRIBUTING.md](../../CONTRIBUTING.md) về thiết lập môi trường phát triển và các bước kiểm tra, [hướng dẫn kiểm thử](../testing.md) về các luồng xác minh và [sơ đồ kiến trúc](../architecture.mermaid) về cấu trúc dự án.
 
@@ -311,13 +311,13 @@ Xem [CONTRIBUTING.md](../../CONTRIBUTING.md) về thiết lập môi trường p
 
 [MIT](../../LICENSE)
 
-REA-authored code is licensed under MIT. Third-party material retains its own
+AS Inspect-authored code is licensed under MIT. Third-party material retains its own
 licenses and copyright notices; see [Third-party notices](../../THIRD_PARTY_NOTICES.md)
 for the dependency inventory, preserved license texts, and external-tool terms.
 
 **You must legally obtain and be authorized to use commercial tools**, including
 IDA Pro / Hex-Rays decompilers, Hopper, and JEB, under their applicable licenses.
-REA grants no tool license, key, or activation entitlement. Trials and demos
+AS Inspect grants no tool license, key, or activation entitlement. Trials and demos
 remain subject to vendor terms, including user, feature, automation, and output
 sharing restrictions. Cracked copies, stolen keys, unauthorized key sharing,
 and bypassing license restrictions are not authorized. This guidance does not

@@ -44,7 +44,7 @@ it("identifies a caller-selected kuna by version and digest", async () => {
         .digest("hex"),
     },
   });
-  // The probe runs inside REA's cache home with no inherited PATH.
+  // The probe runs inside AS Inspect's cache home with no inherited PATH.
   expect(await fakeKunaCalls(kuna)).toEqual([
     {
       pid: expect.any(Number),

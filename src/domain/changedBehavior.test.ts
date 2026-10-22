@@ -36,8 +36,8 @@ const comparison = (
     {
       id: process ? "rea-process" : "rea-artifact-comparison",
       name: process
-        ? "REA deterministic process harness"
-        : "REA artifact comparison",
+        ? "AS Inspect deterministic process harness"
+        : "AS Inspect artifact comparison",
       version: operation === "compare_process_captures" ? "3" : "1",
     },
     {

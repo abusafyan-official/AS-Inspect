@@ -574,7 +574,7 @@ describe("managed member comparison uncertainty", () => {
           candidate_right_tokens: ["0x04000001", "0x04000002"],
         }),
         limitations: [
-          "Multiple managed fields share the same signature; REA did not guess a token remap.",
+          "Multiple managed fields share the same signature; AS Inspect did not guess a token remap.",
         ],
       }),
     ]);
@@ -793,7 +793,7 @@ describe("managed member comparison of ambiguous undecoded signatures", () => {
             basis: "exact-il-signature",
           }),
           limitations: [
-            "Multiple managed methods share the same CIL and signature; REA did not guess a token remap.",
+            "Multiple managed methods share the same CIL and signature; AS Inspect did not guess a token remap.",
           ],
         }),
         expect.objectContaining({
@@ -1103,7 +1103,7 @@ describe("managed member comparison remaps around kept identities", () => {
           basis: "structural-method-shape",
         }),
         limitations: [
-          "Multiple managed methods share the same structural shape; REA did not guess a token remap.",
+          "Multiple managed methods share the same structural shape; AS Inspect did not guess a token remap.",
         ],
       }),
     ]);

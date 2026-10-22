@@ -165,7 +165,7 @@ try {
     );
   }
 
-  // The degraded dossier must satisfy the same provider output contract REA
+  // The degraded dossier must satisfy the same provider output contract AS Inspect
   // applies to every bridge reply.
   const degraded = parseGhidraFunctionResult(
     "analyze_function",

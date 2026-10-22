@@ -118,7 +118,7 @@ const verifyInteractiveSetup = async ({
 
     terminal.onData((data) => {
       output += data;
-      if (!cancelled && output.includes("Which agents should use REA?")) {
+      if (!cancelled && output.includes("Which agents should use AS Inspect?")) {
         cancelled = true;
         terminal.write("\u0003");
       }
@@ -143,7 +143,7 @@ const verifyInteractiveSetup = async ({
       ) {
         finish(
           new Error(
-            `packaged rea-agents setup did not cancel with a restored terminal and exit 0: ${output}`,
+            `packaged as-inspect-agents setup did not cancel with a restored terminal and exit 0: ${output}`,
           ),
         );
         return;
@@ -214,8 +214,8 @@ const verifyRedirectedStdoutSetup = async ({
         childResult.stdinTTY !== true ||
         childResult.stderrTTY !== true ||
         childResult.stdoutRedirected !== true ||
-        childResult.stdout?.includes("Which agents should use REA?") ||
-        allOutput.includes("Which agents should use REA?") ||
+        childResult.stdout?.includes("Which agents should use AS Inspect?") ||
+        allOutput.includes("Which agents should use AS Inspect?") ||
         /\u001b\[[0-9;?]*[ -/]*[@-~]/u.test(allOutput)
       ) {
         finish(

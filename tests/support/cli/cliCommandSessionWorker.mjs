@@ -22,7 +22,7 @@ const { default: packageJson } = await import(
 const prepareCliProcess = () => {
   process.env.REA_PACKAGE_VERSION = packageJson.version;
   // Windows home lookup throws for an empty USERPROFILE. Dependencies resolve
-  // home during import, before REA's own resolver can apply its account fallback.
+  // home during import, before AS Inspect's own resolver can apply its account fallback.
   if (process.platform === "win32" && process.env.USERPROFILE === "") {
     delete process.env.USERPROFILE;
   }
@@ -45,7 +45,7 @@ const runtimeFiles = [
 prepareCliProcess();
 if (!(await compiledRuntimeExists(runtimeFiles))) {
   process.stderr.write(
-    `REA's compiled runtime is missing. Run \`npm ci && npm run build:cached\` in ${packageRoot} to install dependencies and build REA, then restart it. If this is an installed package, reinstall as-inspect-agents.\n`,
+    `AS Inspect's compiled runtime is missing. Run \`npm ci && npm run build:cached\` in ${packageRoot} to install dependencies and build AS Inspect, then restart it. If this is an installed package, reinstall as-inspect-agents.\n`,
   );
   process.exit(1);
 }

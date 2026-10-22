@@ -1,7 +1,7 @@
 # JEB Linux CE native workflow checkpoint
 
 This checkpoint qualifies Linux CE setup and selected native reads for
-[#4996](https://github.com/morluto/rea/issues/4996). It changes documentation;
+[#4996](https://github.com/abusafyan-official/AS-Inspect/issues/4996). It changes documentation;
 it does not introduce a provider cache or claim a before/after speedup.
 The existing shared CLI/MCP implementation returned consistent facts and
 Evidence, with one metadata request per persistent MCP task. Further wrapper
@@ -9,7 +9,7 @@ caching is not justified by these measurements.
 
 ## Pinned inputs and scope
 
-Baseline: REA 6.6.0 at `7c458f04b9155707c8ba406f8b455b10016f1b99`, Node 24.18.0,
+Baseline: AS Inspect 6.6.0 at `7c458f04b9155707c8ba406f8b455b10016f1b99`, Node 24.18.0,
 npm 11.16.0, Temurin 21.0.12.1, Linux x86-64
 `6.1.0-53-cloud-amd64`. All six final sessions used the same compiled MCP
 runtime digest, recorded in the [curated receipt](jeb-linux-native.json).
@@ -48,13 +48,13 @@ its CLI behavior should not be generalized to all 5.48 distributions.
 
 Code-item references also need their owning representation. The CE native
 `list_code_items` tool returned `sqlite3_libversion_number` for a filtered
-method query. That exact reference succeeded through REA. Earlier raw ELF
+method query. That exact reference succeeded through AS Inspect. Earlier raw ELF
 address attempts did not complete successfully. A numeric reference did work
 for the authored ET_EXEC pilot, so neither observation establishes a universal
 numeric-address rule. Preserve the engine's reference and explicit unit path;
 keep file offsets and independently obtained ELF addresses separate.
 
-The native CE catalog advertised 27 tools. REA currently exposes four JEB
+The native CE catalog advertised 27 tools. AS Inspect currently exposes four JEB
 operations; native code-item discovery is not among them. The final tasks
 therefore start with a known reference. This is a selected-read qualification,
 not a complete method-discovery or provider-parity comparison.
@@ -72,7 +72,7 @@ Three alternating fresh-engine sessions per artifact completed the same task:
    inline Evidence, then repeat it six times with identical facts and Evidence IDs.
 5. Check a missing item returns an error; make one real CLI query and compare
    its normalized facts, raw text and Evidence ID with MCP; close the client.
-6. Verify target bytes are unchanged and the borrowed engine survived REA
+6. Verify target bytes are unchanged and the borrowed engine survived AS Inspect
    cleanup, then stop the harness-owned engine.
 
 Each task made 15 public MCP calls and one CLI parity query. Request tracing
@@ -145,7 +145,7 @@ queries. Actual model usage, prompts, protocol/initialization framing, client
 filtering/rendering/replay, shell framing and context for independent oracles
 were not measured. No model-token savings or complex-investigation advantage
 is established. Catalog delivery is a shared concern; existing
-[PR #3026](https://github.com/morluto/rea/pull/3026) already explores family
+[PR #3026](https://github.com/abusafyan-official/AS-Inspect/pull/3026) already explores family
 selection and is outside this checkpoint.
 
 ## Preserved attempts and verification limits
@@ -157,7 +157,7 @@ The JSON receipt retains costs and outcomes for all earlier attempts:
   JEB exited zero, the harness correctly reported failure.
 - The 30-second raw-address SQLite attempt returned typed `provider_timeout`;
   the 60-second raw-address attempt returned an upstream refusal. Neither is a
-  completed benchmark or proof of a REA defect.
+  completed benchmark or proof of a AS Inspect defect.
 - A producer-reference SQLite read succeeded, but the initial test oracle
   rejected its valid C `L` integer suffix. The oracle was corrected before
   the final cohort; that incomplete workflow and its cost remain recorded.
@@ -167,7 +167,7 @@ The JSON receipt retains costs and outcomes for all earlier attempts:
 This audit does not qualify CE Java/Android decompilation, GUI project opening,
 Windows/macOS, more than 100 units, real caller cancellation, or recovery after
 engine restart. Existing reconnect/invalidation work is
-[PR #3754](https://github.com/morluto/rea/pull/3754). The selected function and
+[PR #3754](https://github.com/abusafyan-official/AS-Inspect/pull/3754). The selected function and
 constant checks do not establish broader software-analysis effectiveness.
 
 ## Release 6.7.0 integration control
@@ -212,7 +212,7 @@ and selecting JDK 21 through `JAVA_HOME`:
   --infile=/usr/lib/x86_64-linux-gnu/libsqlite3.so.0.8.6
 ```
 
-In the pinned REA checkout, with the pinned Node toolchain and built runtime:
+In the pinned AS Inspect checkout, with the pinned Node toolchain and built runtime:
 
 ```sh
 export REA_JEB_MCP_URL=http://127.0.0.1:18425/mcp

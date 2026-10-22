@@ -63,7 +63,7 @@ delivery (including retained-reference recovery), caller-selected ordinals, and
 summary/preview/complete/repeated pages. Each failed RPC remains in task costs.
 The body question uses stored bytes, not decoded HTTP application payloads.
 
-Tracks the experiments for [#2016](https://github.com/morluto/rea/issues/2016).
+Tracks the experiments for [#2016](https://github.com/abusafyan-official/AS-Inspect/issues/2016).
 The production CLI/MCP contracts and defaults remain the compatibility baseline.
 Downloaded artifacts, runtime copies, exported Evidence, transcripts and detailed
 JSON measurements belong outside the checkout. This document keeps the measured
@@ -130,7 +130,7 @@ from the final PR tree. The archive `review-receipts-00d51e0fc-20261012` is in t
 private experiment lab outside the checkout; its `archive-index.json` records
 source revision, filenames, sizes and SHA-256.
 Raw producer replies, model transcripts and exported Evidence remain in the same
-private lab. These local files are not required to build or use REA. Historical
+private lab. These local files are not required to build or use AS Inspect. Historical
 checkpoint commits retain their original receipts; no history was rewritten.
 
 ## Optimization priorities and gradual migration
@@ -169,7 +169,7 @@ Migrate domain by domain with focused real-artifact checks and relevant shared
 contract checks. The native follow-up verifies selected PE and DOS MZ entry facts;
 DOS COM and complete native application behavior remain unverified. The domain
 matrix is a growing roadmap. A passed lane does not imply all
-advertised platforms/providers have passed. Newly discovered REA bugs remain
+advertised platforms/providers have passed. Newly discovered AS Inspect bugs remain
 in the separate local handoff document for later team repair.
 
 Old clients using existing CLI/MCP requests against the candidate retain the
@@ -199,7 +199,7 @@ The public artifacts and acquisition digests are in `corpus.json`. Supply their
 actual local paths and an optional JSON object of explicit provider environment
 settings. Do not add credentials to that file. Provider settings are inherited
 by the child, but the report persists only the selected settings' digest. Runs
-reject undeclared inherited REA/Hopper and Ghidra/Java configuration keys before
+reject undeclared inherited AS Inspect/Hopper and Ghidra/Java configuration keys before
 starting a measured server or creating a model profile; include those settings
 explicitly in `--providers`. Both drivers use `provider-environment.json` and
 record its digest. The system/runtime environment still needs comparable
@@ -238,7 +238,7 @@ was stopped automatically below 1 GiB sampled memory, with no OOM. The isolated
 browser model retry uses `resource-run.py --task-ceiling 256 -- COMMAND...` to
 account for both process trees; memory, swap and CPU controls are unchanged.
 Keep the original aborted run and cleanup receipt. This is experiment capacity,
-not a REA defect or a successful browser analysis.
+not a AS Inspect defect or a successful browser analysis.
 
 ## What the numbers mean
 
@@ -320,7 +320,7 @@ transport frame and requires an explicit recovery run. A first jq attempt hit
 the SDK's default 60 s timeout because the experimental runner used a superseded
 three-argument call signature. SDK 2.3.1 accepts request options as argument two;
 the corrected jq run completed real Ghidra analysis in about 265 s. That earlier
-driver timeout is excluded from REA regression claims. Provisional runs with
+driver timeout is excluded from AS Inspect regression claims. Provisional runs with
 different runner source digests are not one paired statistical cohort.
 
 No cross-session engine database cache, default analyzer changes, external
@@ -371,7 +371,7 @@ preserves the named failure and closes the session. Source bytes remain unchange
 
 `--schemas selected` is a separate SDK 2.3.1 client experiment. It passes the exact
 live named `tools/list` definition to the SDK's public `callTool` option, retaining
-output validation. It does not change REA or the default runner mode. Selected
+output validation. It does not change AS Inspect or the default runner mode. Selected
 definitions compile per call rather than preparing the entire cached catalog;
 report this client effect separately from engine analysis or model behavior.
 
@@ -388,7 +388,7 @@ Review the original tool calls, failed requests, result limitations and answer.
 The optional `--enabled-tools FILE` supplies a list of exact names to the
 temporary Codex MCP configuration's `enabled_tools`, as described in the
 [official MCP configuration](https://learn.chatgpt.com/docs/extend/mcp?surface=cli).
-It leaves the REA catalog and other clients intact. Initial Obsidian trials
+It leaves the AS Inspect catalog and other clients intact. Initial Obsidian trials
 showed parameter-correction attempts and different delivery choices even with
 the same question; filtering alone has not established a cost or quality win.
 Requested model aliases are recorded without inventing a resolved model identity.
@@ -449,8 +449,8 @@ win is credited. Profile cleanup, original errors, actual calls, usage, facts an
 scope limits remain independently reviewed. Enabling a configuration flag does
 not prove that a capability was used.
 
-Discovered REA defects are recorded separately for team repair at the user's
-request. This follow-up performs no additional REA bug fixes.
+Discovered AS Inspect defects are recorded separately for team repair at the user's
+request. This follow-up performs no additional AS Inspect bug fixes.
 
 ## Nonempty managed boundaries and final verification
 
@@ -471,7 +471,7 @@ as the baseline exported MCP record. Source bytes are unchanged. The seven-file
 contract/composition run passes 51/52 assertions and hits the existing 20-second
 presentation-test deadline while sharing one CPU. That same unmodified assertion
 passes alone in 10.835 seconds. The original combined failure and isolated pass
-remain recorded; no test deadline or REA bug was patched. Build, type/lint/module
+remain recorded; no test deadline or AS Inspect bug was patched. Build, type/lint/module
 checks and generated-document checks pass. No full `check:pr` or unverified
 provider/platform coverage is implied.
 
@@ -530,7 +530,7 @@ Recorded integration scopes have no OOM/OOM-kill or hard-limit abort. The full
 source-check scope reports three `memory.high` events near its 3 GiB soft
 threshold. The subsequent cold pre-push type/lint scope reports 37 such events,
 with 3,221,155,840 sampled peak bytes and no hard-limit/OOM event. Heavy lanes stay
-serial with the existing CPU, memory and no-swap controls. No further REA bug repairs
+serial with the existing CPU, memory and no-swap controls. No further AS Inspect bug repairs
 are included; separate local findings remain for team follow-up.
 
 ## CI attribution
@@ -548,9 +548,9 @@ failed CI gate is not presented as passed.
 
 | Failure                                  | Main `c22111eca`                                                                         | Reviewed PR `8d6f7eb1c`                                                                |
 | ---------------------------------------- | ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| Empty prompt completion after open       | [main shard](https://github.com/morluto/rea/actions/runs/38224038323/job/114727940506)   | [PR shard](https://github.com/morluto/rea/actions/runs/38228724531/job/114742955092)   |
-| Packaged prompt completion, Darwin arm64 | [main package](https://github.com/morluto/rea/actions/runs/38224038323/job/114728030045) | [PR package](https://github.com/morluto/rea/actions/runs/38228724531/job/114743092314) |
-| Packaged prompt completion, Darwin x64   | [main package](https://github.com/morluto/rea/actions/runs/38224038323/job/114728029923) | [PR package](https://github.com/morluto/rea/actions/runs/38228724531/job/114743092079) |
+| Empty prompt completion after open       | [main shard](https://github.com/abusafyan-official/AS-Inspect/actions/runs/38224038323/job/114727940506)   | [PR shard](https://github.com/abusafyan-official/AS-Inspect/actions/runs/38228724531/job/114742955092)   |
+| Packaged prompt completion, Darwin arm64 | [main package](https://github.com/abusafyan-official/AS-Inspect/actions/runs/38224038323/job/114728030045) | [PR package](https://github.com/abusafyan-official/AS-Inspect/actions/runs/38228724531/job/114743092314) |
+| Packaged prompt completion, Darwin x64   | [main package](https://github.com/abusafyan-official/AS-Inspect/actions/runs/38224038323/job/114728029923) | [PR package](https://github.com/abusafyan-official/AS-Inspect/actions/runs/38228724531/job/114743092079) |
 
 `src/server/promptCompletion.ts`, `src/application/binary/BinarySession.ts`,
 `tests/boundary/mcp/promptCompletion.test.ts` and

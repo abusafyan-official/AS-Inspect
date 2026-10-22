@@ -213,7 +213,7 @@ const serverVersion = JSON.parse(
 
 class ToolFailure extends Error {
   constructor(value) {
-    super("REA returned a tool error");
+    super("AS Inspect returned a tool error");
     this.value = value;
   }
 }

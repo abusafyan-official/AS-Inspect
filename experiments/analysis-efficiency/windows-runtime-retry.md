@@ -1,7 +1,7 @@
 # Windows runtime admission retry verification
 
-Scope: [#2257](https://github.com/morluto/rea/issues/2257). Related initial
-diagnosis: [#2266](https://github.com/morluto/rea/pull/2266).
+Scope: [#2257](https://github.com/abusafyan-official/AS-Inspect/issues/2257). Related initial
+diagnosis: [#2266](https://github.com/abusafyan-official/AS-Inspect/pull/2266).
 
 ## Revisions and real input
 
@@ -13,7 +13,7 @@ These measurements precede integration of subsequent main changes.
 
 The host ran Windows 11 10.0.22631.0, official Windows x64 Node 24.18.0,
 and locked production dependencies. The real application input was the official
-npm 11.16.0 launcher distribution's `bin` directory. REA inspected that source;
+npm 11.16.0 launcher distribution's `bin` directory. AS Inspect inspected that source;
 it did not execute the application as an analysis target. Runtime copies,
 raw replies and test executables remain outside the checkout. No IDA or Ghidra
 engine was involved in this native-runtime verification.

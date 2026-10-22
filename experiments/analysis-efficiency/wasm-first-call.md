@@ -1,6 +1,6 @@
 # WASM first-call summary delivery
 
-Refs [#2016](https://github.com/morluto/rea/issues/2016). This bounded follow-up
+Refs [#2016](https://github.com/abusafyan-official/AS-Inspect/issues/2016). This bounded follow-up
 adds optional MCP `inspect_wasm_artifact detail: summary`. Omitted/complete MCP
 requests and CLI output remain complete. Full original Evidence is retained;
 delivery selection is stripped before provider inputs, and exact export views
@@ -62,7 +62,7 @@ The corrected driver validates the actual advertised 2020-12 request schema.
 Ten actual Codex CLI 0.161.0 trials request `gpt-5.6-terra` high: three paired
 SQLite repetitions and one pair for each published VS Code component. The
 resolved server-side model identity is not inferred from the requested alias.
-Same question, fixed developer instructions, four allowlisted REA tools and
+Same question, fixed developer instructions, four allowlisted AS Inspect tools and
 explicit WABT settings; private profiles, shell/web/other-agent restrictions
 and target-byte preservation remain verified.
 

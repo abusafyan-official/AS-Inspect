@@ -1,6 +1,6 @@
 # Small real PCAP recordings: keep complete delivery
 
-Continues [#2016](https://github.com/morluto/rea/issues/2016) after the QGIS
+Continues [#2016](https://github.com/abusafyan-official/AS-Inspect/issues/2016) after the QGIS
 SQLite round. Measured main is pinned to
 `3ae826ceba6f25b08bce50bcb51001209bc16b57`, with 23 intervening commits.
 These include bounded PCAP summaries/pages, authenticated artifact subjects,
@@ -20,7 +20,7 @@ Use two unmodified recordings published on the official
 `corpus.json` preserves original/resolved URLs. Local digests pin downloaded
 bytes; no independently published upstream digest or immutable source commit is
 claimed. These are upstream saved application-protocol recordings, not generated
-REA fixtures. Recorded clients and current deployments are unknown. No new
+AS Inspect fixtures. Recorded clients and current deployments are unknown. No new
 traffic is captured and no recorded target/URL is executed or fetched.
 
 The question asks for complete returned identity/client/scalar metadata, every
@@ -85,7 +85,7 @@ enabled tools and equal context/discovery capture flags. The requested alias is
 not verified server-resolved model identity. Equal cohort instructions select
 complete or summary plus one URI page. The experiment driver applies its existing
 private per-tool approval policy to `inspect_pcap_capture`; global configuration
-and REA authority are unchanged.
+and AS Inspect authority are unchanged.
 
 | Trial      |  Input | Cached | Uncached | Output | CLI wall seconds | MCP calls | Facts |
 | ---------- | -----: | -----: | -------: | -----: | ---------------: | --------: | ----- |
@@ -218,7 +218,7 @@ Heavy work stays serial with one CPU, 3 GiB early stop/4 GiB hard memory and no
 swap. Build kernel peak: 2,575,732,736 bytes. Payload cleanup and zero phase limit
 events are verified; missing terminal whole-scope counters remain unknown, so
 strict whole-resource grades stay false. No raw capture, trace, credential,
-runtime or result JSON is committed. No unrelated REA product bug is identified
+runtime or result JSON is committed. No unrelated AS Inspect product bug is identified
 or fixed, and no release is performed.
 
 Review follow-up binds the cited URI page to its exact requested facet/range,

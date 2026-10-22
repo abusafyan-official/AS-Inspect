@@ -999,7 +999,7 @@
         "first_16_bytes_hex": "41544c8d25289a0a00554889fdbf1000"
       }
     ],
-    "scope": "Independent ELF64 little-endian dynamic symbol/section mapping; no target execution or REA parser."
+    "scope": "Independent ELF64 little-endian dynamic symbol/section mapping; no target execution or AS Inspect parser."
   },
   "byte_verification": {
     "status": "passed",

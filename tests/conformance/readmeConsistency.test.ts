@@ -70,11 +70,11 @@ describe("onboarding documentation product facts", () => {
     const persian = await readFile(resolve("docs/readme/README_fa.md"), "utf8");
     // Confirmed against GitHub's rendered README, which retains U+200C.
     for (const heading of [
-      "REA چگونه کار می‌کند",
+      "AS Inspect چگونه کار می‌کند",
       "چه چیزهایی را می‌توان تحلیل کرد",
       "نمونه‌های عملی",
       "پرسش‌های متداول",
-      "به‌روزرسانی REA",
+      "به‌روزرسانی AS Inspect",
     ]) {
       expect(persian).toContain(`## ${heading}`);
       expect(persian).toContain(

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "repository": "morluto/rea",
+  "repository": "abusafyan-official/AS-Inspect",
   "version": "6.7.0",
   "base": "2c4338db1fdb7773e05376301c558cff2a0b4b80",
   "target": "b83b9caf4a5f0241a5fd370792f1aed1bffbb2cf",
@@ -86,7 +86,7 @@
     {
       "number": 4957,
       "title": "fix(setup): edit the duplicate JSON member that clients read",
-      "url": "https://github.com/morluto/rea/pull/4957",
+      "url": "https://github.com/abusafyan-official/AS-Inspect/pull/4957",
       "author": {
         "login": "kaoru0822-kitauji",
         "__typename": "User"
@@ -97,13 +97,13 @@
       "issues": [
         {
           "number": 4952,
-          "url": "https://github.com/morluto/rea/issues/4952",
+          "url": "https://github.com/abusafyan-official/AS-Inspect/issues/4952",
           "author": {
             "login": "xu91102",
             "__typename": "User"
           },
           "repository": {
-            "nameWithOwner": "morluto/rea"
+            "nameWithOwner": "abusafyan-official/AS-Inspect"
           }
         }
       ]

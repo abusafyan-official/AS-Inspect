@@ -1,7 +1,7 @@
 # Upstream analysis engines
 
-REA integrates existing tools through provider adapters. Upstream source remains
-unmodified and retains its own license; it is not copied into REA's domain or
+AS Inspect integrates existing tools through provider adapters. Upstream source remains
+unmodified and retains its own license; it is not copied into AS Inspect's domain or
 application code.
 
 ## jadx-headless-mcp
@@ -12,7 +12,7 @@ application code.
 - Commit: `5844800a486d2248fa949b74c9896285f5b54de2`
 - License: Apache-2.0; see the submodule's `LICENSE`.
 - Release identity: `src/android/JadxRelease.ts`.
-- REA integration: `src/android/`; no upstream patches in this version.
+- AS Inspect integration: `src/android/`; no upstream patches in this version.
 
 Fetch source for inspection with:
 
@@ -20,8 +20,8 @@ Fetch source for inspection with:
 git submodule update --init third_party/jadx-headless-mcp
 ```
 
-Normal REA builds and installed npm packages do not require this submodule or a
-Gradle build. Supply a separately obtained JAR with `REA_JADX_MCP_JAR`; REA never
+Normal AS Inspect builds and installed npm packages do not require this submodule or a
+Gradle build. Supply a separately obtained JAR with `REA_JADX_MCP_JAR`; AS Inspect never
 downloads engines during an analysis operation. The audited release JAR is
 identified by SHA-256. A caller-supplied build reporting the supported protocol
 version retains its actual digest and an unknown source revision unless its
@@ -49,10 +49,10 @@ is needed. APKs and JARs are neither tracked nor included in npm packages.
 | Unblob | <https://github.com/onekey-sec/unblob> | 26.6.4 | `1fcc7a0a584a70a96c31f5a276c20944d199a089` | MIT, upstream `LICENSE` |
 
 Source remains unmodified in `third_party/binwalk` and `third_party/unblob`.
-Release records live in `src/firmware/FirmwareRelease.ts`; REA adapters own the
+Release records live in `src/firmware/FirmwareRelease.ts`; AS Inspect adapters own the
 CLI/report interpretation and lifecycle in `src/firmware/`. Caller-supplied
 executables retain their actual launcher digest and unknown source revision;
-version output alone does not establish source identity. REA does not bundle
+version output alone does not establish source identity. AS Inspect does not bundle
 extractors or download/install firmware engines during analysis.
 
 On updates: inspect actual pinned CLI and report producers, preserve licenses,

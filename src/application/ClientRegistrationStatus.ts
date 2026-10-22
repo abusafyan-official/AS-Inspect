@@ -420,7 +420,7 @@ const registrationAligned = ({
   if (client.format === "vscode" && registration.type !== "stdio")
     return "stale";
   // A Harness registration only connects as the rea stdio server; another
-  // server name or transport leaves the session without REA tools.
+  // server name or transport leaves the session without AS Inspect tools.
   if (
     client.format === "dsh" &&
     (registration.serverName !== "rea" || registration.transport !== "stdio")
@@ -510,7 +510,7 @@ const remediation = (client: SetupClient): string => {
 };
 
 const unknownEntryPointRemediation = (): string =>
-  "The existing registration was retained because its executable identity cannot be verified. Check the registered launcher path, symlink targets and access permissions. Run the installed REA CLI or a supported package runner, then rerun rea doctor; no registration was changed.";
+  "The existing registration was retained because its executable identity cannot be verified. Check the registered launcher path, symlink targets and access permissions. Run the installed AS Inspect CLI or a supported package runner, then rerun rea doctor; no registration was changed.";
 
 const configuredStatus = (
   client: SetupClient,
@@ -570,7 +570,7 @@ const timeoutAdvisory = (
   const headroom = isKimi
     ? `${String(MCP_STARTUP_POLICY.toolOperationHeadroomMs)} ms`
     : `${String(MCP_STARTUP_POLICY.toolOperationHeadroomMs / 1000)} seconds`;
-  return `The configured ${setting} (${currentValue}) is shorter than REA's known provider allowance (${String(providerAllowance)} ms), so provider startup or an upstream request may exceed this client deadline. REA recommends ${setting} = ${recommendedValue} to cover that allowance plus ${headroom} of operation headroom; this additional headroom is a recommendation, not a guarantee for every analysis.`;
+  return `The configured ${setting} (${currentValue}) is shorter than AS Inspect's known provider allowance (${String(providerAllowance)} ms), so provider startup or an upstream request may exceed this client deadline. AS Inspect recommends ${setting} = ${recommendedValue} to cover that allowance plus ${headroom} of operation headroom; this additional headroom is a recommendation, not a guarantee for every analysis.`;
 };
 
 const exactRegisteredPackageVersion = (
@@ -587,7 +587,7 @@ const packageVersionRemediation = (
   packageReference: string,
   client: SetupClient,
 ): string =>
-  `This registration requests ${packageReference}, while the current REA CLI package is ${PRODUCT_IDENTITY.packageVersion}. REA does not resolve package-runner requests during doctor; update the registration with rea setup --client ${client.name}, then restart the client.`;
+  `This registration requests ${packageReference}, while the current AS Inspect CLI package is ${PRODUCT_IDENTITY.packageVersion}. AS Inspect does not resolve package-runner requests during doctor; update the registration with rea setup --client ${client.name}, then restart the client.`;
 
 const unavailableStatus = (
   client: SetupClient,

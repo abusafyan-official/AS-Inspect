@@ -292,7 +292,7 @@ cliTest.skipIf(process.platform === "win32")(
     });
     expect(
       await readFile(
-        join(physical, "bundle/envs/grafana-example/rea-agents.tgz"),
+        join(physical, "bundle/envs/grafana-example/as-inspect-agents.tgz"),
       ),
     ).toEqual(bytes);
     await expect(

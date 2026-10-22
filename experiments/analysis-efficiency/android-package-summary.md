@@ -1,7 +1,7 @@
 # Android package summary and exact retained manifest
 
-Continues [#2016](https://github.com/morluto/rea/issues/2016) and
-[#2438](https://github.com/morluto/rea/pull/2438). The recurring NewPipe question
+Continues [#2016](https://github.com/abusafyan-official/AS-Inspect/issues/2016) and
+[#2438](https://github.com/abusafyan-official/AS-Inspect/pull/2438). The recurring NewPipe question
 asks for APK/package/version identity, all case-sensitive MainActivity matches
 and all reported onCreate entries, including explicit null DEX descriptors.
 Complete package replies delivered decoded manifest text and duplicate upstream
@@ -94,7 +94,7 @@ three exact selected tool names and the same optional context/discovery capture
 settings. The requested alias does not certify the server-resolved model. The
 original analyst question is unchanged; equal treatment instructions explicitly
 choose package detail and explain the summary carrier. Temporary configuration
-points to the frozen modified REA MCP; no global configuration is edited.
+points to the frozen modified AS Inspect MCP; no global configuration is edited.
 
 | Trial            |   Input | Cached | Uncached | Output | Seconds | MCP calls | Usage records | Facts |
 | ---------------- | ------: | -----: | -------: | -----: | ------: | --------: | ------------: | ----- |
@@ -117,7 +117,7 @@ The final complete control's first client executor filters `ALL_TOOLS` for the
 same three exact names and receives an empty array. It makes zero MCP calls,
 reports all requested facts unknown and fails the factual gate. Identical name
 filters worked in the other trials. Stderr contains no explanatory error; the
-client visibility failure remains unexplained and is not attributed to REA or
+client visibility failure remains unexplained and is not attributed to AS Inspect or
 summary delivery. Its short duration is not comparable completed work. The
 original failed receipt is retained rather than replaced by a successful trial.
 

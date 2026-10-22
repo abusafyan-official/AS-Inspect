@@ -1,6 +1,6 @@
 # MCP schema profile identity startup
 
-Continues [#723](https://github.com/morluto/rea/issues/723). The default catalog
+Continues [#723](https://github.com/abusafyan-official/AS-Inspect/issues/723). The default catalog
 identity was already recorded at build time (#4041). Compact input and omitted
 output advertisement profiles still converted and hashed the complete catalog
 on demand. This change records the four built-in combinations at the same
@@ -44,7 +44,7 @@ warm status calls, verification and cleanup. OS caches are unflushed.
 
 The existing guard admits one CPU, a 4 GiB hard/3 GiB early memory boundary,
 2 GiB Node heaps, no swap and 192 tasks. Kernel family peaks include file cache,
-Codex, REA and controller; they are not provider heap measurements. All 16
+Codex, AS Inspect and controller; they are not provider heap measurements. All 16
 qualified recordings exit successfully with only the observer remaining, no
 resource stop and zero observed OOM events. Final whole-scope counters are
 unavailable. The host's CPU is shared with unrelated work; ranges retain the
@@ -108,7 +108,7 @@ exit. The corrected controller waits for its allocated scope to drain without
 killing individual PIDs; all later qualified runs verify that drain. Neither
 failed attempt establishes a production regression.
 
-SDK 2.3.1 already supports a named `toolDefinition`, used by REA's doctor to
+SDK 2.3.1 already supports a named `toolDefinition`, used by AS Inspect's doctor to
 avoid preparing every output validator for its one probe. Generic external SDK
 callers still incur their own catalog preparation. Input presentation and
 output refs already have owning reuse; these were not duplicate fixes.

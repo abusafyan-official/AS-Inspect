@@ -64,7 +64,7 @@ try {
     disabled,
   );
 
-  const unknownAnalyzer = "REA Unknown Analyzer";
+  const unknownAnalyzer = "AS Inspect Unknown Analyzer";
   const rejected = await runHeadless(target, "analyzer-regression-unknown", [
     "-preScript",
     "ReaGhidraAnalysisOptions.java",

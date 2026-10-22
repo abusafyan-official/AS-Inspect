@@ -62,7 +62,7 @@ Both builds used main `59be86671`. The baseline was `fb34ccbec`, before
 the native performance edits; the comparison build added those edits.
 Schemas were identical. Each run opened the same analyzed binary, read the
 specified function's pseudocode and callees, searched literal `whoami`, and
-closed the REA session. The task then repeated on the same MCP connection.
+closed the AS Inspect session. The task then repeated on the same MCP connection.
 
 There were two runs per build on a shared host. Node 24.18.0 and IDA were
 restricted to one logical CPU with below-normal priority; each Node process
@@ -105,7 +105,7 @@ Measurement overhead and whole-machine resource use were not measured.
 
 Callee queries are deduplicated and batched within an operation. Literal
 search fetches a conservative candidate set, including non-ASCII text when
-needed, and preserves REA's final Unicode predicate. It examines all candidate
+needed, and preserves AS Inspect's final Unicode predicate. It examines all candidate
 pages and retains full source observations. Regex searches keep the full scan.
 
 Cross-request analysis results remain live because an input digest does not
@@ -117,4 +117,4 @@ no new default cache or installation behavior was introduced.
 
 Temporary source, SDK, build, portable runtime, cache, and raw measurement
 outputs are test-owned cleanup targets. Attached GUI databases are retained;
-REA never saves or closes them.
+AS Inspect never saves or closes them.

@@ -155,7 +155,7 @@ try {
     "envs/grafana-example/env.toml",
     "envs/grafana-example/evidence.json",
     "envs/grafana-example/manifest.json",
-    "envs/grafana-example/rea-agents.tgz",
+    "envs/grafana-example/as-inspect-agents.tgz",
     "tasks/smoke.json",
   ]);
   assert.equal(
@@ -166,8 +166,8 @@ try {
     join(bundle, "envs/grafana-example/Dockerfile"),
     "utf8",
   );
-  assert.ok(dockerfile.includes("COPY rea-agents.tgz /tmp/"));
-  assert.ok(dockerfile.includes("/tmp/rea-agents.tgz"));
+  assert.ok(dockerfile.includes("COPY as-inspect-agents.tgz /tmp/"));
+  assert.ok(dockerfile.includes("/tmp/as-inspect-agents.tgz"));
   cases++;
   // The agentenv runner builds the image, deploys it on the local sandbox and runs the verifier.
   // One deadline for both attempts, well under the 30-minute job, so a hung or retried run ends

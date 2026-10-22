@@ -46,7 +46,7 @@
       }
     ],
     "qualifications": {
-      "Inspector": "real REA MCP target, concurrent native metadata only oracle, 776 rows matched hash/length; not global completeness or execution proof",
+      "Inspector": "real AS Inspect MCP target, concurrent native metadata only oracle, 776 rows matched hash/length; not global completeness or execution proof",
       "Frida": "local native binding and controlled sleep spawn; caller script digest and procfs PID/birthtime/cgroup/libc path verified; native export address/global completeness oracle unavailable",
       "ADB": "default executable unavailable in prior public call; no real device qualified"
     }

@@ -111,7 +111,7 @@ Representation admission is bounded at 96 MiB before cloning selected observatio
 and expanding matching indexes and repeated per-function source links. Work yields to cancellation. No worker/provider
 concurrency is introduced; this budget is not a bound on total process RSS.
 
-The self-owned source fixture is [nativeFunctionMatching.c](https://github.com/morluto/rea/blob/main/tests/fixtures/nativeFunctionMatching.c).
+The self-owned source fixture is [nativeFunctionMatching.c](https://github.com/abusafyan-official/AS-Inspect/blob/main/tests/fixtures/nativeFunctionMatching.c).
 On Linux x86-64, compile with `cc -O2 -g0 -fno-pie -no-pie -DVERSION=1` and
 `-DVERSION=2`; copy the second binary and run `strip --strip-all` on that copy.
 It includes unchanged/changed code, a byte-identical rename, a removed/added

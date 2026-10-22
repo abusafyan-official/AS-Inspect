@@ -1,6 +1,6 @@
 # Passive Node and Electron runtime observation
 
-REA can attach to an already-running Node.js or Electron V8 Inspector target
+AS Inspect can attach to an already-running Node.js or Electron V8 Inspector target
 and retain script-load and execution-context metadata. The
 `list_javascript_runtime_targets` and `observe_javascript_runtime` MCP tools
 have equivalent `rea list-javascript-runtime-targets` and
@@ -27,12 +27,12 @@ node --inspect=127.0.0.1:9229 ./app.mjs
 ```
 
 Keep it running while listing targets and observing the selected ID. Use a free
-port and the same literal endpoint in both REA calls. Stop the application
-through its normal lifecycle when finished; REA disconnects but does not own or
+port and the same literal endpoint in both AS Inspect calls. Stop the application
+through its normal lifecycle when finished; AS Inspect disconnects but does not own or
 terminate it. Node.js must already be installed.
 
 Use `--inspect` for this passive workflow. `--inspect-brk` pauses before the
-application starts, and REA never resumes it or sends
+application starts, and AS Inspect never resumes it or sends
 `Runtime.runIfWaitingForDebugger`. Resume a paused target with a separate
 caller-owned debugger before requesting application runtime observations.
 
@@ -42,19 +42,19 @@ target. When `EnableNodeCliInspectArguments` is disabled or removed, Electron
 ignores `--inspect` and `--inspect-brk`. A missing main-process target after
 launch does not, by itself, show that fuse.
 
-The caller supplies the literal-loopback HTTP endpoint directly. Selecting an endpoint exposes all targets it serves and their local script locations or renderer origins. A target must match the exact requested target ID and expose a same-port WebSocket reported by that endpoint. Targets explicitly marked attached are rejected rather than displacing another debugger. Node's `/json/list` omits attachment state, so REA preserves it as `null` (unknown), reports that limitation, and permits observation unless the endpoint explicitly reports `attached: true`. Local paths are canonicalized after symlink resolution.
+The caller supplies the literal-loopback HTTP endpoint directly. Selecting an endpoint exposes all targets it serves and their local script locations or renderer origins. A target must match the exact requested target ID and expose a same-port WebSocket reported by that endpoint. Targets explicitly marked attached are rejected rather than displacing another debugger. Node's `/json/list` omits attachment state, so AS Inspect preserves it as `null` (unknown), reports that limitation, and permits observation unless the endpoint explicitly reports `attached: true`. Local paths are canonicalized after symlink resolution.
 
-The `attached` field in JavaScript runtime and browser target results is nullable: `true` and `false` are reported only when discovery supplied a boolean; `null` means the endpoint omitted or could not report the state. CDP `TargetInfo` worker records require an `attached` boolean; REA excludes a worker record with a missing or malformed value as an invalid protocol value.
+The `attached` field in JavaScript runtime and browser target results is nullable: `true` and `false` are reported only when discovery supplied a boolean; `null` means the endpoint omitted or could not report the state. CDP `TargetInfo` worker records require an `attached` boolean; AS Inspect excludes a worker record with a missing or malformed value as an invalid protocol value.
 
 `list_javascript_runtime_targets` returns every available target in one inline
 array.
 
-For the MCP follow-up call, pass the same literal-loopback endpoint and the selected target ID to `observe_javascript_runtime`. REA rediscovers targets and validates the ID against the live endpoint before observation.
+For the MCP follow-up call, pass the same literal-loopback endpoint and the selected target ID to `observe_javascript_runtime`. AS Inspect rediscovers targets and validates the ID against the live endpoint before observation.
 
 ### Discovery file locations
 
 Node's `/json/list` reports a best-effort pathname prefixed with `file://`,
-without URI encoding. On POSIX, REA interprets unambiguous paths literally,
+without URI encoding. On POSIX, AS Inspect interprets unambiguous paths literally,
 including `#` and `%` in filenames. Node also replaces backslashes and double
 quotes with underscores. That transformation cannot be reversed reliably:
 an underscore may already be part of the original filename.
@@ -93,7 +93,7 @@ The provider sends exactly two protocol commands:
 It never sends `Runtime.evaluate`, reads script source, installs breakpoints,
 pauses or resumes execution, calls `Runtime.runIfWaitingForDebugger`, launches
 the target, instruments JavaScript, or invokes Electron APIs. Closing a call
-closes only REA's WebSocket.
+closes only AS Inspect's WebSocket.
 
 Each WebSocket handshake and command response has its own 20-second deadline,
 separate from the caller-selected observation window. A stalled handshake or
@@ -155,11 +155,11 @@ behavior does not occur.
 Cancellation stops new target-file authorization after the current filesystem
 operation settles. Cancellation diagnostics retain the examined target prefix;
 unexamined targets remain unknown. Observation cancellation keeps its original
-reason and any completed Evidence. Finalization waits for REA's bounded socket
+reason and any completed Evidence. Finalization waits for AS Inspect's bounded socket
 close (up to two seconds for graceful and forced confirmation). A failed close
 retains its exact transport owner and blocks replacement connections until
 cleanup succeeds; CLI finalization and MCP shutdown also retry retained cleanup.
-Closing REA's connection does not stop the caller-owned runtime.
+Closing AS Inspect's connection does not stop the caller-owned runtime.
 
 ## Static correlation
 

@@ -1,24 +1,24 @@
 ---
 name: reverse-engineer-anything
-description: Reverse engineer native, managed, Electron/JavaScript, packaged, firmware, and browser targets with REA. Use shipped-artifact or requested runtime evidence to explain features, compare versions, decompile code, or guide a reconstruction. Skip REA for ordinary source-repository architecture analysis.
+description: Reverse engineer native, managed, Electron/JavaScript, packaged, firmware, and browser targets with AS Inspect. Use shipped-artifact or requested runtime evidence to explain features, compare versions, decompile code, or guide a reconstruction. Skip AS Inspect for ordinary source-repository architecture analysis.
 metadata:
   version: "44"
 ---
 
-# REA
+# AS Inspect
 
-Use REA when a claim depends on a shipped binary or package, decompilation,
+Use AS Inspect when a claim depends on a shipped binary or package, decompilation,
 passive application runtime evidence, or comparison with
 behavior not established by available source. For ordinary analysis of a
-complete source repository, use normal repository tools and do not run REA
+complete source repository, use normal repository tools and do not run AS Inspect
 readiness or provider commands.
 
 ## Connect only when needed
 
-Installing this skill supplies instructions; it does not register the REA MCP
+Installing this skill supplies instructions; it does not register the AS Inspect MCP
 server, install analysis engines, or add tools to an already-running agent.
 
-If REA tools are available and their registration is not known to be stale,
+If AS Inspect tools are available and their registration is not known to be stale,
 proceed directly to the target. Do not run diagnostics or setup before every
 investigation. Use the connected server's actual tool list and input schemas;
 a skill installed from repository main may describe capabilities absent from
@@ -30,12 +30,12 @@ unavailable, read [connection and recovery](references/connection-and-recovery.m
 Diagnose the observed blocker, continue useful supported work, and resume the
 original task after repair. Client approval, shell PATH, registration and engine
 availability have different remedies; avoid repeating setup for all of them.
-If the host times out without a REA result, do not repeat the unchanged call or
+If the host times out without a AS Inspect result, do not repeat the unchanged call or
 assume work stopped. Read the recovery guide's deadline distinction before retrying.
 
-1. Diagnose without changing REA or client configuration. `npx` may download
+1. Diagnose without changing AS Inspect or client configuration. `npx` may download
    the package and write to npm's cache. For Codex, run
-   `npx -y rea-agents@latest doctor --client codex --json`. Substitute the current
+   `npx -y as-inspect-agents@latest doctor --client codex --json`. Substitute the current
    supported client: `claude_code`, `claude_desktop`, `codex`, `cursor`,
    `gemini_cli`, `windsurf`, `devin`, `opencode`, `antigravity`, `copilot_cli`,
    `commandcode`, `vscode`, `grok_build`, `omp`, or `grok_bot`. `grok_bot` has no local
@@ -49,38 +49,38 @@ assume work stopped. Read the recovery guide's deadline distinction before retry
    that provider: static JavaScript inspection needs neither Hopper nor Ghidra,
    and Android inspection has separate bring-your-own JADX/Java prerequisites.
 3. For a configuration repair, prepare the read-only plan:
-   `npx -y rea-agents@latest setup --client codex --dry-run --json`.
+   `npx -y as-inspect-agents@latest setup --client codex --dry-run --json`.
    Use the current client's ID, show its exact proposed paths, backups, and
    changes, and obtain approval before setup writes configuration or installs
    Hopper. Setup normally installs the matching bundled skill too; include that
    replacement in the reviewed plan. After approval, apply the same scope with
-   `npx -y rea-agents@latest setup --client codex --yes`. Add `--install-hopper`
+   `npx -y as-inspect-agents@latest setup --client codex --yes`. Add `--install-hopper`
    only if that separate installation was needed and explicitly approved.
-4. Restart/reconnect the affected agent. Verify that REA tools actually appear
+4. Restart/reconnect the affected agent. Verify that AS Inspect tools actually appear
    in the session, then resume the original investigation. If they remain
    absent, inspect the client's MCP launch error rather than repeating setup.
 
-REA setup never installs or upgrades Node.js, npm, Homebrew, Java, Ghidra, IDA,
+AS Inspect setup never installs or upgrades Node.js, npm, Homebrew, Java, Ghidra, IDA,
 JADX, Kuna, Binwalk, or Unblob. Use existing prerequisites; do not install unrelated
 software to repair
 MCP registration. For an unsupported client, use manual stdio registration
-with a version-pinned `rea-agents` package or continue through the CLI.
+with a version-pinned `as-inspect-agents` package or continue through the CLI.
 
 A concrete CLI fallback for an operator-supplied JavaScript tree or ASAR is:
 
 ```bash
-npx -y rea-agents@latest analyze-javascript-application /absolute/path/to/app --json
+npx -y as-inspect-agents@latest analyze-javascript-application /absolute/path/to/app --json
 ```
 
 No MCP registration or native engine is required. Read the returned Evidence,
 graph, limitations, and unknowns with the same care as an MCP result; the CLI
 returns the Evidence record directly. This fallback does not establish that
 MCP is configured. Native CLI tasks still require their selected engine.
-Prefer an existing `rea` CLI. When none is installed and REA package acquisition
-is within the authorized scope, use `npx -y rea-agents@latest` in its place.
+Prefer an existing `rea` CLI. When none is installed and AS Inspect package acquisition
+is within the authorized scope, use `npx -y as-inspect-agents@latest` in its place.
 Configuration repair starts with a read-only setup plan; show paths, backups and
 skill replacement before applying authorized changes. Preserve existing approval
-and target-execution boundaries. REA setup never installs or upgrades unrelated
+and target-execution boundaries. AS Inspect setup never installs or upgrades unrelated
 software, including Node.js, npm, Homebrew, Java, Ghidra, IDA, JADX, Kuna, Binwalk or Unblob.
 
 ## Route the target first
@@ -99,7 +99,7 @@ explicit path or endpoint and do not need it.
   for selected member fields/pages. A complete small inventory can cost less
   than extra calls and schemas. Runtime options are metadata, not files.
   Compact delivery still inventories and hashes members. See the
-  [Python packaged applications guide](https://github.com/morluto/rea/blob/main/docs/python-packaged-applications.md).
+  [Python packaged applications guide](https://github.com/abusafyan-official/AS-Inspect/blob/main/docs/python-packaged-applications.md).
 - Apple app plist, Interface Builder, asset catalog, or keyed archive resources:
   `open_bundle_resources`, then the selected resource tool. This does not
   require `CFBundleExecutable` or a deep provider. Resource sessions have no
@@ -111,7 +111,7 @@ explicit path or endpoint and do not need it.
 - Firmware image: `inspect_firmware_regions` when advertised. Use
   `extract_firmware` when extraction is requested, with a caller-selected new
   absolute output directory. These tools use caller-supplied Binwalk/Unblob on
-  Linux; see the [firmware guide](https://github.com/morluto/rea/blob/main/docs/firmware-analysis.md).
+  Linux; see the [firmware guide](https://github.com/abusafyan-official/AS-Inspect/blob/main/docs/firmware-analysis.md).
 - .NET NativeAOT PE/ELF: native Ghidra analysis. Native code can yield pseudocode;
   consult the NativeAOT workflow in `references/native-and-artifacts.md` for
   optional metadata recovery and its supported host/layout boundary.
@@ -127,7 +127,7 @@ explicit path or endpoint and do not need it.
 - Retained HAR/SAZ/native mitmproxy/aioquic qlog capture: `inspect_web_network_capture`. Select
   original record ordinals when useful; inspect producer fields and byte/number
   sidecars without fetching recorded URLs or claiming live attribution. See
-  [historical captures](https://github.com/morluto/rea/blob/main/docs/web-network-captures.md) for the exact upstream
+  [historical captures](https://github.com/abusafyan-official/AS-Inspect/blob/main/docs/web-network-captures.md) for the exact upstream
   profile and credential exclusions. Qlog support starts with aioquic 1.5.0
   JSON 0.3; stream coverage and endpoint loss declarations do not recover bodies
   or establish network loss. Prefer detail summary, then kind qlog trace/stream
@@ -140,7 +140,7 @@ explicit path or endpoint and do not need it.
   Query/page the relevant records; registrations do not establish observed traffic.
 - Recorded packet captures: `inspect_packet_capture` with selected TShark fields,
   display filters and decode-as rules. Requires Linux, util-linux prlimit and `REA_TSHARK_COMMAND`; see
-  [capture guide](https://github.com/morluto/rea/blob/main/docs/packet-captures.md).
+  [capture guide](https://github.com/abusafyan-official/AS-Inspect/blob/main/docs/packet-captures.md).
   Packet limits count input packets before filtering. Output defaults to 50 matching
   frames; use `match_offset` / `match_limit` for later pages, or explicit null
   limit for complete matching output. Preserve the source digest across pages.
@@ -148,7 +148,7 @@ explicit path or endpoint and do not need it.
   For address/DNS/SNI/protocol summaries use `inspect_pcap_capture` with MCP
   detail summary, then retained kind pcap pages. Requires Wireshark 4.x tshark
   and capinfos, with Linux prlimit or Windows Job Objects; see
-  [packet summaries](https://github.com/morluto/rea/blob/main/docs/pcap-analysis.md).
+  [packet summaries](https://github.com/abusafyan-official/AS-Inspect/blob/main/docs/pcap-analysis.md).
   Select an exact DNS question for address pages; page exhaustion does not prove
   network completeness. This reads recordings and does not acquire traffic.
 - Decoder discovery: `inspect_signal_decoders` searches installed decoder IDs
@@ -156,7 +156,7 @@ explicit path or endpoint and do not need it.
   relevant details before choosing settings; this does not scan hardware.
 - Recorded logic/signal traces: `decode_signal_recording` with explicit decoder,
   channel and protocol settings. On Linux with util-linux prlimit, supply sigrok-cli 0.7.2 through
-  `REA_SIGROK_COMMAND`; see [recording guide](https://github.com/morluto/rea/blob/main/docs/signal-recordings.md).
+  `REA_SIGROK_COMMAND`; see [recording guide](https://github.com/abusafyan-official/AS-Inspect/blob/main/docs/signal-recordings.md).
   Output defaults to 50 literal lines; select annotation classes and page with
   `line_offset` / `line_limit`, or explicit null for all remaining output.
   Window counts are display lines, not annotations or samples. Preserve source digests across pages.
@@ -165,7 +165,7 @@ explicit path or endpoint and do not need it.
   through `REA_WABT_BIN_DIRECTORY`; retain exact byte/tool identity and decoded WAT.
   Select JavaScript glue and candidate paths explicitly and preserve URL/path
   ambiguity. No implicit fetch or target execution; WAT is not original source.
-  See the [WASM guide](https://github.com/morluto/rea/blob/main/docs/wasm-artifacts.md).
+  See the [WASM guide](https://github.com/abusafyan-official/AS-Inspect/blob/main/docs/wasm-artifacts.md).
 - Explicit local EVM bytecode carrier: `inspect_evm_interface` with caller-selected
   `raw` or `hex` encoding. The owned worker deadline is `timeout_ms` (default
   30000 ms, range 1..2147483647, next call). It does not raise the fixed byte,
@@ -176,13 +176,13 @@ explicit path or endpoint and do not need it.
   Evidence stays retained under its original identity. Use the returned
   `parent_evidence_id` for exact function or `bytecode_hex`/stdout/stderr pages.
   Candidate coverage does not establish interface completeness. See the
-  [EVM bytecode guide](https://github.com/morluto/rea/blob/main/docs/evm-bytecode.md).
+  [EVM bytecode guide](https://github.com/abusafyan-official/AS-Inspect/blob/main/docs/evm-bytecode.md).
 - Embedded Go compiler, module or build-setting metadata: `inspect_go_binary`
   with the explicit local file. This built-in target-free inspection requires no
   Go installation or disassembler. Preserve raw module bytes and source ranges;
   absent metadata does not prove a binary is not Go, and unparsed text records
   remain explicit. See the
-  [Go binary guide](https://github.com/morluto/rea/blob/main/docs/go-binaries.md).
+  [Go binary guide](https://github.com/abusafyan-official/AS-Inspect/blob/main/docs/go-binaries.md).
 - Embedded CUDA/HIP code objects: `inspect_gpu_code_objects`; inventory targets
   first, then decode selected payloads and query retained GPU Evidence.
 - Bundled GGUF or safetensors model declarations: `inspect_model_artifact`
@@ -193,7 +193,7 @@ explicit path or endpoint and do not need it.
   batched metadata keys, tensor names or type totals, selected fields and pages.
   Preserve header-scoped indices and array preview omissions; do not infer model
   behavior from declared architecture or tensor types. See the
-  [model file guide](https://github.com/morluto/rea/blob/main/docs/model-artifacts.md).
+  [model file guide](https://github.com/abusafyan-official/AS-Inspect/blob/main/docs/model-artifacts.md).
 - Unity IL2CPP names, member owners and string literals from `global-metadata.dat`:
   `inspect_il2cpp_metadata` with the explicit local file; MCP defaults to compact
   counts. Query sections, images, types, methods, fields, properties, events,
@@ -204,7 +204,7 @@ explicit path or endpoint and do not need it.
   Versions 24, 27, 29, 31 and 39; no Unity, IL2CPP
   binary or disassembler is run. Unrecognized magic (possibly encrypted) and
   other versions are unsupported. Optional matching `binary_path` enables static native addresses and type references; query `method_addresses` with indices or addresses/states, preserving every shared-body method and both artifact identities. Without a linked binary native counts remain unknown. Byte-pattern fallback is inferred; no runtime behavior or same-build pairing is proved. See the
-  [IL2CPP metadata guide](https://github.com/morluto/rea/blob/main/docs/il2cpp-metadata.md).
+  [IL2CPP metadata guide](https://github.com/abusafyan-official/AS-Inspect/blob/main/docs/il2cpp-metadata.md).
 - Embedded cargo-auditable Rust dependency metadata: `inspect_rust_binary`
   with the explicit local ELF, PE, or thin Mach-O file. This built-in
   target-free inspection requires no Rust installation or disassembler. Preserve
@@ -218,7 +218,7 @@ explicit path or endpoint and do not need it.
   subsequent filters. Keep the complete parent Evidence accessible; CLI compact
   delivery requires `--evidence_output`.
   See the
-  [Rust binary guide](https://github.com/morluto/rea/blob/main/docs/rust-binaries.md).
+  [Rust binary guide](https://github.com/abusafyan-official/AS-Inspect/blob/main/docs/rust-binaries.md).
 - PE Authenticode certificate table: `inspect_pe_certificates` with the explicit
   local PE32/PE32+ file. This built-in target-free inspection requires no
   Windows SDK. Preserve WIN_CERTIFICATE ranges, types, payload SHA-256, and
@@ -226,26 +226,26 @@ explicit path or endpoint and do not need it.
   when the signer uses that form. A missing security directory is observed
   absence of that table, not proof the image is unsigned in every catalog sense.
   Signatures are not verified. See the
-  [PE certificate guide](https://github.com/morluto/rea/blob/main/docs/pe-certificates.md).
+  [PE certificate guide](https://github.com/abusafyan-official/AS-Inspect/blob/main/docs/pe-certificates.md).
 - ELF note tables: `inspect_elf_notes` with the explicit local ELF32/ELF64
   file. This built-in target-free inspection requires no disassembler. Preserve
   PT_NOTE and SHT_NOTE ranges, owners, types, descriptor SHA-256, and GNU
   build-id or ABI-tag fields. A missing table is observed absence of those
   declarations, not proof the image never carried notes. See the
-  [ELF notes guide](https://github.com/morluto/rea/blob/main/docs/elf-notes.md).
+  [ELF notes guide](https://github.com/abusafyan-official/AS-Inspect/blob/main/docs/elf-notes.md).
 - CPython 3.7–3.13 `.pyc` header, nested marshal code objects and bytecode
   identity: `inspect_python_pyc` with the explicit local file. This built-in
   target-free inspection requires no Python installation. Preserve magic,
   PEP 552 hash or mtime/size, nested names, and bytecode SHA-256. Bytecode is
   not decompiled, and a decoded header does not prove the matching `.py` is
   present. See the
-  [CPython pyc guide](https://github.com/morluto/rea/blob/main/docs/python-pyc.md).
+  [CPython pyc guide](https://github.com/abusafyan-official/AS-Inspect/blob/main/docs/python-pyc.md).
 - Erlang BEAM IFF container: `inspect_erlang_beam` with the explicit local
   `.beam` file. This built-in target-free inspection requires no Erlang
   installation. Preserve chunk names, atom order, export/import/lambda tables,
   and the Code header. Missing optional tables stay null. Bytecode is not
   executed. See the
-  [Erlang BEAM guide](https://github.com/morluto/rea/blob/main/docs/erlang-beam.md).
+  [Erlang BEAM guide](https://github.com/abusafyan-official/AS-Inspect/blob/main/docs/erlang-beam.md).
 
 - Explicit local SQLite database snapshot: `inspect_sqlite_database`. Inspect
   with Node.js 24.x >=24.15 or 26+ providing native SQLite limits. Read schema
@@ -254,17 +254,17 @@ explicit path or endpoint and do not need it.
   20 rows; request `schema_scope: "database"` for the complete stored schema. Preserve both database and existing sibling WAL identity; row samples
   report truncation and have unspecified order. Use a quiescent snapshot rather
   than assuming a live database/WAL pair was copied atomically. See the
-  [SQLite guide](https://github.com/morluto/rea/blob/main/docs/sqlite-databases.md).
+  [SQLite guide](https://github.com/abusafyan-official/AS-Inspect/blob/main/docs/sqlite-databases.md).
 - Explicit Linux ELF file for offline layout, symbols, relocations or static
   mitigation evidence: `inspect_binary_layout`. This target-free operation uses
   caller-supplied pwntools without opening a disassembler database. Preserve its
   raw locations and inference/coverage limits; see the
-  [offline binary guide](https://github.com/morluto/rea/blob/main/docs/binary-diagnostics.md).
+  [offline binary guide](https://github.com/abusafyan-official/AS-Inspect/blob/main/docs/binary-diagnostics.md).
 - Supplied Linux x86-64 ELF core: `inspect_recorded_crash`. Read every recorded
   thread, raw note and source-bound register without opening a live target.
   Historical PIDs do not select live processes. Request `include_debugger_context`
   only when core-only mapping candidates help; see the
-  [recorded crash guide](https://github.com/morluto/rea/blob/main/docs/recorded-crashes.md).
+  [recorded crash guide](https://github.com/abusafyan-official/AS-Inspect/blob/main/docs/recorded-crashes.md).
 - PE resource type/name/language trees and static icon group references:
   `inspect_pe_resources` with an explicit path. This portable operation requires
   no active target or engine; opaque payloads retain file ranges and SHA-256.
@@ -280,7 +280,7 @@ The legacy attached profile binds the already-open GUI input by SHA-256 and
 leaves its database open. The modern headless profile creates and closes an
 owned private database without saving. Installation and registration reuse
 [mrexodia/ida-pro-mcp](https://github.com/mrexodia/ida-pro-mcp); see the
-[IDA provider guide](https://github.com/morluto/rea/blob/main/docs/ida-provider.md).
+[IDA provider guide](https://github.com/abusafyan-official/AS-Inspect/blob/main/docs/ida-provider.md).
 Proceed directly to `analyze_function`, pseudocode, or function/string searches
 after opening; IDA does not supply `binary_overview`. Consult session availability
 when composing broader workflows. Modern direct callers and unsupported dossier
@@ -298,7 +298,7 @@ answer can come from a single-function run (its limitations say so); assembly
 waits for the export. For pseudocode and assembly, `raw_result.source` names the
 cached `.c`/`.asm` file and byte span, which you may search directly instead of
 calling per function. See the
-[Kuna provider guide](https://github.com/morluto/rea/blob/main/docs/kuna-provider.md).
+[Kuna provider guide](https://github.com/abusafyan-official/AS-Inspect/blob/main/docs/kuna-provider.md).
 
 If the user says only "my app" without a name, path, or target already selected
 for this task, ask which app before searching for artifacts. Paths in unrelated
@@ -322,7 +322,7 @@ For a Ghidra startup timeout on a large native target, follow
 [deadline recovery](references/native-and-artifacts.md#ghidra-startup-deadline-recovery)
 before abandoning deep analysis or repeating the same cold import. The default
 330 seconds is configurable; changing the server's environment requires a new
-REA process.
+AS Inspect process.
 
 ## Work summary-first
 
@@ -356,7 +356,7 @@ portable bundle, use `rea inspect-evidence-bundle` with JSON containing `path`,
 `detail: "summary"` and the same `filters`. Reading that file still requires
 validating its full contents within the local memory budget.
 
-A client can also truncate a successful tool result without a REA transport
+A client can also truncate a successful tool result without a AS Inspect transport
 error. Treat that preview as incomplete; use the retained parent ID for smaller
 views or export when the full record is needed. Do not parse the preview as
 canonical JSON or repeat the producer. For JavaScript, read the
@@ -370,7 +370,7 @@ that static analysis observed execution. Runtime requests execute the declared
 target and lifecycle; do not broaden the target or action beyond those fields.
 
 Within the user's requested investigation, call available analysis tools
-directly. REA does not require permission grants or per-call approval flags.
+directly. AS Inspect does not require permission grants or per-call approval flags.
 The agent client can independently require approval. Follow the declared request
 scope and the host's actual access requirements; use the recovery guide for an
 observed client-policy rejection.
@@ -382,7 +382,7 @@ For requests that span multiple features or subsystems, use a staged workflow:
 1. Turn the request into a checklist of questions and the evidence each answer
    needs. Resolve target identity and constraints from the conversation and
    workspace before asking for information again.
-2. Inspect the current REA session, artifact identity, saved analysis database,
+2. Inspect the current AS Inspect session, artifact identity, saved analysis database,
    bookmarks, and prior evidence. Reuse matching state; do not open duplicate
    sessions or repeat identical analysis.
 3. Start with the smallest useful overview or inventory. Follow each question

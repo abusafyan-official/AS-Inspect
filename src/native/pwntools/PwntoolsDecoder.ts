@@ -272,7 +272,7 @@ export class PwntoolsDecoder<
         );
       if (!isAbsolute(selectedPath))
         throw pwntoolsUnavailable(
-          "Set REA_PWNTOOLS_PYTHON to an absolute caller-supplied Python executable with pwntools 4.15.0, pyelftools 0.33 and Unicorn 2.1.2; REA never installs Python or packages.",
+          "Set REA_PWNTOOLS_PYTHON to an absolute caller-supplied Python executable with pwntools 4.15.0, pyelftools 0.33 and Unicorn 2.1.2; AS Inspect never installs Python or packages.",
           selectedPath,
           undefined,
           undefined,

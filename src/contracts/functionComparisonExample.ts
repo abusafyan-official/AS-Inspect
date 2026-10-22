@@ -49,7 +49,7 @@ const observe = (digit: string, text: string) =>
     },
     {
       id: "rea-workflow",
-      name: "REA composed investigation workflow",
+      name: "AS Inspect composed investigation workflow",
       version: "1",
     },
     {

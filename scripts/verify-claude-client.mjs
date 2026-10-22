@@ -112,7 +112,7 @@ const fixture = await createAnthropicModelFixture({
   directory: lab,
   onRequest: async ({ body, tools, requestIndex }) => {
     if (tools.length === 0)
-      return [{ type: "text", text: "REA fixture title" }];
+      return [{ type: "text", text: "AS Inspect fixture title" }];
     assert(requestIndex <= 8, "Local model workflow exceeded its turn budget");
     const call = (name, input) => [
       { type: "tool_use", id: `toolu_rea_${requestIndex}`, name, input },
@@ -125,7 +125,7 @@ const fixture = await createAnthropicModelFixture({
       const wait = tools.find((t) => t.name === "WaitForMcpServers");
       assert(
         wait,
-        "Claude must expose REA tools or its native pending-server wait",
+        "Claude must expose AS Inspect tools or its native pending-server wait",
       );
       pendingServerWaits++;
       return call(wait.name, { servers: ["rea"] });
@@ -141,7 +141,7 @@ const fixture = await createAnthropicModelFixture({
     assert.deepEqual(
       sortVerifierNames(reaTools.map((t) => t.name)),
       expected,
-      "Claude must forward the complete REA catalog after connection",
+      "Claude must forward the complete AS Inspect catalog after connection",
     );
     catalogSize = expected.length;
     if (schemasChecked === 0) {
@@ -208,7 +208,7 @@ const fixture = await createAnthropicModelFixture({
         const session = tools.find(
           (tool) => tool.name === `${prefix}binary_session`,
         );
-        assert(session, "Claude must expose the REA binary_session tool");
+        assert(session, "Claude must expose the AS Inspect binary_session tool");
         sessionRequested = true;
         return call(session.name, {});
       }
@@ -268,7 +268,7 @@ const fixture = await createAnthropicModelFixture({
     }
     assert(
       skillLoaded,
-      "Claude must load the complete installed personal REA skill",
+      "Claude must load the complete installed personal AS Inspect skill",
     );
     return call(analysis.name, { input_path: target, format: "directory" });
   },
@@ -372,7 +372,7 @@ try {
       }),
       mode === "chat"
         ? "Say hello briefly."
-        : `Use the REA skill and tools to analyze the JavaScript directory ${target}. Report the result.`,
+        : `Use the AS Inspect skill and tools to analyze the JavaScript directory ${target}. Report the result.`,
     ],
     {
       env: {

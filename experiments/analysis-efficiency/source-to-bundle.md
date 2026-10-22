@@ -24,7 +24,7 @@ Public corpus: [Redux Toolkit 2.2.7 npm tarball](https://registry.npmjs.org/@red
 `f2517c466b50424b661a27e48039f15db7783e5822f46b5c7d39f20104ac67a9`.
 The published `src/` and three root `dist/` bundles/maps are copied byte-for-byte
 into separate roots, retaining the `src/` and `dist/` prefixes. No target code or
-package scripts execute. REA runs its own static analysis helpers.
+package scripts execute. AS Inspect runs its own static analysis helpers.
 
 An independent Python JSON/SHA-256/path oracle checks all 180 source-file hashes,
 99 embedded source nodes and 210 candidate relations in every completed task.
@@ -90,7 +90,7 @@ semantic-analysis optimization or equal-coverage performance claim.
 
 A second six-task cohort explicitly selects the existing
 `REA_MCP_OUTPUT_SCHEMA_PROFILE=off` for **both** workflows, with baseline
-`main@01788bac8`. REA still validates successful results against the canonical
+`main@01788bac8`. AS Inspect still validates successful results against the canonical
 contracts and returns complete structured content; clients do not receive output
 schemas to compile. This is an explicit caller configuration, not a new default.
 The independent oracle and selected/full fact checks pass in every run.

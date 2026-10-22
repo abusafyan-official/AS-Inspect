@@ -49,7 +49,7 @@ import {
   HOPPER_PROVIDER_IDENTITY,
 } from "./HopperProviderCapabilities.js";
 
-/** Concrete analysis provider backed by REA's private Hopper bridge. */
+/** Concrete analysis provider backed by AS Inspect's private Hopper bridge. */
 export class HopperProvider implements AnalysisProviderCandidate {
   private readonly environment: Readonly<NodeJS.ProcessEnv>;
   readonly #capabilities: readonly CapabilityDescriptor[];
@@ -141,7 +141,7 @@ export class HopperProvider implements AnalysisProviderCandidate {
         status: "unsupported",
         code: "target_kind_unsupported",
         reason:
-          "This Hopper macOS launcher cannot start REA's analysis bridge when opening a saved Hopper database. Open an executable target instead; saved-database analysis is unavailable until Hopper exposes a database launch route that runs the bridge script.",
+          "This Hopper macOS launcher cannot start AS Inspect's analysis bridge when opening a saved Hopper database. Open an executable target instead; saved-database analysis is unavailable until Hopper exposes a database launch route that runs the bridge script.",
         diagnostics,
       };
     if (target.kind === "database")
@@ -333,7 +333,7 @@ export class HopperProvider implements AnalysisProviderCandidate {
           ...(preparedImage === undefined
             ? []
             : [
-                "REA loaded a verified thin Mach-O image prepared from the original source. Identity and file offsets refer to the original file. The owned temporary image and its Hopper document close together, including on MCP shutdown.",
+                "AS Inspect loaded a verified thin Mach-O image prepared from the original source. Identity and file offsets refer to the original file. The owned temporary image and its Hopper document close together, including on MCP shutdown.",
               ]),
           ...(this.#capabilities.find(
             (descriptor) => descriptor.operation === operation,

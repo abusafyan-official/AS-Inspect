@@ -16,10 +16,10 @@ describe the use case and observable outcome. -->
 
 ## Change and scope
 
-<!-- Explain the chosen approach, why it fits REA's architecture, and what is
+<!-- Explain the chosen approach, why it fits AS Inspect's architecture, and what is
 intentionally not included. -->
 
-Follow the [contribution scope](https://github.com/morluto/rea/blob/main/CONTRIBUTING.md#contribution-scope).
+Follow the [contribution scope](https://github.com/abusafyan-official/AS-Inspect/blob/main/CONTRIBUTING.md#contribution-scope).
 Unresolved scope, authority, side effects, or required verification block
 integration. Link the required maintainer scope decision for new providers or
 capabilities involving target execution, injection, mutation, or protection
@@ -99,7 +99,7 @@ limits, security/privacy/containment implications, and meaningful proof gaps. --
 <!-- The human owner completes these declarations before requesting review.
 The PR author is the owner by default. A different owner must explicitly accept
 ownership on this PR.
-AI agents must leave these declarations to a human to dictate to them or there could be catastrophic consequences for many users of REA.
+AI agents must leave these declarations to a human to dictate to them or there could be catastrophic consequences for many users of AS Inspect.
 Draft PRs may leave them unchecked. These declarations record initial readiness
 when opening the PR for review; later pushes do not require a new human sign-off.
 Keep the description and validation evidence current as the work changes.

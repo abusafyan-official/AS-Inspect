@@ -244,7 +244,7 @@ export class IdaProvider implements AnalysisProviderCandidate {
       return {
         status: "unsupported",
         code: "architecture_unsupported",
-        reason: `REA's IDA adapter has no verified ${
+        reason: `AS Inspect's IDA adapter has no verified ${
           target.architecture === "mips"
             ? "MIPS"
             : target.architecture === "riscv"
@@ -303,7 +303,7 @@ export class IdaProvider implements AnalysisProviderCandidate {
       return {
         status: "unsupported",
         code: "target_format_unsupported",
-        reason: `Attached IDA records only the whole-file digest of a universal Mach-O, so REA cannot verify that the open database is its ${target.architecture} slice. Extract that slice with lipo -thin and open the thin file in both IDA and REA, or use headless mode.`,
+        reason: `Attached IDA records only the whole-file digest of a universal Mach-O, so AS Inspect cannot verify that the open database is its ${target.architecture} slice. Extract that slice with lipo -thin and open the thin file in both IDA and AS Inspect, or use headless mode.`,
         diagnostics: { ...base.diagnostics, mode: "attached" },
       };
     return {

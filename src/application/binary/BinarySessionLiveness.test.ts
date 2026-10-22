@@ -26,7 +26,7 @@ import { BinarySession } from "./BinarySession.js";
 import { SessionProviderRouter } from "./SessionProviderRouter.js";
 
 /**
- * Regression coverage for https://github.com/morluto/rea/issues/1719:
+ * Regression coverage for https://github.com/abusafyan-official/AS-Inspect/issues/1719:
  * `BinarySession#open` must not short-circuit on the `sameTarget &&
  * sameProfile` fast path when the retained provider client is dead. It must
  * start a fresh client instead.

@@ -125,7 +125,7 @@ unmeasured. Local real-tool verification ran on macOS arm64; the hosted Linux la
 
 ## Automated review findings on the PR (2026-10-18)
 
-Codex and Greptile left seven inline findings on morluto/rea#4954 at
+Codex and Greptile left seven inline findings on abusafyan-official/AS-Inspect#4954 at
 b6d18d23; each was checked against the code and addressed in one follow-up
 commit, with a regression test where the behaviour is observable:
 

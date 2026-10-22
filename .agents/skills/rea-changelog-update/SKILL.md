@@ -1,9 +1,9 @@
 ---
 name: rea-changelog-update
-description: Prepare or rewrite REA release changelogs and GitHub release notes from pinned Git history, with verified contributor thanks and Release Please synchronization.
+description: Prepare or rewrite AS Inspect release changelogs and GitHub release notes from pinned Git history, with verified contributor thanks and Release Please synchronization.
 ---
 
-# REA changelog update
+# AS Inspect changelog update
 
 Use this for release-note preparation and contributor attribution. Read
 [docs/releasing.md](../../../docs/releasing.md) from the repository root for
@@ -14,13 +14,13 @@ notes; it does not authorize merging, tagging, or publishing.
 
 Fetch complete history and tags. Select the published baseline tag from
 `.release-please-manifest.json` on the release PR's **base branch**, and pin that
-branch's exact SHA as the editorial target. REA tags are `rea-agents-VERSION`.
+branch's exact SHA as the editorial target. AS Inspect tags are `as-inspect-agents-VERSION`.
 Use the proposed version, including its prerelease suffix; do not change the
 `always-bump-minor` strategy to imitate OpenClaw's calendar versions.
 
 ```bash
 node scripts/release-notes.mjs inventory \
-  --repository morluto/rea --base rea-agents-PREVIOUS \
+  --repository abusafyan-official/AS-Inspect --base as-inspect-agents-PREVIOUS \
   --target FULL_BASE_BRANCH_SHA --version VERSION \
   --manifest /tmp/rea-VERSION.contributions.json
 node scripts/release-notes.mjs record \
@@ -68,10 +68,10 @@ closing-issue reporters. Grouping preserves all those credits in one line.
 When Highlights, detailed entries or migrations reference the same work,
 put its thanks in one of those entries, not all of them. Include issue links.
 Direct-commit bullets carry the commit link and known human credit.
-Exclude GitHub bots and known agent accounts. REA's observed Anthropic, Cursor
+Exclude GitHub bots and known agent accounts. AS Inspect's observed Anthropic, Cursor
 and Codex co-author trailers resolve to `@claude`, `@cursoragent` and `@codex`
 with GitHub type `User`; the credit policy excludes them while retaining their metadata.
-At the REA maintainer's request, omit `@morluto` self-thanks while preserving
+At the AS Inspect maintainer's request, omit `@morluto` self-thanks while preserving
 authorship in the inventory. Other human contributors remain eligible.
 Use explicit GitHub links for cross-repository references to avoid ambiguous
 `#NNN` numbers. Unknown handles stay unknown; they are not fabricated credit.

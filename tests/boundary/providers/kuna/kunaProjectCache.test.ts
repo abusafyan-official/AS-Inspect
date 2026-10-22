@@ -192,7 +192,7 @@ it("publishes a verified export and serves later requests from the cache", async
     "// Function: broken @ 0x1080  (error: Exceeded the instruction budget)\n\n",
   );
 
-  // Kuna listed and decompiled a staged copy from REA's own HOME, in reference mode.
+  // Kuna listed and decompiled a staged copy from AS Inspect's own HOME, in reference mode.
   const [listing] = await callsOf(kuna, "functions");
   const [exported] = await callsOf(kuna, "decompile-project");
   expect(listing?.argv).toEqual(["functions", exported?.argv[1], "--json"]);
@@ -812,7 +812,7 @@ it("keeps the first publication when another process exports the same key", asyn
   );
   const input = await target("program");
 
-  // Two cache instances stand in for two REA processes sharing one root.
+  // Two cache instances stand in for two AS Inspect processes sharing one root.
   const [first, second] = await Promise.all([
     newCache(installation).build({ installation, ...input }),
     newCache(installation).build({ installation, ...input }),

@@ -13,9 +13,9 @@ summary is [apktool-string-tables.json](apktool-string-tables.json).
 
 - Baseline: `8f7d12e30d63f3d3b4cfe2a90336362841438f56`, latest main at issue start.
 - Projection source: `406af90023a545fb280601bf51f445e122c36378`.
-- Existing shared decode: [#4777](https://github.com/morluto/rea/issues/4777),
-  integrated by [#4804](https://github.com/morluto/rea/pull/4804).
-- Projection follow-up: [#4982](https://github.com/morluto/rea/issues/4982).
+- Existing shared decode: [#4777](https://github.com/abusafyan-official/AS-Inspect/issues/4777),
+  integrated by [#4804](https://github.com/abusafyan-official/AS-Inspect/pull/4804).
+- Projection follow-up: [#4982](https://github.com/abusafyan-official/AS-Inspect/issues/4982).
 - Linux x86-64, kernel 6.1.0-53-cloud-amd64, Node 24.18.0, npm 11.16.0,
   Temurin 21.0.12.1, Apktool 3.0.3. The selected JAR's closeout digest is
   `dbf930b076c6b9be08d57c449cacefc3bdd6b71ebd59b3066fc0e1f5b14f9423`;
@@ -52,7 +52,7 @@ counts, ordering and emitted prefixes against the XML bytes. Manifest text and
 package identity are checked separately. All six serial/batch pairs agree on
 selected strings, manifest, metadata and target identity. All nine projection
 pairs additionally preserve table counts and coverage; batch/table-only counts
-and coverage match the XML oracle. This qualifies REA's projection of these
+and coverage match the XML oracle. This qualifies AS Inspect's projection of these
 native outputs, not independent binary ARSC decoder completeness.
 
 The existing default batch repeats its primary table in top-level `strings` and

@@ -1,6 +1,6 @@
 # Reuse successful immutable parent validation
 
-This checkpoint addresses [#4810](https://github.com/morluto/rea/issues/4810),
+This checkpoint addresses [#4810](https://github.com/abusafyan-official/AS-Inspect/issues/4810),
 found in the [retained-investigation audit](retained-investigation-workflows.md).
 It changes the shared format interpretation used by CLI and MCP views, without
 adding a tool, changing a schema, projecting away source data, or rerunning a
@@ -58,7 +58,7 @@ benefit from a cache in a previous process.
 
 ## Inputs and measurement scope
 
-Baseline: `2c4338db1fdb7773e05376301c558cff2a0b4b80` (REA 6.6.0).
+Baseline: `2c4338db1fdb7773e05376301c558cff2a0b4b80` (AS Inspect 6.6.0).
 Node 24.18.0, npm 11.16.0, Linux x86-64 (AMD EPYC 7B12, kernel 6.1.0-53-cloud).
 The ELF producer reports pwntools 4.15.0, pyelftools 0.33, and Unicorn 2.1.2.
 The baseline's built runtime was preserved

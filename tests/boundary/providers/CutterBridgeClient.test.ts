@@ -1106,7 +1106,7 @@ describe("CutterBridgeClient: conservative platform checks", () => {
     ).resolves.toMatchObject({
       bridge_directory: join(
         "C:\\Users\\fixture\\AppData\\Local",
-        "REA",
+        "AS Inspect",
         "CutterBridge",
       ),
     });

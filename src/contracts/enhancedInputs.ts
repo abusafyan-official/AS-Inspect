@@ -40,7 +40,7 @@ export const enhancedInputSchemas = {
       .max(MAXIMUM_DISPATCH_METADATA_INPUT_BYTES)
       .optional()
       .describe(
-        "Largest target file REA reads into memory for binary metadata, in bytes. Omitted: 67108864 (64 MiB). The whole file counts, including every slice of a universal Mach-O. At most 1073741824 (1 GiB).",
+        "Largest target file AS Inspect reads into memory for binary metadata, in bytes. Omitted: 67108864 (64 MiB). The whole file counts, including every slice of a universal Mach-O. At most 1073741824 (1 GiB).",
       ),
   }),
   get_objc_classes: z.strictObject({ pattern: z.string().default("") }),

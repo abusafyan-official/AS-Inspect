@@ -560,7 +560,7 @@ const doctorDeadlineFired = (cause: unknown): boolean => {
   );
 };
 
-/** Name the fixed doctor deadline when it fires, without turning Codex's 30s into a REA knob. */
+/** Name the fixed doctor deadline when it fires, without turning Codex's 30s into a AS Inspect knob. */
 const doctorTransportDetail = (cause: unknown, budgetMs: number): string => {
   const message = errorMessage(cause);
   return doctorDeadlineFired(cause)

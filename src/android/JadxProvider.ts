@@ -239,7 +239,7 @@ interface RetainedSession {
   readonly bridgeHash: string;
 }
 
-/** One serialized, immutable APK session per REA instance, retired on idle or shutdown. */
+/** One serialized, immutable APK session per AS Inspect instance, retired on idle or shutdown. */
 export class JadxProvider implements AndroidAnalysisPort {
   #tail: Promise<void> = Promise.resolve();
   #pendingCleanup: PendingCleanup | undefined;

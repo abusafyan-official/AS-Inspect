@@ -452,7 +452,7 @@ it.each([false, true])(
       undefined,
       () => {
         throw new PrivateRuntimeRootUnavailableError(
-          "REA Windows native controls are unavailable: probe failure",
+          "AS Inspect Windows native controls are unavailable: probe failure",
           { retryable },
         );
       },
@@ -469,7 +469,7 @@ it.each([false, true])(
         retryable,
         userMessage: undefined,
         message: expect.stringContaining(
-          "REA Windows native controls are unavailable",
+          "AS Inspect Windows native controls are unavailable",
         ),
       },
     });

@@ -1,6 +1,6 @@
 # Ghidra Evidence projection
 
-Continues [#5337](https://github.com/morluto/rea/issues/5337). The bridge
+Continues [#5337](https://github.com/abusafyan-official/AS-Inspect/issues/5337). The bridge
 adapter supplied a complete `rawResult` for every successful operation, even
 when strict parsing preserved the same value in `normalized_result`. Function
 observation envelopes repeated their value and already-projected qualifications.

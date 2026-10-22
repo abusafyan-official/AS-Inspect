@@ -114,7 +114,7 @@ export const decodeXmlPropertyList = (text: string) => {
           );
         numbers.integer(exact);
         const decoded = Number(exact);
-        // Arbitrary-precision integers are a REA extension to CF's range.
+        // Arbitrary-precision integers are a AS Inspect extension to CF's range.
         return Number.isFinite(decoded) ? decoded : exact;
       }
       case "real": {

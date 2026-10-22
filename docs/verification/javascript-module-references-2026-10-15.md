@@ -106,7 +106,7 @@ cleanup retains its owner and private files for recovery. `--mode legacy` or
 `--mode references` runs one arm. Fresh runs
 reanalyze the artifact and can produce different parent identities/resource
 coverage; the verifier requires equal facts within its paired run. The measured
-run additionally used the preserved [8 GiB cgroup observer](https://github.com/morluto/rea/blob/b3bdabab694af1f9801eff7caf75001b92314a58/experiments/analysis-efficiency/resource-run.py)
+run additionally used the preserved [8 GiB cgroup observer](https://github.com/abusafyan-official/AS-Inspect/blob/b3bdabab694af1f9801eff7caf75001b92314a58/experiments/analysis-efficiency/resource-run.py)
 and its adjacent `resource_payload.py`; observer hashes are in the JSON.
 No application, complete bundle, raw observations or ambient environment is
 archived. Temporary exported/inline Evidence files are removed after successful

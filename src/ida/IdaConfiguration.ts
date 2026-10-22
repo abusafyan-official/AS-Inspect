@@ -30,7 +30,7 @@ const common = {
     .default(DEFAULT_IDA_REQUEST_TIMEOUT_MS),
   workspaceRoot: z
     .string()
-    .refine(isAbsolute, "workspaceRoot must be absolute on the REA host")
+    .refine(isAbsolute, "workspaceRoot must be absolute on the AS Inspect host")
     .optional(),
 };
 const registrationSchema = z
@@ -66,7 +66,7 @@ const registrationSchema = z
     "The native IDA MCP protocol requires attached mode",
   );
 
-/** An upstream MCP registration plus REA's database lifecycle selection. */
+/** An upstream MCP registration plus AS Inspect's database lifecycle selection. */
 export type IdaConfiguration = z.infer<typeof registrationSchema>;
 
 /** Select a protocol without changing existing attached/headless registrations. */
@@ -236,7 +236,7 @@ export const idaRegistrationTimeoutGuidance = (
       : ceilingMs === timeoutMs
         ? `This IDA request reached the registration timeoutMs deadline of ${String(timeoutMs)} ms (deadlineExpired).`
         : `This IDA request reached its ${String(timeoutMs)} ms deadline (deadlineExpired), within the registration timeoutMs ceiling of ${String(ceilingMs)} ms.`,
-  remediationAction: `Set timeoutMs in the JSON file named by REA_IDA_MCP_CONFIG to an integer from 1 to ${String(MAX_IDA_REQUEST_TIMEOUT_MS)} (omitted means ${String(DEFAULT_IDA_REQUEST_TIMEOUT_MS)}). REA applies the edited file on the next IDA connection after it re-reads the registration; an already open session keeps the timeout it connected with. Allow execution, cleanup and delivery headroom in the outer MCP client deadline. Confirm outstanding work and cleanup before retrying.`,
+  remediationAction: `Set timeoutMs in the JSON file named by REA_IDA_MCP_CONFIG to an integer from 1 to ${String(MAX_IDA_REQUEST_TIMEOUT_MS)} (omitted means ${String(DEFAULT_IDA_REQUEST_TIMEOUT_MS)}). AS Inspect applies the edited file on the next IDA connection after it re-reads the registration; an already open session keeps the timeout it connected with. Allow execution, cleanup and delivery headroom in the outer MCP client deadline. Confirm outstanding work and cleanup before retrying.`,
 });
 
 /** A REA_IDA_MCP_CONFIG rejection that names the setting it concerns. */

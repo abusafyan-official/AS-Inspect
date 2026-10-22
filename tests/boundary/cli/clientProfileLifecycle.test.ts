@@ -28,7 +28,7 @@ cliTest(
       mcp: {
         rea: {
           type: "local",
-          command: ["npx", "-y", "rea-agents@6.7.0", "mcp"],
+          command: ["npx", "-y", "as-inspect-agents@6.7.0", "mcp"],
         },
       },
       unrelated: "keep",
@@ -384,7 +384,7 @@ cliTest("uninstall names each retained skill directory", async ({ cli }) => {
     ["claude_code", claude],
   ] as const) {
     expect(skill?.detail).toContain(
-      `${client} (${directory}): retained (Skill manifest is not REA-owned.)`,
+      `${client} (${directory}): retained (Skill manifest is not AS Inspect-owned.)`,
     );
     expect(await readFile(join(directory, "SKILL.md"), "utf8")).toBe(
       "---\nname: unrelated\n---\n",

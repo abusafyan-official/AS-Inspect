@@ -513,7 +513,7 @@ const columnEvaluationFailure = (
     }
   };
   return new SqliteColumnEvaluationFailure(
-    `SQLite cannot evaluate selected column(s) of table ${JSON.stringify(table.name)} on REA's read-only connection: ${[
+    `SQLite cannot evaluate selected column(s) of table ${JSON.stringify(table.name)} on AS Inspect's read-only connection: ${[
       ...failures,
     ]
       .map(

@@ -125,7 +125,7 @@ describe("client registration launcher identity", () => {
     await mkdir(join(home, ".codex"));
     await writeFile(
       join(home, ".codex/config.toml"),
-      '[mcp_servers.rea]\ncommand = "npx"\nargs = ["-y", "rea-agents", "mcp"]\n',
+      '[mcp_servers.rea]\ncommand = "npx"\nargs = ["-y", "as-inspect-agents", "mcp"]\n',
     );
 
     const statuses = await readClientRegistrationStatuses(home);
@@ -133,7 +133,7 @@ describe("client registration launcher identity", () => {
     expect(statuses).toEqual([
       expect.objectContaining({
         client: "codex",
-        command: ["npx", "-y", "rea-agents", "mcp"],
+        command: ["npx", "-y", "as-inspect-agents", "mcp"],
         state: "stale",
       }),
     ]);
@@ -145,7 +145,7 @@ describe("client registration launcher identity", () => {
       join(home, ".claude.json"),
       JSON.stringify({
         mcpServers: {
-          rea: { command: "bunx", args: ["rea-agents", "mcp"] },
+          rea: { command: "bunx", args: ["as-inspect-agents", "mcp"] },
         },
       }),
     );
@@ -154,7 +154,7 @@ describe("client registration launcher identity", () => {
 
     expect(status).toMatchObject({
       client: "claude_code",
-      command: ["bunx", "rea-agents", "mcp"],
+      command: ["bunx", "as-inspect-agents", "mcp"],
       state: "stale",
     });
   });
@@ -180,7 +180,7 @@ describe("client registration launcher identity", () => {
     });
   });
 
-  it("does not use the REA process cwd to resolve a client's relative launcher path", async () => {
+  it("does not use the AS Inspect process cwd to resolve a client's relative launcher path", async () => {
     const home = await createTestTempDirectory("rea-registration-relative-");
     await mkdir(join(home, ".cursor"));
     const currentEntry = resolve("./rea.mjs");
@@ -234,7 +234,7 @@ describe("client registration launcher identity", () => {
       "rea-registration-version-drift-",
     );
     await mkdir(join(home, ".codex"));
-    const command = ["npx", "-y", "rea-agents@4.1.0", "mcp"];
+    const command = ["npx", "-y", "as-inspect-agents@4.1.0", "mcp"];
     await writeFile(
       join(home, ".codex/config.toml"),
       `[mcp_servers.rea]\ncommand = "${command[0]}"\nargs = ["${command[1]}", "${command[2]}", "${command[3]}"]\n`,
@@ -245,10 +245,10 @@ describe("client registration launcher identity", () => {
     expect(status).toMatchObject({
       client: "codex",
       command,
-      package_reference: "rea-agents@4.1.0",
+      package_reference: "as-inspect-agents@4.1.0",
       state: "stale",
       remediation: expect.stringContaining(
-        `current REA CLI package is ${PRODUCT_IDENTITY.packageVersion}`,
+        `current AS Inspect CLI package is ${PRODUCT_IDENTITY.packageVersion}`,
       ),
     });
     expect(status?.remediation).toContain("does not resolve package-runner");

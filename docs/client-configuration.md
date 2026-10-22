@@ -1,22 +1,22 @@
 # Client configuration and troubleshooting
 
 Use this reference when a client's configuration paths, profiles, trust settings,
-or schema limits affect REA. Start with [installation and setup](installation.md)
+or schema limits affect AS Inspect. Start with [installation and setup](installation.md)
 for the reviewed setup transaction and [client IDs](installation.md#supported-agents).
 The versioned verification notes below describe their stated runs; live service
 acceptance is verified only where explicitly recorded.
 
-## Fiddler Everywhere alongside REA
+## Fiddler Everywhere alongside AS Inspect
 
 Connect Fiddler Everywhere's MCP server separately for HTTP traffic debugging,
-preserving your REA client entry. See the
+preserving your AS Inspect client entry. See the
 [setup instructions and public skills](web-network-captures.md#fiddler-everywhere-mcp-and-public-skills).
 
 ## GitHub Copilot CLI
 
 For GitHub Copilot CLI 1.0.95, `gpt-4.1` model metadata can block ordinary
-chat with REA's full input-schema profile before sending a model request
-(`compaction_static_context_blocked`; [#1554](https://github.com/morluto/rea/issues/1554)).
+chat with AS Inspect's full input-schema profile before sending a model request
+(`compaction_static_context_blocked`; [#1554](https://github.com/abusafyan-official/AS-Inspect/issues/1554)).
 For the native offline OpenAI-compatible BYOK adapter, full-profile chat and
 analysis also passed with a distinct `COPILOT_PROVIDER_MODEL_ID` such as
 `rea-gpt-4.1`, `COPILOT_PROVIDER_WIRE_MODEL=gpt-4.1`, and that distinct ID selected
@@ -29,7 +29,7 @@ tool inventory on Linux using a loopback model fixture. After setup, add
 `"REA_MCP_INPUT_SCHEMA_PROFILE": "compact"` to the `env` object of the
 `mcpServers.rea` entry in Copilot's `mcp-config.json`, preserving its other
 settings, then restart the client. Compact advertisements can reduce nested
-schema constraints; REA still validates complete canonical inputs. Full-profile
+schema constraints; AS Inspect still validates complete canonical inputs. Full-profile
 `gpt-5.4` metadata is also verified locally. Live model API acceptance and
 Windows remain unverified; see [native client verification](testing.md).
 
@@ -53,14 +53,14 @@ in the file the installed app reads:
   private copy.
 - If `%LOCALAPPDATA%\Packages` holds a `Claude_<publisher ID>` package from
   another publisher, an `AnthropicPBC.Claude_<publisher ID>` package, or cannot
-  be read, REA cannot establish which file Claude
+  be read, AS Inspect cannot establish which file Claude
   Desktop reads. Setup, doctor and uninstall report that instead of falling
   back to `%APPDATA%`. Doctor then reports `claude_desktop` as invalid, and
   uninstall stops before removing anything for any client.
   The reported `AnthropicPBC.Claude_fnn82j28hfe8t` build can use the `Claude-3p`
-  deployment directory. REA recognizes that package as an unresolved location;
+  deployment directory. AS Inspect recognizes that package as an unresolved location;
   it does not assume that it reads the legacy AppData file or automatically
-  register in `Claude-3p`. See [#4432](https://github.com/morluto/rea/issues/4432)
+  register in `Claude-3p`. See [#4432](https://github.com/abusafyan-official/AS-Inspect/issues/4432)
   for the reported build and manual registration evidence.
 
 Quit Claude Desktop fully before approving setup; closing its window is not
@@ -87,12 +87,12 @@ clients' files there (VS Code, Trae, Devin and Hermes) and skill directories
 there. `npm install -g` run from such a process installs into the package's
 `LocalCache\Roaming\npm`, which other processes cannot see at the `%APPDATA%`
 path. Setup refuses to register a launcher stored in any MSIX package's
-private storage. Install REA from an ordinary terminal and rerun setup there.
+private storage. Install AS Inspect from an ordinary terminal and rerun setup there.
 
-Uninstall removes REA's entry from both the private copy and the `%APPDATA%`
+Uninstall removes AS Inspect's entry from both the private copy and the `%APPDATA%`
 file, including registrations that earlier releases wrote to `%APPDATA%`.
 
-REA recognizes only the MSIX package. A non-MSIX Claude Desktop installed
+AS Inspect recognizes only the MSIX package. A non-MSIX Claude Desktop installed
 beside it, which would read the `%APPDATA%` file, is not detected.
 
 The package identity, both file locations, the redirected view, and these
@@ -101,7 +101,7 @@ setup and doctor results were observed on Windows 11 with the MSIX build
 and outside the app. On that host, setup run from an ordinary terminal with
 the app quit wrote the package-private copy; after the app restarted, the
 entry was still present, doctor reported it aligned, and Claude Desktop's MCP
-log showed REA starting and answering `tools/list`. Uninstall against the real
+log showed AS Inspect starting and answering `tools/list`. Uninstall against the real
 app is unverified.
 
 ## Claude Code
@@ -109,9 +109,9 @@ app is unverified.
 Claude Code normally defers MCP tool definitions through tool search. It
 [turns tool search off](https://code.claude.com/docs/en/mcp#configure-tool-search)
 when `ANTHROPIC_BASE_URL` points to a non-first-party host, such as DeepSeek's
-Anthropic-compatible endpoint. It then sends every REA tool's name, description
+Anthropic-compatible endpoint. It then sends every AS Inspect tool's name, description
 and input schema with every request
-([#2019](https://github.com/morluto/rea/issues/2019)). On main at 04089d5be,
+([#2019](https://github.com/abusafyan-official/AS-Inspect/issues/2019)). On main at 04089d5be,
 with 172 tools, that payload measured about 496 KB with the default profile and
 about 290 KB with `compact`. By the o200k and cl100k tokenizers, that is roughly
 120k and 68k tokens. Compaction cannot remove tool definitions. If they nearly
@@ -132,12 +132,12 @@ and Claude Code reports that autocompact is thrashing. To avoid this:
   when that variable is set), then restart Claude Code. Setup keeps this
   override.
 
-The sizes above come from REA's own `tools/list`. A live Claude Code session
+The sizes above come from AS Inspect's own `tools/list`. A live Claude Code session
 against DeepSeek's API is unverified.
 
 For a client whose stdio reader rejects the complete catalog frame, add
-`"REA_MCP_OUTPUT_SCHEMA_PROFILE": "off"` to REA's `env` object and restart the
-client. This omits only advertised output schemas; REA still validates complete
+`"REA_MCP_OUTPUT_SCHEMA_PROFILE": "off"` to AS Inspect's `env` object and restart the
+client. This omits only advertised output schemas; AS Inspect still validates complete
 structured results against its canonical contracts. See [MCP output schema
 profiles](mcp-contracts.md#output-schemas).
 
@@ -148,7 +148,7 @@ Setup registers `rea` in `~/.kimi-code/mcp.json`, or
 creating a `.rea.backup` before updating an existing file. Kimi Code infers
 stdio from the `command` entry, so setup does not add a `type` field. New
 registrations include `startupTimeoutMs = 30000` and a `toolTimeoutMs` derived
-from REA's known provider allowance plus 120 seconds of operation
+from AS Inspect's known provider allowance plus 120 seconds of operation
 headroom. The default is 450000 ms, covering the default 330-second Ghidra
 startup; an explicit Ghidra startup timeout of 2700000 ms produces a 2820000 ms
 tool timeout. The startup allowance follows an explicitly selected Ghidra or
@@ -156,7 +156,7 @@ Hopper provider, and otherwise uses the larger known Ghidra/Hopper deadline.
 An explicit `REA_JEB_MCP_TIMEOUT_MS` deadline, shared by catalog discovery and
 each tools/call, also contributes to that maximum. For `ida` or `auto` selection, a valid IDA registration's parsed
 `timeoutMs` also contributes to that maximum; its default is 300000 ms.
-Setup forwards these explicitly selected REA deadlines and the input schema
+Setup forwards these explicitly selected AS Inspect deadlines and the input schema
 profile into the registration; unrelated process values are omitted. An
 explicit `REA_JADX_OPERATION_TIMEOUT_MS` is forwarded with the JADX
 registration but does not contribute to the derived tool timeout; raise
@@ -168,7 +168,7 @@ caller-selected values aligned and reports a non-blocking advisory when a tool
 timeout is shorter than the known provider allowance.
 Setup selects the compact input-schema advertisement for new or refreshed Kimi
 registrations unless their stored configuration or setup environment explicitly
-selects `REA_MCP_INPUT_SCHEMA_PROFILE=full` or `compact`. This keeps REA's
+selects `REA_MCP_INPUT_SCHEMA_PROFILE=full` or `compact`. This keeps AS Inspect's
 canonical tool validation unchanged while avoiding a Moonshot Kimi Code 2.2.0
 failure observed with the full catalog: its request was rejected because a
 single tool schema exceeded the provider's size limit. The limit is
@@ -199,13 +199,13 @@ Setup follows Pi's `PI_CODING_AGENT_DIR`: unset or empty selects the default;
 `~` and `~/` expand to the home directory; absolute paths and file URLs select
 that directory; relative paths stay relative to the command's working directory.
 On Windows, native paths, `~\`, and Git Bash/MSYS, Cygwin, and WSL drive paths
-are normalized as Pi does. Run REA and Pi from the same working directory when
+are normalized as Pi does. Run AS Inspect and Pi from the same working directory when
 using a relative override. Pi has no profiles: `OMP_PROFILE`, `PI_PROFILE`,
 `PI_CONFIG_DIR`, and OMP's `enabledServers`/`disabledServers` lists do not affect
 Pi registration. Doctor accepts an omitted `type` for stdio but reports a
 non-stdio type as invalid; `enabled: false` stays disabled.
 
-REA configures only the user scope. Pi also reads `.pi/mcp.json` in trusted
+AS Inspect configures only the user scope. Pi also reads `.pi/mcp.json` in trusted
 projects; a same-name project entry can replace the user entry or override its
 enabled state and exposure. Check that file if the user registration is aligned
 but unavailable in a project. An extension that registers `/mcp` can replace
@@ -245,12 +245,12 @@ standalone CLI check.
 
 Codex treats an unset or empty `CODEX_HOME` as `~/.codex`. Its MCP server
 registration supports `startup_timeout_sec` for connection initialization and
-`tool_timeout_sec` for each tool call. New REA registrations use a 30-second
+`tool_timeout_sec` for each tool call. New AS Inspect registrations use a 30-second
 startup timeout and a tool timeout derived from the known provider
 allowance plus 120 seconds of operation headroom. This yields 450 seconds for
 the default Ghidra allowance; an explicit Ghidra startup timeout of 2700
 seconds yields 2820 seconds. Setup preserves positive caller-selected timeout
-values in the REA entry, and doctor reports a non-blocking advisory when a tool
+values in the AS Inspect entry, and doctor reports a non-blocking advisory when a tool
 timeout is shorter than the known provider allowance. An explicitly selected
 JEB request budget also contributes to the allowance. A configured IDA
 registration's parsed `timeoutMs` contributes for `ida` or `auto` selection.
@@ -270,7 +270,7 @@ For OMP, setup writes a `type: "stdio"` entry to the user-level
 `rea` from that file's `disabledServers` list, which would otherwise hide the
 registration. Doctor treats an `enabled: false` entry as active when
 `enabledServers` lists `rea`, as OMP does, unless `disabledServers` also lists
-it. Run setup under each profile that should load REA.
+it. Run setup under each profile that should load AS Inspect.
 
 ## Hermes
 
@@ -286,7 +286,7 @@ plain Hermes CLI commands do. An explicit `HERMES_HOME` pointing to
 `profiles/<name>` selects that named profile directly. An invalid, missing or
 deleted sticky profile is reported instead of writing into the default home;
 repair the profile or run `hermes profile use default` before retrying.
-REA follows `HERMES_HOME` whitespace trimming, environment-variable expansion,
+AS Inspect follows `HERMES_HOME` whitespace trimming, environment-variable expansion,
 and home expansion before resolving that profile. Setup previews the resolved
 configuration and skill destinations; doctor and uninstall use those same paths.
 
@@ -334,7 +334,7 @@ setup installs its skill copy there.
 The global MCP path is a plain JSON file; setup preserves every other server
 and top-level key when it upserts `rea`. WorkBuddy also reads a project-level
 `<project>/.workbuddy/mcp.json`, which setup does not touch: it registers the
-user-level file only. Loading this registration and real REA tool calls
+user-level file only. Loading this registration and real AS Inspect tool calls
 through WorkBuddy are verified.
 
 ## ZCode
@@ -349,10 +349,10 @@ ZCode reads the user-scope `~/.agents/mcp.json` fallback only while the native
 `.zcode` config defines no servers at all, with no merging. When setup writes
 the first native server into an empty table, it copies the fallback's
 `mcpServers` entries into the native table so they keep loading, and leaves
-the fallback file untouched. Existing REA environment overrides are preserved
+the fallback file untouched. Existing AS Inspect environment overrides are preserved
 when refreshing its command. A malformed or unreadable fallback file fails setup instead of
 being silently suppressed; repair or remove it and rerun. Uninstall removes an
-REA-owned `rea` entry from both the native table and the fallback, backing up
+AS Inspect-owned `rea` entry from both the native table and the fallback, backing up
 each changed file, so an emptied native table cannot load a leftover fallback
 registration; other fallback servers, settings and a foreign `rea` entry are
 kept. ZCode disables a
@@ -365,7 +365,7 @@ writing a registration ZCode cannot load.
 
 DeepSeek Harness registers MCP clients through a Cordis YAML patch sequence
 rather than a `mcpServers` object. `rea setup --client dsh` appends (or
-replaces) the REA entry in the home patch `$DSH_HOME/cordis.patch.yml`
+replaces) the AS Inspect entry in the home patch `$DSH_HOME/cordis.patch.yml`
 (`~/.dsh/cordis.patch.yml` when `DSH_HOME` is unset), preserving unrelated
 patches and comments. `rea doctor --client dsh` checks that same entry id.
 `rea uninstall` removes it by scanning supported clients; uninstall takes no
@@ -377,7 +377,7 @@ does: unset, empty or whitespace-only values use `~/.dsh` and `~/.agents`,
 respectively. Bare `~`, `~/` and `~\` expand to the user home; other relative
 values resolve against the command's working directory. Nonblank values retain
 their original spaces, and the agents root is independent of the Harness home.
-Run REA and Harness from the same working directory when using relative overrides.
+Run AS Inspect and Harness from the same working directory when using relative overrides.
 The written entry is:
 
 ```yaml
@@ -393,18 +393,18 @@ The written entry is:
 
 Setup preserves caller-owned Cordis expressions and replaces launcher fields
 with literal values that doctor can verify. It refuses to edit an expression
-that produces the entire REA config, or a group-targeted REA insertion. Use a
+that produces the entire AS Inspect config, or a group-targeted AS Inspect insertion. Use a
 literal config and a root-level insertion as shown above.
 
 For a global npm installation, the launcher is under
-`$(npm root -g)/rea-agents/scripts/rea.mjs`. Restart Harness after setup; it
+`$(npm root -g)/as-inspect-agents/scripts/rea.mjs`. Restart Harness after setup; it
 exposes tools as `mcp__rea__<tool_name>`. Run `rea setup --skill --dry-run`,
 review the destination, then `rea setup --skill --yes` to install the workflow
 in `~/.agents/skills` (`$DSH_AGENTS_HOME/skills` when configured); Harness
 discovers that directory, and its native `skill` tool can load
 `reverse-engineer-anything`.
 
-REA's optional [native client verification](testing.md#end-to-end-integration-and-golden-evidence)
+AS Inspect's optional [native client verification](testing.md#end-to-end-integration-and-golden-evidence)
 checks headless chat, skill loading, all tool input schemas and actual analysis
 using the installed Harness and a local model fixture. This establishes the
 Harness integration, with live DeepSeek API compatibility remaining unverified.
@@ -415,12 +415,12 @@ for its native configuration contract.
 
 For OpenCode, setup writes the V1 `mcp.rea` entry, which OpenCode V1 and V2
 both load. If the configuration already uses OpenCode V2's native
-`mcp.servers` table, setup registers REA there instead and replaces any earlier
-`mcp.rea` entry from REA. Setup honors `OPENCODE_CONFIG_DIR` and
+`mcp.servers` table, setup registers AS Inspect there instead and replaces any earlier
+`mcp.rea` entry from AS Inspect. Setup honors `OPENCODE_CONFIG_DIR` and
 `OPENCODE_CONFIG`, preferring the later-loaded JSONC file when both JSON and
 JSONC exist. The ordinary XDG global configuration still participates when a
 custom directory is selected. Doctor checks the merged user registration; uninstall removes
-REA-owned entries from every applicable user file so an older entry cannot
+AS Inspect-owned entries from every applicable user file so an older entry cannot
 become active again. Malformed applicable files block setup before changes.
 
 Grok Build loads `[mcp_servers.rea]` from `$GROK_HOME/config.toml`, or from
@@ -441,7 +441,7 @@ the data directory as aligned. Ask the Grok Bot chat to add a custom MCP
 server named `rea` that runs on the Bot's computer:
 
 ```bash
-npx -y rea-agents@<version> mcp
+npx -y as-inspect-agents@<version> mcp
 ```
 
 Do not put credentials in that command or its arguments. `rea doctor --client grok_bot`
