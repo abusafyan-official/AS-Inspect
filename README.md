@@ -25,13 +25,15 @@ On Windows, static PE analysis, ASAR extraction, framework detection, and securi
 
 ### Set up your agent
 
-With Python installed, clone and register AS Inspect:
+To set up AS Inspect on any Windows PC (auto-configures Python & dependencies if missing):
 
 ```powershell
 git clone https://github.com/abusafyan-official/AS-Inspect.git
 cd AS-Inspect
-python setup.py
+setup.bat
 ```
+
+*(Or run `python setup.py` if Python is already configured).*
 
 Choose your agents, review the proposed changes, and approve them. Setup adds AS Inspect's MCP server and matching workflow instructions, with backups of existing configuration. Restart your agent afterward.
 
