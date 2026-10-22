@@ -21,70 +21,74 @@
 
 ## Quick Start
 
-### Set Up Your Agent (MCP Integration)
+On Windows, static PE analysis, ASAR extraction, framework detection, and security capability mapping require no external debuggers or disassemblers. Built-in parsers read binaries safely without execution.
 
-AS Inspect connects AI coding agents (Claude Code, Cursor, Gemini CLI, Grok, and Antigravity) to native Windows analysis tools over Model Context Protocol (MCP):
+### Set up your agent
+
+With Python installed, clone and register AS Inspect:
 
 ```powershell
 git clone https://github.com/abusafyan-official/AS-Inspect.git
 cd AS-Inspect
+python setup.py
 ```
 
-Register the MCP server in your agent configuration (`claude_desktop_config.json`, `cursor`, or `antigravity`):
+Choose your agents, review the proposed changes, and approve them. Setup adds AS Inspect's MCP server and matching workflow instructions, with backups of existing configuration. Restart your agent afterward.
 
-```json
-{
-  "mcpServers": {
-    "as-inspect": {
-      "command": "python",
-      "args": ["-m", "crates/as-inspect-mcp/src/main.rs"]
-    }
-  }
-}
-```
+Setup supports Claude Code, Cursor, Gemini CLI, Grok Build, and Antigravity. See [installation and setup](https://github.com/abusafyan-official/AS-Inspect/blob/main/README.md#what-you-can-analyze) for provider configuration and manual MCP registration.
 
-Restart your agent afterward.
+MCP uses compact input schemas by default to reduce context overhead. Set `AS_INSPECT_MCP_PROFILE=full` in your MCP registration when you need the complete advertised field guidance and nested validation details. Both profiles keep the full tool set and canonical server validation.
 
----
+### Ask your agent
 
-### Ask Your Agent
+> *"Understand how file operations and network requests work in the target app, show me the evidence, and explain the security capabilities."*
 
-> *"Inspect how network requests and file operations work in `app.exe`, cite the evidence, and explain the security capabilities."*
+Replace target app with your binary (e.g. `notepad.exe` or `app.asar`) and the feature you want to understand.
 
-Replace `app.exe` with your target file. The agent invokes AS Inspect tools, retrieves verifiable findings, and cites evidence IDs (`EV-000123`).
+### Use the terminal
 
----
+Inspect an extracted JavaScript/Electron app directory or ASAR:
 
-### Use the Terminal (CLI)
-
-AS Inspect automatically handles dependencies on first run.
-
-#### 1. Inspect an Executable, DLL, or Folder
 ```powershell
-python apps/cli/as_inspect_cli.py analyze C:\Windows\System32\notepad.exe --markdown report.md
+python apps/cli/as_inspect_cli.py analyze "C:/Program Files/App/resources/app.asar" --markdown
 ```
 
-#### 2. Inspect an Extracted JavaScript / Electron App Directory or ASAR
-```powershell
-python apps/cli/as_inspect_cli.py analyze "C:\Users\username\AppData\Local\Programs\App\resources\app.asar"
-```
-The result includes modules, imports, Electron runtime boundaries, and their evidence.
+The result includes modules, imports, Electron boundaries, and their evidence. Replace the path with your target, such as `"C:/Windows/System32/notepad.exe"`.
 
-#### 3. Calculate Cryptographic Hashes
+To use the `as-inspect` command for regular use:
+
 ```powershell
+python apps/cli/as_inspect_cli.py analyze target.exe --markdown report.md
+```
+
+For native analysis, configure an AI provider first if using optional LLM explanation layers. See the CLI commands below for native inspection, hashes, and reports:
+
+```powershell
+# Calculate cryptographic hashes
 python apps/cli/as_inspect_cli.py hash target.exe
-```
 
-#### 4. Export Interactive Searchable Dark-Mode HTML Report
-```powershell
+# Detect frameworks (.NET, Electron, Python, Qt)
+python apps/cli/as_inspect_cli.py detect target.exe
+
+# Generate interactive dark-mode HTML report
 python apps/cli/as_inspect_cli.py report target.exe --format html > report.html
 ```
 
+### Update AS Inspect
+
+AS Inspect changes quickly, and new releases include frequent capability updates. Keep your installation up to date:
+
+```powershell
+git pull origin main
+```
+
+To refresh your agent registrations and analyzers, run the setup command printed by the update.
+
 ---
 
-## How AS Inspect Works
+## How AS Inspect works
 
-Your agent calls AS Inspect through MCP to inspect the target and trace relevant code. AS Inspect returns findings with their evidence. The agent uses them to ask follow-up questions, explain the behavior, or audit and implement a feature. CLI commands use the same workflows.
+Your agent calls AS Inspect through MCP to inspect the target and trace relevant code. AS Inspect returns findings with their evidence. The agent uses them to ask follow-up questions, explain the behavior, or write and test an implementation. CLI commands use the same workflows.
 
 <p align="center">
   <img src="assets/figures/as-inspect-investigation-flow.svg" alt="AS Inspect investigation flow" width="100%">
@@ -94,9 +98,11 @@ $$\text{Observed Fact} \neq \text{Inference} \neq \text{AI Explanation}$$
 
 ---
 
-## What You Can Analyze
+## What you can analyze
 
-Target | What AS Inspect Returns | Requirements
+AS Inspect requires Windows x64 and Python 3.8+. Built-in tools and target coverage include:
+
+Target | What AS Inspect returns | Requirements and guide
 ---|---|---
 **Native Binaries (`.exe`, `.dll`, `.sys`)** | Architecture (x86/x64/ARM), entry point, image base, Shannon section entropy, imports, exports | Built-in native parser; no debugger or runtime required
 **PE Authenticode Certificates** | WIN_CERTIFICATE table presence, certificate directory size, signed vs. unsigned status | Built-in static PE inspection
@@ -107,6 +113,8 @@ Target | What AS Inspect Returns | Requirements
 **Windows Installers (`.msi`)** | OLE Compound Document Binary validation and stream structure verification | Built-in header validator
 **Application Folders & Bundles** | Full directory trees, key application manifests (`package.json`, `.config`), and binary assets | Built-in recursive filesystem scanner
 **Discovered URLs & Endpoints** | Static URLs, domains, and paths discovered in binary and script sections | Built-in scanner; never performs active outbound network calls
+
+Static JavaScript, PE, and ASAR inspection read the supplied files without running the application. AS Inspect guarantees non-execution safety.
 
 ---
 
@@ -122,15 +130,6 @@ tests/test_pe_and_edgecases.py ...                                       [100%]
 
 ============================== 7 passed in 0.56s ==============================
 ```
-
-Tests cover:
-- Cryptographic hash calculation (MD5, SHA-1, SHA-256)
-- Secret masking & API token redaction
-- JavaScript static import & URL discovery
-- SQLite persistence & schema integrity
-- Real Windows x64 binary execution (`python.exe`, `notepad.exe`)
-- Malformed & truncated PE file fault tolerance (safe failure without crash)
-- 0-byte empty file edge case handling
 
 ---
 
