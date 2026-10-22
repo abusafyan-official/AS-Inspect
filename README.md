@@ -27,7 +27,7 @@
 
 [Quick start](#quick-start) · [How AS Inspect works](#how-rea-works) · [What you can analyze](#what-you-can-analyze) · [Showcases](#showcases) · [FAQ](#faq) · [Documentation](#documentation)
 
-<code>npx as-inspect-agents setup</code>
+<code>git clone https://github.com/abusafyan-official/AS-Inspect.git && cd AS-Inspect && node scripts/as-inspect.mjs setup</code>
 
 </div>
 
@@ -45,15 +45,7 @@
 
 <br /><br />
 
-<table aria-label="AS Inspect community">
-<tr>
-<td align="center" width="360">
-  <a href="https://discord.gg/GkcryMnJDM">
-  </a><br />
-  <sub>Discord · Q&amp;A · Show and Tell</sub>
-</td>
-</tr>
-</table>
+
 
 <br />
 
@@ -81,7 +73,7 @@ checks. Recovery steps are in `docs/installation.md` under
 With Node.js and npm installed, run:
 
 ```bash
-npx as-inspect-agents setup
+git clone https://github.com/abusafyan-official/AS-Inspect.git && cd AS-Inspect && node scripts/as-inspect.mjs setup
 ```
 
 Choose your agents, review the proposed changes, and approve them. Setup adds
@@ -113,7 +105,7 @@ Replace Notes with your target app and the feature you want to understand.
 Inspect an extracted JavaScript/Electron app directory or ASAR:
 
 ```bash
-npx -y as-inspect-agents@latest analyze-javascript-application /absolute/path/to/app --json
+node scripts/as-inspect.mjs analyze-javascript-application /absolute/path/to/app --json
 ```
 
 The result includes modules, imports, Electron boundaries and their evidence.
@@ -158,12 +150,12 @@ by the update.
 If you use `npx`, update your agent setup with:
 
 ```bash
-npx as-inspect-agents@latest setup
+node scripts/as-inspect.mjs setup
 ```
 
 Review the setup changes and restart your agent. For one-off CLI commands,
-use `npx as-inspect-agents@latest` followed by the command. With Bun, use
-`bunx as-inspect-agents@latest` in place of `npx as-inspect-agents@latest`.
+use `node scripts/as-inspect.mjs` followed by the command. With Bun, use
+`bunx as-inspect-agents@latest` in place of `node scripts/as-inspect.mjs`.
 
 ## How AS Inspect works
 
@@ -309,7 +301,7 @@ Hopper manually if needed. See
 <details>
 <summary><strong>What does installing the skill from skills.sh do?</strong></summary>
 
-The skill supplies investigation instructions for your agent. Use `npx as-inspect-agents setup`
+The skill supplies investigation instructions for your agent. Use `git clone https://github.com/abusafyan-official/AS-Inspect.git && cd AS-Inspect && node scripts/as-inspect.mjs setup`
 to register AS Inspect's MCP server and install the matching instructions, then restart
 your agent. See [skill-only installation](docs/installation.md#skill-only-installation).
 
@@ -346,7 +338,7 @@ as-inspect update
 For agent setup through `npx`:
 
 ```bash
-npx as-inspect-agents@latest setup
+node scripts/as-inspect.mjs setup
 ```
 
 If you're using an agent, complete the [setup refresh](#update-rea) and restart
