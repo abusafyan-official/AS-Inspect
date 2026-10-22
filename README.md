@@ -5,8 +5,8 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/AbuSafyan/AS-Inspect/actions"><img src="https://img.shields.io/badge/build-passing-brightgreen.svg" alt="Build Status"></a>
-  <a href="https://github.com/AbuSafyan/AS-Inspect/releases"><img src="https://img.shields.io/badge/version-0.1.0-blue.svg" alt="Version"></a>
+  <a href="https://github.com/abusafyan-official/AS-Inspect/actions"><img src="https://img.shields.io/badge/build-passing-brightgreen.svg" alt="Build Status"></a>
+  <a href="https://github.com/abusafyan-official/AS-Inspect/releases"><img src="https://img.shields.io/badge/version-0.1.0-blue.svg" alt="Version"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License"></a>
   <a href="#"><img src="https://img.shields.io/badge/platform-Windows%20x64-informational.svg" alt="Platform"></a>
   <a href="#"><img src="https://img.shields.io/badge/MCP-Ready-purple.svg" alt="MCP"></a>
@@ -72,7 +72,7 @@ flowchart TD
 Clone and install dependencies:
 
 ```powershell
-git clone https://github.com/AbuSafyan/AS-Inspect.git
+git clone https://github.com/abusafyan-official/AS-Inspect.git
 cd AS-Inspect
 python -m pip install -r requirements.txt
 ```
