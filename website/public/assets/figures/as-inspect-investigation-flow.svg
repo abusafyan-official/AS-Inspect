@@ -32,7 +32,7 @@ svg{background-color:#181825}
       <text x="220" y="435" font-size="31" fill="#5b6570">Your agent + local target</text>
       <text x="220" y="496" font-size="31" fill="#5b6570">App / binary / browser</text>
       <text x="665" y="357" font-size="37" font-weight="700">2. Inspect &amp; trace</text>
-      <text x="665" y="454" font-size="80" font-weight="700" fill="#294f82">AS Inspect</text>
+      <text x="665" y="454" font-size="50" font-weight="700" fill="#294f82">AS Inspect</text>
       <text x="665" y="508" font-size="35" fill="#5b6570">CLI / MCP</text>
       <text x="1109" y="363" font-size="35" font-weight="700">3. Read the evidence</text>
       <text x="1109" y="438" font-size="32" fill="#5b6570">Code / references /</text>

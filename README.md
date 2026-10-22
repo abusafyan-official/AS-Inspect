@@ -25,9 +25,11 @@
 
 **[Website](https://https://github.com/abusafyan-official/AS-Inspect/) · [Guides](https://https://github.com/abusafyan-official/AS-Inspect/guides/) · [Showcases](https://https://github.com/abusafyan-official/AS-Inspect/showcase/)**
 
-[Quick start](#quick-start) · [How AS Inspect works](#how-rea-works) · [What you can analyze](#what-you-can-analyze) · [Showcases](#showcases) · [FAQ](#faq) · [Documentation](#documentation)
+[Quick start](#quick-start) · [How AS Inspect works](#how-rea-works) · [What you can analyze](#what-you-can-analyze)  · [FAQ](#faq) · [Documentation](#documentation)
 
-<code>git clone https://github.com/abusafyan-official/AS-Inspect.git && cd AS-Inspect && node scripts/as-inspect.mjs setup</code>
+<code>git clone https://github.com/abusafyan-official/AS-Inspect.git
+cd AS-Inspect
+node scripts/as-inspect.mjs setup</code>
 
 </div>
 
@@ -73,7 +75,9 @@ checks. Recovery steps are in `docs/installation.md` under
 With Node.js and npm installed, run:
 
 ```bash
-git clone https://github.com/abusafyan-official/AS-Inspect.git && cd AS-Inspect && node scripts/as-inspect.mjs setup
+git clone https://github.com/abusafyan-official/AS-Inspect.git
+cd AS-Inspect
+node scripts/as-inspect.mjs setup
 ```
 
 Choose your agents, review the proposed changes, and approve them. Setup adds
@@ -86,7 +90,7 @@ Setup supports Claude Code, Codex, Cursor, Gemini CLI, Grok Build and
 manual MCP registration.
 
 MCP uses compact input schemas by default to reduce context overhead. Set
-`REA_MCP_INPUT_SCHEMA_PROFILE=full` in your MCP registration when you need the
+`AS_INSPECT_MCP_INPUT_SCHEMA_PROFILE=full` in your MCP registration when you need the
 complete advertised field guidance and nested validation details. Both profiles
 keep the full tool set and canonical server validation. See
 "Compact input schema profile" in the MCP contracts guide.
@@ -111,7 +115,7 @@ node scripts/as-inspect.mjs analyze-javascript-application /absolute/path/to/app
 The result includes modules, imports, Electron boundaries and their evidence.
 Replace the path with your target, such as `"D:/apps/example"` on Windows.
 
-To install the `rea` command for regular use:
+To install the `as-inspect` command for regular use:
 
 ```bash
 npm install --global as-inspect-agents
@@ -228,16 +232,12 @@ Native formats and host support vary by provider. See
 [experimental Windows Ghidra support](docs/windows-ghidra-p0.md).
 Ghidra also supports [16-bit DOS analysis](docs/ghidra-dos.md).
 For large binaries, raise the provider's startup deadline with
-`REA_GHIDRA_STARTUP_TIMEOUT_MS` or `REA_HOPPER_STARTUP_TIMEOUT_MS`.
+`AS_INSPECT_GHIDRA_STARTUP_TIMEOUT_MS` or `AS_INSPECT_HOPPER_STARTUP_TIMEOUT_MS`.
 For provider selection, see the [CLI guide](docs/cli.md#choose-a-provider).
 Check [release availability](docs/installation.md#released-package-and-main)
 for features added since the latest npm release.
 
-## Showcases
-
-[![Illustrations of the DX-Ball sound-pan, Notion clipboard-bridge, and TH04 bullet-ring showcases](docs/assets/rea-showcases.png)](https://https://github.com/abusafyan-official/AS-Inspect/showcase/)
-
-### DX-Ball: reconstruct a sound-pan calculation
+## DX-Ball: reconstruct a sound-pan calculation
 
 Follow a sound call into its position-to-pan helper, inspect the instructions,
 and turn incomplete pseudocode into C. The reconstruction passes 3,205
@@ -301,7 +301,9 @@ Hopper manually if needed. See
 <details>
 <summary><strong>What does installing the skill from skills.sh do?</strong></summary>
 
-The skill supplies investigation instructions for your agent. Use `git clone https://github.com/abusafyan-official/AS-Inspect.git && cd AS-Inspect && node scripts/as-inspect.mjs setup`
+The skill supplies investigation instructions for your agent. Use `git clone https://github.com/abusafyan-official/AS-Inspect.git
+cd AS-Inspect
+node scripts/as-inspect.mjs setup`
 to register AS Inspect's MCP server and install the matching instructions, then restart
 your agent. See [skill-only installation](docs/installation.md#skill-only-installation).
 
@@ -360,20 +362,6 @@ For exact options, prerequisites and result contracts:
 - [Roadmap](docs/roadmap.md): planned work and capability trackers.
 
 Report vulnerabilities through [SECURITY.md](SECURITY.md).
-
-## Star history
-
-🎉 **300,000 GitHub stars — thank you!**
-
-Thanks to everyone using AS Inspect, reporting bugs, requesting features, testing builds, and contributing fixes.
-
-<a href="https://www.star-history.com/?repos=morluto%2Frea&amp;type=date">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=abusafyan-official/AS-Inspect&amp;type=date&amp;theme=dark&amp;legend=top-left" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=abusafyan-official/AS-Inspect&amp;type=date" />
-    <img alt="AS Inspect GitHub star history" src="https://api.star-history.com/chart?repos=abusafyan-official/AS-Inspect&amp;type=date" />
-  </picture>
-</a>
 
 ## Disclaimer
 

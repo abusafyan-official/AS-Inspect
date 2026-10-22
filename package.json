@@ -1,7 +1,7 @@
 {
   "name": "as-inspect-agents",
   "mcpName": "io.github.abusafyan-official/AS-Inspect",
-  "version": "6.7.0",
+  "version": "1.0.0",
   "description": "AS Inspect — Reverse engineer anything with evidence. Developed by Abu Safyan.",
   "license": "MIT",
   "repository": {
