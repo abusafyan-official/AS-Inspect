@@ -23,7 +23,7 @@
 
 <a href="https://trendshift.io/repositories/82054?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-82054" target="_blank" rel="noopener noreferrer"><img src="https://trendshift.io/api/badge/repositories/82054" alt="morluto%2Frea | Trendshift" width="250" height="55"/></a>
 
-**[Website](https://rea.tools/) · [Guides](https://rea.tools/guides/) · [Showcases](https://rea.tools/showcase/)**
+**[Website](https://https://github.com/abusafyan-official/AS-Inspect/) · [Guides](https://https://github.com/abusafyan-official/AS-Inspect/guides/) · [Showcases](https://https://github.com/abusafyan-official/AS-Inspect/showcase/)**
 
 [Quick start](#quick-start) · [How AS Inspect works](#how-rea-works) · [What you can analyze](#what-you-can-analyze) · [Showcases](#showcases) · [FAQ](#faq) · [Documentation](#documentation)
 
@@ -33,7 +33,7 @@
 
 > [!IMPORTANT]
 > Get AS Inspect from [abusafyan-official/AS-Inspect](https://github.com/abusafyan-official/AS-Inspect),
-> [rea.tools](https://rea.tools/), or the [as-inspect-agents npm package](https://www.npmjs.com/package/as-inspect-agents).
+> [https://github.com/abusafyan-official/AS-Inspect](https://https://github.com/abusafyan-official/AS-Inspect/), or the [as-inspect-agents npm package](https://www.npmjs.com/package/as-inspect-agents).
 > Follow the installation and release links from these official sources. A similar
 > repository name or copied README does not establish that a download is official.
 
@@ -41,7 +41,7 @@
 
 <br />
 
-<img src="docs/assets/rea-hopper-analysis.png" alt="AS Inspect launching its analysis bridge inside Hopper while inspecting a native binary" width="1200" />
+<img src="docs/assets/as-inspect-hopper-analysis.png" alt="AS Inspect launching its analysis bridge inside Hopper while inspecting a native binary" width="1200" />
 
 <br /><br />
 
@@ -49,8 +49,6 @@
 <tr>
 <td align="center" width="360">
   <a href="https://discord.gg/GkcryMnJDM">
-    <img src="docs/assets/discord.svg" height="42" alt="Discord" /><br />
-    <strong>Join the Reverse Engineering Community</strong>
   </a><br />
   <sub>Discord · Q&amp;A · Show and Tell</sub>
 </td>
@@ -69,7 +67,7 @@ AS Inspect connects your agent to tools for inspecting native binaries, JavaScri
 
 Setup registers AS Inspect with your agent and installs matching workflow instructions. Native analysis can use an existing Hopper, Ghidra, or IDA installation; setup can optionally install Hopper with approval. Static JavaScript analysis needs no native analysis engine.
 
-> **[Visit the AS Inspect website](https://rea.tools/)** for setup instructions, illustrated guides, and real case studies.
+> **[Visit the AS Inspect website](https://https://github.com/abusafyan-official/AS-Inspect/)** for setup instructions, illustrated guides, and real case studies.
 
 ## Quick start
 
@@ -174,9 +172,9 @@ AS Inspect returns findings with their evidence. The agent uses them to ask foll
 questions, explain the behavior, or write and test an implementation.
 CLI commands use the same workflows.
 
-![AS Inspect investigation flow: your agent asks about a local target, AS Inspect inspects and traces it using analysis tools, and the agent uses the returned code, references and unknowns to explain, implement and test.](assets/figures/as-inspect-investigation-flow.svg)
+![AS Inspect investigation flow: your agent asks about a local target, AS Inspect inspects and traces it using analysis tools, and the agent uses the returned code, references and unknowns to explain, implement and test.](website/public/assets/figures/as-inspect-investigation-flow.svg)
 
-[Open the full-size figure](assets/figures/as-inspect-investigation-flow.svg).
+[Open the full-size figure](website/public/assets/figures/as-inspect-investigation-flow.svg).
 
 <a id="current-status"></a>
 
@@ -245,7 +243,7 @@ for features added since the latest npm release.
 
 ## Showcases
 
-[![Illustrations of the DX-Ball sound-pan, Notion clipboard-bridge, and TH04 bullet-ring showcases](docs/assets/rea-showcases.png)](https://rea.tools/showcase/)
+[![Illustrations of the DX-Ball sound-pan, Notion clipboard-bridge, and TH04 bullet-ring showcases](docs/assets/rea-showcases.png)](https://https://github.com/abusafyan-official/AS-Inspect/showcase/)
 
 ### DX-Ball: reconstruct a sound-pan calculation
 
@@ -253,7 +251,7 @@ Follow a sound call into its position-to-pan helper, inspect the instructions,
 and turn incomplete pseudocode into C. The reconstruction passes 3,205
 original-x86 cases and reproduces all 63 compiled function bytes.
 
-[Read the case study](https://rea.tools/showcase/dx-ball/) ·
+[Read the case study](https://https://github.com/abusafyan-official/AS-Inspect/showcase/dx-ball/) ·
 [Reconstruction repository](https://github.com/N0zoM1z0/dx-ball)
 
 ### Notion: trace the Electron clipboard bridge
@@ -261,7 +259,7 @@ original-x86 cases and reproduces all 63 compiled function bytes.
 Find the renderer's clipboard API, follow it through preload and IPC into the
 main process, and inspect the rich clipboard format.
 
-[Read the case study](https://rea.tools/showcase/notion/)
+[Read the case study](https://https://github.com/abusafyan-official/AS-Inspect/showcase/notion/)
 
 ### TH04: recover a DOS bullet-ring calculation
 
@@ -269,7 +267,7 @@ Inspect the original PC-98 game's 16-bit instructions, recover the fixed and
 aimed angle calculations, and compare the reconstructed C++ with the
 historical compiler output.
 
-[Read the case study](https://rea.tools/showcase/th04/) ·
+[Read the case study](https://https://github.com/abusafyan-official/AS-Inspect/showcase/th04/) ·
 [Reconstruction repository](https://github.com/N0zoM1z0/th04)
 
 If you've used AS Inspect on something interesting, we'd love to see it. Share your
@@ -359,7 +357,7 @@ with your AS Inspect version, target type, steps to reproduce and error output.
 
 ## Documentation
 
-Start with the website's [worked guides](https://rea.tools/guides/).
+Start with the website's [worked guides](https://https://github.com/abusafyan-official/AS-Inspect/guides/).
 For exact options, prerequisites and result contracts:
 
 - [Installation and setup](docs/installation.md): agent registration, provider configuration, updates and uninstall.
