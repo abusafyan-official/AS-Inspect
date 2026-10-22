@@ -16,12 +16,14 @@ from .javascript import JavaScriptAnalyzer
 from .msi import MsiAnalyzer
 from .pe import PeAnalyzer
 from .strings import StringAnalyzer
+from .security_caps import SecurityCapabilitiesAnalyzer
 
 class AnalysisPipeline:
     def __init__(self):
         self.analyzers = [
             HashAnalyzer(),
             PeAnalyzer(),
+            SecurityCapabilitiesAnalyzer(),
             FrameworkDetector(),
             StringAnalyzer(),
             AsarAnalyzer(),
