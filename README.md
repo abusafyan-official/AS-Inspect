@@ -84,28 +84,11 @@ python apps/cli/as_inspect_cli.py report target.exe --format html > report.html
 
 ## How AS Inspect Works
 
-Your agent or CLI calls AS Inspect to inspect the target without execution. AS Inspect returns structured findings with their exact evidence:
+Your agent calls AS Inspect through MCP to inspect the target and trace relevant code. AS Inspect returns findings with their evidence. The agent uses them to ask follow-up questions, explain the behavior, or audit and implement a feature. CLI commands use the same workflows.
 
-```
-Target (.exe, .dll, .msi, .asar, folder)
-       │
-       ▼
-[ Pipeline Validation (Non-Execution Guarantee) ]
-       │
-       ├──► Hash Analyzer: MD5, SHA-1, SHA-256 digests
-       ├──► PE Header & Section Entropy Engine: x86/x64/ARM, entry point, packer signatures
-       ├──► Framework Detector: Electron, .NET, Python (PyInstaller), Qt, JVM
-       ├──► Security Capabilities Matrix: Maps Win32 imports to network, memory, and persistence behaviors
-       ├──► ASAR & JavaScript AST: Reads Electron bundles and module graphs safely
-       └──► String & URL Scanner: Extracts printable strings with automatic secret masking (sk-***)
-       │
-       ▼
-[ Structured Evidence Ledger ] (EV-0001, EV-0002...)
-       │
-       ├──► Local SQLite Database (Embedded audit history)
-       ├──► Interactive HTML / Markdown / JSON Reports
-       └──► Optional AI Layer (Strict evidence citations)
-```
+<p align="center">
+  <img src="assets/figures/as-inspect-investigation-flow.svg" alt="AS Inspect investigation flow" width="100%">
+</p>
 
 $$\text{Observed Fact} \neq \text{Inference} \neq \text{AI Explanation}$$
 
