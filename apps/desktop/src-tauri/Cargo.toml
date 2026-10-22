@@ -1,0 +1,20 @@
+[package]
+name = "as-inspect-desktop"
+version = "0.1.0"
+description = "AS Inspect Desktop - Understand applications with evidence. Developed by Abu Safyan"
+authors = ["Abu Safyan"]
+edition = "2021"
+
+[build-dependencies]
+tauri-build = { version = "1.5", features = [] }
+
+[dependencies]
+tauri = { version = "1.5", features = ["shell-open", "dialog-all"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+as-inspect-core = { path = "../../../crates/as-inspect-core" }
+as-inspect-analyzers = { path = "../../../crates/as-inspect-analyzers" }
+as-inspect-evidence = { path = "../../../crates/as-inspect-evidence" }
+as-inspect-reports = { path = "../../../crates/as-inspect-reports" }
+as-inspect-ai = { path = "../../../crates/as-inspect-ai" }
+dirs = "5.0"
