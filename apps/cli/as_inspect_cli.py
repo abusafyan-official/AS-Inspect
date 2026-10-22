@@ -1,6 +1,15 @@
 import argparse
 import os
+import subprocess
 import sys
+
+# Auto-install dependencies if missing
+try:
+    import pefile
+except ImportError:
+    print("[*] Required dependency 'pefile' not found. Installing automatically...")
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "pefile"])
+    import pefile
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(BASE_DIR, "packages", "core"))

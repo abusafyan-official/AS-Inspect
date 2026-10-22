@@ -13,97 +13,121 @@
 </p>
 
 <p align="center">
-  <em>Evidence-based Windows binary and application inspection toolkit with native parsers and optional AI analysis.</em><br>
+  <em>Evidence-based Windows application & binary reverse engineering toolkit for AI coding agents and security researchers.</em><br>
   <strong>Developed by Abu Safyan</strong>
 </p>
 
 ---
 
-## ⚡ Overview
+## Quick Start
 
-**AS Inspect** is a specialized reverse-engineering and application auditing toolkit built for developers, security researchers, and systems engineers. It inspects software that you own or are authorized to inspect without executing untrusted binaries.
+### Set Up Your Agent (MCP Integration)
 
-Inspired by modern reverse-engineering workflows and MCP tooling (such as `morluto/rea`), AS Inspect strictly enforces the **Evidence-First Principle**:
-
-$$\text{Observed Fact} \neq \text{Inference} \neq \text{AI Hallucination}$$
-
-Every single finding carries a distinct **Evidence ID** (`EV-000123`), source pointer, and confidence level.
-
----
-
-## 🎯 Key Capabilities
-
-- 🔍 **Native Windows PE Inspection:** Inspects x86, x64, ARM, and ARM64 executables (`.exe`, `.dll`, `.sys`). Extracts entry points, image bases, section tables, Shannon entropy (to identify compressed/packed sections), and version tables.
-- 🧱 **Framework Identification:** Evidence-based detection for **Electron**, **.NET (Framework/CLR & .NET Core)**, **Python (PyInstaller/frozen)**, **Qt**, and **Java/JVM**.
-- 📦 **Electron & ASAR Archive Extraction:** Safe parsing of `.asar` headers, directory trees, file sizes, and extension distributions without unbundling or running untrusted scripts.
-- 📜 **Safe String & Secret Masking:** Scans ASCII and UTF-16 strings with automatic redaction of high-entropy API tokens and private keys (`sk-**************`, `AIza**************`).
-- 🌐 **URL & Network Surface Mapping:** Discovers static URLs, domains, and registry keys referenced inside binary sections without executing active network requests.
-- 🗃️ **Embedded Evidence Database:** Automatically persists targets, hashes, and evidence ledgers into a structured SQLite database.
-- 🤖 **AI Explanation Layer:** Connect any OpenAI-compatible or local LLM to explain findings—the AI answers cite only verifiable Evidence IDs.
-- 🔌 **Model Context Protocol (MCP) Server:** Expose inspection tools directly to AI coding agents (Claude Desktop, Cursor, Antigravity) safely over stdio.
-
----
-
-## 📊 Pipeline Architecture
-
-```mermaid
-flowchart TD
-    Target["Target (.exe, .dll, .msi, .asar, folder)"] --> Val["Validation & Safety Sandbox"]
-    Val --> Pipe["Analyzer Pipeline"]
-    
-    Pipe --> H["Hash Analyzer (MD5, SHA-1, SHA-256)"]
-    Pipe --> PE["PE Header & Section Entropy Engine"]
-    Pipe --> FW["Framework & Runtime Detector"]
-    Pipe --> AS["ASAR / JavaScript AST Engine"]
-    Pipe --> STR["String & Secret Masking Engine"]
-    
-    H & PE & FW & AS & STR --> Ledger["Evidence Ledger (EV-XXXXX)"]
-    Ledger --> DB[("Local SQLite Database")]
-    Ledger --> Rep["Reports (Markdown / HTML / JSON)"]
-    Ledger --> AI["Optional AI Synthesis (Strict Evidence Citations)"]
-```
-
----
-
-## 🚀 Quick Start
-
-### 1. Installation
-
-Clone and install dependencies:
+AS Inspect connects AI coding agents (Claude Code, Cursor, Gemini CLI, Grok, and Antigravity) to native Windows analysis tools over Model Context Protocol (MCP):
 
 ```powershell
 git clone https://github.com/abusafyan-official/AS-Inspect.git
 cd AS-Inspect
-python -m pip install -r requirements.txt
 ```
 
-### 2. Command Line Interface (CLI)
+Register the MCP server in your agent configuration (`claude_desktop_config.json`, `cursor`, or `antigravity`):
 
-#### Full Technical Analysis with Markdown Export
+```json
+{
+  "mcpServers": {
+    "as-inspect": {
+      "command": "python",
+      "args": ["-m", "crates/as-inspect-mcp/src/main.rs"]
+    }
+  }
+}
+```
+
+Restart your agent afterward.
+
+---
+
+### Ask Your Agent
+
+> *"Inspect how network requests and file operations work in `app.exe`, cite the evidence, and explain the security capabilities."*
+
+Replace `app.exe` with your target file. The agent invokes AS Inspect tools, retrieves verifiable findings, and cites evidence IDs (`EV-000123`).
+
+---
+
+### Use the Terminal (CLI)
+
+AS Inspect automatically handles dependencies on first run.
+
+#### 1. Inspect an Executable, DLL, or Folder
 ```powershell
-python apps/cli/as_inspect_cli.py analyze C:\Windows\System32\notepad.exe --markdown notepad_report.md
+python apps/cli/as_inspect_cli.py analyze C:\Windows\System32\notepad.exe --markdown report.md
 ```
 
-#### Calculate Cryptographic Hashes
+#### 2. Inspect an Extracted JavaScript / Electron App Directory or ASAR
+```powershell
+python apps/cli/as_inspect_cli.py analyze "C:\Users\username\AppData\Local\Programs\App\resources\app.asar"
+```
+The result includes modules, imports, Electron runtime boundaries, and their evidence.
+
+#### 3. Calculate Cryptographic Hashes
 ```powershell
 python apps/cli/as_inspect_cli.py hash target.exe
 ```
 
-#### Inspect DLL Dependencies & Imports
+#### 4. Export Interactive Searchable Dark-Mode HTML Report
 ```powershell
-python apps/cli/as_inspect_cli.py imports target.dll
-```
-
-#### Detect Framework & Runtime Indicators
-```powershell
-python apps/cli/as_inspect_cli.py detect app.exe
+python apps/cli/as_inspect_cli.py report target.exe --format html > report.html
 ```
 
 ---
 
-## 🧪 Verified Test Suite
+## How AS Inspect Works
 
-AS Inspect includes rigorous automated unit and integration tests:
+Your agent or CLI calls AS Inspect to inspect the target without execution. AS Inspect returns structured findings with their exact evidence:
+
+```
+Target (.exe, .dll, .msi, .asar, folder)
+       │
+       ▼
+[ Pipeline Validation (Non-Execution Guarantee) ]
+       │
+       ├──► Hash Analyzer: MD5, SHA-1, SHA-256 digests
+       ├──► PE Header & Section Entropy Engine: x86/x64/ARM, entry point, packer signatures
+       ├──► Framework Detector: Electron, .NET, Python (PyInstaller), Qt, JVM
+       ├──► Security Capabilities Matrix: Maps Win32 imports to network, memory, and persistence behaviors
+       ├──► ASAR & JavaScript AST: Reads Electron bundles and module graphs safely
+       └──► String & URL Scanner: Extracts printable strings with automatic secret masking (sk-***)
+       │
+       ▼
+[ Structured Evidence Ledger ] (EV-0001, EV-0002...)
+       │
+       ├──► Local SQLite Database (Embedded audit history)
+       ├──► Interactive HTML / Markdown / JSON Reports
+       └──► Optional AI Layer (Strict evidence citations)
+```
+
+$$\text{Observed Fact} \neq \text{Inference} \neq \text{AI Explanation}$$
+
+---
+
+## What You Can Analyze
+
+Target | What AS Inspect Returns | Requirements
+---|---|---
+**Native Binaries (`.exe`, `.dll`, `.sys`)** | Architecture (x86/x64/ARM), entry point, image base, Shannon section entropy, imports, exports | Built-in native parser; no debugger or runtime required
+**PE Authenticode Certificates** | WIN_CERTIFICATE table presence, certificate directory size, signed vs. unsigned status | Built-in static PE inspection
+**Packer & Obfuscator Signatures** | Detection of UPX (`.upx0`), Aspack, MPRESS, Themida/WinLicense, and VMProtect markers | Built-in signature matching & high-entropy alerts
+**Security Capabilities** | Categorized Win32 behavior mapping: Network/Sockets, Memory Injection, Registry Persistence, Anti-Debug | Built-in API semantic dictionary
+**Electron / ASAR Archives** | File tree inventory, file sizes, extension distributions, header directory facts | Built-in zero-dependency ASAR reader
+**JavaScript / TypeScript Bundles** | Module dependencies, `require`/`import` calls, functions, embedded URLs | Static AST regex engine; non-executing
+**Windows Installers (`.msi`)** | OLE Compound Document Binary validation and stream structure verification | Built-in header validator
+**Application Folders & Bundles** | Full directory trees, key application manifests (`package.json`, `.config`), and binary assets | Built-in recursive filesystem scanner
+**Discovered URLs & Endpoints** | Static URLs, domains, and paths discovered in binary and script sections | Built-in scanner; never performs active outbound network calls
+
+---
+
+## 🧪 Verified Test Suite
 
 ```powershell
 python -m pytest tests/
@@ -113,15 +137,15 @@ python -m pytest tests/
 tests/test_analyzers.py ....                                             [ 57%]
 tests/test_pe_and_edgecases.py ...                                       [100%]
 
-============================== 7 passed in 0.24s ==============================
+============================== 7 passed in 0.56s ==============================
 ```
 
 Tests cover:
-- Cryptographic hash verification (MD5, SHA-1, SHA-256)
-- Secret masking & API key redaction
+- Cryptographic hash calculation (MD5, SHA-1, SHA-256)
+- Secret masking & API token redaction
 - JavaScript static import & URL discovery
 - SQLite persistence & schema integrity
-- Real Windows x64 binary execution (`python.exe`)
+- Real Windows x64 binary execution (`python.exe`, `notepad.exe`)
 - Malformed & truncated PE file fault tolerance (safe failure without crash)
 - 0-byte empty file edge case handling
 
@@ -130,8 +154,8 @@ Tests cover:
 ## 🛡️ Security & Responsible Inspection
 
 - **Non-Execution Guarantee:** AS Inspect is a static analysis engine. It never executes `.exe`, `.dll`, `.bat`, or `.js` payloads.
-- **Safety:** Discovered URLs and domains are strictly cataloged; AS Inspect does not perform outbound HTTP network requests against discovered endpoints.
-- **Privacy:** Credentials and sensitive tokens are masked on extraction.
+- **Network Safety:** Discovered URLs and domains are strictly cataloged; AS Inspect does not perform outbound HTTP network requests against discovered endpoints.
+- **Privacy First:** Credentials, tokens, and sensitive strings are masked on extraction.
 
 ---
 
