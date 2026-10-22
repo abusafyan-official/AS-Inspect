@@ -23,6 +23,14 @@ def main():
     print()
     print("[+] AS Inspect environment is 100% ready!")
     print()
+
+    # 2. Auto-configure all AI Coding Agents (Claude, Cursor, Antigravity)
+    try:
+        from apps.setup_agents import setup_all_ai_agents
+        setup_all_ai_agents()
+    except Exception as e:
+        print(f"[-] Could not auto-register AI agents: {e}")
+
     print("Quick CLI Usage:")
     print("  python apps/cli/as_inspect_cli.py analyze C:\\Windows\\System32\\notepad.exe")
     print("  python apps/cli/as_inspect_cli.py hash target.exe")
