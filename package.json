@@ -1,15 +1,17 @@
 {
-  "name": "as-inspect-monorepo",
+  "name": "as-inspect",
   "version": "0.1.0",
-  "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
+  "description": "Evidence-based Windows application inspection toolkit with native PE, ASAR, framework detection, and security capabilities mapping.",
+  "type": "module",
+  "bin": {
+    "as-inspect": "scripts/as-inspect.mjs",
+    "as-inspect-agents": "scripts/as-inspect.mjs"
+  },
   "scripts": {
-    "dev": "npm run dev --workspace=apps/desktop",
-    "build": "npm run build --workspace=apps/desktop",
-    "test": "vitest run"
+    "setup": "node scripts/as-inspect.mjs setup",
+    "analyze": "node scripts/as-inspect.mjs analyze",
+    "mcp": "node scripts/as-inspect.mjs mcp",
+    "test": "pytest tests/"
   },
   "devDependencies": {
     "vitest": "^1.6.0",

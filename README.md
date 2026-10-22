@@ -21,24 +21,35 @@
 
 ## Quick Start
 
-On Windows, static PE analysis, ASAR extraction, framework detection, and security capability mapping require no external debuggers or disassemblers. Built-in parsers read binaries safely without execution.
-
 ### Set up your agent
 
-To install and register AS Inspect into all your AI coding agents automatically:
+With Node.js installed, run setup directly:
 
 ```powershell
-git clone https://github.com/abusafyan-official/AS-Inspect.git
-cd AS-Inspect
-python setup.py
+node scripts/as-inspect.mjs setup
 ```
 
-Setup automatically detects, configures, and registers AS Inspect's MCP server into:
+Setup automatically detects, configures, and registers AS Inspect's MCP server and workflow skills into:
 - **Claude Desktop** (`claude_desktop_config.json`)
 - **Cursor Editor** (`.cursor/mcp.json`)
 - **Antigravity / Gemini CLI** (`mcp_servers.json`)
 
 Restart your AI agent afterward to immediately start inspecting applications with evidence!
+
+---
+
+### Use the terminal
+
+```powershell
+# Analyze an executable or folder
+node scripts/as-inspect.mjs analyze C:\Windows\System32\notepad.exe
+
+# Calculate cryptographic hashes
+node scripts/as-inspect.mjs hash target.exe
+
+# Detect application frameworks
+node scripts/as-inspect.mjs detect target.exe
+```
 
 Choose your agents, review the proposed changes, and approve them. Setup adds AS Inspect's MCP server and matching workflow instructions, with backups of existing configuration. Restart your agent afterward.
 
